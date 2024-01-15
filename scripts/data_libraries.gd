@@ -18,7 +18,6 @@ func load_json_file(filePath: String):
 		var parsedResult = JSON.parse_string(dataFile.get_as_text())
 		
 		if parsedResult is Array:
-			print("success!")
 			return parsedResult
 		else:
 			push_error("error reading the control library")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bom4ijl6roghf"]
+[gd_scene load_steps=2 format=3 uid="uid://bldt2tc567tql"]
 
 [ext_resource type="Script" path="res://scripts/pager.gd" id="1_k0vfd"]
 
-[node name="pager" type="Control"]
+[node name="pager" type="Control" node_paths=PackedStringArray("error_code_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,14 +10,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k0vfd")
+error_code_display = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 56.0
+offset_top = 1.0
+offset_right = 143.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.160784, 1, 0.133333, 1)
+theme_override_font_sizes/font_size = 20
+text = "2189"
+vertical_alignment = 1
 
 [node name="Next Button" type="Button" parent="."]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "NEXT"
+
+[connection signal="pressed" from="Next Button" to="." method="next_error_code"]

@@ -1,6 +1,6 @@
 class_name cubicle extends Node
 
-signal diagetic_error_report
+signal diagetic_error_report(new_error)
 
 @export var current_level_id: String
 @export var control_panel: Control
@@ -13,7 +13,6 @@ var control_obj_list := []
 var error_timers_list := []
 
 func _ready():
-	print("requesting data libraries access")
 	data = get_node("/root/data_libraries_single")
 	if(!data.ready):
 		await data.ready
@@ -45,7 +44,6 @@ func create_control_id_list():
 		for control_id in error.pattern:
 			if !list.has(control_id):
 				list.append(control_id)
-	print(str("list ", list))
 	control_id_list = list
 
 func dereference_error_id(id: String):
@@ -90,7 +88,9 @@ func create_error_timers():
 		timer.start()
 		error_timers_list.append(timer)
 		timer.timeout.connect(next_error_report)
+		print(str("new timer created for ", error.time))
 
 func next_error_report():
 	var new_error = error_schedule.pop_front()
+	print(str("next_error_report called for ", new_error))
 	diagetic_error_report.emit(new_error)
