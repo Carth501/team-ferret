@@ -1,0 +1,283 @@
+[gd_scene load_steps=3 format=3 uid="uid://1agrbthdo7br"]
+
+[ext_resource type="PackedScene" uid="uid://bnf6vxxb7xsr3" path="res://scenes/controls/button.tscn" id="1_cl3k8"]
+[ext_resource type="PackedScene" uid="uid://d32ginpnucq0p" path="res://scenes/controls/lever.tscn" id="2_kq38g"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control Group" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 128.0
+offset_right = 552.0
+offset_bottom = 168.0
+
+[node name="Control" parent="Control Group" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever" parent="Control Group" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" parent="Control Group" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -64.0
+offset_right = 0.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever2" parent="Control Group" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 256.0
+offset_right = 320.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control3" parent="Control Group" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever3" parent="Control Group" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control4" parent="Control Group" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever4" parent="Control Group" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 191.0
+offset_top = 64.0
+offset_right = 255.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control Group2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_right = 296.0
+offset_bottom = 40.0
+
+[node name="Control" parent="Control Group2" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 192.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever" parent="Control Group2" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" parent="Control Group2" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 192.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever2" parent="Control Group2" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control3" parent="Control Group2" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever3" parent="Control Group2" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control4" parent="Control Group2" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever4" parent="Control Group2" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control Group3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 512.0
+offset_right = 552.0
+offset_bottom = 40.0
+
+[node name="Control" parent="Control Group3" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever" parent="Control Group3" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" parent="Control Group3" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever2" parent="Control Group3" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control3" parent="Control Group3" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever3" parent="Control Group3" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control4" parent="Control Group3" instance=ExtResource("1_cl3k8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="lever4" parent="Control Group3" instance=ExtResource("2_kq38g")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+grow_horizontal = 1
+grow_vertical = 1
