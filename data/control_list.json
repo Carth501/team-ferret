@@ -1,0 +1,20 @@
+[
+	{
+		"label": "Check Character Positions",
+		"id": "check_char_pos",
+		"type": "button",
+		"offset": [5, 0]
+	},
+	{
+		"label": "Reload Models",
+		"id": "reload_models",
+		"type": "button",
+		"offset": [2, 1]
+	},
+	{
+		"label": "Reload Character Models",
+		"id": "reload_char_models",
+		"type": "button",
+		"offset": [5, 3]
+	},
+]

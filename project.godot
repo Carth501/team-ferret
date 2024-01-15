@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Think of the Shareholders!"
-run/main_scene="res://scenes/controls/button.tscn"
+run/main_scene="res://scenes/cubicle.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+data_libraries_single="*res://scripts/data_libraries.gd"
 
 [dotnet]
 

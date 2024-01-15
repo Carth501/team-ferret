@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://bnf6vxxb7xsr3"]
+[gd_scene load_steps=2 format=3 uid="uid://bnf6vxxb7xsr3"]
 
-[node name="button" type="Control"]
+[ext_resource type="Script" path="res://scripts/control_scripts/button_control.gd" id="1_xdt12"]
+
+[node name="button" type="Control" node_paths=PackedStringArray("button_object")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -9,6 +11,8 @@ offset_right = -1088.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xdt12")
+button_object = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -17,17 +21,10 @@ offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
 text = "Test"
 text_overrun_behavior = 1

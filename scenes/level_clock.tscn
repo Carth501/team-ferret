@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct2oxvm74mwxo"]
+
+[ext_resource type="Script" path="res://scripts/level_clock.gd" id="1_vo46q"]
+
+[node name="level clock" type="Control" node_paths=PackedStringArray("display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -621.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vo46q")
+display = NodePath("Label")
+seconds_remaining = 300
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 26.0
+text = "5:00"
+horizontal_alignment = 1
