@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvikl0ynet5bo"]
+[gd_scene load_steps=3 format=3 uid="uid://bvikl0ynet5bo"]
 
-[ext_resource type="PackedScene" uid="uid://1agrbthdo7br" path="res://scenes/control_pallet.tscn" id="1_lmgla"]
+[ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
+[ext_resource type="PackedScene" uid="uid://ct2oxvm74mwxo" path="res://scenes/level_clock.tscn" id="2_eni3y"]
 
-[node name="Cubicle" type="Node"]
+[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral")]
+script = ExtResource("1_b5jef")
+current_level_id = "ring-1"
+control_panel = NodePath("ScrollContainer/Control")
+timer_corral = NodePath("Timer Corral")
 
-[node name="Control" parent="." instance=ExtResource("1_lmgla")]
+[node name="level clock" parent="." instance=ExtResource("2_eni3y")]
+offset_left = 540.0
+offset_top = 11.0
+offset_right = -572.0
+offset_bottom = -610.0
 
 [node name="Pager" type="Node" parent="."]
 
 [node name="Manual" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Timer Corral" type="Node" parent="."]
+
+[connection signal="timeout" from="Timer" to="level clock" method="tick"]

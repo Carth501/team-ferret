@@ -1,0 +1,18 @@
+[
+	{
+		"id": "0001",
+		"pattern": [
+			"check_char_pos",
+			"reload_models",
+			"reload_char_models",
+		]
+	},
+	{
+		"id": "0002",
+		"pattern": [
+			"check_char_pos",
+			"reload_models",
+			"reload_char_models",
+		]
+	},
+]

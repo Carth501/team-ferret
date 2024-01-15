@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvikl0ynet5bo"]
+
+[ext_resource type="Script" path="res://scenes/cubicle.gd" id="1_lepst"]
+[ext_resource type="PackedScene" uid="uid://1agrbthdo7br" path="res://scenes/control_pallet.tscn" id="1_lmgla"]
+
+[node name="Cubicle" type="Node"]
+script = ExtResource("1_lepst")
+level_id = "ring-1"
+
+[node name="Control" parent="." instance=ExtResource("1_lmgla")]
+
+[node name="Pager" type="Node" parent="."]
+
+[node name="Manual" type="Node" parent="."]
