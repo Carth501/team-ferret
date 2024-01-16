@@ -17,4 +17,14 @@
 			}
 		]
 	},
+	{
+		"name": "button_test",
+		"id": "test",
+		"errors": [
+			{
+				"id": "button_test",
+				"time": 2.3,
+			},
+		]
+	},
 ]

@@ -15,9 +15,26 @@
 		]
 	},
 	{
+		"name": "Top-heavy Datastore",
 		"id": "0003",
 		"pattern": [
 			"engorge_ballast",
+		]
+	},
+	{
+		"name": "Everything",
+		"id": "button_test",
+		"pattern": [
+			"engorge_ballast",
+			"check_char_pos",
+			"reload_models",
+			"reload_char_models",
+			"download_ram",
+			"safe_mode",
+			"lifeguard",
+			"music",
+			"sound",
+			"dancing"
 		]
 	},
 ]

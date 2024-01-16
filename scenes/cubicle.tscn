@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
 [ext_resource type="PackedScene" uid="uid://bldt2tc567tql" path="res://scenes/pager.tscn" id="3_fcxxh"]
 [ext_resource type="Script" path="res://scripts/error_factory.gd" id="4_cxbfh"]
-[ext_resource type="PackedScene" uid="uid://gve46xgvo5ko" path="res://scenes/manual.tscn" id="5_neuwc"]
+[ext_resource type="PackedScene" uid="uid://dtyv8dggwfwl" path="res://scenes/manual.tscn" id="5_neuwc"]
 
 [node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "error_factory_controller", "manual_instance")]
 script = ExtResource("1_b5jef")
-current_level_id = "ring-1"
+current_level_id = "test"
 control_panel = NodePath("ScrollContainer/Control")
 timer_corral = NodePath("Timer Corral")
 error_factory_controller = NodePath("ErrorFactory")
