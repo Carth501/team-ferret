@@ -11,4 +11,4 @@ func create_error_node(error):
 	add_child(new_error)
 	new_error.set_id(error.id)
 	new_error.set_pattern(error.pattern)
-	new_error.connect_to_modules(cubicle_instance.module_obj_dic)
+	new_error.connect_to_cubicle(cubicle_instance)

@@ -49,4 +49,5 @@ cubicle_instance = NodePath("..")
 
 [connection signal="diagetic_error_report" from="." to="pager" method="add_error"]
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
+[connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
