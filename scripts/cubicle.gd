@@ -1,6 +1,7 @@
 class_name cubicle extends Node
 
 signal diagetic_error_report(new_error)
+signal diagetic_error_resolved(error_id)
 signal module_triggered(module_id: String)
 
 @export var current_level_id: String
@@ -91,8 +92,10 @@ func create_error_timers():
 		timer.start()
 		error_timers_list.append(timer)
 		timer.timeout.connect(next_error_report)
-		print(str("new timer created for ", error.time))
 
 func next_error_report():
 	var new_error = error_schedule.pop_front()
 	diagetic_error_report.emit(new_error)
+
+func announce_error_resolved(error_id):
+	diagetic_error_resolved.emit(error_id)
