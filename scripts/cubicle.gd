@@ -58,24 +58,34 @@ func dereference_error_id(id: String):
 func create_module_objects():
 	for module_id in module_id_list:
 		var module_definition = dereference_module_id(module_id)
+		var new_module
 		match module_definition.type:
 			"button":
-				create_button(module_definition)
+				new_module = create_button()
+			"switch":
+				new_module = create_switch()
 			_:
 				push_error(str(module_definition.type, " not found. Check spelling."))
+		configure_module(new_module, module_definition)
 
-func create_button(params):
+func create_button() -> abstract_module:
 	var button_scene = load("res://scenes/modules/button.tscn")
-	var button_instance = button_scene.instantiate() as button_module
-	if(button_instance == null):
-		push_error("button instance does not have the script attached")
-	button_instance.name = params.id
-	button_instance.set_id(params.id)
-	button_instance.set_label(params.label)
-	control_panel.add_child(button_instance)
-	button_instance.set_anchors_preset(Control.PRESET_CENTER, false)
-	button_instance.position = Vector2(params.offset[0]*64, params.offset[1]*64)
-	module_obj_dic[params.id] = button_instance
+	return button_scene.instantiate() as button_module
+
+func create_switch() -> abstract_module:
+	var switch_scene = load("res://scenes/modules/switch.tscn")
+	return switch_scene.instantiate() as switch_module
+
+func configure_module(new_module: abstract_module, params):
+	if(new_module == null):
+		push_error("switch instance does not have the script attached")
+	new_module.name = params.id
+	new_module.set_id(params.id)
+	new_module.set_label(params.label)
+	control_panel.add_child(new_module)
+	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
+	new_module.position = Vector2(params.offset[0]*64, params.offset[1]*64)
+	module_obj_dic[params.id] = new_module
 
 func dereference_module_id(id: String):
 	for module_def in data.control_data:

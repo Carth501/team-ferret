@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://d32ginpnucq0p"]
+[gd_scene load_steps=2 format=3 uid="uid://d32ginpnucq0p"]
 
-[node name="lever" type="Control"]
+[ext_resource type="Script" path="res://scripts/modules/switch_module.gd" id="1_ow6tp"]
+
+[node name="switch" type="Control" node_paths=PackedStringArray("button_obj", "label_obj")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -9,6 +11,9 @@ offset_right = -1088.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ow6tp")
+button_obj = NodePath("CheckButton")
+label_obj = NodePath("Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -31,3 +36,5 @@ layout_mode = 0
 offset_right = 44.0
 offset_bottom = 44.0
 scale = Vector2(1.45, 1.45)
+
+[connection signal="pressed" from="CheckButton" to="." method="button_pressed"]
