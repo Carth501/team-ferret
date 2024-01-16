@@ -113,4 +113,4 @@ func announce_error_resolved(error_id):
 	diagetic_error_resolved.emit(error_id)
 
 func setup_manual():
-	manual_instance.build_error_list(data.error_data)
+	manual_instance.build_error_list(data.error_data, data.control_data)
