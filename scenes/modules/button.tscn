@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnf6vxxb7xsr3"]
 
-[ext_resource type="Script" path="res://scripts/control_scripts/button_control.gd" id="1_xdt12"]
+[ext_resource type="Script" path="res://scripts/control_scripts/button_module.gd" id="1_lk1ta"]
 
 [node name="button" type="Control" node_paths=PackedStringArray("button_object")]
 layout_mode = 3
@@ -11,7 +11,7 @@ offset_right = -1088.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xdt12")
+script = ExtResource("1_lk1ta")
 button_object = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,3 +28,5 @@ offset_right = 56.0
 offset_bottom = 56.0
 text = "Test"
 text_overrun_behavior = 1
+
+[connection signal="pressed" from="Button" to="." method="button_pressed"]

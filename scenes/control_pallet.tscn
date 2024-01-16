@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1agrbthdo7br"]
 
-[ext_resource type="PackedScene" uid="uid://bnf6vxxb7xsr3" path="res://scenes/controls/button.tscn" id="1_cl3k8"]
-[ext_resource type="PackedScene" uid="uid://d32ginpnucq0p" path="res://scenes/controls/lever.tscn" id="2_kq38g"]
+[ext_resource type="PackedScene" uid="uid://bnf6vxxb7xsr3" path="res://scenes/modules/button.tscn" id="1_cl3k8"]
+[ext_resource type="PackedScene" uid="uid://d32ginpnucq0p" path="res://scenes/modules/lever.tscn" id="2_kq38g"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

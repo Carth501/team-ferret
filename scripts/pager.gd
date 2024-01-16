@@ -12,13 +12,11 @@ func add_error(new_error):
 	set_display(errors.size() - 1)
 
 func set_display(value: int):
-	print(str("set_display called ", value, " id = ", errors[value].id))
 	if(check_display_conditions(value)):
 		var error = errors[value]
 		error_code_display.text = str(error.id)
 		
 func check_display_conditions(value: int) -> bool:
-	print(str("check_display_conditions called.   errors.size() =", errors.size()))
 	if(errors.size() <= 0):
 		return false
 	if(!value < errors.size()):
