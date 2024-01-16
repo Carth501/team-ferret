@@ -1,5 +1,11 @@
 [
 	{
+		"label": "Engorge Ballast",
+		"id": "engorge_ballast",
+		"type": "switch",
+		"offset": [4, 4]
+	},
+	{
 		"label": "Check Character Positions",
 		"id": "check_char_pos",
 		"type": "button",

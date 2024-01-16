@@ -15,4 +15,10 @@
 			"reload_char_models",
 		]
 	},
+	{
+		"id": "0003",
+		"pattern": [
+			"engorge_ballast",
+		]
+	},
 ]

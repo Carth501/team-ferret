@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnf6vxxb7xsr3"]
 
-[ext_resource type="Script" path="res://scripts/control_scripts/button_module.gd" id="1_lk1ta"]
+[ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
 
 [node name="button" type="Control" node_paths=PackedStringArray("button_object")]
 layout_mode = 3
@@ -11,7 +11,7 @@ offset_right = -1088.0
 offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lk1ta")
+script = ExtResource("1_2qjgx")
 button_object = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
