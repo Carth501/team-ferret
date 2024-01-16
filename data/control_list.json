@@ -15,6 +15,6 @@
 		"label": "Reload Character Models",
 		"id": "reload_char_models",
 		"type": "button",
-		"offset": [5, 3]
+		"offset": [2, 2]
 	},
 ]

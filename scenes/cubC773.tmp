@@ -40,12 +40,9 @@ size_flags_vertical = 3
 [node name="Timer Corral" type="Node" parent="."]
 
 [node name="pager" parent="." instance=ExtResource("3_fcxxh")]
-offset_right = -1043.0
-offset_bottom = -611.0
 
-[node name="ErrorFactory" type="Node" parent="." node_paths=PackedStringArray("cubicle_instance")]
+[node name="ErrorFactory" type="Node" parent="."]
 script = ExtResource("4_cxbfh")
-cubicle_instance = NodePath("..")
 
 [connection signal="diagetic_error_report" from="." to="pager" method="add_error"]
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
