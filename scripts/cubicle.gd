@@ -8,6 +8,7 @@ signal module_triggered(module_id: String)
 @export var control_panel: Control
 @export var timer_corral: Node
 @export var error_factory_controller: error_factory
+@export var manual_instance: manual
 var data
 var current_level
 var error_schedule := []
@@ -27,6 +28,7 @@ func load_level():
 	create_module_id_list()
 	create_module_objects()
 	create_error_timers()
+	setup_manual()
 	
 func get_level(level_list: Array):
 	for level in level_list:
@@ -109,3 +111,6 @@ func next_error_report():
 
 func announce_error_resolved(error_id):
 	diagetic_error_resolved.emit(error_id)
+
+func setup_manual():
+	manual_instance.build_error_list(data.error_data, data.control_data)

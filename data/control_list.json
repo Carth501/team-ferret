@@ -15,12 +15,48 @@
 		"label": "Reload Models",
 		"id": "reload_models",
 		"type": "button",
-		"offset": [2, 1]
+		"offset": [2, 3]
 	},
 	{
 		"label": "Reload Character Models",
 		"id": "reload_char_models",
 		"type": "button",
 		"offset": [2, 2]
+	},
+	{
+		"label": "Download RAM",
+		"id": "download_ram",
+		"type": "button",
+		"offset": [0, 4]
+	},
+	{
+		"label": "Safe Mode",
+		"id": "safe_mode",
+		"type": "switch",
+		"offset": [3, 3]
+	},
+	{
+		"label": "Lifeguard On Duty",
+		"id": "lifeguard",
+		"type": "switch",
+		"offset": [5, 3]
+	},
+	{
+		"label": "Music",
+		"id": "music",
+		"type": "switch",
+		"offset": [1, 1]
+	},
+	{
+		"label": "Sound",
+		"id": "sound",
+		"type": "switch",
+		"offset": [1, 0]
+	},
+	{
+		"label": "Dancing",
+		"id": "dancing",
+		"type": "switch",
+		"offset": [1, 2]
 	},
 ]

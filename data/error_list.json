@@ -1,24 +1,40 @@
 [
 	{
+		"name": "Out of Bounds Character",
 		"id": "0001",
 		"pattern": [
 			"check_char_pos",
-			"reload_models",
 			"reload_char_models",
 		]
 	},
 	{
+		"name": "Unloaded Character Mesh",
 		"id": "0002",
 		"pattern": [
-			"check_char_pos",
-			"reload_models",
 			"reload_char_models",
 		]
 	},
 	{
+		"name": "Top-heavy Datastore",
 		"id": "0003",
 		"pattern": [
 			"engorge_ballast",
+		]
+	},
+	{
+		"name": "Everything",
+		"id": "button_test",
+		"pattern": [
+			"engorge_ballast",
+			"check_char_pos",
+			"reload_models",
+			"reload_char_models",
+			"download_ram",
+			"safe_mode",
+			"lifeguard",
+			"music",
+			"sound",
+			"dancing"
 		]
 	},
 ]
