@@ -25,12 +25,12 @@
 		"name": "Everything",
 		"id": "button_test",
 		"pattern": [
+			{"id": "safe_mode", "value": false},
 			{"id": "engorge_ballast",},
 			{"id": "check_char_pos",},
 			{"id": "reload_models",},
 			{"id": "reload_char_models",},
 			{"id": "download_ram",},
-			{"id": "safe_mode",},
 			{"id": "lifeguard",},
 			{"id": "music",},
 			{"id": "sound",},

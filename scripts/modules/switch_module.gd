@@ -8,5 +8,5 @@ func set_label(label: String):
 	label_obj.append_text(label)
 
 func button_pressed():
-	var payload = {"id"= id, "bool"= button_obj.toggle_mode}
+	var payload = {"id"= id, "value"= button_obj.button_pressed}
 	trigger.emit(payload)

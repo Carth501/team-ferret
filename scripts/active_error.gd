@@ -21,7 +21,8 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 func pattern_step(payload):
 	var next_step = pattern[step_index]
 	if(payload.id == next_step.id):
-		step_index += 1
+		if(next_step.value == null || next_step.value == payload.value):
+			step_index += 1
 		if(step_index >= pattern.size()):
 			resolved_error.emit(id)
 			queue_free()
