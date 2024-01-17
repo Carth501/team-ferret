@@ -12,6 +12,7 @@ signal module_triggered(module_id: String)
 var data
 var current_level
 var error_schedule := []
+var error_catalogue := []
 var module_id_list
 var module_obj_dic: Dictionary = {}
 var error_timers_list := []
@@ -25,11 +26,13 @@ func _ready():
 func load_level():
 	get_level(data.level_data)
 	get_error_schedule(current_level)
+	get_error_catalogue(current_level)
 	create_module_id_list()
 	create_module_objects()
 	create_error_timers()
 	setup_manual()
 	set_initial_module_settings()
+	populate_error_factory()
 	
 func get_level(level_list: Array):
 	for level in level_list:
@@ -38,11 +41,16 @@ func get_level(level_list: Array):
 			return
 
 func get_error_schedule(level):
-	var error_id_schedule = level.errors
+	var error_id_schedule = level.error_schedule
 	for error in error_id_schedule:
 		var error_item = dereference_error_id(error.id)
 		error_item["time"] = error.time
 		error_schedule.append(error_item)
+
+func get_error_catalogue(level):
+	var error_id_list = level.errors
+	for error in error_id_list:
+		error_catalogue.append(dereference_error_id(error))
 
 func create_module_id_list():
 	var list = []
@@ -123,3 +131,6 @@ func set_initial_module_settings():
 				push_error(str("current_level.init_values has key ", key, 
 				" not found in module_obj_dic"))
 			module_obj_dic[key].set_value(current_level.init_values[key])
+
+func populate_error_factory():
+	error_factory_controller.set_error_list(error_catalogue)
