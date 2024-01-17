@@ -15,11 +15,12 @@ func set_pattern(new_pattern: Array):
 func connect_to_cubicle(cubicle_instance: cubicle):
 	resolved_error.connect(cubicle_instance.announce_error_resolved)
 	for module in pattern:
-		var module_instance = cubicle_instance.module_obj_dic[module]
+		var module_instance = cubicle_instance.module_obj_dic[module.id]
 		module_instance.trigger.connect(pattern_step)
 
 func pattern_step(payload):
-	if(payload.id == pattern[step_index]):
+	var next_step = pattern[step_index]
+	if(payload.id == next_step.id):
 		step_index += 1
 		if(step_index >= pattern.size()):
 			resolved_error.emit(id)

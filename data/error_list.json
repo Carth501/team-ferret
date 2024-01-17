@@ -3,41 +3,41 @@
 		"name": "Out of Bounds Character",
 		"id": "0001",
 		"pattern": [
-			"check_char_pos",
-			"reload_char_models",
+			{"id": "check_char_pos",},
+			{"id": "reload_char_models",}
 		]
 	},
 	{
 		"name": "Unloaded Character Mesh",
 		"id": "0002",
 		"pattern": [
-			"reload_char_models",
+			{"id": "reload_char_models",}
 		]
 	},
 	{
 		"name": "Top-heavy Datastore",
 		"id": "0003",
 		"pattern": [
-			"engorge_ballast",
+			{"id":"engorge_ballast",}
 		]
 	},
 	{
 		"name": "Everything",
 		"id": "button_test",
 		"pattern": [
-			"engorge_ballast",
-			"check_char_pos",
-			"reload_models",
-			"reload_char_models",
-			"download_ram",
-			"safe_mode",
-			"lifeguard",
-			"music",
-			"sound",
-			"dancing",
-			"gen_ascii",
-			"torrent_got",
-			"seed_got"
+			{"id": "engorge_ballast",},
+			{"id": "check_char_pos",},
+			{"id": "reload_models",},
+			{"id": "reload_char_models",},
+			{"id": "download_ram",},
+			{"id": "safe_mode",},
+			{"id": "lifeguard",},
+			{"id": "music",},
+			{"id": "sound",},
+			{"id": "dancing",},
+			{"id": "gen_ascii",},
+			{"id": "torrent_got",},
+			{"id": "seed_got"},
 		]
 	},
 ]

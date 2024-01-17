@@ -8,5 +8,4 @@ func set_label(label: String):
 
 func button_pressed():
 	var payload = {"id"= id}
-	print(str("button_pressed ", payload))
 	trigger.emit(payload)
