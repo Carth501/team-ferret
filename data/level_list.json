@@ -2,6 +2,7 @@
 	{
 		"name": "orientation",
 		"id": "ring-1",
+		"goal_cpc": 100,
 		"errors": [
 			{
 				"id": "0001",
