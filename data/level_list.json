@@ -25,6 +25,13 @@
 				"id": "button_test",
 				"time": 2.3,
 			},
-		]
+		],
+		"init_values": {
+			"lifeguard": true,
+			"music": true,
+			"sound": true,
+			"dancing": false,
+			"seed_got": false
+		}
 	},
 ]

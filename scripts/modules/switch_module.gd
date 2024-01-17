@@ -13,3 +13,6 @@ func button_pressed():
 
 func get_current_values():
 	return {"value"= button_obj.button_pressed}
+
+func set_value(setting: bool):
+	button_obj.button_pressed = setting

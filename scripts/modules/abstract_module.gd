@@ -9,3 +9,6 @@ func set_id(new_id: String):
 
 func get_current_values():
 	return {}
+
+func set_value(setting):
+	pass

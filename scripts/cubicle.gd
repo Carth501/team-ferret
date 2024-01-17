@@ -29,6 +29,7 @@ func load_level():
 	create_module_objects()
 	create_error_timers()
 	setup_manual()
+	set_initial_module_settings()
 	
 func get_level(level_list: Array):
 	for level in level_list:
@@ -114,3 +115,11 @@ func announce_error_resolved(error_id):
 
 func setup_manual():
 	manual_instance.build_error_list(data.error_data, data.control_data)
+
+func set_initial_module_settings():
+	if(current_level.has("init_values")):
+		for key in current_level.init_values:
+			if(!module_obj_dic.has(key)):
+				push_error(str("current_level.init_values has key ", key, 
+				" not found in module_obj_dic"))
+			module_obj_dic[key].set_value(current_level.init_values[key])
