@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ow6tp")
 button_obj = NodePath("CheckButton")
-label_obj = NodePath("Label")
+label_obj = NodePath("RichTextLabel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -21,20 +21,18 @@ offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 128.0
-offset_bottom = 88.0
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 24
-text = "Test "
-horizontal_alignment = 1
-
 [node name="CheckButton" type="CheckButton" parent="."]
 layout_mode = 0
 offset_right = 44.0
-offset_bottom = 44.0
+offset_bottom = 24.0
 scale = Vector2(1.45, 1.45)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 32.0
+offset_right = 62.0
+offset_bottom = 63.0
+theme_override_font_sizes/normal_font_size = 10
 
 [connection signal="pressed" from="CheckButton" to="." method="button_pressed"]

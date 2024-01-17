@@ -46,9 +46,9 @@ func get_error_schedule(level):
 func create_module_id_list():
 	var list = []
 	for error in error_schedule:
-		for module_id in error.pattern:
-			if !list.has(module_id):
-				list.append(module_id)
+		for step in error.pattern:
+			if !list.has(step.id):
+				list.append(step.id)
 	module_id_list = list
 
 func dereference_error_id(id: String):

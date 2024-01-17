@@ -6,3 +6,6 @@ var id: String
 
 func set_id(new_id: String):
 	id = new_id
+
+func get_current_values():
+	return {}

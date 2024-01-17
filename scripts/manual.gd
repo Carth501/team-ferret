@@ -15,8 +15,12 @@ func build_error_list(error_list, control_list):
 		pages.append(str("[b]", error.name, "[/b]"))
 		var step_number = 1
 		for step in error.pattern:
-			var step_definition = dereference_module_id(control_list, step)
-			pages[index] += str("\n", step_number, ". ", step_definition.label)
+			var step_definition = dereference_module_id(control_list, step.id)
+			if(!step.has("value")):
+				pages[index] += str("\n", step_number, ". ", step_definition.label)
+			else:
+				pages[index] += str("\n", step_number, ". ", 
+				step_definition.label, " set to ", step.value)
 			step_number += 1
 		index += 1
 
