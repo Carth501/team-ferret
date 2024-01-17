@@ -20,7 +20,7 @@ func build_error_list(error_list, control_list):
 				pages[index] += str("\n", step_number, ". ", step_definition.label)
 			else:
 				pages[index] += str("\n", step_number, ". ", 
-				step_definition.label, " set to ", step.value)
+				step_definition.label, " set to [color=green]", step.value, "[/color]")
 			step_number += 1
 		index += 1
 
