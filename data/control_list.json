@@ -59,4 +59,22 @@
 		"type": "switch",
 		"offset": [1, 2]
 	},
+	{
+		"label": "Generate Ascii",
+		"id": "gen_ascii",
+		"type": "button",
+		"offset": [0, 2]
+	},
+	{
+		"label": "Torrent GoT",
+		"id": "torrent_got",
+		"type": "button",
+		"offset": [0, 3]
+	},
+	{
+		"label": "Seed GoT",
+		"id": "seed_got",
+		"type": "switch",
+		"offset": [0, 4]
+	},
 ]

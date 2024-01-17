@@ -1,9 +1,10 @@
 class_name button_module extends abstract_module
 
-@export var button_object: Button
+@export var rtl_object: RichTextLabel
 
 func set_label(label: String):
-	button_object.text = label
+	rtl_object.clear()
+	rtl_object.append_text(label)
 
 func button_pressed():
 	var payload = {"id"= id}

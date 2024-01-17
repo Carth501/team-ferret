@@ -34,7 +34,10 @@
 			"lifeguard",
 			"music",
 			"sound",
-			"dancing"
+			"dancing",
+			"gen_ascii",
+			"torrent_got",
+			"seed_got"
 		]
 	},
 ]

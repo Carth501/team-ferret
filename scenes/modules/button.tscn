@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
 
-[node name="button" type="Control" node_paths=PackedStringArray("button_object")]
+[node name="button" type="Control" node_paths=PackedStringArray("rtl_object")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2qjgx")
-button_object = NodePath("Button")
+rtl_object = NodePath("Button/RichTextLabel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -26,7 +26,17 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 56.0
-text = "Test"
+theme_override_font_sizes/font_size = 10
 text_overrun_behavior = 1
+clip_text = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+scroll_active = false
 
 [connection signal="pressed" from="Button" to="." method="button_pressed"]
