@@ -5,6 +5,7 @@ signal resolved_error(id: String)
 var id: String
 var pattern: Array
 var step_index: int
+var module_instances: Dictionary = {}
 
 func set_id(new_id: String):
 	id = new_id
@@ -17,14 +18,27 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 	for module in pattern:
 		var module_instance = cubicle_instance.module_obj_dic[module.id]
 		module_instance.trigger.connect(pattern_step)
+		module_instances[module.id] = module_instance
+	check_next_step()
 
 func pattern_step(payload):
 	var next_step = pattern[step_index]
 	if(payload.id == next_step.id):
-		if(next_step.value == null || next_step.value == payload.value):
-			step_index += 1
+		if(!next_step.has("value") || next_step.value == payload.value):
+			increment_step()
 		if(step_index >= pattern.size()):
 			resolved_error.emit(id)
 			queue_free()
 	else:
 		step_index = 0
+
+func check_next_step():
+	var next_step = pattern[step_index]
+	var next_module = module_instances[next_step.id]
+	var module_setting = next_module.get_current_values()
+	if(next_step.has("value") && next_step.value == module_setting.value):
+		increment_step()
+
+func increment_step():
+	step_index += 1
+	check_next_step()

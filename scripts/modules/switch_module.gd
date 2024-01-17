@@ -10,3 +10,6 @@ func set_label(label: String):
 func button_pressed():
 	var payload = {"id"= id, "value"= button_obj.button_pressed}
 	trigger.emit(payload)
+
+func get_current_values():
+	return {"value"= button_obj.button_pressed}
