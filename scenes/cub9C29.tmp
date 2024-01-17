@@ -68,4 +68,3 @@ display = NodePath("../CpcMonitor")
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
-[connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
