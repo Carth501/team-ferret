@@ -8,7 +8,7 @@ var active_error_count = 0
 var concurrent_player_count = 0
 var error_list: Array = []
 var rng = RandomNumberGenerator.new()
-@export var probability = 0.1
+@export var probability: float = 0.1
 
 func _ready():
 	if(cubicle_instance == null):
@@ -42,8 +42,10 @@ func set_cpc(value: int):
 func roll_new_error():
 	rng.seed = concurrent_player_count
 	var roll = rng.randf()
-	if(roll < probability):
-		generate_new_error(roll * (1 / probability))
+	var probability_offset = log(concurrent_player_count) / 100
+	var adjusted_probability = probability + probability_offset
+	if(roll < adjusted_probability):
+		generate_new_error(roll * (1 / adjusted_probability))
 
 func generate_new_error(error_roll: float):
 	if(error_list.size() == 0):
