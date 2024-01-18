@@ -11,13 +11,20 @@ config_version=5
 [application]
 
 config/name="Think of the Shareholders!"
-run/main_scene="res://scenes/cubicle.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 data_libraries_single="*res://scripts/data_libraries.gd"
+level_loader_single="*res://scenes/level_loader.tscn"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
 
 [dotnet]
 

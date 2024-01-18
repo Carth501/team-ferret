@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtyv8dggwfwl"]
+[gd_scene load_steps=3 format=3 uid="uid://dtyv8dggwfwl"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_u3mp4"]
+[ext_resource type="Script" path="res://scenes/manual_panel.gd" id="2_vupmp"]
 
 [node name="manual" type="Control" node_paths=PackedStringArray("popup", "text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -773.0
-offset_bottom = -429.0
+offset_right = -1199.0
+offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u3mp4")
@@ -22,12 +23,12 @@ offset_bottom = 30.0
 text = "MANUAL"
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 36.0
-offset_right = 430.0
-offset_bottom = 586.0
+offset_left = 89.0
+offset_top = -218.0
+offset_right = 514.0
+offset_bottom = 332.0
+script = ExtResource("2_vupmp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
@@ -35,6 +36,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 417.0
 offset_bottom = 509.0
+mouse_filter = 2
 bbcode_enabled = true
 
 [node name="Previous Page" type="Button" parent="Panel"]

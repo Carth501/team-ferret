@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://jnq42xdbfulu"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
+[ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
+[ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_3t2ir")
+
+[node name="Logo" parent="." instance=ExtResource("1_f7edf")]
+
+[node name="quit" type="Button" parent="."]
+offset_left = 614.0
+offset_top = 482.0
+offset_right = 661.0
+offset_bottom = 513.0
+text = "QUIT"
+
+[node name="quitter" type="Node" parent="quit"]
+script = ExtResource("2_m38df")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 597.0
+offset_top = 432.0
+offset_right = 676.0
+offset_bottom = 463.0
+disabled = true
+text = "OPTIONS"
+
+[node name="Level Select" type="Button" parent="."]
+offset_left = 579.0
+offset_top = 380.0
+offset_right = 691.0
+offset_bottom = 411.0
+text = "LEVEL SELECT
+"
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 593.0
+offset_top = 324.0
+offset_right = 672.0
+offset_bottom = 355.0
+text = "CONTINUE"
+
+[connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
+[connection signal="pressed" from="Continue" to="." method="load_continue"]

@@ -30,6 +30,9 @@
 				"time": 2.3,
 			},
 		],
+		"errors": [
+			"0001", "0002"
+		],
 		"init_values": {
 			"lifeguard": true,
 			"music": true,
