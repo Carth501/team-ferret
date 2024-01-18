@@ -13,7 +13,7 @@ func calculate():
 	update_cpc.emit(cpc)
 
 func calc_coefficient() -> float:
-	var base_coef = 1.05
+	var base_coef = 1.001
 	var par_difference = (par - error_count) * 0.02
 	var weighted_coeff = base_coef + par_difference
 	return max(weighted_coeff, 0)

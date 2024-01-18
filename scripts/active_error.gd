@@ -26,9 +26,6 @@ func pattern_step(payload):
 	if(payload.id == next_step.id):
 		if(!next_step.has("value") || next_step.value == payload.value):
 			increment_step()
-		if(step_index >= pattern.size()):
-			resolved_error.emit(id)
-			queue_free()
 	else:
 		step_index = 0
 
@@ -41,4 +38,8 @@ func check_next_step():
 
 func increment_step():
 	step_index += 1
-	check_next_step()
+	if(step_index >= pattern.size()):
+		resolved_error.emit(id)
+		queue_free()
+	else:
+		check_next_step()

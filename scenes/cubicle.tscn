@@ -49,6 +49,7 @@ offset_bottom = -611.0
 [node name="ErrorFactory" type="Node" parent="." node_paths=PackedStringArray("cubicle_instance")]
 script = ExtResource("4_cxbfh")
 cubicle_instance = NodePath("..")
+probability = 0.2
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
 offset_top = 40.0
@@ -64,8 +65,9 @@ offset_bottom = -607.0
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
 display = NodePath("../CpcMonitor")
 
-[connection signal="diagetic_error_report" from="." to="pager" method="add_error"]
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
+[connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
+[connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]

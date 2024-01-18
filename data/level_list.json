@@ -3,7 +3,7 @@
 		"name": "orientation",
 		"id": "ring-1",
 		"goal_cpc": 100,
-		"errors": [
+		"error_schedule": [
 			{
 				"id": "0001",
 				"time": 2.3,
@@ -16,12 +16,15 @@
 				"id": "0003",
 				"time": 0.1,
 			}
+		],
+		"errors": [
+			"0001", "0002"
 		]
 	},
 	{
 		"name": "button_test",
 		"id": "test",
-		"errors": [
+		"error_schedule": [
 			{
 				"id": "button_test",
 				"time": 2.3,
