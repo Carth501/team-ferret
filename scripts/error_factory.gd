@@ -1,6 +1,7 @@
 class_name error_factory extends Node
 
 signal update_active_error_count(int)
+signal new_active_error(Variant)
 
 @export var cubicle_instance: cubicle
 var active_error_count = 0
@@ -25,10 +26,10 @@ func create_error_node(error):
 	active_error_count += 1
 	new_error.resolved_error.connect(decrement_error_count)
 	update_active_error_count.emit(active_error_count)
+	new_active_error.emit(error)
 
 func decrement_error_count(id):
 	active_error_count -= 1
-	print(str("decrement_error_count ", active_error_count))
 	update_active_error_count.emit(active_error_count)
 
 func get_active_error_count() -> int:
@@ -45,5 +46,8 @@ func roll_new_error():
 		generate_new_error(roll * (1 / probability))
 
 func generate_new_error(error_roll: float):
-	print(str("generate_new_error ", error_roll))
-	print(str("error_list.size() = ", error_list.size()))
+	if(error_list.size() == 0):
+		push_warning("error_list size is 0. was that intentional?")
+		return
+	var index = floori(error_roll * error_list.size())
+	create_error_node(error_list[index])

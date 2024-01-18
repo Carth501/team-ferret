@@ -61,7 +61,7 @@ func create_module_id_list():
 	module_id_list = list
 
 func dereference_error_id(id: String):
-	for error_def in data.error_data:
+	for error_def in data.error_data.duplicate(true):
 		if(error_def.id == id):
 			return error_def
 	push_error(str("did not find error def for id ", id))
