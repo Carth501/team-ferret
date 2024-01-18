@@ -3,78 +3,78 @@
 		"label": "Engorge Ballast",
 		"id": "engorge_ballast",
 		"type": "switch",
-		"offset": [4, 4]
+		"offset": [0, 0]
 	},
 	{
 		"label": "Check Character Positions",
 		"id": "check_char_pos",
 		"type": "button",
-		"offset": [5, 0]
+		"offset": [1, 0]
 	},
 	{
 		"label": "Reload Models",
 		"id": "reload_models",
 		"type": "button",
-		"offset": [2, 3]
+		"offset": [2, 0]
 	},
 	{
 		"label": "Reload Character Models",
 		"id": "reload_char_models",
 		"type": "button",
-		"offset": [2, 2]
+		"offset": [3, 0]
 	},
 	{
 		"label": "Download RAM",
 		"id": "download_ram",
 		"type": "button",
-		"offset": [0, 4]
+		"offset": [4, 0]
 	},
 	{
 		"label": "Safe Mode",
 		"id": "safe_mode",
 		"type": "switch",
-		"offset": [3, 3]
+		"offset": [5, 0]
 	},
 	{
 		"label": "Lifeguard On Duty",
 		"id": "lifeguard",
 		"type": "switch",
-		"offset": [5, 3]
+		"offset": [6, 0]
 	},
 	{
 		"label": "Music",
 		"id": "music",
 		"type": "switch",
-		"offset": [1, 1]
+		"offset": [0, 1]
 	},
 	{
 		"label": "Sound",
 		"id": "sound",
 		"type": "switch",
-		"offset": [1, 0]
+		"offset": [1, 1]
 	},
 	{
 		"label": "Dancing",
 		"id": "dancing",
 		"type": "switch",
-		"offset": [1, 2]
+		"offset": [2, 1]
 	},
 	{
 		"label": "Generate Ascii",
 		"id": "gen_ascii",
 		"type": "button",
-		"offset": [0, 2]
+		"offset": [7, 0]
 	},
 	{
 		"label": "Torrent GoT",
 		"id": "torrent_got",
 		"type": "button",
-		"offset": [0, 3]
+		"offset": [8, 0]
 	},
 	{
 		"label": "Seed GoT",
 		"id": "seed_got",
 		"type": "switch",
-		"offset": [0, 4]
+		"offset": [3, 1]
 	},
 ]

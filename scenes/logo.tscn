@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c6l8ayc6kej8h"]
+
+[node name="Logo" type="RichTextLabel"]
+clip_contents = false
+offset_left = 384.0
+offset_top = 241.0
+offset_right = 906.0
+offset_bottom = 301.0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 39
+bbcode_enabled = true
+text = "[center][b]THINK[/b]       [b]SHAREHOLDERS![/b][/center]"
+
+[node name="of" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 8.0
+offset_right = 183.0
+offset_bottom = 32.0
+text = "of"
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 4)
+points = PackedVector2Array(17, 0, 504, 0)
+width = 4.0
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(-1, 49)
+points = PackedVector2Array(18, 0, 505, 0)
+width = 4.0
+
+[node name="the" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 24.0
+offset_right = 183.0
+offset_bottom = 48.0
+text = "the
+"

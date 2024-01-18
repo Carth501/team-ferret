@@ -10,6 +10,7 @@ signal module_triggered(module_id: String)
 @export var error_factory_controller: error_factory
 @export var manual_instance: manual
 var data
+var loader: level_loader
 var current_level
 var error_schedule := []
 var error_catalogue := []
@@ -21,10 +22,15 @@ func _ready():
 	data = get_node("/root/data_libraries_single")
 	if(!data.ready):
 		await data.ready
-	load_level()
+	loader = get_node("/root/level_loader_single")
+	if(!loader.ready):
+		await loader.ready
+	loader.cubicle_ready(self)
 
-func load_level():
-	get_level(data.level_data)
+func load_level(level_id: String = "test"):
+	print(str("level_id ", level_id))
+	current_level_id = level_id
+	get_level()
 	get_error_schedule(current_level)
 	get_error_catalogue(current_level)
 	create_module_id_list()
@@ -34,7 +40,8 @@ func load_level():
 	set_initial_module_settings()
 	populate_error_factory()
 	
-func get_level(level_list: Array):
+func get_level():
+	var level_list = data.level_data
 	for level in level_list:
 		if (level.id == current_level_id):
 			current_level = level 
@@ -48,6 +55,8 @@ func get_error_schedule(level):
 		error_schedule.append(error_item)
 
 func get_error_catalogue(level):
+	if(!level.has("errors")):
+		push_warning("level has no errors list, was this intentional?")
 	var error_id_list = level.errors
 	for error in error_id_list:
 		error_catalogue.append(dereference_error_id(error))
@@ -116,6 +125,7 @@ func create_error_timers():
 
 func next_error_report():
 	var new_error = error_schedule.pop_front()
+	print(str("new_error ", new_error))
 	diagetic_error_report.emit(new_error)
 
 func announce_error_resolved(error_id):
