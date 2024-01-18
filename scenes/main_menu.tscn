@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=5 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
 [ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
+[ext_resource type="Script" path="res://scripts/level_select_panel.gd" id="4_jg1rd"]
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("level_select_panel")]
 script = ExtResource("1_3t2ir")
+level_select_panel = NodePath("Level Select Panel")
 
 [node name="Logo" parent="." instance=ExtResource("1_f7edf")]
 
@@ -42,5 +44,30 @@ offset_right = 672.0
 offset_bottom = 355.0
 text = "CONTINUE"
 
+[node name="Level Select Panel" type="Panel" parent="." node_paths=PackedStringArray("button_container")]
+visible = false
+offset_left = 780.0
+offset_top = 55.0
+offset_right = 1246.0
+offset_bottom = 616.0
+script = ExtResource("4_jg1rd")
+button_container = NodePath("ScrollContainer/VBoxContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Level Select Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Select Panel/ScrollContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
+[connection signal="pressed" from="Level Select" to="." method="toggle_level_selection"]
 [connection signal="pressed" from="Continue" to="." method="load_continue"]
