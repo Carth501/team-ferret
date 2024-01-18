@@ -28,7 +28,6 @@ func _ready():
 	loader.cubicle_ready(self)
 
 func load_level(level_id: String = "test"):
-	print(str("level_id ", level_id))
 	current_level_id = level_id
 	get_level()
 	get_error_schedule(current_level)
@@ -125,7 +124,6 @@ func create_error_timers():
 
 func next_error_report():
 	var new_error = error_schedule.pop_front()
-	print(str("new_error ", new_error))
 	diagetic_error_report.emit(new_error)
 
 func announce_error_resolved(error_id):
