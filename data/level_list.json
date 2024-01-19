@@ -1,6 +1,6 @@
 [
 	{
-		"name": "orientation",
+		"name": "Orientation",
 		"id": "ring-1",
 		"goal_cpc": 100,
 		"error_schedule": [
@@ -24,6 +24,7 @@
 	{
 		"name": "button_test",
 		"id": "test",
+		"hidden": true,
 		"error_schedule": [
 			{
 				"id": "button_test",
