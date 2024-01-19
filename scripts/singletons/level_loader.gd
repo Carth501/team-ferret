@@ -4,6 +4,7 @@ var cubicle_instance: cubicle
 var next_level_id: String
 
 func load_level(id: String):
+	next_level_id = id
 	var tree = get_tree()
 	var error = tree.change_scene_to_file("res://scenes/cubicle.tscn")
 

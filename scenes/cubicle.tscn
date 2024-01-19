@@ -9,13 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://dlg0hvp5kloyl" path="res://scenes/cpc_monitor.tscn" id="6_18xk0"]
 [ext_resource type="PackedScene" uid="uid://df8c2ke4hukg1" path="res://scenes/cpc_calculator.tscn" id="7_dldy6"]
 
-[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "error_factory_controller", "manual_instance")]
+[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
 current_level_id = "test"
 control_panel = NodePath("ScrollContainer/Control")
 timer_corral = NodePath("Timer Corral")
 error_factory_controller = NodePath("ErrorFactory")
 manual_instance = NodePath("manual")
+level_clock_handler = NodePath("level clock")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0

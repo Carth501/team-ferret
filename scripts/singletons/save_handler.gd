@@ -5,6 +5,7 @@ extends Node
 @export var in_game_menu: game_menu
 var save_data: Array[Variant]
 var save_file_names: Array[String]
+var active_save: Variant
 
 func _ready():
 	dir_contents()
@@ -40,10 +41,6 @@ func write_save(data: Variant):
 		print(str("no file found @ ", path, ". Creating a new save file."))
 
 	var save_game = FileAccess.open(path, FileAccess.WRITE)
-	if(save_game):
-		print("save_game found!")
-	else:
-		print("save_game not found...")
 	var stringified_data = JSON.stringify(data)
 	save_game.store_line(stringified_data)
 
@@ -75,6 +72,7 @@ func dir_contents():
 		dir_contents()
 
 func load_game(save: Variant):
+	active_save = save
 	var tree = get_tree()
 	var error = tree.change_scene_to_file("res://scenes/game_menu.tscn")
 	
