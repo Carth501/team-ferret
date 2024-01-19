@@ -2,7 +2,10 @@
 	{
 		"name": "Orientation",
 		"id": "ring-1",
-		"goal_cpc": 100,
+		"starting_cpc": 2,
+		"goal_cpc": 1000,
+		"shift_duration": 2489,
+		"failure_threshold_percent": 30,
 		"error_schedule": [
 			{
 				"id": "0001",

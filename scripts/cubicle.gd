@@ -9,6 +9,7 @@ signal module_triggered(module_id: String)
 @export var timer_corral: Node
 @export var error_factory_controller: error_factory
 @export var manual_instance: manual
+@export var level_clock_handler: level_clock
 var data
 var loader: level_loader
 var current_level
@@ -17,6 +18,10 @@ var error_catalogue := []
 var module_id_list
 var module_obj_dic: Dictionary = {}
 var error_timers_list := []
+var starting_cpc: int
+var goal_cpc: int
+var shift_duration: int
+var failure_threshold_percent: float
 
 func _ready():
 	data = get_node("/root/data_libraries_single")
@@ -38,6 +43,7 @@ func load_level(level_id: String = "test"):
 	setup_manual()
 	set_initial_module_settings()
 	populate_error_factory()
+	configure_level_settings()
 	
 func get_level():
 	var level_list = data.level_data
@@ -45,6 +51,17 @@ func get_level():
 		if (level.id == current_level_id):
 			current_level = level 
 			return
+
+func configure_level_settings():
+	if(current_level.has("starting_cpc")):
+		starting_cpc = current_level.starting_cpc
+	if(current_level.has("goal_cpc")):
+		goal_cpc = current_level.goal_cpc
+	if(current_level.has("shift_duration")):
+		shift_duration = current_level.shift_duration
+		level_clock_handler.set_value(shift_duration)
+	if(current_level.has("failure_threshold_percent")):
+		failure_threshold_percent = current_level.failure_threshold_percent
 
 func get_error_schedule(level):
 	var error_id_schedule = level.error_schedule

@@ -30,7 +30,3 @@ window/size/resizable=false
 [dotnet]
 
 project/assembly_name="Think of the Shareholders!"
-
-[rendering]
-
-renderer/rendering_method="mobile"

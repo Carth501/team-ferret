@@ -14,3 +14,7 @@ func update_display():
 	var minutes = str("%02d" % (seconds_remaining/60))
 	var seconds = str("%02d" % (seconds_remaining%60))
 	display.text = str(minutes, ":", seconds)
+
+func set_value(value: int):
+	seconds_remaining = value
+	update_display()

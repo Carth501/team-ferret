@@ -1,6 +1,18 @@
 class_name game_menu extends Node
 
 @export var level_select_panel: Panel
+var active_save_file: Variant
+
+func _ready():
+	request_save()
+
+func request_save():
+	var save_handler = get_node("/root/save_handler_single")
+	if(save_handler == null):
+		push_error("save_handler singleton not found.")
+	if(!save_handler.ready):
+		await save_handler.ready
+	active_save_file = save_handler.active_save
 
 func load_continue():
 	var loader = get_node("/root/level_loader_single")
