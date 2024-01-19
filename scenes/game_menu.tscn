@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3adj3oedwpob"]
+
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_4esr6"]
+[ext_resource type="PackedScene" uid="uid://c5t84l7lw67b8" path="res://scenes/level_select_panel.tscn" id="2_iq5f4"]
+
+[node name="GameMenu" type="Node" node_paths=PackedStringArray("level_select_panel")]
+script = ExtResource("1_4esr6")
+level_select_panel = NodePath("Level Select Panel")
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 684.0
+offset_top = 59.0
+offset_right = 775.0
+offset_bottom = 90.0
+text = "CONTINUE"
+
+[node name="Level Select" type="Button" parent="."]
+offset_left = 665.0
+offset_top = 100.0
+offset_right = 777.0
+offset_bottom = 131.0
+text = "LEVEL SELECT
+"
+
+[node name="Level Select Panel" parent="." instance=ExtResource("2_iq5f4")]
+visible = false
+offset_left = 785.0
+offset_top = 51.0
+offset_right = 1251.0
+offset_bottom = 612.0
+
+[connection signal="pressed" from="Continue" to="." method="load_continue"]
+[connection signal="pressed" from="Level Select" to="." method="toggle_level_selection"]

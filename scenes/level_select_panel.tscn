@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5t84l7lw67b8"]
+
+[ext_resource type="Script" path="res://scripts/level_select_panel.gd" id="1_cj1v2"]
+
+[node name="Level Select Panel" type="Panel" node_paths=PackedStringArray("button_container")]
+offset_left = 780.0
+offset_top = 55.0
+offset_right = 1246.0
+offset_bottom = 616.0
+script = ExtResource("1_cj1v2")
+button_container = NodePath("ScrollContainer/VBoxContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
