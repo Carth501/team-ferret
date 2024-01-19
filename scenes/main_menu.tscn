@@ -1,73 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=4 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
 [ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
-[ext_resource type="Script" path="res://scripts/level_select_panel.gd" id="4_jg1rd"]
 
-[node name="MainMenu" type="Node" node_paths=PackedStringArray("level_select_panel")]
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
-level_select_panel = NodePath("Level Select Panel")
+play_button = NodePath("play")
 
 [node name="Logo" parent="." instance=ExtResource("1_f7edf")]
 
+[node name="play" type="Button" parent="."]
+layout_direction = 3
+offset_left = 35.0
+offset_top = 498.0
+offset_right = 82.0
+offset_bottom = 529.0
+text = "PLAY"
+
+[node name="load" type="Button" parent="."]
+offset_left = 1194.0
+offset_top = 538.0
+offset_right = 1246.0
+offset_bottom = 569.0
+text = "LOAD"
+
+[node name="options" type="Button" parent="."]
+offset_left = 1169.0
+offset_top = 577.0
+offset_right = 1248.0
+offset_bottom = 608.0
+disabled = true
+text = "OPTIONS"
+
+[node name="credits" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -103.0
+offset_right = -32.0
+offset_bottom = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CREDITS"
+
 [node name="quit" type="Button" parent="."]
-offset_left = 614.0
-offset_top = 482.0
-offset_right = 661.0
-offset_bottom = 513.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -63.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "QUIT"
 
 [node name="quitter" type="Node" parent="quit"]
 script = ExtResource("2_m38df")
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 597.0
-offset_top = 432.0
-offset_right = 676.0
-offset_bottom = 463.0
-disabled = true
-text = "OPTIONS"
-
-[node name="Level Select" type="Button" parent="."]
-offset_left = 579.0
-offset_top = 380.0
-offset_right = 691.0
-offset_bottom = 411.0
-text = "LEVEL SELECT
-"
-
-[node name="Continue" type="Button" parent="."]
-offset_left = 593.0
-offset_top = 324.0
-offset_right = 672.0
-offset_bottom = 355.0
-text = "CONTINUE"
-
-[node name="Level Select Panel" type="Panel" parent="." node_paths=PackedStringArray("button_container")]
-visible = false
-offset_left = 780.0
-offset_top = 55.0
-offset_right = 1246.0
-offset_bottom = 616.0
-script = ExtResource("4_jg1rd")
-button_container = NodePath("ScrollContainer/VBoxContainer")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Level Select Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Level Select Panel/ScrollContainer"]
-layout_mode = 2
-
+[connection signal="pressed" from="play" to="." method="load_latest"]
 [connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
-[connection signal="pressed" from="Level Select" to="." method="toggle_level_selection"]
-[connection signal="pressed" from="Continue" to="." method="load_continue"]
