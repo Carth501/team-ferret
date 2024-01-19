@@ -14,6 +14,8 @@ func _ready():
 		level_button.set_string(level.id)
 		level_button.set_label(level.name)
 		level_button.button_press.connect(select_level)
+		if(level.has("hidden") && level.hidden):
+			level_button.visible = false
 		
 func select_level(id: String):
 	var loader = get_node("/root/level_loader_single")
