@@ -80,7 +80,7 @@ func configure_level_settings():
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
-		var error_item = dereference_error_id(error.id)
+		var error_item = data.dereference_error_id(error.id)
 		error_item["time"] = error.time
 		error_schedule.append(error_item)
 
@@ -89,7 +89,8 @@ func get_error_catalogue(level):
 		push_warning("level has no errors list, was this intentional?")
 	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
-		error_catalogue.append(dereference_error_id(error))
+		var dereferenced = data.dereference_error_id(error)
+		error_catalogue.append(dereferenced)
 
 func create_module_id_list():
 	var list = []
@@ -102,12 +103,6 @@ func create_module_id_list():
 			if !list.has(step.id):
 				list.append(step.id)
 	module_id_list = list
-
-func dereference_error_id(id: String):
-	for error_def in data.error_data.duplicate(true):
-		if(error_def.id == id):
-			return error_def
-	push_error(str("did not find error def for id ", id))
 
 func create_module_objects():
 	for module_id in module_id_list:
