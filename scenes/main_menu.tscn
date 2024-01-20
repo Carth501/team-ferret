@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=9 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="5_pngoo"]
 [ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="7_dmxoj"]
+[ext_resource type="Script" path="res://scripts/audio_interface.gd" id="8_1m8uy"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
@@ -91,6 +92,8 @@ script = ExtResource("4_yxiqb")
 stream = ExtResource("7_dmxoj")
 volume_db = -12.0
 autoplay = true
+script = ExtResource("8_1m8uy")
 
 [connection signal="pressed" from="play" to="." method="load_latest"]
 [connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
+[connection signal="tree_exiting" from="AudioStreamPlayer" to="AudioStreamPlayer" method="record_exit_time"]
