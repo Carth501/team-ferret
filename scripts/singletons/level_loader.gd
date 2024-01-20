@@ -9,7 +9,7 @@ func load_level(id: String):
 	var error = tree.change_scene_to_file("res://scenes/cubicle.tscn")
 
 func load_continue():
-	load_level("ring-1")
+	load_level("L_RING-1")
 
 func cubicle_ready(new_cubicle: cubicle):
 	cubicle_instance = new_cubicle

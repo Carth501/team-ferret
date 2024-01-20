@@ -1,80 +1,110 @@
 [
 	{
+		"label": "Template Control",
+		"id": "C_CONTROL_ID",
+		"type": "switch",
+		"offset": [99,99]
+	},
+	{
 		"label": "Engorge Ballast",
-		"id": "engorge_ballast",
+		"id": "C_ENGORGE_BALLAST",
 		"type": "switch",
 		"offset": [0, 0]
 	},
 	{
 		"label": "Check Character Positions",
-		"id": "check_char_pos",
+		"id": "C_CHECK_CHAR_POS",
 		"type": "button",
 		"offset": [1, 0]
 	},
 	{
 		"label": "Reload Models",
-		"id": "reload_models",
+		"id": "C_RELOAD_MODELS",
 		"type": "button",
 		"offset": [2, 0]
 	},
 	{
 		"label": "Reload Character Models",
-		"id": "reload_char_models",
+		"id": "C_RELOAD_CHAR_MODELS",
 		"type": "button",
 		"offset": [3, 0]
 	},
 	{
 		"label": "Download RAM",
-		"id": "download_ram",
+		"id": "C_DOWNLOAD_RAM",
 		"type": "button",
 		"offset": [4, 0]
 	},
 	{
 		"label": "Safe Mode",
-		"id": "safe_mode",
+		"id": "C_SAFE_MODE",
 		"type": "switch",
 		"offset": [5, 0]
 	},
 	{
 		"label": "Lifeguard On Duty",
-		"id": "lifeguard",
+		"id": "C_LIFEGUARD",
 		"type": "switch",
 		"offset": [6, 0]
 	},
 	{
 		"label": "Music",
-		"id": "music",
+		"id": "C_MUSIC",
 		"type": "switch",
 		"offset": [0, 1]
 	},
 	{
 		"label": "Sound",
-		"id": "sound",
+		"id": "C_SFX",
 		"type": "switch",
 		"offset": [1, 1]
 	},
 	{
 		"label": "Dancing",
-		"id": "dancing",
+		"id": "C_DANCING",
 		"type": "switch",
 		"offset": [2, 1]
 	},
 	{
 		"label": "Generate Ascii",
-		"id": "gen_ascii",
+		"id": "C_GEN_ASCII",
 		"type": "button",
-		"offset": [7, 0]
+		"offset": [3, 1]
 	},
 	{
 		"label": "Torrent GoT",
-		"id": "torrent_got",
+		"id": "C_TORRENT_GOT",
 		"type": "button",
-		"offset": [8, 0]
+		"offset": [4, 1]
 	},
 	{
 		"label": "Seed GoT",
-		"id": "seed_got",
+		"id": "C_SEED_GOT",
 		"type": "switch",
-		"offset": [3, 1]
+		"offset": [5, 1]
 	},
+	{
+		"label": "Charge Flux",
+		"id": "C_CHARGE_FLUX",
+		"type": "analog",
+		"offset": [6,1]
+	},
+	{
+		"label": "Ban Trolls",
+		"id": "C_BAN_TROLLS",
+		"type": "button",
+		"offset": [0,2]
+	},
+	{
+		"label": "Locate Hacker Man",
+		"id": "C_LOC_HACKER",
+		"type": "button",
+		"offset": [0,2]
+	},
+	{
+		"label": "Nerf Best Mechanic",
+		"id": "C_NERF_MECH",
+		"type": "switch",
+		"offset": [1,2]
+	}
 ]

@@ -48,7 +48,8 @@ func load_level(level_id: String = "test"):
 func get_level():
 	var level_list = data.level_data
 	for level in level_list:
-		if (level.id == current_level_id):
+		var metadata = level.metadata
+		if (metadata.id == current_level_id):
 			current_level = level 
 			return
 
@@ -64,7 +65,7 @@ func configure_level_settings():
 		failure_threshold_percent = current_level.failure_threshold_percent
 
 func get_error_schedule(level):
-	var error_id_schedule = level.error_schedule
+	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
 		var error_item = dereference_error_id(error.id)
 		error_item["time"] = error.time
@@ -73,7 +74,7 @@ func get_error_schedule(level):
 func get_error_catalogue(level):
 	if(!level.has("errors")):
 		push_warning("level has no errors list, was this intentional?")
-	var error_id_list = level.errors
+	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
 		error_catalogue.append(dereference_error_id(error))
 

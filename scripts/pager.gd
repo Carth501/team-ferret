@@ -8,7 +8,7 @@ func _ready():
 	error_code_display.text = ""
 
 func add_error(new_error):
-	error_ids.append(new_error.id)
+	error_ids.append(new_error.hex)
 	set_display(error_ids.size() - 1)
 
 func set_display(value: int):

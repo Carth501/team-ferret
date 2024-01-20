@@ -11,10 +11,15 @@ func _ready():
 	for level in level_data:
 		var level_button = generic_button.new()
 		button_container.add_child(level_button)
-		level_button.set_string(level.id)
-		level_button.set_label(level.name)
+		
+		# Accessing nested data
+		var metadata = level.metadata
+		var gameplay = level.gameplay
+		
+		level_button.set_string(metadata.id)
+		level_button.set_label(metadata.name)
 		level_button.button_press.connect(select_level)
-		if(level.has("hidden") && level.hidden):
+		if(metadata.has("hidden") && metadata.hidden):
 			level_button.visible = false
 		
 func select_level(id: String):
