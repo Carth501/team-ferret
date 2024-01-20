@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=21 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://cf5n1nah75yql" path="res://assets/images/gun_frames/TS_Deagle_0010.png" id="17_1kxj8"]
 [ext_resource type="Texture2D" uid="uid://cckojra47v0cc" path="res://assets/images/gun_frames/TS_Deagle_0011.png" id="18_kqlif"]
 [ext_resource type="Script" path="res://scripts/gun.gd" id="19_1d3tl"]
-[ext_resource type="Script" path="res://scripts/clock.gd" id="20_xc0wu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
 animations = [{
@@ -63,18 +62,6 @@ animations = [{
 "name": &"fire",
 "speed": 25.0
 }]
-
-[sub_resource type="Gradient" id="Gradient_kiajn"]
-offsets = PackedFloat32Array(0.98, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3x6jx"]
-gradient = SubResource("Gradient_kiajn")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
@@ -146,89 +133,6 @@ position = Vector2(646, 216)
 sprite_frames = SubResource("SpriteFrames_bn0dg")
 animation = &"fire"
 script = ExtResource("19_1d3tl")
-
-[node name="Clock" type="Node2D" parent="."]
-position = Vector2(192, 48)
-scale = Vector2(0.25, 0.25)
-script = ExtResource("20_xc0wu")
-metadata/_edit_group_ = true
-
-[node name="Face" type="Sprite2D" parent="Clock"]
-texture = SubResource("GradientTexture2D_3x6jx")
-
-[node name="Hour0" type="Polygon2D" parent="Clock/Face"]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(16, -112, -16, -112, 0, -96)
-
-[node name="Hour1" type="Polygon2D" parent="Clock/Face"]
-rotation = 0.523599
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour2" type="Polygon2D" parent="Clock/Face"]
-rotation = 1.0472
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour3" type="Polygon2D" parent="Clock/Face"]
-rotation = 1.5708
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour4" type="Polygon2D" parent="Clock/Face"]
-rotation = 2.0944
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour5" type="Polygon2D" parent="Clock/Face"]
-rotation = 2.61799
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour6" type="Polygon2D" parent="Clock/Face"]
-rotation = -3.14159
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour7" type="Polygon2D" parent="Clock/Face"]
-rotation = -2.61799
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour8" type="Polygon2D" parent="Clock/Face"]
-rotation = -2.09439
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour9" type="Polygon2D" parent="Clock/Face"]
-rotation = -1.5708
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour10" type="Polygon2D" parent="Clock/Face"]
-rotation = -1.0472
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="Hour11" type="Polygon2D" parent="Clock/Face"]
-rotation = -0.523599
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
-
-[node name="HourArm" type="Polygon2D" parent="Clock"]
-scale = Vector2(1, 1.09091)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, -66, -16, -36.6667, 0, 14.6667, 16, -36.6667)
-
-[node name="MinuteArm" type="Polygon2D" parent="Clock"]
-scale = Vector2(1, 1.45455)
-color = Color(0, 0, 0.898039, 1)
-polygon = PackedVector2Array(0, -66, -8, -44, 0, 27.5, 8, -44)
-
-[node name="SecondArm" type="Polygon2D" parent="Clock"]
-scale = Vector2(1, 1.36364)
-color = Color(0.647059, 0, 0, 1)
-polygon = PackedVector2Array(0, -76.2667, -8, -52.8, 0, 17.6, 8, -52.8)
 
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
