@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnf6vxxb7xsr3"]
+[gd_scene load_steps=3 format=3 uid="uid://bnf6vxxb7xsr3"]
 
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
+[ext_resource type="Script" path="res://scripts/click_player.gd" id="2_6gy08"]
 
 [node name="button" type="Control" node_paths=PackedStringArray("rtl_object")]
 layout_mode = 3
@@ -38,5 +39,8 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 scroll_active = false
+
+[node name="click_player" type="Node" parent="Button"]
+script = ExtResource("2_6gy08")
 
 [connection signal="pressed" from="Button" to="." method="button_pressed"]

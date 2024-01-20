@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
 [ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_01cxx"]
-[ext_resource type="Script" path="res://scenes/click_player.gd" id="4_yxiqb"]
+[ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
@@ -32,6 +32,9 @@ offset_bottom = 569.0
 theme = ExtResource("3_01cxx")
 text = "LOAD"
 
+[node name="click_player" type="Node" parent="load"]
+script = ExtResource("4_yxiqb")
+
 [node name="options" type="Button" parent="."]
 offset_left = 1169.0
 offset_top = 577.0
@@ -40,6 +43,9 @@ offset_bottom = 608.0
 theme = ExtResource("3_01cxx")
 disabled = true
 text = "OPTIONS"
+
+[node name="click_player" type="Node" parent="options"]
+script = ExtResource("4_yxiqb")
 
 [node name="credits" type="Button" parent="."]
 anchors_preset = 3
@@ -55,6 +61,9 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_01cxx")
 text = "CREDITS"
+
+[node name="click_player" type="Node" parent="credits"]
+script = ExtResource("4_yxiqb")
 
 [node name="quit" type="Button" parent="."]
 anchors_preset = 3
@@ -73,6 +82,9 @@ text = "QUIT"
 
 [node name="quitter" type="Node" parent="quit"]
 script = ExtResource("2_m38df")
+
+[node name="click_player" type="Node" parent="quit"]
+script = ExtResource("4_yxiqb")
 
 [connection signal="pressed" from="play" to="." method="load_latest"]
 [connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtyv8dggwfwl"]
+[gd_scene load_steps=4 format=3 uid="uid://dtyv8dggwfwl"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_u3mp4"]
 [ext_resource type="Script" path="res://scripts/manual_panel.gd" id="2_vupmp"]
+[ext_resource type="Script" path="res://scripts/click_player.gd" id="3_rck42"]
 
 [node name="manual" type="Control" node_paths=PackedStringArray("popup", "text")]
 layout_mode = 3
@@ -50,6 +51,9 @@ offset_right = 75.0
 grow_vertical = 0
 text = "PREVIOUS"
 
+[node name="click_player" type="Node" parent="Panel/Previous Page"]
+script = ExtResource("3_rck42")
+
 [node name="Next Page" type="Button" parent="Panel" groups=["buttons"]]
 layout_mode = 1
 anchors_preset = 3
@@ -62,6 +66,9 @@ offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "NEXT"
+
+[node name="click_player" type="Node" parent="Panel/Next Page"]
+script = ExtResource("3_rck42")
 
 [connection signal="pressed" from="toggle button" to="." method="toggle_manual_popup"]
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
