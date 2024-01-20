@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0gvea214rbe3"]
+
+[ext_resource type="Script" path="res://scripts/clock.gd" id="1_etx21"]
+
+[sub_resource type="Gradient" id="Gradient_kiajn"]
+offsets = PackedFloat32Array(0.98, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3x6jx"]
+gradient = SubResource("Gradient_kiajn")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Clock" type="Node2D"]
+script = ExtResource("1_etx21")
+metadata/_edit_group_ = true
+
+[node name="Face" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_3x6jx")
+
+[node name="Hour0" type="Polygon2D" parent="Face"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(16, -112, -16, -112, 0, -96)
+
+[node name="Hour1" type="Polygon2D" parent="Face"]
+rotation = 0.523599
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour2" type="Polygon2D" parent="Face"]
+rotation = 1.0472
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour3" type="Polygon2D" parent="Face"]
+rotation = 1.5708
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour4" type="Polygon2D" parent="Face"]
+rotation = 2.0944
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour5" type="Polygon2D" parent="Face"]
+rotation = 2.61799
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour6" type="Polygon2D" parent="Face"]
+rotation = -3.14159
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour7" type="Polygon2D" parent="Face"]
+rotation = -2.61799
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour8" type="Polygon2D" parent="Face"]
+rotation = -2.09439
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour9" type="Polygon2D" parent="Face"]
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour10" type="Polygon2D" parent="Face"]
+rotation = -1.0472
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="Hour11" type="Polygon2D" parent="Face"]
+rotation = -0.523599
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -112, -8, -112, 0, -96)
+
+[node name="HourArm" type="Polygon2D" parent="."]
+scale = Vector2(1, 1.09091)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -66, -16, -36.6667, 0, 14.6667, 16, -36.6667)
+
+[node name="MinuteArm" type="Polygon2D" parent="."]
+scale = Vector2(1, 1.45455)
+color = Color(0, 0, 0.898039, 1)
+polygon = PackedVector2Array(0, -66, -8, -44, 0, 27.5, 8, -44)
+
+[node name="SecondArm" type="Polygon2D" parent="."]
+scale = Vector2(1, 1.36364)
+color = Color(0.647059, 0, 0, 1)
+polygon = PackedVector2Array(0, -76.2667, -8, -52.8, 0, 17.6, 8, -52.8)
