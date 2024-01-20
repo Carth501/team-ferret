@@ -91,7 +91,6 @@ func create_module_id_list():
 	module_id_list = list
 
 func dereference_error_id(id: String):
-	print(str("dereference_error_id ", id))
 	for error_def in data.error_data.duplicate(true):
 		if(error_def.id == id):
 			return error_def
