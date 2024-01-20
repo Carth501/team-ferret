@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=26 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="21_sb4bn"]
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
 [ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
 animations = [{
@@ -182,7 +183,6 @@ animation = &"fire"
 script = ExtResource("19_1d3tl")
 
 [node name="pause curtain" type="Panel" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -226,6 +226,26 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Resume[center]"
 
+[node name="end shift" type="Button" parent="pause curtain"]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 345.0
+offset_right = 632.0
+offset_bottom = 376.0
+theme = ExtResource("23_w6ohv")
+theme_override_font_sizes/font_size = 32
+text = "END SHIFT"
+
+[node name="complete level" type="Button" parent="pause curtain"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 420.0
+offset_right = 776.0
+offset_bottom = 473.0
+theme = ExtResource("23_w6ohv")
+theme_override_font_sizes/font_size = 32
+text = "COMPLETE LEVEL"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_colnk")
 volume_db = -12.0
@@ -238,3 +258,5 @@ autoplay = true
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
+[connection signal="pressed" from="pause curtain/end shift" to="." method="end_level"]
+[connection signal="pressed" from="pause curtain/complete level" to="." method="complete_level"]
