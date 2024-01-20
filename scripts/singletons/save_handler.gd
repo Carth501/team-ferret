@@ -49,7 +49,8 @@ func create_new_save() -> Variant:
 	var date_string = Time.get_date_string_from_system(true)
 	var data = {
 		"name": str(date_string),
-		"datetime": str(Time.get_datetime_string_from_system(true))
+		"datetime": str(Time.get_datetime_string_from_system(true)),
+		"complete_levels": []
 	}
 	write_save(data)
 	return data
@@ -73,5 +74,20 @@ func dir_contents():
 
 func load_game(save: Variant):
 	active_save = save
+	go_to_game_menu()
+
+func exit_to_title():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func level_complete(level_id: String):
+	if(!active_save.has("complete_levels")):
+		active_save["complete_levels"] = []
+	var complete_levels: Array = active_save["complete_levels"]
+	if(!complete_levels.has(level_id)):
+		complete_levels.append(level_id)
+		write_save(active_save)
+	go_to_game_menu()
+
+func go_to_game_menu():
 	var tree = get_tree()
-	var error = tree.change_scene_to_file("res://scenes/game_menu.tscn")
+	tree.change_scene_to_file("res://scenes/game_menu.tscn")

@@ -14,7 +14,7 @@ signal module_triggered(module_id: String)
 @export var pause_curtain: Panel
 @export var pause_button: button_module
 @export var resume_button: button_module
-var data
+var data: data_libraries_single
 var loader: level_loader
 var current_level
 var error_schedule := []
@@ -190,3 +190,11 @@ func toggle_pause():
 		for timer in error_timers_list:
 			if(timer != null):
 				timer.paused = false
+
+func end_level():
+	var save_handler = get_node("/root/save_handler_single")
+	save_handler.go_to_game_menu()
+
+func complete_level():
+	var save_handler = get_node("/root/save_handler_single")
+	save_handler.level_complete(current_level.metadata.id)
