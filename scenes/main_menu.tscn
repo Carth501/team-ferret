@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=7 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
 [ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_01cxx"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
+[ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="5_pngoo"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
@@ -62,8 +63,7 @@ grow_vertical = 0
 theme = ExtResource("3_01cxx")
 text = "CREDITS"
 
-[node name="click_player" type="Node" parent="credits"]
-script = ExtResource("4_yxiqb")
+[node name="click_player" parent="credits" instance=ExtResource("5_pngoo")]
 
 [node name="quit" type="Button" parent="."]
 anchors_preset = 3

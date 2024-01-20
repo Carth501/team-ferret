@@ -4,8 +4,3 @@
 
 [node name="CpcCalculator" type="Node"]
 script = ExtResource("1_x6rf8")
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="calculate"]

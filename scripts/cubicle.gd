@@ -7,9 +7,13 @@ signal module_triggered(module_id: String)
 @export var current_level_id: String
 @export var control_panel: Control
 @export var timer_corral: Node
+@export var game_timer: Timer
 @export var error_factory_controller: error_factory
 @export var manual_instance: manual
 @export var level_clock_handler: level_clock
+@export var pause_curtain: Panel
+@export var pause_button: button_module
+@export var resume_button: button_module
 var data
 var loader: level_loader
 var current_level
@@ -22,6 +26,7 @@ var starting_cpc: int
 var goal_cpc: int
 var shift_duration: int
 var failure_threshold_percent: float
+var paused := false
 
 func _ready():
 	data = get_node("/root/data_libraries_single")
@@ -31,6 +36,14 @@ func _ready():
 	if(!loader.ready):
 		await loader.ready
 	loader.cubicle_ready(self)
+	if(pause_button == null):
+		push_error("pause_button not hooked up")
+	else:
+		pause_button.internal_button.pressed.connect(toggle_pause)
+	if(resume_button == null):
+		push_error("resume_button not hooked up")
+	else:
+		resume_button.internal_button.pressed.connect(toggle_pause)
 
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
@@ -139,7 +152,7 @@ func dereference_module_id(id: String):
 
 func create_error_timers():
 	for error in error_schedule:
-		var timer := Timer.new()
+		var timer := self_destruct_timer.new()
 		timer_corral.add_child(timer)
 		timer.wait_time = error.time
 		timer.one_shot = true
@@ -167,3 +180,17 @@ func set_initial_module_settings():
 
 func populate_error_factory():
 	error_factory_controller.set_error_list(error_catalogue)
+
+func toggle_pause():
+	paused = !paused
+	pause_curtain.visible = paused
+	if(paused):
+		game_timer.stop()
+		for timer in error_timers_list:
+			if(timer != null):
+				timer.paused = true
+	else:
+		game_timer.start()
+		for timer in error_timers_list:
+			if(timer != null):
+				timer.paused = false
