@@ -21,7 +21,7 @@ func _ready():
 		level_button.button_press.connect(select_level)
 		if(metadata.has("hidden") && metadata.hidden):
 			level_button.visible = false
-		
+
 func select_level(id: String):
 	var loader = get_node("/root/level_loader_single")
 	if(!loader.ready):

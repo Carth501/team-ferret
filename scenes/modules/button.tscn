@@ -20,7 +20,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["buttons"]]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0

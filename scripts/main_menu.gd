@@ -15,16 +15,23 @@ func _ready():
 		play_button.pressed.disconnect(load_latest)
 		play_button.pressed.connect(create_new_game)
 
+func queue_load_save_data(data: Variant):
+	print(get_tree())
+	var click_player = get_tree().get_node("/root/click")
+	if(click_player == null):
+		push_error(get_tree())
+	click_player.finished.connect(load_save_data(data))
+
 func load_save_data(data: Variant):
 	save_handler_single.load_game(data)
 
 func create_new_game():
 	var data = save_handler_single.create_new_save()
-	load_save_data(data)
+	queue_load_save_data(data)
 
 func load_latest():
 	var latest = get_latest_save()
-	load_save_data(latest)
+	queue_load_save_data(latest)
 
 func get_latest_save() -> Variant:
 	var data = save_handler_single.save_data

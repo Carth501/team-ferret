@@ -38,3 +38,8 @@ func next_page():
 	if(pages.size() > page_index + 1):
 		page_index += 1
 		write_page()
+
+func prev_page():
+	if(page_index > 0):
+		page_index -= 1
+		write_page()

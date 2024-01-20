@@ -25,7 +25,7 @@ theme_override_font_sizes/font_size = 20
 text = "2189"
 vertical_alignment = 1
 
-[node name="Next Button" type="Button" parent="."]
+[node name="Next Button" type="Button" parent="." groups=["buttons"]]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0

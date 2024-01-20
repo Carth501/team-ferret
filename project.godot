@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 data_libraries_single="*res://scripts/singletons/data_libraries.gd"
 level_loader_single="*res://scenes/singletons/level_loader.tscn"
 save_handler_single="*res://scripts/singletons/save_handler.gd"
+click="*res://scenes/singletons/audio_stream_players/click.tscn"
 
 [display]
 
