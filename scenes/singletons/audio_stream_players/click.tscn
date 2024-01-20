@@ -7,4 +7,3 @@
 stream = ExtResource("1_mpiub")
 volume_db = -20.0
 script = ExtResource("2_op2mn")
-group = "buttons"

@@ -7,14 +7,14 @@
 script = ExtResource("1_4esr6")
 level_select_panel = NodePath("Level Select Panel")
 
-[node name="Continue" type="Button" parent="." groups=["buttons"]]
+[node name="Continue" type="Button" parent="."]
 offset_left = 684.0
 offset_top = 59.0
 offset_right = 775.0
 offset_bottom = 90.0
 text = "CONTINUE"
 
-[node name="Level Select" type="Button" parent="." groups=["buttons"]]
+[node name="Level Select" type="Button" parent="."]
 offset_left = 665.0
 offset_top = 100.0
 offset_right = 777.0
