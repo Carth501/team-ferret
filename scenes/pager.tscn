@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bldt2tc567tql"]
+[gd_scene load_steps=3 format=3 uid="uid://bldt2tc567tql"]
 
 [ext_resource type="Script" path="res://scripts/pager.gd" id="1_k0vfd"]
+[ext_resource type="Script" path="res://scripts/click_player.gd" id="2_eombr"]
 
 [node name="pager" type="Control" node_paths=PackedStringArray("error_code_display")]
 layout_mode = 3
@@ -25,10 +26,13 @@ theme_override_font_sizes/font_size = 20
 text = "2189"
 vertical_alignment = 1
 
-[node name="Next Button" type="Button" parent="."]
+[node name="Next Button" type="Button" parent="." groups=["buttons"]]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "NEXT"
+
+[node name="click_player" type="Node" parent="Next Button"]
+script = ExtResource("2_eombr")
 
 [connection signal="pressed" from="Next Button" to="." method="next_error_code"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvvc2rvmhplo2"]
+
+[ext_resource type="AudioStream" uid="uid://ds0fpm7k0graw" path="res://assets/audio/effects/617288__drobin96__click-snap-sound.mp3" id="1_mpiub"]
+[ext_resource type="Script" path="res://scripts/audio_interface.gd" id="2_op2mn"]
+
+[node name="click" type="AudioStreamPlayer"]
+stream = ExtResource("1_mpiub")
+volume_db = -20.0
+script = ExtResource("2_op2mn")

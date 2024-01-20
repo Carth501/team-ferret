@@ -15,16 +15,16 @@ func _ready():
 		play_button.pressed.disconnect(load_latest)
 		play_button.pressed.connect(create_new_game)
 
-func load_save_data(data: Variant):
+func queue_load_save_data(data: Variant):
 	save_handler_single.load_game(data)
 
 func create_new_game():
 	var data = save_handler_single.create_new_save()
-	load_save_data(data)
+	queue_load_save_data(data)
 
 func load_latest():
 	var latest = get_latest_save()
-	load_save_data(latest)
+	queue_load_save_data(latest)
 
 func get_latest_save() -> Variant:
 	var data = save_handler_single.save_data
