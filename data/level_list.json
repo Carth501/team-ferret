@@ -1,48 +1,602 @@
 [
 	{
-		"name": "Orientation",
-		"id": "ring-1",
-		"starting_cpc": 2,
-		"goal_cpc": 1000,
-		"shift_duration": 2489,
-		"failure_threshold_percent": 30,
-		"error_schedule": [
+	  "metadata": {
+		"name": "template",
+		"id": "L_RING-0",
+		"hidden": true
+	  },
+	  "gameplay": {
+		"starting_cpc": 0,
+		"goal_cpc": 10,
+		"shift_duration": 10,
+		"failure_threshold_percent": 10,
+		"errors": {
+		  "scheduled": [
 			{
-				"id": "0001",
-				"time": 2.3,
-			},
-			{
-				"id": "0002",
-				"time": 5.8,
-			},
-			{
-				"id": "0003",
-				"time": 0.1,
+			  "id": "E_EXAMPLE",
+			  "time": 1
 			}
-		],
-		"errors": [
-			"0001", "0002"
-		]
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
 	},
 	{
+	  "metadata": {
+		"name": "Orientation",
+		"id": "L_RING-1",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 100,
+		"goal_cpc": 500,
+		"shift_duration": 45,
+		"failure_threshold_percent": 10,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_OUT_OF_BOUNDS",
+			  "time": 2.3
+			},
+			{
+			  "id": "E_UNLOADED_CHAR_MESH",
+			  "time": 5.8
+			},
+			{
+			  "id": "E_TOP_HEAVY_DATASTORE",
+			  "time": 0.1
+			}
+		  ],
+		  "random": [
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_CHAR_MESH"
+		  ]
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Launch Day Lunacy",
+		"id": "L_RING-2",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 10,
+		"goal_cpc": 750,
+		"shift_duration": 45,
+		"failure_threshold_percent": 15,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_OUT_OF_BOUNDS",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_COLL_DET_ERR",
+			"E_VERTEX_BUFF_OVF",
+			"E_INF_LOOP"
+		  ]
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Bug Hunt Bonanza",
+		"id": "L_RING-3",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 25,
+		"goal_cpc": 900,
+		"shift_duration": 45,
+		"failure_threshold_percent": 20,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Code Red Refactor",
+		"id": "L_RING-4",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 40,
+		"goal_cpc": 1200,
+		"shift_duration": 40,
+		"failure_threshold_percent": 25,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Patchwork Pandemonium",
+		"id": "L_RING-5",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 55,
+		"goal_cpc": 1500,
+		"shift_duration": 40,
+		"failure_threshold_percent": 30,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Glitch Grove",
+		"id": "L_RING-6",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 70,
+		"goal_cpc": 1800,
+		"shift_duration": 40,
+		"failure_threshold_percent": 35,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Syntax Safari",
+		"id": "L_RING-7",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 95,
+		"goal_cpc": 2150,
+		"shift_duration": 35,
+		"failure_threshold_percent": 40,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Runtime Rumble",
+		"id": "L_RING-8",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 115,
+		"goal_cpc": 2500,
+		"shift_duration": 35,
+		"failure_threshold_percent": 45,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Debugging Depths",
+		"id": "L_RING-9",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 135,
+		"goal_cpc": 3210,
+		"shift_duration": 35,
+		"failure_threshold_percent": 50,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Alpha Assault",
+		"id": "L_RING-10",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 155,
+		"goal_cpc": 3800,
+		"shift_duration": 30,
+		"failure_threshold_percent": 55,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Beta Breakdown",
+		"id": "L_RING-11",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 175,
+		"goal_cpc": 4500,
+		"shift_duration": 30,
+		"failure_threshold_percent": 60,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Crash Course Catastrophe",
+		"id": "L_RING-12",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 195,
+		"goal_cpc": 5800,
+		"shift_duration": 30,
+		"failure_threshold_percent": 65,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Framerate Frontier",
+		"id": "L_RING-13",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 215,
+		"goal_cpc": 6800,
+		"shift_duration": 25,
+		"failure_threshold_percent": 70,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Memory Leak Mayham",
+		"id": "L_RING-14",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 245,
+		"goal_cpc": 8000,
+		"shift_duration": 25,
+		"failure_threshold_percent": 75,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Feature Creep Fiasco",
+		"id": "L_RING-15",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 275,
+		"goal_cpc": 9500,
+		"shift_duration": 25,
+		"failure_threshold_percent": 80,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Server Siege",
+		"id": "L_RING-16",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 305,
+		"goal_cpc": 12000,
+		"shift_duration": 15,
+		"failure_threshold_percent": 85,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Flickering Shadow Parade",
+		"id": "L_RING-17",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 345,
+		"goal_cpc": 12500,
+		"shift_duration": 15,
+		"failure_threshold_percent": 90,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Shader Shambles",
+		"id": "L_RING-18",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 385,
+		"goal_cpc": 13000,
+		"shift_duration": 15,
+		"failure_threshold_percent": 95,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"name": "Null Pointer Party",
+		"id": "L_RING-19",
+		"hidden": false
+	  },
+	  "gameplay": {
+		"starting_cpc": 415,
+		"goal_cpc": 14000,
+		"shift_duration": 10,
+		"failure_threshold_percent": 95,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
+		"id": "L_RING-20",
+		"hidden": false,
+		"name": "Mod API Frenzy"
+	  },
+	  "gameplay": {
+		"starting_cpc": 600,
+		"goal_cpc": 15000,
+		"shift_duration": 10,
+		"failure_threshold_percent": 95,
+		"errors": {
+		  "scheduled": [
+			{
+			  "id": "E_EXAMPLE",
+			  "time": 2.5
+			}
+		  ],
+		  "random": [
+			"E_EXAMPLE"
+		  ]
+		},
+		"init_values": {
+		  "C_CONTROL_ID": false
+		}
+	  }
+	},
+	{
+	  "metadata": {
 		"name": "button_test",
 		"id": "test",
-		"hidden": true,
-		"error_schedule": [
+		"hidden": true
+	  },
+	  "gameplay": {
+		"errors": {
+		  "scheduled": [
 			{
-				"id": "button_test",
-				"time": 2.3,
-			},
-		],
-		"errors": [
-			"0001", "0002"
-		],
+			  "id": "button_test",
+			  "time": 2.3
+			}
+		  ],
+		  "random": [
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_MESH"
+		  ]
+		},
 		"init_values": {
-			"lifeguard": true,
-			"music": true,
-			"sound": true,
-			"dancing": false,
-			"seed_got": false
+		  "lifeguard": true,
+		  "music": true,
+		  "sound": true,
+		  "dancing": false,
+		  "seed_got": false
 		}
-	},
-]
+	  }
+	}
+  ]

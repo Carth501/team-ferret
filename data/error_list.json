@@ -1,43 +1,353 @@
 [
 	{
-		"name": "Out of Bounds Character",
-		"id": "0001",
-		"pattern": [
-			{"id": "check_char_pos",},
-			{"id": "reload_char_models",}
-		]
+	  "name": "template",
+	  "id": "E_EXAMPLE",
+	  "hex": "4F3A",
+	  "pattern": [
+		{
+		  "id": "C_CONTROL_ID",
+		  "value": false
+		}
+	  ]
 	},
 	{
-		"name": "Unloaded Character Mesh",
-		"id": "0002",
-		"pattern": [
-			{"id": "reload_char_models",}
-		]
+	  "name": "Out of Bounds Character",
+	  "id": "E_OUT_OF_BOUNDS",
+	  "pattern": [
+		{
+		  "id": "C_CHECK_CHAR_POS"
+		},
+		{
+		  "id": "C_RELOAD_CHAR_MODELS"
+		}
+	  ],
+	  "hex": "95B9"
 	},
 	{
-		"name": "Top-heavy Datastore",
-		"id": "0003",
-		"pattern": [
-			{"id":"engorge_ballast",}
-		]
+	  "name": "Unloaded Character Mesh",
+	  "id": "E_UNLOADED_CHAR_MESH",
+	  "pattern": [
+		{
+		  "id": "C_RELOAD_CHAR_MODELS"
+		}
+	  ],
+	  "hex": "0FCB"
 	},
 	{
-		"name": "Everything",
-		"id": "button_test",
-		"pattern": [
-			{"id": "safe_mode", "value": false},
-			{"id": "engorge_ballast",},
-			{"id": "check_char_pos",},
-			{"id": "reload_models",},
-			{"id": "reload_char_models",},
-			{"id": "download_ram",},
-			{"id": "lifeguard",},
-			{"id": "music", "value": true},
-			{"id": "sound", "value": true},
-			{"id": "dancing", "value": false},
-			{"id": "gen_ascii",},
-			{"id": "torrent_got",},
-			{"id": "seed_got"},
-		]
+	  "name": "Top-heavy Datastore",
+	  "id": "E_TOP_HEAVY_DATASTORE",
+	  "pattern": [
+		{
+		  "id": "C_ENGORGE_BALLAST"
+		}
+	  ],
+	  "hex": "E720"
 	},
-]
+	{
+	  "name": "NULL Pointer",
+	  "id": "E_NULL_POINTER",
+	  "pattern": [
+		{
+		  "id": "C_SAFE_MODE",
+		  "value": true
+		},
+		{
+		  "id": "C_CHARGE_FLUX"
+		}
+	  ],
+	  "hex": "4F28"
+	},
+	{
+	  "name": "Infinite Loop",
+	  "id": "E_INF_LOOP",
+	  "pattern": [
+		{
+		  "id": "C_ENGORGE_BALLAST"
+		}
+	  ],
+	  "hex": "DACF"
+	},
+	{
+	  "name": "Zombie Process",
+	  "id": "E_ZOMBIE_PROC",
+	  "pattern": [
+		{
+		  "id": "C_LOC_HACKER"
+		},
+		{
+		  "id": "C_MUSIC",
+		  "value": true
+		}
+	  ],
+	  "hex": "3F89"
+	},
+	{
+	  "name": "Rasterization Error",
+	  "id": "E_RASTER_ERR",
+	  "pattern": [
+		{
+		  "id": "C_GEN_ASCII"
+		},
+		{
+		  "id": "C_CHECK_CHAR_POS"
+		}
+	  ],
+	  "hex": "CE74"
+	},
+	{
+	  "name": "Vertex Buffer Overflow",
+	  "id": "E_VERTEX_BUFF_OVF",
+	  "pattern": [
+		{
+		  "id": "C_RELOAD_MODELS"
+		}
+	  ],
+	  "hex": "0F93"
+	},
+	{
+	  "name": "Texture Load Failure",
+	  "id": "E_TEX_LOAD_FAIL",
+	  "pattern": [
+		{
+		  "id": "C_GEN_ASCII"
+		}
+	  ],
+	  "hex": "7CDB"
+	},
+	{
+	  "name": "Shadow Rendering Glitch",
+	  "id": "E_SHADOW_GLITCH",
+	  "pattern": [
+		{
+		  "id": "C_BAN_TROLLS"
+		}
+	  ],
+	  "hex": "56F0"
+	},
+	{
+	  "name": "Fragmentation Fault",
+	  "id": "E_FRAG_FAULT",
+	  "pattern": [
+		{
+		  "id": "C_SFX",
+		  "value": true
+		}
+	  ],
+	  "hex": "04A3"
+	},
+	{
+	  "name": "Buffer Overflow",
+	  "id": "E_BUFF_OVF",
+	  "pattern": [
+		{
+		  "id": "C_SAFE_MODE",
+		  "value": false
+		},
+		{
+		  "id": "C_RELOAD_CHAR_MODELS"
+		}
+	  ],
+	  "hex": "B8FA"
+	},
+	{
+	  "name": "Collision Detection Error",
+	  "id": "E_COLL_DET_ERR",
+	  "pattern": [
+		{
+		  "id": "C_SFX",
+		  "value": true
+		},
+		{
+		  "id": "C_GEN_ASCII"
+		},
+		{
+		  "id": "C_MUSIC",
+		  "value": true
+		}
+	  ],
+	  "hex": "7A5C"
+	},
+	{
+	  "name": "AI Pathing Error",
+	  "id": "E_AI_PATH_ERR",
+	  "pattern": [
+		{
+		  "id": "C_DOWNLOAD_RAM"
+		},
+		{
+		  "id": "C_NERF_MECH",
+		  "value": true
+		}
+	  ],
+	  "hex": "F87D"
+	},
+	{
+	  "name": "Pathfinding Loop",
+	  "id": "E_PATH_LOOP",
+	  "pattern": [
+		{
+		  "id": "C_SFX",
+		  "value": true
+		},
+		{
+		  "id": "C_CHARGE_FLUX"
+		}
+	  ],
+	  "hex": "E993"
+	},
+	{
+	  "name": "Missing Asset",
+	  "id": "E_MISS_ASSET",
+	  "pattern": [
+		{
+		  "id": "C_ENGORGE_BALLAST"
+		},
+		{
+		  "id": "C_MUSIC",
+		  "value": true
+		},
+		{
+		  "id": "C_TORRENT_GOT"
+		}
+	  ],
+	  "hex": "D613"
+	},
+	{
+	  "name": "Shader Compilation Error",
+	  "id": "E_SHADER_COMP_ERR",
+	  "pattern": [
+		{
+		  "id": "C_ENGORGE_BALLAST"
+		},
+		{
+		  "id": "C_CHARGE_FLUX"
+		}
+	  ],
+	  "hex": "6B46"
+	},
+	{
+	  "name": "Resolution Mismatch",
+	  "id": "E_RES_MISMATCH",
+	  "pattern": [
+		{
+		  "id": "C_DOWNLOAD_RAM"
+		}
+	  ],
+	  "hex": "7D05"
+	},
+	{
+	  "name": "Synchronization Error",
+	  "id": "E_SYNC_ERR",
+	  "pattern": [
+		{
+		  "id": "C_CHARGE_FLUX"
+		}
+	  ],
+	  "hex": "48FC"
+	},
+	{
+	  "name": "Physics Engine Failure",
+	  "id": "E_PHYSICS_FAIL",
+	  "pattern": [
+		{
+		  "id": "C_RELOAD_MODELS"
+		}
+	  ],
+	  "hex": "619B"
+	},
+	{
+	  "name": "Network Timeout",
+	  "id": "E_NET_TIMEOUT",
+	  "pattern": [
+		{
+		  "id": "C_SEED_GOT",
+		  "value": false
+		}
+	  ],
+	  "hex": "93EB"
+	},
+	{
+	  "name": "Sound Playback Issue",
+	  "id": "E_SND_PLAY_ISSUE",
+	  "pattern": [
+		{
+		  "id": "C_SFX",
+		  "value": true
+		}
+	  ],
+	  "hex": "BF1E"
+	},
+	{
+	  "name": "Animation Rigging Error",
+	  "id": "E_ANIM_RIG_ERR",
+	  "pattern": [
+		{
+		  "id": "C_BAN_TROLLS"
+		}
+	  ],
+	  "hex": "C9CB"
+	},
+	{
+	  "name": "Everything",
+	  "id": "button_test",
+	  "pattern": [
+		{
+		  "id": "C_SAFE_MODE",
+		  "value": false
+		},
+		{
+		  "id": "C_ENGORGE_BALLAST"
+		},
+		{
+		  "id": "C_CHECK_CHAR_POS"
+		},
+		{
+		  "id": "C_RELOAD_MODELS"
+		},
+		{
+		  "id": "C_RELOAD_CHAR_MODELS"
+		},
+		{
+		  "id": "C_DOWNLOAD_RAM"
+		},
+		{
+		  "id": "C_LIFEGUARD"
+		},
+		{
+		  "id": "C_MUSIC",
+		  "value": true
+		},
+		{
+		  "id": "C_SFX",
+		  "value": true
+		},
+		{
+		  "id": "C_DANCING",
+		  "value": false
+		},
+		{
+		  "id": "C_GEN_ASCII"
+		},
+		{
+		  "id": "C_TORRENT_GOT"
+		},
+		{
+		  "id": "C_SEED_GOT"
+		},
+		{
+		  "id": "C_CHARGE_FLUX"
+		},
+		{
+		  "id": "C_BAN_TROLLS"
+		},
+		{
+		  "id": "C_LOC_HACKER"
+		},
+		{
+		  "id": "C_NERF_MECH",
+		  "value": true
+		}
+	  ],
+	  "hex": "D336"
+	}
+  ]
