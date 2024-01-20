@@ -83,7 +83,6 @@ func level_complete(level_id: String):
 	if(!active_save.has("complete_levels")):
 		active_save["complete_levels"] = []
 	var complete_levels: Array = active_save["complete_levels"]
-	print(str("complete_levels ", complete_levels, " level_id ", level_id))
 	if(!complete_levels.has(level_id)):
 		complete_levels.append(level_id)
 		write_save(active_save)
