@@ -75,4 +75,3 @@ func load_game(save: Variant):
 	active_save = save
 	var tree = get_tree()
 	var error = tree.change_scene_to_file("res://scenes/game_menu.tscn")
-	

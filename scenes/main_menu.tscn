@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=8 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_01cxx"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="5_pngoo"]
+[ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="7_dmxoj"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
@@ -85,6 +86,11 @@ script = ExtResource("2_m38df")
 
 [node name="click_player" type="Node" parent="quit"]
 script = ExtResource("4_yxiqb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dmxoj")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="pressed" from="play" to="." method="load_latest"]
 [connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
