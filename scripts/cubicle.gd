@@ -84,9 +84,14 @@ func create_module_id_list():
 		for step in error.pattern:
 			if !list.has(step.id):
 				list.append(step.id)
+	for error in error_catalogue:
+		for step in error.pattern:
+			if !list.has(step.id):
+				list.append(step.id)
 	module_id_list = list
 
 func dereference_error_id(id: String):
+	print(str("dereference_error_id ", id))
 	for error_def in data.error_data.duplicate(true):
 		if(error_def.id == id):
 			return error_def

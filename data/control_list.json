@@ -99,12 +99,12 @@
 		"label": "Locate Hacker Man",
 		"id": "C_LOC_HACKER",
 		"type": "button",
-		"offset": [0,2]
+		"offset": [1,2]
 	},
 	{
 		"label": "Nerf Best Mechanic",
 		"id": "C_NERF_MECH",
 		"type": "switch",
-		"offset": [1,2]
+		"offset": [2,2]
 	}
 ]
