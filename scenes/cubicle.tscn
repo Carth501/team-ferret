@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=21 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -8,6 +8,60 @@
 [ext_resource type="PackedScene" uid="uid://dtyv8dggwfwl" path="res://scenes/manual.tscn" id="5_neuwc"]
 [ext_resource type="PackedScene" uid="uid://dlg0hvp5kloyl" path="res://scenes/cpc_monitor.tscn" id="6_18xk0"]
 [ext_resource type="PackedScene" uid="uid://df8c2ke4hukg1" path="res://scenes/cpc_calculator.tscn" id="7_dldy6"]
+[ext_resource type="Texture2D" uid="uid://u3cxigegidwc" path="res://assets/images/gun_frames/TS_Deagle_0000.png" id="9_h5isx"]
+[ext_resource type="Texture2D" uid="uid://iooyorr188rf" path="res://assets/images/gun_frames/TS_Deagle_0003.png" id="10_b2c4q"]
+[ext_resource type="Texture2D" uid="uid://c3lrx6patuean" path="res://assets/images/gun_frames/TS_Deagle_0004.png" id="11_jmrc1"]
+[ext_resource type="Texture2D" uid="uid://csk45deete1px" path="res://assets/images/gun_frames/TS_Deagle_0005.png" id="12_jcpxg"]
+[ext_resource type="Texture2D" uid="uid://dtj1h1hi3lx68" path="res://assets/images/gun_frames/TS_Deagle_0006.png" id="13_v23kw"]
+[ext_resource type="Texture2D" uid="uid://dwt8rfrvbjosf" path="res://assets/images/gun_frames/TS_Deagle_0007.png" id="14_me3sa"]
+[ext_resource type="Texture2D" uid="uid://bxoukhvxxx8jj" path="res://assets/images/gun_frames/TS_Deagle_0008.png" id="15_uprxk"]
+[ext_resource type="Texture2D" uid="uid://dpmbu1kir072h" path="res://assets/images/gun_frames/TS_Deagle_0009.png" id="16_byysa"]
+[ext_resource type="Texture2D" uid="uid://cf5n1nah75yql" path="res://assets/images/gun_frames/TS_Deagle_0010.png" id="17_1kxj8"]
+[ext_resource type="Texture2D" uid="uid://cckojra47v0cc" path="res://assets/images/gun_frames/TS_Deagle_0011.png" id="18_kqlif"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="19_1d3tl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_h5isx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_b2c4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jmrc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jcpxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v23kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_me3sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uprxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_byysa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1kxj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kqlif")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 25.0
+}]
 
 [node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
@@ -73,6 +127,12 @@ offset_bottom = -617.0
 
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
 display = NodePath("../CpcMonitor")
+
+[node name="gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(646, 216)
+sprite_frames = SubResource("SpriteFrames_bn0dg")
+animation = &"fire"
+script = ExtResource("19_1d3tl")
 
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
