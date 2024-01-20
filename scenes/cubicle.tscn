@@ -120,11 +120,13 @@ rtl_object = NodePath("../../../pause curtain/Resume Button/Button/RichTextLabel
 internal_button = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Pause Button"]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
 [node name="Button" type="Button" parent="ScrollContainer/Control/Pause Button"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
@@ -157,17 +159,17 @@ script = ExtResource("4_cxbfh")
 cubicle_instance = NodePath("..")
 probability = 0.2
 
-[node name="manual" parent="." instance=ExtResource("5_neuwc")]
-offset_left = 16.0
-offset_top = 272.0
-offset_right = -1179.0
-offset_bottom = -411.0
-
 [node name="CpcMonitor" parent="." instance=ExtResource("6_18xk0")]
 offset_left = 770.0
 offset_top = 50.0
 offset_right = -293.0
 offset_bottom = -617.0
+
+[node name="manual" parent="." instance=ExtResource("5_neuwc")]
+offset_left = 16.0
+offset_top = 272.0
+offset_right = -1179.0
+offset_bottom = -411.0
 
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
 display = NodePath("../CpcMonitor")
@@ -197,11 +199,13 @@ rtl_object = NodePath("Button/RichTextLabel")
 internal_button = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="pause curtain/Resume Button"]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
 [node name="Button" type="Button" parent="pause curtain/Resume Button"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
