@@ -1,6 +1,7 @@
 class_name button_module extends abstract_module
 
 @export var rtl_object: RichTextLabel
+@export var internal_button: Button
 
 func set_label(label: String):
 	rtl_object.clear()

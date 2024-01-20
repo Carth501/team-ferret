@@ -3,17 +3,18 @@
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_6gy08"]
 
-[node name="button" type="Control" node_paths=PackedStringArray("rtl_object")]
+[node name="button" type="Control" node_paths=PackedStringArray("rtl_object", "internal_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1088.0
-offset_bottom = -584.0
+offset_right = -1216.0
+offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2qjgx")
 rtl_object = NodePath("Button/RichTextLabel")
+internal_button = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -21,7 +22,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.00392157, 0.509804, 0.505882, 1)
 
-[node name="Button" type="Button" parent="." groups=["buttons"]]
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
