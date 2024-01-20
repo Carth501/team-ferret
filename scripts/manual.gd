@@ -12,7 +12,7 @@ func toggle_manual_popup():
 func build_error_list(error_list, control_list):
 	var index = 0
 	for error in error_list:
-		pages.append(str("[b]", error.name, "[/b]"))
+		pages.append(str("[b]",error.hex, " : ", error.name, "[/b]"))
 		var step_number = 1
 		for step in error.pattern:
 			var step_definition = dereference_module_id(control_list, step.id)

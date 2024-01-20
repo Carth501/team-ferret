@@ -118,6 +118,9 @@ func create_switch() -> abstract_module:
 	return switch_scene.instantiate() as switch_module
 
 func configure_module(new_module: abstract_module, params):
+	var spacing = 10
+	var x_pos = params.offset[0] * 64 + params.offset[0] * spacing
+	var y_pos = params.offset[1] * 64 + params.offset[1] * spacing
 	if(new_module == null):
 		push_error("switch instance does not have the script attached")
 	new_module.name = params.id
@@ -125,7 +128,8 @@ func configure_module(new_module: abstract_module, params):
 	new_module.set_label(params.label)
 	control_panel.add_child(new_module)
 	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
-	new_module.position = Vector2(params.offset[0]*64, params.offset[1]*64)
+	#new_module.position = Vector2(params.offset[0]*64, params.offset[1]*64)
+	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
 
 func dereference_module_id(id: String):
