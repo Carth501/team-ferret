@@ -24,3 +24,7 @@ func load_continue():
 
 func toggle_level_selection():
 	level_select_panel.visible = !level_select_panel.visible
+
+func jump_to_title():
+	var save_handler = get_node("/root/save_handler_single")
+	save_handler.exit_to_title()
