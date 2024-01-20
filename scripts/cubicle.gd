@@ -14,6 +14,8 @@ signal module_triggered(module_id: String)
 @export var pause_curtain: Panel
 @export var pause_button: button_module
 @export var resume_button: button_module
+@export var level_music: AudioStreamPlayer
+@export var danger_music: AudioStreamPlayer
 var data: data_libraries_single
 var loader: level_loader
 var current_level
@@ -71,9 +73,10 @@ func configure_level_settings():
 		starting_cpc = current_level.starting_cpc
 	if(current_level.has("goal_cpc")):
 		goal_cpc = current_level.goal_cpc
-	if(current_level.has("shift_duration")):
-		shift_duration = current_level.shift_duration
+	if(current_level.gameplay.has("shift_duration")):
+		shift_duration = current_level.gameplay.shift_duration
 		level_clock_handler.set_value(shift_duration)
+		create_danger_timer(shift_duration)
 	if(current_level.has("failure_threshold_percent")):
 		failure_threshold_percent = current_level.failure_threshold_percent
 
@@ -197,3 +200,17 @@ func end_level():
 func complete_level():
 	var save_handler = get_node("/root/save_handler_single")
 	save_handler.level_complete(current_level.metadata.id)
+
+func create_danger_timer(duration: float):
+	var danger_timer = Timer.new()
+	danger_timer.name = "Danger Timer"
+	add_child(danger_timer)
+	danger_timer.wait_time = duration * 0.9 - 10
+	danger_timer.one_shot = true
+	danger_timer.start()
+	danger_timer.timeout.connect(start_danger_music)
+	error_timers_list.append(danger_timer)
+
+func start_danger_music():
+	level_music.stop()
+	danger_music.play()
