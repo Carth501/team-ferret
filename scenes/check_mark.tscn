@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq18bfanpu1iy"]
+
+[ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="1_oimrh"]
+
+[node name="CheckMark" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_oimrh")
+theme_override_font_sizes/font_size = 32
+text = "✓"
