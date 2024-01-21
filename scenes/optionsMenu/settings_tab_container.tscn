@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://da2nmyxvcffnd"]
+[gd_scene load_steps=3 format=3 uid="uid://da2nmyxvcffnd"]
 
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="1_x8e27"]
+[ext_resource type="Script" path="res://scripts/tab_clicked.gd" id="2_ccuh6"]
 
 [node name="Settings_Tab_Container" type="Control"]
 layout_mode = 3
@@ -23,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x8e27")
 tab_alignment = 1
+script = ExtResource("2_ccuh6")
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 layout_mode = 2
@@ -130,3 +132,6 @@ alignment = 1
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 text = "Accessibility Options"
+
+[connection signal="tab_selected" from="TabContainer" to="TabContainer" method="_on_tab_selected"]
+[connection signal="tab_selected" from="TabContainer/Sound" to="TabContainer/Sound" method="_on_tab_selected"]
