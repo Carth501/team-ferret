@@ -1,9 +1,16 @@
 class_name main_menu extends Node
 
 @export var play_button: Button
+@onready var options = $"MenuContainer/Button Control/options" as Button
+@onready var options_menu = $options_menu as OptionsMenu
+@onready var menu_container = $MenuContainer as MarginContainer
+
+
+
 var save_data: Array[Variant]
 
 func _ready():
+	handle_connecting_signals()
 	var save_handler = get_node("/root/save_handler_single")
 	if(save_handler == null):
 		push_error("save_handler singleton not found.")
@@ -25,6 +32,19 @@ func create_new_game():
 func load_latest():
 	var latest = get_latest_save()
 	queue_load_save_data(latest)
+	
+func on_options_pressed() -> void:
+	menu_container.visible = false
+	options_menu.set_process(true)
+	options_menu.visible = true
+
+func on_exit_options_menu() -> void:
+	menu_container.visible = true
+	options_menu.visible = false
+
+func handle_connecting_signals() -> void:
+	options.button_down.connect(on_options_pressed)
+	options_menu.exit_options_menu.connect(on_exit_options_menu)
 
 func get_latest_save() -> Variant:
 	var data = save_handler_single.save_data

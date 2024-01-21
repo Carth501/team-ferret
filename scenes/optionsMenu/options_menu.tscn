@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw7lctgcou8ei"]
+
+[ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="1_jrvfb"]
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_kdv8x"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_41nkw"]
+[ext_resource type="PackedScene" uid="uid://da2nmyxvcffnd" path="res://scenes/optionsMenu/settings_tab_container.tscn" id="3_nrrip"]
+[ext_resource type="Script" path="res://scripts/click_player.gd" id="4_h2i6c"]
+
+[node name="options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdv8x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_jrvfb")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings_Tab_Container" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_nrrip")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(55, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("2_41nkw")
+theme_override_fonts/font = ExtResource("1_jrvfb")
+text = "Exit"
+
+[node name="click_player" type="Node" parent="MarginContainer/VBoxContainer/Exit_Button"]
+script = ExtResource("4_h2i6c")
