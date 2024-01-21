@@ -9,8 +9,3 @@ func _ready():
 	if(!has_signal("tab_selected")):
 		push_error("This node is not a proper TabBar")
 	tab_selected.connect(click_audio_stream.play)
-
-
-
-
-
