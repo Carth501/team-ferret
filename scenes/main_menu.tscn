@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=10 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
@@ -6,87 +6,110 @@
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_01cxx"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="5_pngoo"]
+[ext_resource type="PackedScene" uid="uid://dw7lctgcou8ei" path="res://scenes/optionsMenu/options_menu.tscn" id="6_mawxx"]
 [ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="7_dmxoj"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="8_1m8uy"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
-play_button = NodePath("play")
+play_button = NodePath("MenuContainer/Button Control/play")
 
-[node name="Logo" parent="." instance=ExtResource("1_f7edf")]
+[node name="MenuContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="play" type="Button" parent="."]
-layout_direction = 3
-offset_left = 35.0
-offset_top = 498.0
-offset_right = 82.0
-offset_bottom = 529.0
+[node name="Logo" parent="MenuContainer" instance=ExtResource("1_f7edf")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="Button Control" type="Control" parent="MenuContainer"]
+custom_minimum_size = Vector2(90, 205)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="play" type="Button" parent="MenuContainer/Button Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_right = 47.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme = ExtResource("3_01cxx")
 text = "PLAY"
 
-[node name="click_player" type="Node" parent="play"]
+[node name="click_player" type="Node" parent="MenuContainer/Button Control/play"]
 script = ExtResource("4_yxiqb")
 
-[node name="load" type="Button" parent="."]
-offset_left = 1194.0
-offset_top = 538.0
-offset_right = 1246.0
-offset_bottom = 569.0
+[node name="load" type="Button" parent="MenuContainer/Button Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_top = 41.0
+offset_right = 47.0
+offset_bottom = 72.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
 text = "LOAD"
 
-[node name="click_player" type="Node" parent="load"]
+[node name="click_player" type="Node" parent="MenuContainer/Button Control/load"]
 script = ExtResource("4_yxiqb")
 
-[node name="options" type="Button" parent="."]
-offset_left = 1169.0
-offset_top = 577.0
-offset_right = 1248.0
-offset_bottom = 608.0
+[node name="options" type="Button" parent="MenuContainer/Button Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_top = 82.0
+offset_right = 76.0
+offset_bottom = 113.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
-disabled = true
 text = "OPTIONS"
 
-[node name="click_player" type="Node" parent="options"]
+[node name="click_player" type="Node" parent="MenuContainer/Button Control/options"]
 script = ExtResource("4_yxiqb")
 
-[node name="credits" type="Button" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -103.0
-offset_right = -32.0
-offset_bottom = -72.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="credits" type="Button" parent="MenuContainer/Button Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_top = 123.0
+offset_right = 76.0
+offset_bottom = 154.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
 text = "CREDITS"
 
-[node name="click_player" parent="credits" instance=ExtResource("5_pngoo")]
+[node name="click_player" parent="MenuContainer/Button Control/credits" instance=ExtResource("5_pngoo")]
 
-[node name="quit" type="Button" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -63.0
-offset_right = -32.0
-offset_bottom = -32.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="quit" type="Button" parent="MenuContainer/Button Control"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_top = 164.0
+offset_right = 47.0
+offset_bottom = 195.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
 text = "QUIT"
 
-[node name="quitter" type="Node" parent="quit"]
+[node name="quitter" type="Node" parent="MenuContainer/Button Control/quit"]
 script = ExtResource("2_m38df")
 
-[node name="click_player" type="Node" parent="quit"]
+[node name="click_player" type="Node" parent="MenuContainer/Button Control/quit"]
 script = ExtResource("4_yxiqb")
+
+[node name="options_menu" parent="." instance=ExtResource("6_mawxx")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dmxoj")
@@ -94,6 +117,7 @@ volume_db = -12.0
 autoplay = true
 script = ExtResource("8_1m8uy")
 
-[connection signal="pressed" from="play" to="." method="load_latest"]
-[connection signal="pressed" from="quit" to="quit/quitter" method="endgame"]
+[connection signal="pressed" from="MenuContainer/Button Control/play" to="." method="load_latest"]
+[connection signal="pressed" from="MenuContainer/Button Control/quit" to="MenuContainer/Button Control/quit/quitter" method="endgame"]
+[connection signal="exit_options_menu" from="options_menu" to="." method="_on_options_menu_exit_options_menu"]
 [connection signal="tree_exiting" from="AudioStreamPlayer" to="AudioStreamPlayer" method="record_exit_time"]
