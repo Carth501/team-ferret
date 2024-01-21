@@ -9,7 +9,6 @@ func _ready():
 		await data.ready
 	var level_data = data.level_data
 	var complete_level_list: Array = save_handler.active_save.complete_levels
-	print(str("complete_level_list ", complete_level_list))
 	var check_scene = load("res://scenes/check_mark.tscn")
 	for level in level_data:
 		var metadata = level.metadata

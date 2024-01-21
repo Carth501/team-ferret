@@ -10,7 +10,6 @@ var active_save: Variant
 func _ready():
 	dir_contents()
 	save_data = read_saves()
-	print(save_data)
 
 func read_saves() -> Array[Variant]:
 	save_data = []
