@@ -14,8 +14,9 @@ signal module_triggered(module_id: String)
 @export var pause_curtain: Panel
 @export var pause_button: button_module
 @export var resume_button: button_module
-@export var level_music: AudioStreamPlayer
-@export var danger_music: AudioStreamPlayer
+@onready var level_music := $"Level Music"
+@onready var danger_music := $"Danger Music"
+@onready var cpc_calc := $CpcCalculator
 var data: data_libraries_single
 var loader: level_loader
 var current_level
@@ -24,11 +25,9 @@ var error_catalogue := []
 var module_id_list
 var module_obj_dic: Dictionary = {}
 var error_timers_list := []
-var starting_cpc: int
-var goal_cpc: int
-var shift_duration: int
 var failure_threshold_percent: float
 var paused := false
+var met_target := false
 
 func _ready():
 	data = get_node("/root/data_libraries_single")
@@ -69,16 +68,16 @@ func get_level():
 			return
 
 func configure_level_settings():
-	if(current_level.has("starting_cpc")):
-		starting_cpc = current_level.starting_cpc
-	if(current_level.has("goal_cpc")):
-		goal_cpc = current_level.goal_cpc
+	if(current_level.gameplay.has("starting_cpc")):
+		cpc_calc.set_cpc(current_level.gameplay.starting_cpc)
+	if(current_level.gameplay.has("goal_cpc")):
+		cpc_calc.set_target(current_level.gameplay.goal_cpc)
 	if(current_level.gameplay.has("shift_duration")):
-		shift_duration = current_level.gameplay.shift_duration
+		var shift_duration = current_level.gameplay.shift_duration
 		level_clock_handler.set_value(shift_duration)
 		create_danger_timer(shift_duration)
-	if(current_level.has("failure_threshold_percent")):
-		failure_threshold_percent = current_level.failure_threshold_percent
+	if(current_level.gameplay.has("failure_threshold_percent")):
+		failure_threshold_percent = current_level.gameplay.failure_threshold_percent
 
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
@@ -214,7 +213,12 @@ func create_danger_timer(duration: float):
 func start_danger_music():
 	level_music.stop()
 	danger_music.play()
-	
+
+func met_target_cpc():
+	met_target = true
+
 func end_of_shift():
 	toggle_pause()
 	resume_button.visible = false
+	if(met_target):
+		save_handler_single.level_complete(current_level_id)
