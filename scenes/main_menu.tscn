@@ -1,18 +1,173 @@
-[gd_scene load_steps=10 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=41 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
+[ext_resource type="Script" path="res://scripts/menu_bg_control.gd" id="2_8xtfb"]
 [ext_resource type="Script" path="res://scripts/quitter.gd" id="2_m38df"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_01cxx"]
+[ext_resource type="Texture2D" uid="uid://noy4lr883b0y" path="res://assets/images/menu/Shareholders Menu Cash.png" id="3_dcvhj"]
+[ext_resource type="Texture2D" uid="uid://ldovvros3l0y" path="res://assets/images/menu/Shareholders Menu Card.png" id="4_v83hl"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_yxiqb"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="5_pngoo"]
+[ext_resource type="Texture2D" uid="uid://y31dmf6l62w0" path="res://assets/images/menu/Shareholders Menu Player.png" id="5_qrggq"]
 [ext_resource type="PackedScene" uid="uid://dw7lctgcou8ei" path="res://scenes/optionsMenu/options_menu.tscn" id="6_mawxx"]
+[ext_resource type="Texture2D" uid="uid://xc5d5304hiu8" path="res://assets/images/menu/buttons/Play.png" id="7_bv67n"]
 [ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="7_dmxoj"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="8_1m8uy"]
+[ext_resource type="Texture2D" uid="uid://b7vwrtxc2rn7t" path="res://assets/images/menu/buttons/Load.png" id="10_lt7va"]
+[ext_resource type="Texture2D" uid="uid://ci5maioxwyxxx" path="res://assets/images/menu/buttons/Options.png" id="11_4u17b"]
+[ext_resource type="Texture2D" uid="uid://w3ungjfxt5dh" path="res://assets/images/menu/buttons/Credits.png" id="12_jwlpp"]
+[ext_resource type="Texture2D" uid="uid://b7hkaynupl514" path="res://assets/images/menu/buttons/Quit.png" id="14_lls55"]
+
+[sub_resource type="Gradient" id="Gradient_gj2xc"]
+colors = PackedColorArray(0.737255, 0.960784, 0.862745, 1, 0.396078, 0.776471, 0.631373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5kn8x"]
+gradient = SubResource("Gradient_gj2xc")
+fill = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awlsb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2amks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1vws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15rxa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ciuw6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2mcx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4xoh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pa6o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lbysq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj4mm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hok5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3sy5o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a55i6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2p8dl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o06e0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdyjo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hovr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgi73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3a1f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3x3j8"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_3t2ir")
 play_button = NodePath("MenuContainer/Button Control/play")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5kn8x")
+
+[node name="BackgroundParalax" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_8xtfb")
+
+[node name="Control2" type="Control" parent="BackgroundParalax"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money2" type="TextureRect" parent="BackgroundParalax/Control2"]
+modulate = Color(0.737255, 0.737255, 0.737255, 1)
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+rotation = 3.14159
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("3_dcvhj")
+
+[node name="Control" type="Control" parent="BackgroundParalax"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="TextureRect" parent="BackgroundParalax/Control"]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("3_dcvhj")
+
+[node name="Hands" type="Control" parent="BackgroundParalax"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LogoHand" type="TextureRect" parent="BackgroundParalax/Hands"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_v83hl")
+
+[node name="Hand" type="TextureRect" parent="BackgroundParalax/Hands"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_qrggq")
+
+[node name="Logo" parent="." instance=ExtResource("1_f7edf")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
 
 [node name="MenuContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -24,15 +179,10 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
-
-[node name="Logo" parent="MenuContainer" instance=ExtResource("1_f7edf")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
+metadata/_edit_lock_ = true
 
 [node name="Button Control" type="Control" parent="MenuContainer"]
-custom_minimum_size = Vector2(90, 205)
+custom_minimum_size = Vector2(150, 205)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -44,8 +194,12 @@ offset_right = 47.0
 offset_bottom = 31.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme = ExtResource("3_01cxx")
-text = "PLAY"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_awlsb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2amks")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a1vws")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_15rxa")
+icon = ExtResource("7_bv67n")
+flat = true
 
 [node name="click_player" type="Node" parent="MenuContainer/Button Control/play"]
 script = ExtResource("4_yxiqb")
@@ -59,7 +213,12 @@ offset_bottom = 72.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
-text = "LOAD"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciuw6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_r2mcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h4xoh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5pa6o")
+icon = ExtResource("10_lt7va")
+flat = true
 
 [node name="click_player" type="Node" parent="MenuContainer/Button Control/load"]
 script = ExtResource("4_yxiqb")
@@ -73,7 +232,12 @@ offset_bottom = 113.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
-text = "OPTIONS"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lbysq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lj4mm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4hok5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3sy5o")
+icon = ExtResource("11_4u17b")
+flat = true
 
 [node name="click_player" type="Node" parent="MenuContainer/Button Control/options"]
 script = ExtResource("4_yxiqb")
@@ -87,7 +251,12 @@ offset_bottom = 154.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
-text = "CREDITS"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a55i6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2p8dl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o06e0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wdyjo")
+icon = ExtResource("12_jwlpp")
+flat = true
 
 [node name="click_player" parent="MenuContainer/Button Control/credits" instance=ExtResource("5_pngoo")]
 
@@ -100,7 +269,12 @@ offset_bottom = 195.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("3_01cxx")
-text = "QUIT"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2hovr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lgi73")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h3a1f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3x3j8")
+icon = ExtResource("14_lls55")
+flat = true
 
 [node name="quitter" type="Node" parent="MenuContainer/Button Control/quit"]
 script = ExtResource("2_m38df")
@@ -115,7 +289,6 @@ visible = false
 stream = ExtResource("7_dmxoj")
 volume_db = -12.0
 autoplay = true
-bus = &"Music"
 script = ExtResource("8_1m8uy")
 
 [connection signal="pressed" from="MenuContainer/Button Control/play" to="." method="load_latest"]

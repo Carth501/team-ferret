@@ -1,11 +1,10 @@
-class_name main_menu extends Node
+class_name main_menu
+extends Node
 
 @export var play_button: Button
 @onready var options = $"MenuContainer/Button Control/options" as Button
 @onready var options_menu = $options_menu as OptionsMenu
 @onready var menu_container = $MenuContainer as MarginContainer
-
-
 
 var save_data: Array[Variant]
 
