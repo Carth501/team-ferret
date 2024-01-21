@@ -214,3 +214,7 @@ func create_danger_timer(duration: float):
 func start_danger_music():
 	level_music.stop()
 	danger_music.play()
+	
+func end_of_shift():
+	toggle_pause()
+	resume_button.visible = false
