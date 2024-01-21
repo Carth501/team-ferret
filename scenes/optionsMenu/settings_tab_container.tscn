@@ -1,28 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://da2nmyxvcffnd"]
+[gd_scene load_steps=9 format=3 uid="uid://da2nmyxvcffnd"]
 
+[ext_resource type="Script" path="res://scenes/optionsMenu/settings.gd" id="1_jbdlt"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="1_x8e27"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_y6vc7"]
 [ext_resource type="Script" path="res://scripts/tab_clicked.gd" id="2_ccuh6"]
+[ext_resource type="Script" path="res://scenes/optionsMenu/volume_slider.gd" id="5_uh8iy"]
+[ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="6_r4r0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ww3y"]
 shader = ExtResource("1_y6vc7")
-shader_parameter/exclude_center = null
-shader_parameter/exclude_size = null
 shader_parameter/lod = 1.71
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksd8q"]
 shader = ExtResource("1_y6vc7")
-shader_parameter/exclude_center = null
-shader_parameter/exclude_size = null
 shader_parameter/lod = 1.7
 
-[node name="Settings_Tab_Container" type="Control"]
+[node name="Settings_Tab_Container" type="Control" node_paths=PackedStringArray("master_volume", "music_volume", "effects_volume")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jbdlt")
+master_volume = NodePath("TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume/HSlider")
+music_volume = NodePath("TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume/HSlider")
+effects_volume = NodePath("TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume/HSlider")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_0ww3y")
@@ -92,6 +95,82 @@ alignment = 1
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 text = "Sound Options"
+
+[node name="Master Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
+layout_mode = 2
+script = ExtResource("5_uh8iy")
+percent_label = NodePath("Percent number")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 4.0
+offset_right = 346.0
+offset_bottom = 20.0
+value = 100.0
+
+[node name="Percent number" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume"]
+layout_mode = 0
+offset_left = 356.0
+offset_right = 396.0
+offset_bottom = 23.0
+text = "100%"
+
+[node name="Music Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
+layout_mode = 2
+script = ExtResource("5_uh8iy")
+percent_label = NodePath("Percent number")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 4.0
+offset_right = 346.0
+offset_bottom = 20.0
+value = 100.0
+
+[node name="Percent number" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume"]
+offset_left = 356.0
+offset_right = 396.0
+offset_bottom = 23.0
+text = "100%"
+
+[node name="Effects Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
+layout_mode = 2
+script = ExtResource("5_uh8iy")
+percent_label = NodePath("Percent number")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Effects Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 4.0
+offset_right = 346.0
+offset_bottom = 20.0
+value = 100.0
+
+[node name="Percent number" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume"]
+offset_left = 356.0
+offset_right = 396.0
+offset_bottom = 23.0
+text = "100%"
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
 visible = false
@@ -174,5 +253,19 @@ layout_mode = 2
 theme = ExtResource("1_x8e27")
 text = "Accessibility Options"
 
+[node name="save and apply button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 566.0
+offset_right = 1135.0
+offset_bottom = 597.0
+text = "Save and Apply"
+
+[node name="click_player" parent="save and apply button" instance=ExtResource("6_r4r0w")]
+
 [connection signal="tab_selected" from="TabContainer" to="TabContainer" method="_on_tab_selected"]
 [connection signal="tab_selected" from="TabContainer/Sound" to="TabContainer/Sound" method="_on_tab_selected"]
+[connection signal="value_changed" from="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume/HSlider" to="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume" method="update_label"]
+[connection signal="value_changed" from="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume/HSlider" to="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume" method="update_label"]
+[connection signal="value_changed" from="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume/HSlider" to="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume" method="update_label"]
+[connection signal="pressed" from="save and apply button" to="." method="save_config"]
