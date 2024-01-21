@@ -115,6 +115,7 @@ visible = false
 stream = ExtResource("7_dmxoj")
 volume_db = -12.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("8_1m8uy")
 
 [connection signal="pressed" from="MenuContainer/Button Control/play" to="." method="load_latest"]

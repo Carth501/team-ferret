@@ -24,7 +24,7 @@
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
 [ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
-[ext_resource type="Script" path="res://scripts/audio_interface.gd" id="25_wvlaa"]
+[ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/EOD Music.mp3" id="26_rtvup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
 animations = [{
@@ -69,7 +69,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler", "pause_curtain", "pause_button", "resume_button")]
+[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler", "pause_curtain", "pause_button", "resume_button", "level_music", "danger_music")]
 script = ExtResource("1_b5jef")
 current_level_id = "test"
 control_panel = NodePath("ScrollContainer/Control")
@@ -81,6 +81,8 @@ level_clock_handler = NodePath("level clock")
 pause_curtain = NodePath("pause curtain")
 pause_button = NodePath("ScrollContainer/Control/Pause Button")
 resume_button = NodePath("pause curtain/Resume Button")
+level_music = NodePath("Level Music")
+danger_music = NodePath("Danger Music")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -184,6 +186,7 @@ animation = &"fire"
 script = ExtResource("19_1d3tl")
 
 [node name="pause curtain" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -247,11 +250,16 @@ theme = ExtResource("23_w6ohv")
 theme_override_font_sizes/font_size = 32
 text = "COMPLETE LEVEL"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Level Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_colnk")
 volume_db = -12.0
 autoplay = true
-script = ExtResource("25_wvlaa")
+bus = &"Music"
+
+[node name="Danger Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_rtvup")
+volume_db = -12.0
+bus = &"Music"
 
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]

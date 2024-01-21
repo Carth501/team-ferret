@@ -42,6 +42,7 @@ offset_bottom = 612.0
 stream = ExtResource("4_1cdb8")
 volume_db = -12.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("5_txwpc")
 
 [node name="To Title Menu" type="Button" parent="."]
