@@ -1,11 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://da2nmyxvcffnd"]
+[gd_scene load_steps=19 format=3 uid="uid://da2nmyxvcffnd"]
 
 [ext_resource type="Script" path="res://scenes/optionsMenu/settings.gd" id="1_jbdlt"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="1_x8e27"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_y6vc7"]
 [ext_resource type="Script" path="res://scripts/tab_clicked.gd" id="2_ccuh6"]
+[ext_resource type="Texture2D" uid="uid://lo24fc5s6hws" path="res://assets/images/options/options_background.png" id="3_wciyj"]
+[ext_resource type="Texture2D" uid="uid://ck5830n1fgal" path="res://assets/images/options/Options_Tab_Selected.png" id="5_hbijv"]
 [ext_resource type="Script" path="res://scenes/optionsMenu/volume_slider.gd" id="5_uh8iy"]
+[ext_resource type="Texture2D" uid="uid://dxem4jgnnrtyy" path="res://assets/images/options/Options_Tab.png" id="6_1di11"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="6_r4r0w"]
+[ext_resource type="Texture2D" uid="uid://cr0s46qlo8sqs" path="res://assets/images/options/Options_Tab_Inactive.png" id="7_xs1yr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ww3y"]
 shader = ExtResource("1_y6vc7")
@@ -14,6 +18,34 @@ shader_parameter/lod = 1.71
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksd8q"]
 shader = ExtResource("1_y6vc7")
 shader_parameter/lod = 1.7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36icr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5fj3"]
+texture = ExtResource("3_wciyj")
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vrasv"]
+content_margin_left = 25.0
+content_margin_right = 25.0
+texture = ExtResource("5_hbijv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phsfa"]
+content_margin_left = 25.0
+content_margin_right = 25.0
+texture = ExtResource("6_1di11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g3rge"]
+content_margin_left = 25.0
+content_margin_right = 25.0
+texture = ExtResource("7_xs1yr")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mok68"]
 
 [node name="Settings_Tab_Container" type="Control" node_paths=PackedStringArray("master_volume", "music_volume", "effects_volume")]
 layout_mode = 3
@@ -55,7 +87,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
+[node name="Border" type="Panel" parent="."]
+modulate = Color(0.517647, 0.345098, 0.235294, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 61.0
+offset_right = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_36icr")
+
+[node name="Paper" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 81.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_x5fj3")
+
 [node name="TabContainer" type="TabContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(145, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -67,6 +128,12 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_vrasv")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_phsfa")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_g3rge")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_mok68")
 tab_alignment = 1
 script = ExtResource("2_ccuh6")
 
@@ -94,6 +161,8 @@ alignment = 1
 [node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Sound Options"
 
 [node name="Master Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
@@ -105,6 +174,8 @@ percent_label = NodePath("Percent number")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Master Volume"]
@@ -120,6 +191,8 @@ layout_mode = 0
 offset_left = 356.0
 offset_right = 396.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "100%"
 
 [node name="Music Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
@@ -131,6 +204,8 @@ percent_label = NodePath("Percent number")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Music Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume"]
@@ -142,9 +217,12 @@ offset_bottom = 20.0
 value = 100.0
 
 [node name="Percent number" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Music Volume"]
+layout_mode = 0
 offset_left = 356.0
 offset_right = 396.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "100%"
 
 [node name="Effects Volume" type="Control" parent="TabContainer/Sound/MarginContainer/VBoxContainer" node_paths=PackedStringArray("percent_label")]
@@ -156,6 +234,8 @@ percent_label = NodePath("Percent number")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Effects Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume"]
@@ -167,9 +247,12 @@ offset_bottom = 20.0
 value = 100.0
 
 [node name="Percent number" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/Effects Volume"]
+layout_mode = 0
 offset_left = 356.0
 offset_right = 396.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "100%"
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
@@ -197,6 +280,8 @@ alignment = 1
 [node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Graphic Options"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
@@ -224,6 +309,8 @@ alignment = 1
 [node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Control Options"
 
 [node name="Accessibility" type="TabBar" parent="TabContainer"]
@@ -251,6 +338,8 @@ alignment = 1
 [node name="Label" type="Label" parent="TabContainer/Accessibility/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Accessibility Options"
 
 [node name="save and apply button" type="Button" parent="."]
