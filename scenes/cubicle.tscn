@@ -69,7 +69,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler", "pause_curtain", "pause_button", "resume_button", "level_music", "danger_music")]
+[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler", "pause_curtain", "pause_button", "resume_button")]
 script = ExtResource("1_b5jef")
 current_level_id = "test"
 control_panel = NodePath("ScrollContainer/Control")
@@ -81,8 +81,6 @@ level_clock_handler = NodePath("level clock")
 pause_curtain = NodePath("pause curtain")
 pause_button = NodePath("ScrollContainer/Control/Pause Button")
 resume_button = NodePath("pause curtain/Resume Button")
-level_music = NodePath("Level Music")
-danger_music = NodePath("Danger Music")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -241,6 +239,7 @@ theme_override_font_sizes/font_size = 32
 text = "END SHIFT"
 
 [node name="complete level" type="Button" parent="pause curtain"]
+visible = false
 layout_mode = 0
 offset_left = 502.0
 offset_top = 420.0
@@ -268,6 +267,7 @@ bus = &"Music"
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
+[connection signal="reached_goal" from="CpcCalculator" to="." method="met_target_cpc"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
 [connection signal="pressed" from="pause curtain/end shift" to="." method="end_level"]
 [connection signal="pressed" from="pause curtain/complete level" to="." method="complete_level"]

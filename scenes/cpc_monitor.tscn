@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/cpc_monitor.gd" id="1_1et8n"]
 
-[node name="cpc monitor" type="Control" node_paths=PackedStringArray("concurrent_player_display", "active_errors")]
+[node name="cpc monitor" type="Control" node_paths=PackedStringArray("concurrent_player_display", "cpc_target", "active_errors")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,17 +12,23 @@ offset_bottom = -618.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1et8n")
-concurrent_player_display = NodePath("count")
-active_errors = NodePath("Control/count2")
+concurrent_player_display = NodePath("CPC Display/CPC number")
+cpc_target = NodePath("Target CPC/Target CPC Number")
+active_errors = NodePath("Active Error count/Error Count")
 
-[node name="cpc label" type="Label" parent="."]
-layout_mode = 0
+[node name="CPC Display" type="Control" parent="."]
+anchors_preset = 0
 offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CPC Label" type="Label" parent="CPC Display"]
+layout_mode = 0
+offset_right = 200.0
 offset_bottom = 23.0
 text = "Concurrent Player Count: "
 vertical_alignment = 1
 
-[node name="count" type="Label" parent="."]
+[node name="CPC number" type="Label" parent="CPC Display"]
 layout_mode = 0
 offset_left = 200.0
 offset_right = 317.0
@@ -31,27 +37,52 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "0"
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="Target CPC" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="active error label" type="Label" parent="Control"]
+[node name="Target CPC Label" type="Label" parent="Target CPC"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 24.0
 offset_right = 200.0
 offset_bottom = 47.0
-text = "Active Error Count: "
+text = "Target Player Count: "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="count2" type="Label" parent="Control"]
+[node name="Target CPC Number" type="Label" parent="Target CPC"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 24.0
 offset_right = 317.0
 offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "0"
+vertical_alignment = 1
+
+[node name="Active Error count" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 88.0
+
+[node name="active error label" type="Label" parent="Active Error count"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 200.0
+offset_bottom = 23.0
+text = "Active Error Count: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Error Count" type="Label" parent="Active Error count"]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 317.0
+offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "0"
 vertical_alignment = 1
