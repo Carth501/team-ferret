@@ -1,5 +1,6 @@
 class_name level_clock extends Control
 
+signal times_up
 @export var display: Label
 @export var seconds_remaining: int
 
@@ -9,6 +10,8 @@ func _ready():
 func tick():
 	seconds_remaining -= 1
 	update_display()
+	if(seconds_remaining <= 0):
+		times_up.emit()
 
 func update_display():
 	var minutes = str("%02d" % (seconds_remaining/60))
