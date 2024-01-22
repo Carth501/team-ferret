@@ -40,9 +40,10 @@ func next_error_code():
 	next_spr.play("click")
 
 func prev_error_code():
-	if(error_hexes.size() > 0 && current_display > 0):
+	if(error_hexes.size() > 0):
 		current_display -= 1
-		current_display %= error_hexes.size()
+		if(current_display < 0):
+			current_display += error_hexes.size()
 	set_display(current_display)
 	prev_spr.play("click")
 
