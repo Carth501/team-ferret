@@ -35,7 +35,7 @@
 	  "gameplay": {
 		"starting_cpc": 100,
 		"goal_cpc": 500,
-		"shift_duration": 45,
+		"shift_duration": 450,
 		"failure_threshold_percent": 10,
 		"errors": {
 		  "scheduled": [
@@ -54,7 +54,29 @@
 		  ],
 		  "random": [
 			"E_OUT_OF_BOUNDS",
-			"E_UNLOADED_CHAR_MESH"
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_INF_LOOP",
+			"E_ZOMBIE_PROC",
+			"E_RASTER_ERR",
+			"E_VERTEX_BUFF_OVF",
+			"E_TEX_LOAD_FAIL",
+			"E_SHADOW_GLITCH",
+			"E_FRAG_FAULT",
+			"E_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_SHADER_COMP_ERR",
+			"E_RES_MISMATCH",
+			"E_SYNC_ERR",
+			"E_PHYSICS_FAIL",
+			"E_NET_TIMEOUT",
+			"E_SND_PLAY_ISSUE",
+			"E_ANIM_RIG_ERR",
+			"E_CRIT_FAIL"
 		  ]
 		}
 	  }
@@ -577,7 +599,7 @@
 		"id": "test",
 		"hidden": true
 	  },
-	  "gameplay": {
+	  "gameplay": { 
 		"errors": {
 		  "scheduled": [
 			{

@@ -1,4 +1,7 @@
-class_name button_module extends abstract_module
+class_name button_module
+extends abstract_module
+
+@onready var anim_button = $anim_button as AnimatedSprite2D
 
 @export var rtl_object: RichTextLabel
 @export var internal_button: Button
@@ -10,3 +13,7 @@ func set_label(label: String):
 func button_pressed():
 	var payload = {"id"= id}
 	trigger.emit(payload)
+	play_animation()
+
+func play_animation() -> void:
+	anim_button.play("click")

@@ -1,23 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://165fi1uw1mne"]
+[gd_scene load_steps=3 format=3 uid="uid://165fi1uw1mne"]
 
 [ext_resource type="Script" path="res://scripts/level_clock.gd" id="1_vo46q"]
+[ext_resource type="Texture2D" uid="uid://cai0a2tbv1f71" path="res://assets/images/clock/Digital_Clock.png" id="2_7kqjt"]
 
 [node name="level clock" type="Control" node_paths=PackedStringArray("display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1112.0
-offset_bottom = -621.0
+offset_right = -1280.0
+offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vo46q")
 display = NodePath("Label")
 seconds_remaining = 300
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7kqjt")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 37.0
-offset_bottom = 26.0
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "5:00"
 horizontal_alignment = 1

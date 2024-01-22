@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=31 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://brrnjr2th8jho" path="res://assets/images/cubicle/Ring Console Command.png" id="5_un2pp"]
 [ext_resource type="PackedScene" uid="uid://dlg0hvp5kloyl" path="res://scenes/cpc_monitor.tscn" id="6_18xk0"]
 [ext_resource type="PackedScene" uid="uid://df8c2ke4hukg1" path="res://scenes/cpc_calculator.tscn" id="7_dldy6"]
-[ext_resource type="Texture2D" uid="uid://cqdt2ulb433ug" path="res://assets/images/cubicle/Shareholders_Pager.png" id="8_e4rso"]
 [ext_resource type="Texture2D" uid="uid://u3cxigegidwc" path="res://assets/images/gun_frames/TS_Deagle_0000.png" id="9_h5isx"]
 [ext_resource type="Texture2D" uid="uid://iooyorr188rf" path="res://assets/images/gun_frames/TS_Deagle_0003.png" id="10_b2c4q"]
 [ext_resource type="Texture2D" uid="uid://c3lrx6patuean" path="res://assets/images/gun_frames/TS_Deagle_0004.png" id="11_jmrc1"]
@@ -28,7 +27,7 @@
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
 [ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
-[ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/clock.tscn" id="26_h27ps"]
+[ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/analogClock.tscn" id="26_h27ps"]
 [ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/EOD Music.mp3" id="26_rtvup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
@@ -135,22 +134,14 @@ offset_top = 30.0
 offset_right = -228.0
 offset_bottom = -112.0
 
-[node name="Clock" parent="Cubicle" instance=ExtResource("26_h27ps")]
-position = Vector2(159, 58)
-
-[node name="Pager" type="TextureRect" parent="Cubicle"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 162.0
-offset_right = 250.0
-offset_bottom = 216.0
-texture = ExtResource("8_e4rso")
+[node name="AnalogClock" parent="Cubicle" instance=ExtResource("26_h27ps")]
+position = Vector2(165, 53)
 
 [node name="level clock" parent="." instance=ExtResource("2_eni3y")]
-offset_left = 42.0
-offset_top = 41.0
-offset_right = -1198.0
-offset_bottom = -653.0
+offset_left = 76.0
+offset_top = 55.0
+offset_right = -1204.0
+offset_bottom = -665.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -210,10 +201,10 @@ text = "[center]Pause[center]"
 [node name="Timer Corral" type="Node" parent="."]
 
 [node name="pager" parent="." instance=ExtResource("3_fcxxh")]
-offset_left = 103.0
-offset_top = 174.0
-offset_right = -1063.0
-offset_bottom = -512.0
+offset_left = 140.0
+offset_top = 189.0
+offset_right = -1140.0
+offset_bottom = -531.0
 
 [node name="ErrorFactory" type="Node" parent="." node_paths=PackedStringArray("cubicle_instance")]
 script = ExtResource("4_cxbfh")

@@ -1,38 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://bldt2tc567tql"]
+[gd_scene load_steps=7 format=3 uid="uid://bldt2tc567tql"]
 
 [ext_resource type="Script" path="res://scripts/pager.gd" id="1_k0vfd"]
+[ext_resource type="Texture2D" uid="uid://cqdt2ulb433ug" path="res://assets/images/cubicle/Shareholders_Pager.png" id="2_3mrmw"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_eombr"]
+[ext_resource type="Texture2D" uid="uid://bpus3pyu0vl3x" path="res://assets/images/cubicle/Shareholders_Pager_Button_Up.png" id="4_3g8dx"]
+[ext_resource type="Texture2D" uid="uid://gsrj8faj45wo" path="res://assets/images/cubicle/Shareholders_Pager_Button_Down.png" id="5_hua2o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7q7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3g8dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hua2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3g8dx")
+}],
+"loop": false,
+"name": &"click",
+"speed": 15.0
+}]
 
 [node name="pager" type="Control" node_paths=PackedStringArray("error_code_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1158.0
-offset_bottom = -683.0
+offset_right = -1280.0
+offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k0vfd")
 error_code_display = NodePath("Label")
+metadata/_edit_group_ = true
+
+[node name="PagerBody" type="Sprite2D" parent="."]
+texture = ExtResource("2_3mrmw")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 1.0
-offset_right = 143.0
-offset_bottom = 31.0
+offset_left = -42.0
+offset_top = -13.0
+offset_right = 58.0
+offset_bottom = 15.0
 theme_override_colors/font_color = Color(0.160784, 1, 0.133333, 1)
 theme_override_font_sizes/font_size = 20
 text = "2189"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Next Button" type="Button" parent="." groups=["buttons"]]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "NEXT"
+offset_left = 19.0
+offset_top = -20.0
+offset_right = 33.0
+offset_bottom = -10.0
+flat = true
 
 [node name="click_player" type="Node" parent="Next Button"]
 script = ExtResource("2_eombr")
 
+[node name="Prev Button" type="Button" parent="." groups=["buttons"]]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -20.0
+offset_right = -21.0
+offset_bottom = -10.0
+flat = true
+
+[node name="click_player" type="Node" parent="Prev Button"]
+script = ExtResource("2_eombr")
+
+[node name="PrevSpr" type="AnimatedSprite2D" parent="."]
+position = Vector2(-28, -15)
+sprite_frames = SubResource("SpriteFrames_a7q7a")
+animation = &"click"
+
+[node name="NextSpr" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, -15)
+sprite_frames = SubResource("SpriteFrames_a7q7a")
+animation = &"click"
+
 [connection signal="pressed" from="Next Button" to="." method="next_error_code"]
+[connection signal="pressed" from="Prev Button" to="." method="prev_error_code"]
