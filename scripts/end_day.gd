@@ -37,6 +37,11 @@ func update_expenses() -> void:
 func update_day_text() -> void:
 	day += 1
 	completed_day.text = str("DAY ", day)
-	expenses_nums.text = str("[right]\n", savings, "\n", salary, "\n", overtime,"\n[color=red]", rent,"\n", food,"[/color]\n", overtime)
+	expenses_nums.text = str("[right]\n", savings, 
+							"\n", salary, 
+							"\n", overtime,
+							"\n[color=red]", rent,
+							"\n", food,
+							"[/color]\n", overtime)
 	current_money.text = str("[right]",money)
 
