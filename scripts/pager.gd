@@ -1,4 +1,8 @@
-class_name pager extends Control
+class_name pager 
+extends Control
+
+@onready var prev_spr = $PrevSpr as AnimatedSprite2D
+@onready var next_spr = $NextSpr as AnimatedSprite2D
 
 @export var error_code_display: Label
 var error_hexes: Array[String] = []
@@ -33,6 +37,14 @@ func next_error_code():
 		current_display += 1
 		current_display %= error_hexes.size()
 	set_display(current_display)
+	next_spr.play("click")
+
+func prev_error_code():
+	if(error_hexes.size() > 0 && current_display > 0):
+		current_display -= 1
+		current_display %= error_hexes.size()
+	set_display(current_display)
+	prev_spr.play("click")
 
 func remove_error(old_error_id: String):
 	var old_error_hex: String = data.dereference_error_id(old_error_id).hex
