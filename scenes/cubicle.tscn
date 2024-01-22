@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://dpmbu1kir072h" path="res://assets/images/gun_frames/TS_Deagle_0009.png" id="16_byysa"]
 [ext_resource type="Texture2D" uid="uid://cf5n1nah75yql" path="res://assets/images/gun_frames/TS_Deagle_0010.png" id="17_1kxj8"]
 [ext_resource type="Texture2D" uid="uid://cckojra47v0cc" path="res://assets/images/gun_frames/TS_Deagle_0011.png" id="18_kqlif"]
-[ext_resource type="Script" path="res://scripts/gun.gd" id="19_1d3tl"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="21_aqy75"]
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="21_sb4bn"]
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
@@ -91,6 +90,8 @@ animations = [{
 "name": &"fire",
 "speed": 25.0
 }]
+
+[sub_resource type="GDScript" id="GDScript_gndtr"]
 
 [node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
@@ -233,7 +234,7 @@ display = NodePath("../Cubicle/Background/Console/CpcMonitor")
 position = Vector2(758, 261)
 sprite_frames = SubResource("SpriteFrames_bn0dg")
 animation = &"fire"
-script = ExtResource("19_1d3tl")
+script = SubResource("GDScript_gndtr")
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
 offset_left = 18.0
@@ -242,6 +243,7 @@ offset_right = -1177.0
 offset_bottom = -383.0
 
 [node name="pause curtain" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

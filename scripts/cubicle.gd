@@ -87,7 +87,7 @@ func get_error_schedule(level):
 		error_schedule.append(error_item)
 
 func get_error_catalogue(level):
-	if(!level.has("errors")):
+	if(!level.gameplay.has("errors")):
 		push_warning("level has no errors list, was this intentional?")
 	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
@@ -179,7 +179,6 @@ func populate_error_factory():
 	error_factory_controller.set_error_list(error_catalogue)
 
 func toggle_pause():
-	print("toggle_pause")
 	paused = !paused
 	pause_curtain.visible = paused
 	if(paused):

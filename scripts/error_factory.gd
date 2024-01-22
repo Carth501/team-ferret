@@ -22,13 +22,18 @@ func create_error_node(error):
 	add_child(new_error)
 	new_error.set_id(error.id)
 	new_error.set_pattern(error.pattern)
-	new_error.connect_to_cubicle(cubicle_instance)
 	active_error_count += 1
-	new_error.resolved_error.connect(decrement_error_count)
 	update_active_error_count.emit(active_error_count)
+	
+	# The order is important here. The connect_to_cubicle starts
+	# the resolution process. If an error already has the steps
+	# met, then it needs to process this after new_active_error
+	# has emitted and resolved_error has been connected.
 	new_active_error.emit(error)
+	new_error.resolved_error.connect(decrement_error_count)
+	new_error.connect_to_cubicle(cubicle_instance)
 
-func decrement_error_count(id):
+func decrement_error_count(_id):
 	active_error_count -= 1
 	update_active_error_count.emit(active_error_count)
 

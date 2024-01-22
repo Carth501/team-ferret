@@ -8,6 +8,7 @@ extends Control
 var error_hexes: Array[String] = []
 var current_display: int = 0
 @onready var data: data_libraries_single = get_node("/root/data_libraries_single")
+var debug_history : Array[String] = []
 
 func _ready():
 	error_code_display.text = ""
@@ -51,8 +52,10 @@ func remove_error(old_error_id: String):
 	var old_error_hex: String = data.dereference_error_id(old_error_id).hex
 	var index = get_error_index(old_error_hex)
 	if(index == -1):
-		push_error(str("expected error with hex ", old_error_hex, " but none were found."))
+		push_error(str("expected error with hex ", old_error_hex, " but none were found.",
+		"\nCurrent array: ", error_hexes, "\nHistory array: ", debug_history))
 	error_hexes.remove_at(index)
+	debug_history.append(old_error_hex + " " + str(index))
 	if(error_hexes.size() == 0):
 		error_code_display.text = ""
 	else:

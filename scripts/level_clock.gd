@@ -14,7 +14,7 @@ func tick():
 		times_up.emit()
 
 func update_display():
-	var minutes = str("%02d" % (seconds_remaining/60))
+	var minutes = str("%02d" % floori(seconds_remaining/60.0))
 	var seconds = str("%02d" % (seconds_remaining%60))
 	display.text = str(minutes, ":", seconds)
 

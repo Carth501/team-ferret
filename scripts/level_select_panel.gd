@@ -12,7 +12,6 @@ func _ready():
 	var check_scene = load("res://scenes/check_mark.tscn")
 	for level in level_data:
 		var metadata = level.metadata
-		var gameplay = level.gameplay
 		var level_row = Control.new()
 		button_container.add_child(level_row)
 		level_row.name = metadata.name + " row"

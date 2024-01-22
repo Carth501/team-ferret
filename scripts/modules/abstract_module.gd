@@ -11,4 +11,5 @@ func get_current_values():
 	return {}
 
 func set_value(setting):
-	pass
+	push_error(str(
+		"abstract_module set_value called. Attempted to set value to ", setting))

@@ -22,7 +22,6 @@ func read_saves() -> Array[Variant]:
 func read_save(file_name: String):
 	var path = save_path + file_name
 	if (!FileAccess.file_exists(path)):
-		print(str("no file found @ ", path))
 		return
 
 	var save_game = FileAccess.open(path, FileAccess.READ)
@@ -37,7 +36,7 @@ func read_save(file_name: String):
 func write_save(data: Variant):
 	var path = save_path + data.name + ".save"
 	if (!FileAccess.file_exists(path)):
-		print(str("no file found @ ", path, ". Creating a new save file."))
+		push_warning(str("no file found @ ", path, ". Creating a new save file."))
 
 	var save_game = FileAccess.open(path, FileAccess.WRITE)
 	var stringified_data = JSON.stringify(data)

@@ -25,7 +25,6 @@ func save_config():
 		config.set_value(sound, "music_volume", music_volume.value)
 		config.set_value(sound, "effects_volume", effects_volume.value)
 		config.save(config_path)
-		print("save_config")
 		apply_volumes()
 
 func apply_volumes():
