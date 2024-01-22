@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhec7ivm8hmtf"]
+
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_2f5hn"]
+[ext_resource type="Script" path="res://scripts/end_day.gd" id="1_477be"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_xg5ko"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3vg3"]
+shader = ExtResource("1_2f5hn")
+shader_parameter/lod = 3.0
+
+[node name="end_day" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_477be")
+
+[node name="BgBlur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a3vg3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="EndOf" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xg5ko")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "END OF"
+horizontal_alignment = 1
+
+[node name="CompletedDay" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xg5ko")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "DAY 1"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "
+[b]STATS:[/b]
+Total Errors Closed:	0
+Incorrect Modules: 0
+Modules Per Minute: 0
+"
+
+[node name="MiddleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "
+The shareholders are not pleased.
+
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+
+[node name="ExpensesText" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("2_xg5ko")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[left]
+SAVINGS
+SALARY
+OVERTIME
+[color=red]RENT
+FOOD[/color]
+SHARES BONUS
+"
+
+[node name="ExpensesNums" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+theme = ExtResource("2_xg5ko")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[right]
+50
+26
+0
+[color=red]-15
+-5[/color]
+0
+"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "--------------------------------------------------------------------------------------------------"
+
+[node name="CurrentMoney" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/MiddleContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("2_xg5ko")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[right]56"
+
+[node name="RightContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
