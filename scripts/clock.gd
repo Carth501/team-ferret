@@ -1,5 +1,10 @@
 extends Node2D
 
+@onready var face_2 = $ClockBody/Face2
+@onready var hour_arm = $ClockBody/HourHand
+@onready var minute_arm = $ClockBody/MinuteHand
+@onready var second_arm = $ClockBody/SecondHand
+
 
 enum StartTimeMode {
 	SYSTEM_TIME,
@@ -19,11 +24,6 @@ enum StartTimeMode {
 @export_range(0, 59) var start_second := 0
 
 var seconds := 0.0
-
-@onready var second_arm := $SecondArm as Node2D
-@onready var minute_arm := $MinuteArm as Node2D
-@onready var hour_arm := $HourArm as Node2D
-
 
 func _ready() -> void:
 	if start_time == StartTimeMode.RANDOM_TIME:

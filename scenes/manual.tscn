@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtyv8dggwfwl"]
+[gd_scene load_steps=10 format=3 uid="uid://dtyv8dggwfwl"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_u3mp4"]
+[ext_resource type="Texture2D" uid="uid://bef45dhaqpaha" path="res://assets/images/cubicle/Shareholders Manual Shelf.png" id="2_d8a8w"]
 [ext_resource type="Script" path="res://scripts/manual_panel.gd" id="2_vupmp"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="3_rck42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiu62"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4hwy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4adph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cq60f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xx8re"]
 
 [node name="manual" type="Control" node_paths=PackedStringArray("popup", "text")]
 layout_mode = 3
@@ -18,10 +29,17 @@ popup = NodePath("Panel")
 text = NodePath("Panel/RichTextLabel")
 
 [node name="toggle button" type="Button" parent="." groups=["buttons"]]
+custom_minimum_size = Vector2(86, 106)
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 30.0
-text = "MANUAL"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iiu62")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p4hwy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4adph")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cq60f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xx8re")
+icon = ExtResource("2_d8a8w")
+flat = true
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
