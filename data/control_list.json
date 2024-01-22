@@ -86,7 +86,7 @@
 	{
 		"label": "Charge Flux",
 		"id": "C_CHARGE_FLUX",
-		"type": "analog",
+		"type": "switch",
 		"offset": [6,1]
 	},
 	{

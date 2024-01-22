@@ -283,17 +283,23 @@
 	  "pattern": [
 		{
 		  "id": "C_BAN_TROLLS"
+		},
+		{
+			"id": "C_LIFEGUARD"
+		},
+		{
+			"id": "C_DANCING"
 		}
 	  ],
 	  "hex": "C9CB"
 	},
 	{
-	  "name": "Everything",
-	  "id": "button_test",
+	  "name": "Critical Failure",
+	  "id": "E_CRIT_FAIL",
 	  "pattern": [
 		{
 		  "id": "C_SAFE_MODE",
-		  "value": false
+		  "value": true
 		},
 		{
 		  "id": "C_ENGORGE_BALLAST"
@@ -311,15 +317,16 @@
 		  "id": "C_DOWNLOAD_RAM"
 		},
 		{
-		  "id": "C_LIFEGUARD"
+		  "id": "C_LIFEGUARD",
+		  "value": true
 		},
 		{
 		  "id": "C_MUSIC",
-		  "value": true
+		  "value": false
 		},
 		{
 		  "id": "C_SFX",
-		  "value": true
+		  "value": false
 		},
 		{
 		  "id": "C_DANCING",
@@ -332,10 +339,12 @@
 		  "id": "C_TORRENT_GOT"
 		},
 		{
-		  "id": "C_SEED_GOT"
+		  "id": "C_SEED_GOT",
+		  "value": false
 		},
 		{
-		  "id": "C_CHARGE_FLUX"
+		  "id": "C_CHARGE_FLUX",
+		  "value": true
 		},
 		{
 		  "id": "C_BAN_TROLLS"
