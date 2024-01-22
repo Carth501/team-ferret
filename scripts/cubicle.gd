@@ -135,7 +135,7 @@ func configure_module(new_module: abstract_module, params):
 		push_error("switch instance does not have the script attached")
 	new_module.name = params.id
 	new_module.set_id(params.id)
-	new_module.set_label(params.label)
+	new_module.set_label(str("[center]", params.label, "[/center]"))
 	control_panel.add_child(new_module)
 	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
 	new_module.position = Vector2(x_pos, y_pos)

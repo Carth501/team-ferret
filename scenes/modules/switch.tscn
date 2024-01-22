@@ -1,31 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://d32ginpnucq0p"]
+[gd_scene load_steps=22 format=3 uid="uid://d32ginpnucq0p"]
 
 [ext_resource type="Script" path="res://scripts/modules/switch_module.gd" id="1_ow6tp"]
+[ext_resource type="Texture2D" uid="uid://bg5fduqv5cocr" path="res://assets/images/modules/switch_off.png" id="2_sijb4"]
+[ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="3_bf5yy"]
+[ext_resource type="Texture2D" uid="uid://lje1luxvupfb" path="res://assets/images/modules/switch_on.png" id="3_h6ukm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aka08"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjq8n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmki1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exchv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_li5y8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0poh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6nv1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gvqk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbi22"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6cwn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_doxnt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bh3ne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sl4y3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iflu2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s33qd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goysx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xb6e"]
 
 [node name="switch" type="Control" node_paths=PackedStringArray("button_obj", "label_obj")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1088.0
-offset_bottom = -584.0
+offset_right = -1216.0
+offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ow6tp")
 button_obj = NodePath("CheckButton")
 label_obj = NodePath("RichTextLabel")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.231373, 0.231373, 0.231373, 1)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-color = Color(0.00392157, 0.509804, 0.505882, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_aka08")
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
-offset_right = 44.0
-offset_bottom = 24.0
-scale = Vector2(1.45, 1.45)
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[node name="switch_tex" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 29.0
+texture = ExtResource("2_sijb4")
+expand_mode = 2
+
+[node name="switch_off" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -7.0
+offset_right = 64.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yjq8n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pmki1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_exchv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_li5y8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x0poh")
+icon = ExtResource("2_sijb4")
+expand_icon = true
+
+[node name="switch_on" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -7.0
+offset_right = 64.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b6nv1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gvqk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gbi22")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_b6cwn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_doxnt")
+text = "mou"
+icon = ExtResource("3_h6ukm")
+expand_icon = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -33,6 +115,24 @@ offset_left = 2.0
 offset_top = 32.0
 offset_right = 62.0
 offset_bottom = 63.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 10
 
+[node name="CheckButton" type="CheckButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+scale = Vector2(1.45, 1.45)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bh3ne")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sl4y3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iflu2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s33qd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_goysx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0xb6e")
+
+[node name="click_player" parent="CheckButton" instance=ExtResource("3_bf5yy")]
+
+[connection signal="pressed" from="switch_off" to="." method="_on_switch_off_pressed"]
+[connection signal="pressed" from="switch_on" to="." method="_on_switch_on_pressed"]
 [connection signal="pressed" from="CheckButton" to="." method="button_pressed"]
