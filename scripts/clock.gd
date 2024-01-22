@@ -25,11 +25,6 @@ enum StartTimeMode {
 
 var seconds := 0.0
 
-#@onready var second_arm := $SecondArm as Node2D
-#@onready var minute_arm := $MinuteArm as Node2D
-#@onready var hour_arm := $HourArm as Node2D
-
-
 func _ready() -> void:
 	if start_time == StartTimeMode.RANDOM_TIME:
 		seconds = randf_range(0.0, 43200.0)

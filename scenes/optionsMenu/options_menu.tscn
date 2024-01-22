@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw7lctgcou8ei"]
+[gd_scene load_steps=8 format=3 uid="uid://dw7lctgcou8ei"]
 
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="1_jrvfb"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_kdv8x"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_41nkw"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_bkl8p"]
 [ext_resource type="PackedScene" uid="uid://da2nmyxvcffnd" path="res://scenes/optionsMenu/settings_tab_container.tscn" id="3_nrrip"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="4_h2i6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6biby"]
+shader = ExtResource("2_bkl8p")
+shader_parameter/lod = 1.71
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -14,6 +19,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kdv8x")
+
+[node name="BgBlur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6biby")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
