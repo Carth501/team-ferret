@@ -1,13 +1,17 @@
-[gd_scene load_steps=27 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=32 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
-[ext_resource type="Texture2D" uid="uid://7hgdoywoncbi" path="res://assets/images/cubicle_background.png" id="2_kdl47"]
+[ext_resource type="Texture2D" uid="uid://dcay2pjswjokv" path="res://assets/images/cubicle/Shareholders Player Cubicle.png" id="2_uvf7p"]
+[ext_resource type="Texture2D" uid="uid://cffms0cq3vw44" path="res://assets/images/cubicle/Ring Gameplay Map.png" id="3_7kfsr"]
 [ext_resource type="PackedScene" uid="uid://bldt2tc567tql" path="res://scenes/pager.tscn" id="3_fcxxh"]
 [ext_resource type="Script" path="res://scripts/error_factory.gd" id="4_cxbfh"]
+[ext_resource type="Texture2D" uid="uid://cknxe7wr16y2r" path="res://assets/images/cubicle/Ring Player Icon.png" id="4_kv2wk"]
 [ext_resource type="PackedScene" uid="uid://dtyv8dggwfwl" path="res://scenes/manual.tscn" id="5_neuwc"]
+[ext_resource type="Texture2D" uid="uid://brrnjr2th8jho" path="res://assets/images/cubicle/Ring Console Command.png" id="5_un2pp"]
 [ext_resource type="PackedScene" uid="uid://dlg0hvp5kloyl" path="res://scenes/cpc_monitor.tscn" id="6_18xk0"]
 [ext_resource type="PackedScene" uid="uid://df8c2ke4hukg1" path="res://scenes/cpc_calculator.tscn" id="7_dldy6"]
+[ext_resource type="Texture2D" uid="uid://cqdt2ulb433ug" path="res://assets/images/cubicle/Shareholders_Pager.png" id="8_e4rso"]
 [ext_resource type="Texture2D" uid="uid://u3cxigegidwc" path="res://assets/images/gun_frames/TS_Deagle_0000.png" id="9_h5isx"]
 [ext_resource type="Texture2D" uid="uid://iooyorr188rf" path="res://assets/images/gun_frames/TS_Deagle_0003.png" id="10_b2c4q"]
 [ext_resource type="Texture2D" uid="uid://c3lrx6patuean" path="res://assets/images/gun_frames/TS_Deagle_0004.png" id="11_jmrc1"]
@@ -24,6 +28,7 @@
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
 [ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
+[ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/clock.tscn" id="26_h27ps"]
 [ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/EOD Music.mp3" id="26_rtvup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
@@ -82,11 +87,64 @@ pause_curtain = NodePath("pause curtain")
 pause_button = NodePath("ScrollContainer/Control/Pause Button")
 resume_button = NodePath("pause curtain/Resume Button")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Cubicle" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_kdl47")
-stretch_mode = 5
+
+[node name="Background" type="TextureRect" parent="Cubicle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1240.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uvf7p")
+
+[node name="GameScreen" type="TextureRect" parent="Cubicle/Background"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 36.0
+offset_right = 994.0
+offset_bottom = 325.0
+texture = ExtResource("3_7kfsr")
+
+[node name="PlayerIcon" type="TextureRect" parent="Cubicle/Background"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 261.0
+offset_right = 413.0
+offset_bottom = 325.0
+texture = ExtResource("4_kv2wk")
+
+[node name="Console" type="TextureRect" parent="Cubicle/Background"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 42.0
+offset_right = 995.0
+offset_bottom = 184.0
+texture = ExtResource("5_un2pp")
+
+[node name="CpcMonitor" parent="Cubicle/Background/Console" instance=ExtResource("6_18xk0")]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 30.0
+offset_right = -228.0
+offset_bottom = -112.0
+
+[node name="Clock" parent="Cubicle" instance=ExtResource("26_h27ps")]
+position = Vector2(159, 58)
+
+[node name="Pager" type="TextureRect" parent="Cubicle"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 162.0
+offset_right = 250.0
+offset_bottom = 216.0
+texture = ExtResource("8_e4rso")
 
 [node name="level clock" parent="." instance=ExtResource("2_eni3y")]
 offset_left = 42.0
@@ -152,9 +210,9 @@ text = "[center]Pause[center]"
 [node name="Timer Corral" type="Node" parent="."]
 
 [node name="pager" parent="." instance=ExtResource("3_fcxxh")]
-offset_left = 5.0
+offset_left = 103.0
 offset_top = 174.0
-offset_right = -1161.0
+offset_right = -1063.0
 offset_bottom = -512.0
 
 [node name="ErrorFactory" type="Node" parent="." node_paths=PackedStringArray("cubicle_instance")]
@@ -162,26 +220,20 @@ script = ExtResource("4_cxbfh")
 cubicle_instance = NodePath("..")
 probability = 0.2
 
-[node name="CpcMonitor" parent="." instance=ExtResource("6_18xk0")]
-offset_left = 770.0
-offset_top = 50.0
-offset_right = -293.0
-offset_bottom = -617.0
-
-[node name="manual" parent="." instance=ExtResource("5_neuwc")]
-offset_left = 16.0
-offset_top = 272.0
-offset_right = -1179.0
-offset_bottom = -411.0
-
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
-display = NodePath("../CpcMonitor")
+display = NodePath("../Cubicle/Background/Console/CpcMonitor")
 
 [node name="gun" type="AnimatedSprite2D" parent="."]
-position = Vector2(646, 216)
+position = Vector2(758, 261)
 sprite_frames = SubResource("SpriteFrames_bn0dg")
 animation = &"fire"
 script = ExtResource("19_1d3tl")
+
+[node name="manual" parent="." instance=ExtResource("5_neuwc")]
+offset_left = 18.0
+offset_top = 230.0
+offset_right = -1177.0
+offset_bottom = -383.0
 
 [node name="pause curtain" type="Panel" parent="."]
 visible = false
@@ -268,7 +320,6 @@ bus = &"Music"
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
-[connection signal="reached_goal" from="CpcCalculator" to="." method="met_target_cpc"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
 [connection signal="pressed" from="pause curtain/end shift" to="." method="end_level"]
 [connection signal="pressed" from="pause curtain/complete level" to="." method="complete_level"]
