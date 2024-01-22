@@ -4,19 +4,19 @@ signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
 signal module_triggered(module_id: String)
 
-@export var current_level_id: String
 @export var control_panel: Control
 @export var timer_corral: Node
 @export var game_timer: Timer
 @export var error_factory_controller: error_factory
 @export var manual_instance: manual
 @export var level_clock_handler: level_clock
-@export var pause_curtain: Panel
-@export var pause_button: button_module
-@export var resume_button: button_module
+@onready var pause_curtain := $"pause curtain"
+@onready var pause_button := $"ScrollContainer/Module Panel/Pause Button"
+@onready var resume_button := $"pause curtain/Resume Button"
 @onready var level_music := $"Level Music"
 @onready var danger_music := $"Danger Music"
 @onready var cpc_calc := $CpcCalculator
+var current_level_id: String
 var data: data_libraries_single
 var loader: level_loader
 var current_level
@@ -179,6 +179,7 @@ func populate_error_factory():
 	error_factory_controller.set_error_list(error_catalogue)
 
 func toggle_pause():
+	print("toggle_pause")
 	paused = !paused
 	pause_curtain.visible = paused
 	if(paused):
