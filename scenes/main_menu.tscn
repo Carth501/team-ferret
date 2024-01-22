@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://y31dmf6l62w0" path="res://assets/images/menu/Shareholders Menu Player.png" id="5_qrggq"]
 [ext_resource type="PackedScene" uid="uid://dw7lctgcou8ei" path="res://scenes/optionsMenu/options_menu.tscn" id="6_mawxx"]
 [ext_resource type="Texture2D" uid="uid://xc5d5304hiu8" path="res://assets/images/menu/buttons/Play.png" id="7_bv67n"]
-[ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="7_dmxoj"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="8_1m8uy"]
 [ext_resource type="Texture2D" uid="uid://b7vwrtxc2rn7t" path="res://assets/images/menu/buttons/Load.png" id="10_lt7va"]
 [ext_resource type="Texture2D" uid="uid://ci5maioxwyxxx" path="res://assets/images/menu/buttons/Options.png" id="11_4u17b"]
 [ext_resource type="Texture2D" uid="uid://w3ungjfxt5dh" path="res://assets/images/menu/buttons/Credits.png" id="12_jwlpp"]
 [ext_resource type="Texture2D" uid="uid://b7hkaynupl514" path="res://assets/images/menu/buttons/Quit.png" id="14_lls55"]
+[ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="17_trxdg"]
 
 [sub_resource type="Gradient" id="Gradient_gj2xc"]
 colors = PackedColorArray(0.737255, 0.960784, 0.862745, 1, 0.396078, 0.776471, 0.631373, 1)
@@ -286,7 +286,7 @@ script = ExtResource("4_yxiqb")
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_dmxoj")
+stream = ExtResource("17_trxdg")
 volume_db = -12.0
 autoplay = true
 bus = &"Music"

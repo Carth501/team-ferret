@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_4esr6"]
 [ext_resource type="PackedScene" uid="uid://c5t84l7lw67b8" path="res://scenes/level_select_panel.tscn" id="2_iq5f4"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_jgx4p"]
-[ext_resource type="AudioStream" uid="uid://bed7nnf0yru0" path="res://assets/audio/music/Title Screen.mp3" id="4_1cdb8"]
+[ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="4_lc7sr"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="5_txwpc"]
 
 [node name="GameMenu" type="Node" node_paths=PackedStringArray("level_select_panel")]
@@ -39,7 +39,7 @@ offset_right = 1251.0
 offset_bottom = 612.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_1cdb8")
+stream = ExtResource("4_lc7sr")
 volume_db = -12.0
 autoplay = true
 bus = &"Music"

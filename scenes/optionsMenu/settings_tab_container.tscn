@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://da2nmyxvcffnd"]
 
-[ext_resource type="Script" path="res://scenes/optionsMenu/settings.gd" id="1_jbdlt"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_jbdlt"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="1_x8e27"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_y6vc7"]
 [ext_resource type="Script" path="res://scripts/tab_clicked.gd" id="2_ccuh6"]
-[ext_resource type="Script" path="res://scenes/optionsMenu/volume_slider.gd" id="5_uh8iy"]
+[ext_resource type="Script" path="res://scripts/volume_slider.gd" id="5_uh8iy"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="6_r4r0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ww3y"]

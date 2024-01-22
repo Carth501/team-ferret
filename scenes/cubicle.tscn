@@ -26,10 +26,10 @@
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="21_aqy75"]
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="21_sb4bn"]
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
-[ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
+[ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/lvl_1.mp3" id="23_colnk"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
-[ext_resource type="PackedScene" uid="uid://c1xnuqltbwh8n" path="res://scenes/analogClock.tscn" id="26_h27ps"]
-[ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/EOD Music.mp3" id="26_rtvup"]
+[ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/analogClock.tscn" id="26_h27ps"]
+[ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/eod_music.mp3" id="26_rtvup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rx6q"]
 animations = [{
@@ -323,8 +323,8 @@ bus = &"Music"
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
 [connection signal="times_up" from="level clock" to="." method="end_of_shift"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
-[connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
+[connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
