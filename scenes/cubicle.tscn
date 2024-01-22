@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=34 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://df8c2ke4hukg1" path="res://scenes/cpc_calculator.tscn" id="7_dldy6"]
 [ext_resource type="Texture2D" uid="uid://u3cxigegidwc" path="res://assets/images/gun_frames/TS_Deagle_0000.png" id="9_h5isx"]
 [ext_resource type="Texture2D" uid="uid://iooyorr188rf" path="res://assets/images/gun_frames/TS_Deagle_0003.png" id="10_b2c4q"]
+[ext_resource type="Texture2D" uid="uid://dq86iwrmkc0io" path="res://assets/images/modules/button_up.png" id="10_g5vjq"]
+[ext_resource type="Texture2D" uid="uid://bv8m88nlesnui" path="res://assets/images/modules/button_pushed.png" id="11_clqwg"]
 [ext_resource type="Texture2D" uid="uid://c3lrx6patuean" path="res://assets/images/gun_frames/TS_Deagle_0004.png" id="11_jmrc1"]
 [ext_resource type="Texture2D" uid="uid://csk45deete1px" path="res://assets/images/gun_frames/TS_Deagle_0005.png" id="12_jcpxg"]
 [ext_resource type="Texture2D" uid="uid://dtj1h1hi3lx68" path="res://assets/images/gun_frames/TS_Deagle_0006.png" id="13_v23kw"]
@@ -21,14 +23,30 @@
 [ext_resource type="Texture2D" uid="uid://dpmbu1kir072h" path="res://assets/images/gun_frames/TS_Deagle_0009.png" id="16_byysa"]
 [ext_resource type="Texture2D" uid="uid://cf5n1nah75yql" path="res://assets/images/gun_frames/TS_Deagle_0010.png" id="17_1kxj8"]
 [ext_resource type="Texture2D" uid="uid://cckojra47v0cc" path="res://assets/images/gun_frames/TS_Deagle_0011.png" id="18_kqlif"]
-[ext_resource type="Script" path="res://scripts/gun.gd" id="19_1d3tl"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="21_aqy75"]
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="21_sb4bn"]
 [ext_resource type="FontFile" uid="uid://btdpylpyn7vym" path="res://assets/fonts/NotoSansMono-SemiBold.ttf" id="23_830fa"]
 [ext_resource type="AudioStream" uid="uid://dvy7v54gje51" path="res://assets/audio/music/LVL 1.mp3" id="23_colnk"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
-[ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/analogClock.tscn" id="26_h27ps"]
+[ext_resource type="PackedScene" uid="uid://c1xnuqltbwh8n" path="res://scenes/analogClock.tscn" id="26_h27ps"]
 [ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/EOD Music.mp3" id="26_rtvup"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rx6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_g5vjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_clqwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g5vjq")
+}],
+"loop": false,
+"name": &"click",
+"speed": 15.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
 animations = [{
@@ -73,18 +91,16 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler", "pause_curtain", "pause_button", "resume_button")]
+[sub_resource type="GDScript" id="GDScript_gndtr"]
+
+[node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
-current_level_id = "test"
-control_panel = NodePath("ScrollContainer/Control")
+control_panel = NodePath("ScrollContainer/Module Panel")
 timer_corral = NodePath("Timer Corral")
 game_timer = NodePath("Timer")
 error_factory_controller = NodePath("ErrorFactory")
 manual_instance = NodePath("manual")
 level_clock_handler = NodePath("level clock")
-pause_curtain = NodePath("pause curtain")
-pause_button = NodePath("ScrollContainer/Control/Pause Button")
-resume_button = NodePath("pause curtain/Resume Button")
 
 [node name="Cubicle" type="Control" parent="."]
 layout_mode = 3
@@ -155,12 +171,12 @@ offset_bottom = 677.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="ScrollContainer"]
+[node name="Module Panel" type="Control" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Pause Button" type="Control" parent="ScrollContainer/Control" node_paths=PackedStringArray("rtl_object", "internal_button")]
+[node name="Pause Button" type="Control" parent="ScrollContainer/Module Panel" node_paths=PackedStringArray("rtl_object", "internal_button")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 750.0
@@ -168,31 +184,31 @@ offset_top = 206.0
 offset_right = 750.0
 offset_bottom = 206.0
 script = ExtResource("21_sb4bn")
-rtl_object = NodePath("../../../pause curtain/Resume Button/Button/RichTextLabel")
+rtl_object = NodePath("../../../pause curtain/Resume Button/RichTextLabel")
 internal_button = NodePath("Button")
 
-[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Pause Button"]
+[node name="anim_button" type="AnimatedSprite2D" parent="ScrollContainer/Module Panel/Pause Button"]
+position = Vector2(32, 32)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_0rx6q")
+animation = &"click"
+
+[node name="Button" type="Button" parent="ScrollContainer/Module Panel/Pause Button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-color = Color(0.00392157, 0.509804, 0.505882, 1)
 
-[node name="Button" type="Button" parent="ScrollContainer/Control/Pause Button"]
+[node name="click_player" parent="ScrollContainer/Module Panel/Pause Button/Button" instance=ExtResource("21_aqy75")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/Module Panel/Pause Button"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 56.0
-
-[node name="click_player" parent="ScrollContainer/Control/Pause Button/Button" instance=ExtResource("21_aqy75")]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/Control/Pause Button/Button"]
-layout_mode = 0
-offset_top = 15.0
-offset_right = 120.0
-offset_bottom = 98.0
+offset_top = 14.0
+offset_right = 128.0
+offset_bottom = 97.0
 scale = Vector2(0.4, 0.4)
-mouse_filter = 1
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("23_830fa")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
@@ -218,7 +234,7 @@ display = NodePath("../Cubicle/Background/Console/CpcMonitor")
 position = Vector2(758, 261)
 sprite_frames = SubResource("SpriteFrames_bn0dg")
 animation = &"fire"
-script = ExtResource("19_1d3tl")
+script = SubResource("GDScript_gndtr")
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
 offset_left = 18.0
@@ -241,31 +257,31 @@ offset_top = 610.0
 offset_right = 982.0
 offset_bottom = 610.0
 script = ExtResource("21_sb4bn")
-rtl_object = NodePath("Button/RichTextLabel")
+rtl_object = NodePath("RichTextLabel")
 internal_button = NodePath("Button")
 
-[node name="ColorRect" type="ColorRect" parent="pause curtain/Resume Button"]
+[node name="anim_button" type="AnimatedSprite2D" parent="pause curtain/Resume Button"]
+position = Vector2(32, 32)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_0rx6q")
+animation = &"click"
+
+[node name="Button" type="Button" parent="pause curtain/Resume Button"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-color = Color(0.00392157, 0.509804, 0.505882, 1)
-
-[node name="Button" type="Button" parent="pause curtain/Resume Button"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 56.0
 
 [node name="click_player" parent="pause curtain/Resume Button/Button" instance=ExtResource("21_aqy75")]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="pause curtain/Resume Button/Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="pause curtain/Resume Button"]
 layout_mode = 0
+offset_left = 8.0
 offset_top = 14.0
-offset_right = 120.0
+offset_right = 128.0
 offset_bottom = 99.0
 scale = Vector2(0.4, 0.4)
-mouse_filter = 1
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("23_830fa")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
@@ -307,8 +323,8 @@ bus = &"Music"
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
 [connection signal="times_up" from="level clock" to="." method="end_of_shift"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
-[connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
+[connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]

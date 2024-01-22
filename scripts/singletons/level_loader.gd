@@ -7,6 +7,8 @@ func load_level(id: String):
 	next_level_id = id
 	var tree = get_tree()
 	var error = tree.change_scene_to_file("res://scenes/cubicle.tscn")
+	if(error != OK):
+		push_error(str("level_loader ", error))
 
 func load_continue():
 	load_level("L_RING-1")
