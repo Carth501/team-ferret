@@ -3,7 +3,8 @@
 	  "metadata": {
 		"name": "template",
 		"id": "L_RING-0",
-		"hidden": true
+		"hidden": true,
+		"music": "lvl_1"
 	  },
 	  "gameplay": {
 		"starting_cpc": 0,
@@ -30,7 +31,8 @@
 	  "metadata": {
 		"name": "Orientation",
 		"id": "L_RING-1",
-		"hidden": false
+		"hidden": false,
+		"music": "lvl_2"
 	  },
 	  "gameplay": {
 		"starting_cpc": 100,
@@ -85,7 +87,8 @@
 	  "metadata": {
 		"name": "Launch Day Lunacy",
 		"id": "L_RING-2",
-		"hidden": false
+		"hidden": false,
+		"music": "lvl_3"
 	  },
 	  "gameplay": {
 		"starting_cpc": 10,
@@ -111,7 +114,8 @@
 	  "metadata": {
 		"name": "Bug Hunt Bonanza",
 		"id": "L_RING-3",
-		"hidden": false
+		"hidden": false,
+		"music": "lvl_4"
 	  },
 	  "gameplay": {
 		"starting_cpc": 25,
@@ -138,7 +142,8 @@
 	  "metadata": {
 		"name": "Code Red Refactor",
 		"id": "L_RING-4",
-		"hidden": false
+		"hidden": false,
+		"music": "lvl_5"
 	  },
 	  "gameplay": {
 		"starting_cpc": 40,
@@ -165,7 +170,8 @@
 	  "metadata": {
 		"name": "Patchwork Pandemonium",
 		"id": "L_RING-5",
-		"hidden": false
+		"hidden": false,
+		"music": "lvl_6"
 	  },
 	  "gameplay": {
 		"starting_cpc": 55,

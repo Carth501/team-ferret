@@ -78,6 +78,10 @@ func configure_level_settings():
 		create_danger_timer(shift_duration)
 	if(current_level.gameplay.has("failure_threshold_percent")):
 		failure_threshold_percent = current_level.gameplay.failure_threshold_percent
+	if(current_level.metadata.has("music")):
+		var song = load("res://assets/audio/music/" + current_level.metadata.music + ".mp3")
+		level_music.stream = song
+		level_music.play()
 
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxbf67eetb4n2"
+path="res://.godot/imported/LVL 2.mp3-dcad10ba907c66b95e0ff213f2b37c3e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/LVL 2.mp3"
+dest_files=["res://.godot/imported/LVL 2.mp3-dcad10ba907c66b95e0ff213f2b37c3e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
