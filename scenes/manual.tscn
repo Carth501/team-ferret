@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtyv8dggwfwl"]
+[gd_scene load_steps=11 format=3 uid="uid://dtyv8dggwfwl"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_u3mp4"]
 [ext_resource type="Texture2D" uid="uid://bef45dhaqpaha" path="res://assets/images/cubicle/Shareholders Manual Shelf.png" id="2_d8a8w"]
 [ext_resource type="Script" path="res://scripts/manual_panel.gd" id="2_vupmp"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="3_rck42"]
+[ext_resource type="PackedScene" uid="uid://byo2ynlmm7spw" path="res://scenes/manual_book.tscn" id="5_8tfrf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiu62"]
 
@@ -15,7 +16,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xx8re"]
 
-[node name="manual" type="Control" node_paths=PackedStringArray("popup", "text")]
+[node name="manual" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,8 +26,6 @@ offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u3mp4")
-popup = NodePath("Panel")
-text = NodePath("Panel/RichTextLabel")
 
 [node name="toggle button" type="Button" parent="." groups=["buttons"]]
 custom_minimum_size = Vector2(86, 106)
@@ -87,6 +86,9 @@ text = "NEXT"
 [node name="click_player" type="Node" parent="Panel/Next Page"]
 script = ExtResource("3_rck42")
 
+[node name="manual_book" parent="." instance=ExtResource("5_8tfrf")]
+visible = false
+
 [connection signal="pressed" from="toggle button" to="." method="toggle_manual_popup"]
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]
@@ -94,3 +96,5 @@ script = ExtResource("3_rck42")
 [connection signal="meta_clicked" from="Panel/RichTextLabel" to="." method="parse_hyperlink"]
 [connection signal="pressed" from="Panel/Previous Page" to="." method="prev_page"]
 [connection signal="pressed" from="Panel/Next Page" to="." method="next_page"]
+[connection signal="next_page" from="manual_book" to="." method="next_page"]
+[connection signal="prev_page" from="manual_book" to="." method="prev_page"]

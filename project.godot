@@ -28,6 +28,7 @@ audio_continuity_single="*res://scripts/singletons/audio_continuity.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
+window/subwindows/embed_subwindows=false
 
 [dotnet]
 
