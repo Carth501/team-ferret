@@ -56,7 +56,6 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 417.0
 offset_bottom = 509.0
-mouse_filter = 2
 bbcode_enabled = true
 
 [node name="Previous Page" type="Button" parent="Panel" groups=["buttons"]]
@@ -92,5 +91,6 @@ script = ExtResource("3_rck42")
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="Panel" method="_on_mouse_exited"]
+[connection signal="meta_clicked" from="Panel/RichTextLabel" to="." method="parse_hyperlink"]
 [connection signal="pressed" from="Panel/Previous Page" to="." method="prev_page"]
 [connection signal="pressed" from="Panel/Next Page" to="." method="next_page"]

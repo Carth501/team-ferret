@@ -4,13 +4,33 @@ class_name manual extends Control
 @export var text: RichTextLabel
 var pages: Array[String] = []
 var page_index = 0
+var index_page_size = 20
 
 func toggle_manual_popup():
 	popup.visible = !popup.visible
 	write_page()
 
+func write_manual(error_list, control_list):
+	build_index(error_list)
+	build_error_list(error_list, control_list)
+
+func build_index(error_list):
+	var index_length := ceili(error_list.size() / 30.0)
+	var count := 0
+	var index_page := 0
+	pages.append("")
+	for error in error_list:
+		if(count >= index_page_size):
+			count = 0
+			index_page += 1
+			pages.append("")
+		var page_link = 1 + index_length + count + index_page * index_page_size
+		var index_entry := str("[url={\"page\":", page_link, "}]", error.hex, "\t ", error.name,"[/url]")
+		pages[index_page] += index_entry + "\n"
+		count += 1
+
 func build_error_list(error_list, control_list):
-	var index = 0
+	var index = pages.size()
 	for error in error_list:
 		pages.append(str("[b]",error.hex, " : ", error.name, "[/b]"))
 		var step_number = 1
@@ -43,3 +63,12 @@ func prev_page():
 	if(page_index > 0):
 		page_index -= 1
 		write_page()
+
+func parse_hyperlink(meta: Variant):
+	var parsedResult = JSON.parse_string(meta)
+	if(parsedResult.has("page")):
+		jump_to_page(parsedResult.page)
+
+func jump_to_page(index: int):
+	page_index = index
+	write_page()
