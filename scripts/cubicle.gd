@@ -17,6 +17,8 @@ signal modules_ready()
 @onready var level_music := $"Level Music"
 @onready var danger_music := $"Danger Music"
 @onready var cpc_calc := $CpcCalculator
+@onready var error_arrived := $"Sound Effects/Error Arrived"
+@onready var error_resolved := $"Sound Effects/Error Resolved"
 var current_level_id: String
 var data: data_libraries_single
 var loader: level_loader
@@ -175,9 +177,11 @@ func create_error_timers():
 func next_error_report():
 	var new_error = error_schedule.pop_front()
 	diagetic_error_report.emit(new_error)
+	error_arrived.play()
 
 func announce_error_resolved(error_id):
 	diagetic_error_resolved.emit(error_id)
+	error_resolved.play()
 
 func setup_manual():
 	manual_instance.write_manual(data.error_data, data.control_data)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=36 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -30,6 +30,8 @@
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="23_w6ohv"]
 [ext_resource type="PackedScene" uid="uid://dgq28i1enktnj" path="res://scenes/analogClock.tscn" id="26_h27ps"]
 [ext_resource type="AudioStream" uid="uid://bwbj66lune5jd" path="res://assets/audio/music/eod_music.mp3" id="26_rtvup"]
+[ext_resource type="AudioStream" uid="uid://diriqhad4xvym" path="res://assets/audio/effects/Beep Beep.wav" id="31_rjpuj"]
+[ext_resource type="AudioStream" uid="uid://clp71mvvkju6l" path="res://assets/audio/effects/Single Beep.wav" id="32_k5f08"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rx6q"]
 animations = [{
@@ -318,6 +320,16 @@ bus = &"Music"
 stream = ExtResource("26_rtvup")
 volume_db = -12.0
 bus = &"Music"
+
+[node name="Sound Effects" type="Node" parent="."]
+
+[node name="Error Arrived" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("31_rjpuj")
+bus = &"Effects"
+
+[node name="Error Resolved" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("32_k5f08")
+bus = &"Effects"
 
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
