@@ -173,7 +173,7 @@ func announce_error_resolved(error_id):
 	diagetic_error_resolved.emit(error_id)
 
 func setup_manual():
-	manual_instance.build_error_list(data.error_data, data.control_data)
+	manual_instance.write_manual(data.error_data, data.control_data)
 
 func set_initial_module_settings():
 	if(current_level.has("init_values")):
