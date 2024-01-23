@@ -18,13 +18,10 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 	cubicle_reference = cubicle_instance
 	resolved_error.connect(cubicle_instance.announce_error_resolved)
 	for module in pattern:
-		var module_ready = cubicle_instance.module_obj_dic.has(module.id)
-		if(!module_ready):
-			await cubicle_reference.module_ready
 		var module_instance = cubicle_instance.module_obj_dic[module.id]
 		module_instance.trigger.connect(pattern_step)
 		module_instances[module.id] = module_instance
-	check_next_step()
+		check_next_step()
 
 func pattern_step(payload):
 	if(cubicle_reference.paused):

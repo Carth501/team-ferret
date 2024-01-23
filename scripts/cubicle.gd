@@ -3,7 +3,7 @@ class_name cubicle extends Node
 signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
 signal module_triggered(module_id: String)
-signal module_ready(module_id: String)
+signal modules_ready()
 
 @export var control_panel: Control
 @export var timer_corral: Node
@@ -132,6 +132,7 @@ func create_module_objects():
 			_:
 				push_error(str(module_definition.type, " not found. Check spelling."))
 		configure_module(new_module, module_definition)
+	modules_ready.emit()
 
 func create_button() -> abstract_module:
 	var button_scene = load("res://scenes/modules/button.tscn")
@@ -154,7 +155,6 @@ func configure_module(new_module: abstract_module, params):
 	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
 	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
-	module_ready.emit(params.id)
 
 func dereference_module_id(id: String):
 	for module_def in data.control_data:
