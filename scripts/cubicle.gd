@@ -228,8 +228,15 @@ func met_target_cpc():
 func end_of_shift():
 	toggle_pause()
 	resume_button.visible = false
-	if(met_target):
-		save_handler_single.level_complete(current_level_id)
+	if(!met_target):
+		failure()
+		return
+	save_handler_single.level_complete(current_level_id)
+	var tree = get_tree()
+	tree.change_scene_to_file("res://scenes/end_day.tscn")
 
 func failure():
-	print("don't you care about this company?")
+	toggle_pause()
+	resume_button.visible = false
+	var tree = get_tree()
+	tree.change_scene_to_file("res://scenes/end_day.tscn")

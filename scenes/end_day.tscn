@@ -150,3 +150,13 @@ text = "[right]56"
 [node name="RightContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="return to menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 600.0
+offset_right = 701.0
+offset_bottom = 631.0
+text = "Return To Menu"
+
+[connection signal="pressed" from="return to menu" to="." method="return_to_menu"]

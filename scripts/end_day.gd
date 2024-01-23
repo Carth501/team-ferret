@@ -45,3 +45,6 @@ func update_day_text() -> void:
 							"[/color]\n", overtime)
 	current_money.text = str("[right]",money)
 
+func return_to_menu():
+	var tree = get_tree()
+	tree.change_scene_to_file("res://scenes/game_menu.tscn")
