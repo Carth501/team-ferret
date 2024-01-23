@@ -166,7 +166,6 @@ func dereference_module_id(id: String):
 
 func create_error_timers():
 	for error in error_schedule:
-		print("create_error_timers()")
 		var timer := self_destruct_timer.new()
 		timer_corral.add_child(timer)
 		timer.wait_time = error.time
@@ -178,7 +177,6 @@ func create_error_timers():
 func next_error_report():
 	var new_error = error_schedule.pop_front()
 	diagetic_error_report.emit(new_error)
-	print("next_error_report")
 	error_arrived.play()
 
 func error_report(_error: Variant):

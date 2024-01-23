@@ -89,7 +89,6 @@ func level_complete(level_id: String):
 	if(!complete_levels.has(level_id)):
 		complete_levels.append(level_id)
 		write_save(active_save)
-	print("load game")
 	transition_screen_single.transitioned.connect(go_to_game_menu)
 	transition_screen_single.transition()
 

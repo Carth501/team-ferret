@@ -15,7 +15,6 @@ func set_pattern(new_pattern: Array):
 	pattern = new_pattern
 
 func connect_to_cubicle(cubicle_instance: cubicle):
-	print("connect_to_cubicle")
 	cubicle_reference = cubicle_instance
 	resolved_error.connect(cubicle_instance.announce_error_resolved)
 	for module in pattern:
