@@ -1,16 +1,5 @@
 [
 	{
-	  "name": "template",
-	  "id": "E_EXAMPLE",
-	  "hex": "4F3A",
-	  "pattern": [
-		{
-		  "id": "C_CONTROL_ID",
-		  "value": false
-		}
-	  ]
-	},
-	{
 	  "name": "Out of Bounds Character",
 	  "id": "E_OUT_OF_BOUNDS",
 	  "pattern": [
@@ -358,5 +347,15 @@
 		}
 	  ],
 	  "hex": "D336"
-	}
+	},
+	{
+		"name": "END OF LINE.",
+		"id": "DONT_USE",
+		"pattern": [
+		  {
+			"id": "TRON"
+		  }
+		],
+		"hex": "MX 16-923"
+	  }
   ]

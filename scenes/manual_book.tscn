@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://byo2ynlmm7spw"]
+
+[ext_resource type="Texture2D" uid="uid://dhkuhvre6w542" path="res://assets/images/Manual_PopUp_Draft_1.png" id="1_34q65"]
+[ext_resource type="Script" path="res://scripts/manual_book.gd" id="1_g60n5"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_8r16f"]
+
+[node name="manual_book" type="Node2D"]
+script = ExtResource("1_g60n5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_34q65")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 52
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="left_page" type="VBoxContainer" parent="TextureRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="left_header" type="Label" parent="TextureRect/MarginContainer/HBoxContainer/left_page"]
+layout_mode = 2
+theme = ExtResource("2_8r16f")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+clip_text = true
+
+[node name="left_text" type="RichTextLabel" parent="TextureRect/MarginContainer/HBoxContainer/left_page"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_8r16f")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+fit_content = true
+scroll_following = true
+
+[node name="spine" type="VBoxContainer" parent="TextureRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="right_page" type="VBoxContainer" parent="TextureRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="right_header" type="Label" parent="TextureRect/MarginContainer/HBoxContainer/right_page"]
+layout_mode = 2
+theme = ExtResource("2_8r16f")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+clip_text = true
+
+[node name="right_text" type="RichTextLabel" parent="TextureRect/MarginContainer/HBoxContainer/right_page"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_8r16f")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+fit_content = true
+scroll_following = true
+
+[node name="prev_button" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 326.0
+offset_right = 250.0
+offset_bottom = 357.0
+theme = ExtResource("2_8r16f")
+text = "<<"
+
+[node name="next_button" type="Button" parent="."]
+offset_left = 282.0
+offset_top = 326.0
+offset_right = 332.0
+offset_bottom = 357.0
+theme = ExtResource("2_8r16f")
+text = ">>
+"
+
+[connection signal="gui_input" from="TextureRect/MarginContainer" to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="TextureRect/MarginContainer" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect/MarginContainer" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="prev_button" to="." method="prev_button"]
+[connection signal="pressed" from="next_button" to="." method="next_button"]
