@@ -23,3 +23,4 @@ func go_to_cubicle():
 	var error = tree.change_scene_to_file("res://scenes/cubicle.tscn")
 	if(error != OK):
 		push_error(str("level_loader ", error))
+	transition_screen_single.transitioned.disconnect(go_to_cubicle)

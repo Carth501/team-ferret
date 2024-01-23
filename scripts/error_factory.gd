@@ -7,8 +7,10 @@ signal new_active_error(Variant)
 var active_error_count = 0
 var concurrent_player_count = 0
 var error_list: Array = []
+var active_error_instances: Array = []
 var rng = RandomNumberGenerator.new()
 @export var probability: float = 0.1
+var ready_to_connect := false
 
 func _ready():
 	if(cubicle_instance == null):
@@ -31,9 +33,14 @@ func create_error_node(error):
 	# has emitted and resolved_error has been connected.
 	new_active_error.emit(error)
 	new_error.resolved_error.connect(decrement_error_count)
+	active_error_instances.append(new_error)
+	if(ready_to_connect):
+		new_error.connect_to_cubicle(cubicle_instance)
+		
 
 func cubicle_ready():
-	for error in error_list:
+	ready_to_connect = true
+	for error in active_error_instances:
 		error.connect_to_cubicle(cubicle_instance)
 
 func decrement_error_count(_id):

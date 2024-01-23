@@ -94,7 +94,7 @@ func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
 		var error_item = data.dereference_error_id(error.id)
-		if(error_item.has("time")):
+		if(error.has("time")):
 			error_item["time"] = error.time
 			error_schedule.append(error_item)
 		else:
@@ -177,6 +177,9 @@ func create_error_timers():
 func next_error_report():
 	var new_error = error_schedule.pop_front()
 	diagetic_error_report.emit(new_error)
+	error_arrived.play()
+
+func error_report(_error: Variant):
 	error_arrived.play()
 
 func announce_error_resolved(error_id):

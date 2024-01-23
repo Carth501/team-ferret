@@ -7,5 +7,5 @@
 stream = ExtResource("1_mpiub")
 volume_db = -20.0
 max_polyphony = 8
-bus = &"Sound Effects"
+bus = &"Effects"
 script = ExtResource("2_op2mn")
