@@ -74,12 +74,14 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_INF_LOOP",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_INF_LOOP",
+			"E_RASTER_ERR",
+			"E_BUFF_OVF"
 		  ]
 		},
 		"init_values": {
@@ -101,12 +103,15 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_COLL_DET_ERR",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_COLL_DET_ERR",
+			"E_PHYSICS_FAIL",
+			"E_SND_PLAY_ISSUE",
+			"E_OUT_OF_BOUNDS"
 		  ]
 		},
 		"init_values": {
@@ -157,12 +162,15 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_VERTEX_BUFF_OVF",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_MISS_ASSET",
+			"E_ANIM_RIG_ERR"
 		  ]
 		},
 		"init_values": {
@@ -184,12 +192,15 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_ANIM_RIG_ERR",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_ANIM_RIG_ERR",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_RES_MISMATCH"
 		  ]
 		},
 		"init_values": {
@@ -211,12 +222,15 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_PATH_LOOP",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_SYNC_ERR",
+			"E_ANIM_RIG_ERR"
 		  ]
 		},
 		"init_values": {
@@ -238,12 +252,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -265,12 +279,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -292,12 +306,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -319,12 +333,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -346,12 +360,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -373,12 +387,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -400,12 +414,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -427,12 +441,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -454,12 +468,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -481,12 +495,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -508,12 +522,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {
@@ -535,12 +549,12 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_CRIT_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_CRIT_FAIL"
 		  ]
 		},
 		"init_values": {

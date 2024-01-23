@@ -27,4 +27,4 @@ func toggle_level_selection():
 
 func jump_to_title():
 	var save_handler = get_node("/root/save_handler_single")
-	save_handler.exit_to_title()
+	save_handler.shift_to_title()
