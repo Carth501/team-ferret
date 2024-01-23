@@ -2,15 +2,22 @@ class_name cpc_calculator extends Node
 
 signal update_cpc(int)
 signal reached_goal
+signal below_threshold
 
 @export var display: cpc_monitor
 var cpc = 1
 var target = 500
+var high_score = 0
+var threshold: float
 var error_count = 0
 var par = 5
 
 func calculate():
 	cpc = floori((cpc + 1) * calc_coefficient())
+	if(cpc > high_score):
+		high_score = cpc
+	if(threshold && cpc < high_score * threshold):
+		below_threshold.emit()
 	if(cpc >= target):
 		reached_goal.emit()
 
@@ -34,3 +41,6 @@ func update_error_count(new_value: int):
 func set_target(value: int):
 	target = value
 	display.set_target(value)
+
+func set_threshold(percent: float):
+	threshold = percent

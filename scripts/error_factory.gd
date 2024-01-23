@@ -58,3 +58,6 @@ func generate_new_error(error_roll: float):
 		return
 	var index = floori(error_roll * error_list.size())
 	create_error_node(error_list[index])
+
+func set_error_freq(value: float):
+	probability = value

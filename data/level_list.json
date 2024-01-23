@@ -10,7 +10,6 @@
 		"starting_cpc": 0,
 		"goal_cpc": 10,
 		"shift_duration": 10,
-		"failure_threshold_percent": 10,
 		"errors": {
 		  "scheduled": [
 			{
@@ -38,7 +37,6 @@
 		"starting_cpc": 100,
 		"goal_cpc": 500,
 		"shift_duration": 450,
-		"failure_threshold_percent": 10,
 		"errors": {
 		  "scheduled": [
 			{
@@ -59,26 +57,6 @@
 			"E_UNLOADED_CHAR_MESH",
 			"E_TOP_HEAVY_DATASTORE",
 			"E_NULL_POINTER",
-			"E_INF_LOOP",
-			"E_ZOMBIE_PROC",
-			"E_RASTER_ERR",
-			"E_VERTEX_BUFF_OVF",
-			"E_TEX_LOAD_FAIL",
-			"E_SHADOW_GLITCH",
-			"E_FRAG_FAULT",
-			"E_BUFF_OVF",
-			"E_COLL_DET_ERR",
-			"E_AI_PATH_ERR",
-			"E_PATH_LOOP",
-			"E_MISS_ASSET",
-			"E_SHADER_COMP_ERR",
-			"E_RES_MISMATCH",
-			"E_SYNC_ERR",
-			"E_PHYSICS_FAIL",
-			"E_NET_TIMEOUT",
-			"E_SND_PLAY_ISSUE",
-			"E_ANIM_RIG_ERR",
-			"E_CRIT_FAIL"
 		  ]
 		}
 	  }
@@ -94,7 +72,6 @@
 		"starting_cpc": 10,
 		"goal_cpc": 750,
 		"shift_duration": 45,
-		"failure_threshold_percent": 15,
 		"errors": {
 		  "scheduled": [
 			{
@@ -121,7 +98,6 @@
 		"starting_cpc": 25,
 		"goal_cpc": 900,
 		"shift_duration": 45,
-		"failure_threshold_percent": 20,
 		"errors": {
 		  "scheduled": [
 			{
@@ -149,7 +125,6 @@
 		"starting_cpc": 40,
 		"goal_cpc": 1200,
 		"shift_duration": 40,
-		"failure_threshold_percent": 25,
 		"errors": {
 		  "scheduled": [
 			{
@@ -176,17 +151,18 @@
 	  "gameplay": {
 		"starting_cpc": 55,
 		"goal_cpc": 1500,
-		"shift_duration": 40,
-		"failure_threshold_percent": 30,
+		"shift_duration": 400,
+		"failure_threshold_percent": 0.3,
+		"error_freq": 0.5,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_EXAMPLE",
+			  "id": "E_ZOMBIE_PROC",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_EXAMPLE"
+			"E_ZOMBIE_PROC"
 		  ]
 		},
 		"init_values": {
@@ -204,7 +180,7 @@
 		"starting_cpc": 70,
 		"goal_cpc": 1800,
 		"shift_duration": 40,
-		"failure_threshold_percent": 35,
+		"failure_threshold_percent": 0.35,
 		"errors": {
 		  "scheduled": [
 			{
@@ -231,7 +207,7 @@
 		"starting_cpc": 95,
 		"goal_cpc": 2150,
 		"shift_duration": 35,
-		"failure_threshold_percent": 40,
+		"failure_threshold_percent": 0.40,
 		"errors": {
 		  "scheduled": [
 			{
@@ -258,7 +234,7 @@
 		"starting_cpc": 115,
 		"goal_cpc": 2500,
 		"shift_duration": 35,
-		"failure_threshold_percent": 45,
+		"failure_threshold_percent": 0.45,
 		"errors": {
 		  "scheduled": [
 			{
@@ -285,7 +261,7 @@
 		"starting_cpc": 135,
 		"goal_cpc": 3210,
 		"shift_duration": 35,
-		"failure_threshold_percent": 50,
+		"failure_threshold_percent": 0.50,
 		"errors": {
 		  "scheduled": [
 			{
@@ -312,7 +288,7 @@
 		"starting_cpc": 155,
 		"goal_cpc": 3800,
 		"shift_duration": 30,
-		"failure_threshold_percent": 55,
+		"failure_threshold_percent": 0.55,
 		"errors": {
 		  "scheduled": [
 			{
@@ -339,7 +315,7 @@
 		"starting_cpc": 175,
 		"goal_cpc": 4500,
 		"shift_duration": 30,
-		"failure_threshold_percent": 60,
+		"failure_threshold_percent": 0.60,
 		"errors": {
 		  "scheduled": [
 			{
@@ -366,7 +342,7 @@
 		"starting_cpc": 195,
 		"goal_cpc": 5800,
 		"shift_duration": 30,
-		"failure_threshold_percent": 65,
+		"failure_threshold_percent": 0.65,
 		"errors": {
 		  "scheduled": [
 			{
@@ -393,7 +369,7 @@
 		"starting_cpc": 215,
 		"goal_cpc": 6800,
 		"shift_duration": 25,
-		"failure_threshold_percent": 70,
+		"failure_threshold_percent": 0.70,
 		"errors": {
 		  "scheduled": [
 			{
@@ -420,7 +396,7 @@
 		"starting_cpc": 245,
 		"goal_cpc": 8000,
 		"shift_duration": 25,
-		"failure_threshold_percent": 75,
+		"failure_threshold_percent": 0.75,
 		"errors": {
 		  "scheduled": [
 			{
@@ -447,7 +423,7 @@
 		"starting_cpc": 275,
 		"goal_cpc": 9500,
 		"shift_duration": 25,
-		"failure_threshold_percent": 80,
+		"failure_threshold_percent": 0.80,
 		"errors": {
 		  "scheduled": [
 			{
@@ -474,7 +450,7 @@
 		"starting_cpc": 305,
 		"goal_cpc": 12000,
 		"shift_duration": 15,
-		"failure_threshold_percent": 85,
+		"failure_threshold_percent": 0.85,
 		"errors": {
 		  "scheduled": [
 			{
@@ -501,7 +477,7 @@
 		"starting_cpc": 345,
 		"goal_cpc": 12500,
 		"shift_duration": 15,
-		"failure_threshold_percent": 90,
+		"failure_threshold_percent": 0.85,
 		"errors": {
 		  "scheduled": [
 			{
@@ -528,7 +504,7 @@
 		"starting_cpc": 385,
 		"goal_cpc": 13000,
 		"shift_duration": 15,
-		"failure_threshold_percent": 95,
+		"failure_threshold_percent": 0.55,
 		"errors": {
 		  "scheduled": [
 			{
@@ -555,7 +531,7 @@
 		"starting_cpc": 415,
 		"goal_cpc": 14000,
 		"shift_duration": 10,
-		"failure_threshold_percent": 95,
+		"failure_threshold_percent": 0.75,
 		"errors": {
 		  "scheduled": [
 			{
@@ -582,7 +558,7 @@
 		"starting_cpc": 600,
 		"goal_cpc": 15000,
 		"shift_duration": 10,
-		"failure_threshold_percent": 95,
+		"failure_threshold_percent": 0.60,
 		"errors": {
 		  "scheduled": [
 			{
