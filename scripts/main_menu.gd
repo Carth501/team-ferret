@@ -5,6 +5,7 @@ extends Node
 @onready var options = $"MenuContainer/Button Control/options" as Button
 @onready var options_menu = $options_menu as OptionsMenu
 @onready var menu_container = $MenuContainer as MarginContainer
+@onready var credits_panel = $Credits as credits
 
 var save_data: Array[Variant]
 
@@ -56,3 +57,7 @@ func get_latest_save() -> Variant:
 		if(save.datetime > latest_save.datetime):
 			latest_save = save_data
 	return latest_save
+
+func toggle_credits():
+	menu_container.visible = !menu_container.visible
+	credits_panel.visible = !credits_panel.visible
