@@ -21,7 +21,7 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 		var module_instance = cubicle_instance.module_obj_dic[module.id]
 		module_instance.trigger.connect(pattern_step)
 		module_instances[module.id] = module_instance
-		check_next_step()
+	check_next_step()
 
 func pattern_step(payload):
 	if(cubicle_reference.paused):

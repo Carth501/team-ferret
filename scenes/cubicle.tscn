@@ -318,16 +318,20 @@ bus = &"Music"
 
 [node name="Danger Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_rtvup")
-volume_db = -12.0
+volume_db = -20.0
 bus = &"Music"
 
 [node name="Sound Effects" type="Node" parent="."]
 
 [node name="Error Arrived" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("31_rjpuj")
+volume_db = -12.0
+bus = &"Effects"
 
 [node name="Error Resolved" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("32_k5f08")
+volume_db = -12.0
+bus = &"Effects"
 
 [connection signal="diagetic_error_report" from="." to="ErrorFactory" method="create_error_node"]
 [connection signal="diagetic_error_resolved" from="." to="pager" method="remove_error"]
