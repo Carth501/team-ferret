@@ -72,10 +72,15 @@ func dir_contents():
 
 func load_game(save: Variant):
 	active_save = save
-	go_to_game_menu()
+	shift_to_game_menu()
 
-func exit_to_title():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+func shift_to_game_menu():
+	transition_screen_single.transitioned.connect(go_to_game_menu)
+	transition_screen_single.transition()
+
+func shift_to_title():
+	transition_screen_single.transitioned.connect(go_to_main_menu)
+	transition_screen_single.transition()
 
 func level_complete(level_id: String):
 	if(!active_save.has("complete_levels")):
@@ -84,8 +89,17 @@ func level_complete(level_id: String):
 	if(!complete_levels.has(level_id)):
 		complete_levels.append(level_id)
 		write_save(active_save)
-	go_to_game_menu()
+	print("load game")
+	transition_screen_single.transitioned.connect(go_to_game_menu)
+	transition_screen_single.transition()
 
 func go_to_game_menu():
-	var tree = get_tree()
-	tree.change_scene_to_file("res://scenes/game_menu.tscn")
+	change_to("res://scenes/game_menu.tscn")
+	transition_screen_single.transitioned.disconnect(go_to_game_menu)
+
+func go_to_main_menu():
+	change_to("res://scenes/main_menu.tscn")
+	transition_screen_single.transitioned.disconnect(go_to_main_menu)
+	
+func change_to(path: String):
+	get_tree().change_scene_to_file(path)

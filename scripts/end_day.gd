@@ -46,5 +46,8 @@ func update_day_text() -> void:
 	current_money.text = str("[right]",money)
 
 func return_to_menu():
-	var tree = get_tree()
-	tree.change_scene_to_file("res://scenes/game_menu.tscn")
+	transition_screen_single.transitioned.connect(go_to_game_menu)
+	transition_screen_single.transition()
+
+func go_to_game_menu():
+	get_tree().change_scene_to_file("res://scenes/game_menu.tscn")

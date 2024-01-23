@@ -3,6 +3,7 @@ class_name cubicle extends Node
 signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
 signal module_triggered(module_id: String)
+signal module_ready(module_id: String)
 
 @export var control_panel: Control
 @export var timer_corral: Node
@@ -91,8 +92,11 @@ func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
 		var error_item = data.dereference_error_id(error.id)
-		error_item["time"] = error.time
-		error_schedule.append(error_item)
+		if(error_item.has("time")):
+			error_item["time"] = error.time
+			error_schedule.append(error_item)
+		else:
+			error_factory_controller.create_error_node(error_item)
 
 func get_error_catalogue(level):
 	if(!level.gameplay.has("errors")):
@@ -100,6 +104,8 @@ func get_error_catalogue(level):
 	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
 		var dereferenced = data.dereference_error_id(error)
+		if(dereferenced == null):
+			push_error(str("dereference_error_id did not find ", error))
 		error_catalogue.append(dereferenced)
 
 func create_module_id_list():
@@ -148,6 +154,7 @@ func configure_module(new_module: abstract_module, params):
 	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
 	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
+	module_ready.emit(params.id)
 
 func dereference_module_id(id: String):
 	for module_def in data.control_data:
@@ -202,7 +209,7 @@ func toggle_pause():
 
 func end_level():
 	var save_handler = get_node("/root/save_handler_single")
-	save_handler.go_to_game_menu()
+	save_handler.shift_to_game_menu()
 
 func complete_level():
 	var save_handler = get_node("/root/save_handler_single")
