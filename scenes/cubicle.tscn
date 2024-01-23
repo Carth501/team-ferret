@@ -327,6 +327,7 @@ bus = &"Music"
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
+[connection signal="below_threshold" from="CpcCalculator" to="." method="failure"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
 [connection signal="pressed" from="pause curtain/end shift" to="." method="end_level"]
 [connection signal="pressed" from="pause curtain/complete level" to="." method="complete_level"]

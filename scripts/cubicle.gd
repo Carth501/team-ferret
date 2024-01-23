@@ -77,11 +77,15 @@ func configure_level_settings():
 		level_clock_handler.set_value(shift_duration)
 		create_danger_timer(shift_duration)
 	if(current_level.gameplay.has("failure_threshold_percent")):
-		failure_threshold_percent = current_level.gameplay.failure_threshold_percent
+		var value = current_level.gameplay.failure_threshold_percent
+		if(value >= 0):
+			cpc_calc.set_threshold(value)
 	if(current_level.metadata.has("music")):
 		var song = load("res://assets/audio/music/" + current_level.metadata.music + ".mp3")
 		level_music.stream = song
 		level_music.play()
+	if(current_level.gameplay.has("error_freq")):
+		error_factory_controller.set_error_freq(current_level.gameplay.error_freq)
 
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
@@ -226,3 +230,6 @@ func end_of_shift():
 	resume_button.visible = false
 	if(met_target):
 		save_handler_single.level_complete(current_level_id)
+
+func failure():
+	print("don't you care about this company?")
