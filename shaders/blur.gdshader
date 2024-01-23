@@ -7,5 +7,6 @@ void fragment() {
     vec2 uv = UV;
 
 	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	color += vec4(0.1, 0.1, 0.1, 1.0);
 	COLOR = color;
 }
