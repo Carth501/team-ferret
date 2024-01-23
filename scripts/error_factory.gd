@@ -31,7 +31,10 @@ func create_error_node(error):
 	# has emitted and resolved_error has been connected.
 	new_active_error.emit(error)
 	new_error.resolved_error.connect(decrement_error_count)
-	new_error.connect_to_cubicle(cubicle_instance)
+
+func cubicle_ready():
+	for error in error_list:
+		error.connect_to_cubicle(cubicle_instance)
 
 func decrement_error_count(_id):
 	active_error_count -= 1

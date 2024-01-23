@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://w3ungjfxt5dh" path="res://assets/images/menu/buttons/Credits.png" id="12_jwlpp"]
 [ext_resource type="Texture2D" uid="uid://b7hkaynupl514" path="res://assets/images/menu/buttons/Quit.png" id="14_lls55"]
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="17_trxdg"]
-[ext_resource type="PackedScene" uid="uid://d3u23b8cfmc7d" path="res://scenes/credits.tscn" id="19_cn5hu"]
+[ext_resource type="PackedScene" path="res://scenes/credits.tscn" id="19_cn5hu"]
 
 [sub_resource type="Gradient" id="Gradient_gj2xc"]
 colors = PackedColorArray(0.737255, 0.960784, 0.862745, 1, 0.396078, 0.776471, 0.631373, 1)
