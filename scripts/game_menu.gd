@@ -1,6 +1,7 @@
 class_name game_menu extends Node
 
 @export var level_select_panel: Panel
+@export var continue_button: Button
 var active_save_file: Variant
 
 func _ready():
@@ -13,6 +14,9 @@ func request_save():
 	if(!save_handler.ready):
 		await save_handler.ready
 	active_save_file = save_handler.active_save
+	var levels = data_libraries_single.level_data
+	if(active_save_file.complete_levels.size() == levels.size()):
+		continue_button.text = "Random"
 
 func load_continue():
 	var loader = get_node("/root/level_loader_single")
