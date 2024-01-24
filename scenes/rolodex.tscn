@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://21wbe505uadg"]
+[gd_scene load_steps=44 format=3 uid="uid://21wbe505uadg"]
 
 [ext_resource type="Texture2D" uid="uid://b2o20qx3y31bg" path="res://assets/images/level-select/rolodex/Rolodex10Tab.png" id="1_mvx2n"]
 [ext_resource type="Script" path="res://scripts/rolodex.gd" id="1_v1luo"]
@@ -25,6 +25,9 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_fmtu5")
+}, {
+"duration": 1.0,
 "texture": ExtResource("1_mvx2n")
 }, {
 "duration": 1.0,
@@ -38,29 +41,66 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_mbkth")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_fmtu5")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ix21"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t38ms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2er5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8f6f3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yqgv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1ml0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35o6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7to2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmwgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pt0dm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_552vg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx5mx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24omt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x66uk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fo3s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8bp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgymg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tf12u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8k201"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pep4q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fj0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amitt"]
+
 [node name="rolodex" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 374.0
-offset_top = 363.0
-offset_right = 414.0
-offset_bottom = 403.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_v1luo")
 metadata/_edit_group_ = true
 
-[node name="rolodex" type="AnimatedSprite2D" parent="."]
+[node name="rolodex_anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0kchi")
-frame = 4
-frame_progress = 0.850369
 metadata/_edit_lock_ = true
 
 [node name="top_buttons" type="Control" parent="."]
@@ -75,6 +115,8 @@ offset_left = 90.0
 offset_top = -332.0
 offset_right = 157.0
 offset_bottom = -289.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ix21")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t38ms")
 icon = ExtResource("7_f07q7")
 flat = true
 
@@ -82,8 +124,10 @@ flat = true
 layout_mode = 0
 offset_left = 41.0
 offset_top = -336.0
-offset_right = 108.0
+offset_right = 99.0
 offset_bottom = -293.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2er5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8f6f3")
 icon = ExtResource("8_3crg0")
 flat = true
 
@@ -91,8 +135,10 @@ flat = true
 layout_mode = 0
 offset_left = -4.0
 offset_top = -339.0
-offset_right = 63.0
+offset_right = 49.0
 offset_bottom = -296.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yqgv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k1ml0")
 icon = ExtResource("9_gnvwo")
 flat = true
 
@@ -100,8 +146,10 @@ flat = true
 layout_mode = 0
 offset_left = -49.0
 offset_top = -339.0
-offset_right = 18.0
+offset_right = 4.0
 offset_bottom = -296.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_35o6a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7to2s")
 icon = ExtResource("10_sj666")
 flat = true
 
@@ -109,8 +157,10 @@ flat = true
 layout_mode = 0
 offset_left = -98.0
 offset_top = -336.0
-offset_right = -31.0
+offset_right = -41.0
 offset_bottom = -293.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_kmwgh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pt0dm")
 icon = ExtResource("11_g43bt")
 flat = true
 
@@ -118,8 +168,10 @@ flat = true
 layout_mode = 0
 offset_left = -155.0
 offset_top = -333.0
-offset_right = -88.0
+offset_right = -90.0
 offset_bottom = -290.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_552vg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kx5mx")
 icon = ExtResource("12_b0atm")
 flat = true
 
@@ -129,47 +181,62 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="5_bot" type="Button" parent="bot_buttons"]
+visible = false
 layout_mode = 0
 offset_left = -315.0
 offset_top = 132.0
 offset_right = -201.0
 offset_bottom = 196.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_24omt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x66uk")
 icon = ExtResource("13_lfagc")
 flat = true
 
 [node name="10_bot" type="Button" parent="bot_buttons"]
+visible = false
 layout_mode = 0
 offset_left = -238.0
 offset_top = 160.0
-offset_right = -124.0
-offset_bottom = 224.0
+offset_right = -125.0
+offset_bottom = 222.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_4fo3s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d8bp3")
 icon = ExtResource("14_7x8ck")
 flat = true
 
 [node name="15_bot" type="Button" parent="bot_buttons"]
+visible = false
 layout_mode = 0
 offset_left = -153.0
-offset_top = 173.0
+offset_top = 175.0
 offset_right = -33.0
-offset_bottom = 237.0
+offset_bottom = 232.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_xgymg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tf12u")
 icon = ExtResource("15_1k5y7")
 flat = true
 
 [node name="20_bot" type="Button" parent="bot_buttons"]
+visible = false
 layout_mode = 0
 offset_left = -65.0
-offset_top = 169.0
+offset_top = 176.0
 offset_right = 61.0
-offset_bottom = 233.0
+offset_bottom = 225.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_8k201")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pep4q")
 icon = ExtResource("16_u43jt")
 flat = true
 
 [node name="25_bot" type="Button" parent="bot_buttons"]
+visible = false
 layout_mode = 0
 offset_left = 43.0
-offset_top = 148.0
-offset_right = 169.0
-offset_bottom = 212.0
+offset_top = 152.0
+offset_right = 162.0
+offset_bottom = 208.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fj0q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amitt")
 icon = ExtResource("17_cyqw2")
 flat = true
 
@@ -184,3 +251,15 @@ visible = false
 modulate = Color(1, 1, 1, 0.490196)
 texture = ExtResource("19_sgavn")
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="top_buttons/30_top" to="." method="_on_30_top_pressed"]
+[connection signal="pressed" from="top_buttons/25_top" to="." method="_on_25_top_pressed"]
+[connection signal="pressed" from="top_buttons/20_top" to="." method="_on_20_top_pressed"]
+[connection signal="pressed" from="top_buttons/15_top" to="." method="_on_15_top_pressed"]
+[connection signal="pressed" from="top_buttons/10_top" to="." method="_on_10_top_pressed"]
+[connection signal="pressed" from="top_buttons/5_top" to="." method="_on_5_top_pressed"]
+[connection signal="pressed" from="bot_buttons/5_bot" to="." method="_on_5_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/10_bot" to="." method="_on_10_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/15_bot" to="." method="_on_15_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/20_bot" to="." method="_on_20_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/25_bot" to="." method="_on_25_bot_pressed"]
