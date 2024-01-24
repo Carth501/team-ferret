@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://byo2ynlmm7spw"]
+[gd_scene load_steps=4 format=3 uid="uid://8agpxf2qcmt7"]
 
 [ext_resource type="Texture2D" uid="uid://dhkuhvre6w542" path="res://assets/images/Manual_PopUp_Draft_1.png" id="1_34q65"]
 [ext_resource type="Script" path="res://scripts/manual_book.gd" id="1_g60n5"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_8r16f"]
 
 [node name="manual_book" type="Node2D"]
+scale = Vector2(1.44, 1.44)
 script = ExtResource("1_g60n5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -49,7 +50,7 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_8r16f")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 fit_content = true
 scroll_following = true
@@ -79,7 +80,7 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_8r16f")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 fit_content = true
 scroll_following = true
@@ -101,8 +102,16 @@ theme = ExtResource("2_8r16f")
 text = ">>
 "
 
+[node name="jump_to_index" type="Button" parent="."]
+offset_left = 19.4444
+offset_top = 325.694
+offset_right = 71.4444
+offset_bottom = 356.694
+text = "Index"
+
 [connection signal="gui_input" from="TextureRect/MarginContainer" to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="TextureRect/MarginContainer" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect/MarginContainer" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="prev_button" to="." method="prev_button"]
 [connection signal="pressed" from="next_button" to="." method="next_button"]
+[connection signal="pressed" from="jump_to_index" to="." method="index_shortcut"]
