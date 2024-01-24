@@ -43,8 +43,8 @@
 	  },
 	  "gameplay": {
 		"starting_cpc": 10,
-		"goal_cpc": 750,
-		"shift_duration": 45,
+		"goal_cpc": 300,
+		"shift_duration": 60,
 		"errors": {
 		  "scheduled": [
 			{

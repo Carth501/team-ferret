@@ -1,9 +1,5 @@
 class_name cubicle extends Node
 
-@onready var options_menu = $options_menu as Control
-@onready var open_options = $"pause curtain/open_options" as Button
-
-
 signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
 signal module_triggered(module_id: String)
@@ -37,7 +33,6 @@ var paused := false
 var met_target := false
 
 func _ready():
-	handle_connecting_signals()
 	data = get_node("/root/data_libraries_single")
 	if(!data.ready):
 		await data.ready
@@ -259,17 +254,3 @@ func failure():
 	resume_button.visible = false
 	var tree = get_tree()
 	tree.change_scene_to_file("res://scenes/end_day.tscn")
-
-func handle_connecting_signals() -> void:
-	open_options.button_down.connect(on_options_pressed)
-	options_menu.exit_options_menu.connect(on_exit_options_menu)
-
-func on_options_pressed():
-	#pause_curtain.visible = false
-	options_menu.set_process(true)
-	options_menu.visible = true
-
-func on_exit_options_menu() -> void:
-	#pause_curtain.visible = true
-	options_menu.visible = false
-
