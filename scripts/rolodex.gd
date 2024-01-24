@@ -24,7 +24,6 @@ signal level_choice(level_id)
 
 func _ready():
 	rolodex_setup(current_page)
-	write_level_links()
 
 func rolodex_setup(page) -> void:
 	if(page < 5 or page > 30 or page % 5 != 0):
@@ -43,6 +42,7 @@ func rolodex_setup(page) -> void:
 		button.visible = page > button_value
 	
 	emit_signal("page_changed", page)
+	write_level_links()
 
 func write_level_links():
 	if(!data.ready):
@@ -53,7 +53,6 @@ func write_level_links():
 	var level_index := find_start_index(start)
 	var button_index = 0
 	while level_index < current_page:
-		print(str("level_index: ", level_index, " | current_page: ", current_page))
 		var level = level_data[level_index]
 		var metadata = level.metadata
 		var secret_level = metadata.has("hidden") && metadata.hidden
@@ -62,7 +61,6 @@ func write_level_links():
 				unlocked = true
 				check_marks[level_index % 5].visible = true
 			if(unlocked):
-				print(str("level_buttons[button_index] ", level_buttons[button_index]))
 				write_button(metadata, level_buttons[button_index])
 				button_index += 1
 				
