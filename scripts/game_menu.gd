@@ -28,3 +28,6 @@ func toggle_level_selection():
 func jump_to_title():
 	var save_handler = get_node("/root/save_handler_single")
 	save_handler.shift_to_title()
+
+func select_level(id: String):
+	level_loader_single.load_level(id)

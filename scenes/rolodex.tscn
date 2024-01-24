@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://21wbe505uadg"]
+[gd_scene load_steps=46 format=3 uid="uid://dyogoxmvnw65"]
 
 [ext_resource type="Texture2D" uid="uid://b2o20qx3y31bg" path="res://assets/images/level-select/rolodex/Rolodex10Tab.png" id="1_mvx2n"]
 [ext_resource type="Script" path="res://scripts/rolodex.gd" id="1_v1luo"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://cg1o8e3n1ak65" path="res://assets/images/level-select/rolodex/Rolodex DownTab25.png" id="17_cyqw2"]
 [ext_resource type="Texture2D" uid="uid://216ct7y380yf" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsUp.png" id="18_eiyd0"]
 [ext_resource type="Texture2D" uid="uid://cwkljq4c1l75v" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsDown.png" id="19_sgavn"]
+[ext_resource type="PackedScene" path="res://scenes/check_mark.tscn" id="21_h7vr5"]
+[ext_resource type="Script" path="res://scripts/generic_button.gd" id="22_jqmit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0kchi"]
 animations = [{
@@ -91,12 +93,13 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amitt"]
 
-[node name="rolodex" type="Control"]
+[node name="rolodex" type="Control" node_paths=PackedStringArray("check_marks")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_v1luo")
+check_marks = [NodePath("level_links/Control/CheckMark"), NodePath("level_links/Control2/CheckMark"), NodePath("level_links/Control3/CheckMark"), NodePath("level_links/Control4/CheckMark"), NodePath("level_links/Control5/CheckMark")]
 metadata/_edit_group_ = true
 
 [node name="rolodex_anim" type="AnimatedSprite2D" parent="."]
@@ -251,6 +254,102 @@ visible = false
 modulate = Color(1, 1, 1, 0.490196)
 texture = ExtResource("19_sgavn")
 metadata/_edit_lock_ = true
+
+[node name="level_links" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -206.0
+offset_top = -289.0
+offset_right = 207.0
+offset_bottom = -65.0
+
+[node name="Control" type="Control" parent="level_links"]
+anchors_preset = 0
+offset_left = 110.0
+offset_top = 6.0
+offset_right = 150.0
+offset_bottom = 46.0
+
+[node name="CheckMark" parent="level_links/Control" instance=ExtResource("21_h7vr5")]
+offset_left = -40.0
+offset_right = -40.0
+
+[node name="Button" type="Button" parent="level_links/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("22_jqmit")
+
+[node name="Control2" type="Control" parent="level_links"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 102.0
+offset_top = 49.0
+offset_right = 142.0
+offset_bottom = 89.0
+
+[node name="CheckMark" parent="level_links/Control2" instance=ExtResource("21_h7vr5")]
+offset_left = -40.0
+offset_right = -40.0
+
+[node name="Button" type="Button" parent="level_links/Control2"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("22_jqmit")
+
+[node name="Control3" type="Control" parent="level_links"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 94.0
+offset_top = 92.0
+offset_right = 134.0
+offset_bottom = 132.0
+
+[node name="CheckMark" parent="level_links/Control3" instance=ExtResource("21_h7vr5")]
+offset_left = -40.0
+offset_right = -40.0
+
+[node name="Button" type="Button" parent="level_links/Control3"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("22_jqmit")
+
+[node name="Control4" type="Control" parent="level_links"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 87.0
+offset_top = 136.0
+offset_right = 127.0
+offset_bottom = 176.0
+
+[node name="CheckMark" parent="level_links/Control4" instance=ExtResource("21_h7vr5")]
+offset_left = -40.0
+offset_right = -40.0
+
+[node name="Button" type="Button" parent="level_links/Control4"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("22_jqmit")
+
+[node name="Control5" type="Control" parent="level_links"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 78.0
+offset_top = 177.0
+offset_right = 118.0
+offset_bottom = 217.0
+
+[node name="CheckMark" parent="level_links/Control5" instance=ExtResource("21_h7vr5")]
+offset_left = -40.0
+offset_right = -40.0
+
+[node name="Button" type="Button" parent="level_links/Control5"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("22_jqmit")
 
 [connection signal="pressed" from="top_buttons/30_top" to="." method="_on_30_top_pressed"]
 [connection signal="pressed" from="top_buttons/25_top" to="." method="_on_25_top_pressed"]

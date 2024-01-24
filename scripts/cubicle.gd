@@ -231,7 +231,7 @@ func create_danger_timer(duration: float):
 	var danger_timer = Timer.new()
 	danger_timer.name = "Danger Timer"
 	add_child(danger_timer)
-	danger_timer.wait_time = maxi(duration * 0.9 - 10, 10)
+	danger_timer.wait_time = maxi(duration * 0.9 - 10.0, 10)
 	danger_timer.one_shot = true
 	danger_timer.start()
 	danger_timer.timeout.connect(start_danger_music)

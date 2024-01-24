@@ -1,4 +1,4 @@
-extends Node
+class_name click_player extends Node
 
 var click_audio_stream: AudioStreamPlayer
 
