@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://7njdisfyhwjd"]
+[gd_scene load_steps=43 format=3 uid="uid://7njdisfyhwjd"]
 
 [ext_resource type="Script" path="res://scripts/cubicle.gd" id="1_b5jef"]
 [ext_resource type="PackedScene" uid="uid://165fi1uw1mne" path="res://scenes/level_clock.tscn" id="2_eni3y"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://csk45deete1px" path="res://assets/images/gun_frames/TS_Deagle_0005.png" id="12_jcpxg"]
 [ext_resource type="Texture2D" uid="uid://dtj1h1hi3lx68" path="res://assets/images/gun_frames/TS_Deagle_0006.png" id="13_v23kw"]
 [ext_resource type="Texture2D" uid="uid://dwt8rfrvbjosf" path="res://assets/images/gun_frames/TS_Deagle_0007.png" id="14_me3sa"]
+[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="15_83n4x"]
+[ext_resource type="Shader" path="res://shaders/grain.gdshader" id="15_cu1ot"]
+[ext_resource type="Shader" path="res://shaders/LensDistortion.gdshader" id="15_lhxng"]
 [ext_resource type="Texture2D" uid="uid://bxoukhvxxx8jj" path="res://assets/images/gun_frames/TS_Deagle_0008.png" id="15_uprxk"]
 [ext_resource type="Texture2D" uid="uid://dpmbu1kir072h" path="res://assets/images/gun_frames/TS_Deagle_0009.png" id="16_byysa"]
 [ext_resource type="Texture2D" uid="uid://cf5n1nah75yql" path="res://assets/images/gun_frames/TS_Deagle_0010.png" id="17_1kxj8"]
@@ -33,23 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://dw7lctgcou8ei" path="res://scenes/optionsMenu/options_menu.tscn" id="29_cjrg4"]
 [ext_resource type="AudioStream" uid="uid://diriqhad4xvym" path="res://assets/audio/effects/Beep Beep.wav" id="31_rjpuj"]
 [ext_resource type="AudioStream" uid="uid://clp71mvvkju6l" path="res://assets/audio/effects/Single Beep.wav" id="32_k5f08"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0rx6q"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_g5vjq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_clqwg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_g5vjq")
-}],
-"loop": false,
-"name": &"click",
-"speed": 15.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bn0dg"]
 animations = [{
@@ -96,6 +82,45 @@ animations = [{
 
 [sub_resource type="GDScript" id="GDScript_gndtr"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_451s0"]
+shader = ExtResource("15_cu1ot")
+shader_parameter/colored = true
+shader_parameter/color_amount = 1.112
+shader_parameter/grain_amount = 0.07
+shader_parameter/grain_size = 2.612
+shader_parameter/lum_amount = 1.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft71o"]
+shader = ExtResource("15_lhxng")
+shader_parameter/strength = 0.002
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tc2xr"]
+shader = ExtResource("15_83n4x")
+shader_parameter/vertJerkOpt = 0.2
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/scalinesOpt = 0.8
+shader_parameter/rgbOffsetOpt = 0.225
+shader_parameter/horzFuzzOpt = 0.2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rx6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_g5vjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_clqwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g5vjq")
+}],
+"loop": false,
+"name": &"click",
+"speed": 15.0
+}]
+
 [node name="Cubicle" type="Node" node_paths=PackedStringArray("control_panel", "timer_corral", "game_timer", "error_factory_controller", "manual_instance", "level_clock_handler")]
 script = ExtResource("1_b5jef")
 control_panel = NodePath("ScrollContainer/Module Panel")
@@ -138,6 +163,12 @@ offset_right = 413.0
 offset_bottom = 325.0
 texture = ExtResource("4_kv2wk")
 
+[node name="gun" type="AnimatedSprite2D" parent="Cubicle/Background"]
+position = Vector2(758, 261)
+sprite_frames = SubResource("SpriteFrames_bn0dg")
+animation = &"fire"
+script = SubResource("GDScript_gndtr")
+
 [node name="Console" type="TextureRect" parent="Cubicle/Background"]
 layout_mode = 0
 offset_left = 732.0
@@ -152,6 +183,38 @@ offset_left = 14.0
 offset_top = 30.0
 offset_right = -228.0
 offset_bottom = -112.0
+
+[node name="Screen_Shaders" type="Control" parent="Cubicle/Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="grain_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+material = SubResource("ShaderMaterial_451s0")
+layout_mode = 0
+offset_left = 280.0
+offset_top = 30.0
+offset_right = 1000.0
+offset_bottom = 331.0
+color = Color(1, 1, 1, 0)
+
+[node name="lens_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+material = SubResource("ShaderMaterial_ft71o")
+layout_mode = 0
+offset_left = 280.0
+offset_top = 30.0
+offset_right = 1000.0
+offset_bottom = 331.0
+color = Color(1, 1, 1, 0)
+
+[node name="tv_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+material = SubResource("ShaderMaterial_tc2xr")
+layout_mode = 0
+offset_left = 280.0
+offset_top = 30.0
+offset_right = 1000.0
+offset_bottom = 331.0
+color = Color(1, 1, 1, 0)
 
 [node name="AnalogClock" parent="Cubicle" instance=ExtResource("26_h27ps")]
 position = Vector2(165, 53)
@@ -232,12 +295,6 @@ probability = 0.2
 
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
 display = NodePath("../Cubicle/Background/Console/CpcMonitor")
-
-[node name="gun" type="AnimatedSprite2D" parent="."]
-position = Vector2(758, 261)
-sprite_frames = SubResource("SpriteFrames_bn0dg")
-animation = &"fire"
-script = SubResource("GDScript_gndtr")
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
 offset_left = 18.0
