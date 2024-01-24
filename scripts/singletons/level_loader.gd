@@ -9,7 +9,18 @@ func load_level(id: String):
 	transition_screen_single.transition()
 
 func load_continue():
-	load_level("L_RING-1")
+	load_level(get_next_level_id())
+
+func get_next_level_id() -> String:
+	var current_save = save_handler_single.active_save
+	var data_lib = data_libraries_single.level_data
+	for level in data_lib:
+		if(current_save.has("complete_levels")):
+			if(!current_save.complete_levels.has(level.metadata.id)):
+				return level.metadata.id
+	var rng = RandomNumberGenerator.new()
+	var index = rng.randi_range(0, data_lib.size() - 1)
+	return data_lib[index].metadata.id
 
 func cubicle_ready(new_cubicle: cubicle):
 	cubicle_instance = new_cubicle
