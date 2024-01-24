@@ -2,13 +2,10 @@ class_name manual
 extends Control
 
 @onready var manual_book = $manual_book as Node2D
-@export var popup: Panel
-@export var text: RichTextLabel
 
 var pages: Array = []
-var pages_index: Array[String] = []
-var page_index = 0
-var index_page_size = 20
+var current_page_index = 0
+var index_page_size := 15.0
 
 var l_header
 var l_body
@@ -25,14 +22,15 @@ func _ready():
 func toggle_manual_popup():
 	#popup.visible = !popup.visible
 	manual_book.visible = !manual_book.visible
-	write_page()
+	write_pages()
 
 func write_manual(error_list, control_list):
 	build_index(error_list)
 	build_error_list(error_list, control_list)
 
 func build_index(error_list):
-	var index_length := ceili(error_list.size() / 30.0)
+	var pages_index: Array[String] = []
+	var index_length := ceili(error_list.size() / index_page_size)
 	var count := 0
 	var index_page := 0
 	pages_index.append("")
@@ -45,12 +43,24 @@ func build_index(error_list):
 		var index_entry := str("[url={\"page\":", page_link, "}]", error.hex, "\t ", error.name,"[/url]")
 		pages_index[index_page] += index_entry + "\n"
 		count += 1
+	var i = 0
+	for page_string in pages_index:
+		print(str("page_string ", page_string))
+		var new_page = {
+			"index": true,
+			"body": page_string,
+			"page_number": i
+		}
+		pages.append(new_page)
+		print(str("pages ", pages))
+		i += 1
 
 func build_error_list(error_list, control_list):
-	var page_number = 1
+	var page_number = pages.size() + 1
 	var sw_text
 	for error in error_list:
 		var page = {
+			"index": false,
 			"title": str(page_number, ". ", error.hex, " : ", error.name),
 			"body": "",
 			"error_hex": error.hex,
@@ -81,37 +91,52 @@ func dereference_module_id(control_list, id: String):
 			return module_def
 	push_error(str("Manual did not find error def for id ", id))
 
-func write_page():
+func write_pages():
+	clear_pages()
+	if pages.size() > current_page_index:
+		if(check_index(current_page_index)):
+			open_index_page(l_body, current_page_index)
+		else:
+			open_content_page(l_header, l_body, current_page_index)
+		if pages.size() > current_page_index + 1:
+			if(check_index(current_page_index + 1)):
+				open_index_page(r_body, current_page_index + 1)
+			else:
+				open_content_page(r_header, r_body, current_page_index + 1)
+			
+func check_index(page) -> bool:
+	return pages[page].has("index") && pages[page].index
+
+func open_index_page(body: RichTextLabel, page_index: int):
+	var currentPage = pages[page_index]
+	body.text = currentPage["body"]
+
+func open_content_page(header: Label, body: RichTextLabel, page_index: int):
+	var currentPage = pages[page_index]
+	header.text = currentPage["title"]
+	body.text = currentPage["body"]
+	
+	if(currentPage["title"] == ""):
+		header.text = str("END OF LINE.")
+
+func clear_pages():
 	l_header.text = ""
 	l_body.clear()
 	r_header.text = ""
 	r_body.clear()
 
-	if pages.size() > page_index:
-		var currentPage = pages[page_index]
-		l_header.text = currentPage["title"]
-		l_body.text = currentPage["body"]
-		
-		if(currentPage["title"] == ""):
-			l_header.text = str("END OF LINE.")
-
-		if pages.size() > page_index + 1:
-			var nextPage = pages[page_index + 1]
-			r_header.text = nextPage["title"]
-			r_body.text = nextPage["body"]
-
 func prev_page():
-	if page_index > 1:
-		page_index -= 2
-		write_page()
+	if current_page_index > 1:
+		current_page_index -= 2
+		write_pages()
 	else:
-		page_index = 0
+		current_page_index = 0
 	
 
 func next_page():
-	if pages.size() > page_index + 1:
-		page_index += 2
-		write_page()
+	if pages.size() > current_page_index + 1:
+		current_page_index += 2
+		write_pages()
 
 func parse_hyperlink(meta: Variant):
 	var parsedResult = JSON.parse_string(meta)
@@ -119,13 +144,10 @@ func parse_hyperlink(meta: Variant):
 		jump_to_page(parsedResult.page)
 
 func jump_to_page(index: int):
-	page_index = index
-	write_page()
-	
+	if(index % 2 == 1):
+		index -= 1
+	current_page_index = index
+	write_pages()
 
-
-
-
-
-
-
+func jump_to_index():
+	jump_to_page(0)

@@ -8,6 +8,7 @@ extends Node2D
 
 signal next_page
 signal prev_page
+signal to_index
 
 var drag_offset: Vector2
 var initial_position: Vector2
@@ -38,3 +39,6 @@ func prev_button():
 
 func next_button():
 	emit_signal("next_page")
+	
+func index_shortcut():
+	to_index.emit()
