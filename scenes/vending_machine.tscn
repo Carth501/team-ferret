@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7152nentjj7u"]
+
+[ext_resource type="Texture2D" uid="uid://b1v23arwgma3v" path="res://assets/images/level-select/vending/Vending_Machine.png" id="1_gs2eo"]
+[ext_resource type="Texture2D" uid="uid://bcse7bbx6t3xc" path="res://assets/images/level-select/vending/Vending_Machine_Keypad.png" id="2_orixr"]
+[ext_resource type="Texture2D" uid="uid://c8tf2iyqyrkuh" path="res://assets/images/level-select/vending/Vending_Machine_Glass.png" id="3_8j0ed"]
+[ext_resource type="Texture2D" uid="uid://dxh4or2oa838" path="res://assets/images/level-select/vending/CrunchTime.png" id="3_hdany"]
+[ext_resource type="Texture2D" uid="uid://c0fndp37ifhf1" path="res://assets/images/level-select/vending/GummiButtons.png" id="4_5danh"]
+[ext_resource type="Texture2D" uid="uid://brgj3xeegvkja" path="res://assets/images/level-select/vending/PaynesPuffPastry.png" id="5_ymggr"]
+[ext_resource type="Texture2D" uid="uid://c4uiua0ot7ncj" path="res://assets/images/level-select/vending/MarksBlackLicorice.png" id="6_62wf7"]
+
+[node name="vending_machine" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="body" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_gs2eo")
+
+[node name="keypad" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 144.0
+offset_right = 401.0
+offset_bottom = 350.0
+texture = ExtResource("2_orixr")
+
+[node name="upgrades" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="digital_clock" type="Sprite2D" parent="upgrades"]
+position = Vector2(97.9999, 117)
+rotation = 0.204204
+scale = Vector2(0.311111, 0.311111)
+texture = ExtResource("3_hdany")
+
+[node name="pager_buttons" type="Sprite2D" parent="upgrades"]
+position = Vector2(215, 118)
+rotation = -0.0523599
+scale = Vector2(0.398611, 0.398611)
+texture = ExtResource("4_5danh")
+
+[node name="manual_window" type="Sprite2D" parent="upgrades"]
+position = Vector2(102, 364)
+rotation = -0.102974
+scale = Vector2(0.366667, 0.366667)
+texture = ExtResource("5_ymggr")
+
+[node name="bookmarks" type="Sprite2D" parent="upgrades"]
+position = Vector2(222, 244)
+rotation = -0.357792
+scale = Vector2(0.377778, 0.377778)
+texture = ExtResource("6_62wf7")
+
+[node name="glass" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 280.0
+offset_bottom = 493.0
+texture = ExtResource("3_8j0ed")
+metadata/_edit_lock_ = true
