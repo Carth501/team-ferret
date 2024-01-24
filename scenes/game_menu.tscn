@@ -1,30 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3adj3oedwpob"]
+[gd_scene load_steps=8 format=3 uid="uid://b3adj3oedwpob"]
 
 [ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_4esr6"]
 [ext_resource type="PackedScene" uid="uid://c5t84l7lw67b8" path="res://scenes/level_select_panel.tscn" id="2_iq5f4"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_jgx4p"]
+[ext_resource type="PackedScene" uid="uid://21wbe505uadg" path="res://scenes/rolodex.tscn" id="3_veqqd"]
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="4_lc7sr"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="5_txwpc"]
+[ext_resource type="PackedScene" uid="uid://c7152nentjj7u" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
 
 [node name="GameMenu" type="Node" node_paths=PackedStringArray("level_select_panel")]
 script = ExtResource("1_4esr6")
 level_select_panel = NodePath("Level Select Panel")
 
+[node name="vending_machine" parent="." instance=ExtResource("6_o8brn")]
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 53.0
+offset_bottom = 49.0
+
+[node name="rolodex" parent="." instance=ExtResource("3_veqqd")]
+offset_left = 935.0
+offset_top = 380.0
+offset_right = 975.0
+offset_bottom = 420.0
+
 [node name="Continue" type="Button" parent="."]
-offset_left = 684.0
-offset_top = 59.0
-offset_right = 775.0
-offset_bottom = 90.0
+offset_left = 496.0
+offset_top = 33.0
+offset_right = 587.0
+offset_bottom = 64.0
 text = "CONTINUE"
 
 [node name="click_player" type="Node" parent="Continue"]
 script = ExtResource("2_jgx4p")
 
 [node name="Level Select" type="Button" parent="."]
-offset_left = 665.0
-offset_top = 100.0
-offset_right = 777.0
-offset_bottom = 131.0
+offset_left = 489.0
+offset_top = 82.0
+offset_right = 601.0
+offset_bottom = 113.0
 text = "LEVEL SELECT
 "
 
@@ -46,10 +60,10 @@ bus = &"Music"
 script = ExtResource("5_txwpc")
 
 [node name="To Title Menu" type="Button" parent="."]
-offset_left = 626.0
-offset_top = 623.0
-offset_right = 739.0
-offset_bottom = 654.0
+offset_left = 493.0
+offset_top = 650.0
+offset_right = 606.0
+offset_bottom = 681.0
 text = "To Title Menu"
 
 [connection signal="pressed" from="Continue" to="." method="load_continue"]

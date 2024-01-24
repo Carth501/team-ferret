@@ -1,0 +1,265 @@
+[gd_scene load_steps=44 format=3 uid="uid://21wbe505uadg"]
+
+[ext_resource type="Texture2D" uid="uid://b2o20qx3y31bg" path="res://assets/images/level-select/rolodex/Rolodex10Tab.png" id="1_mvx2n"]
+[ext_resource type="Script" path="res://scripts/rolodex.gd" id="1_v1luo"]
+[ext_resource type="Texture2D" uid="uid://ci6iwb5axefek" path="res://assets/images/level-select/rolodex/Rolodex15Tab.png" id="2_jkks6"]
+[ext_resource type="Texture2D" uid="uid://lyltah0i7rie" path="res://assets/images/level-select/rolodex/Rolodex20Tab.png" id="3_65ohy"]
+[ext_resource type="Texture2D" uid="uid://b7gp0rjba8sau" path="res://assets/images/level-select/rolodex/Rolodex25Tab.png" id="4_1vdr3"]
+[ext_resource type="Texture2D" uid="uid://3hg2g2ell0ng" path="res://assets/images/level-select/rolodex/Rolodex30Tab.png" id="5_mbkth"]
+[ext_resource type="Texture2D" uid="uid://chtg4latxruf6" path="res://assets/images/level-select/rolodex/Rolodex AllTopTabs.png" id="6_fmtu5"]
+[ext_resource type="Texture2D" uid="uid://8802l1gmlxga" path="res://assets/images/level-select/rolodex/Rolodex TopTab30.png" id="7_f07q7"]
+[ext_resource type="Texture2D" uid="uid://ds5vcgexnemk0" path="res://assets/images/level-select/rolodex/Rolodex TopTab25.png" id="8_3crg0"]
+[ext_resource type="Texture2D" uid="uid://sjkpipj1rxrk" path="res://assets/images/level-select/rolodex/Rolodex TopTab20.png" id="9_gnvwo"]
+[ext_resource type="Texture2D" uid="uid://i4i5sgcavpaq" path="res://assets/images/level-select/rolodex/Rolodex TopTab15.png" id="10_sj666"]
+[ext_resource type="Texture2D" uid="uid://cfokhgcnxs88o" path="res://assets/images/level-select/rolodex/Rolodex TopTab10.png" id="11_g43bt"]
+[ext_resource type="Texture2D" uid="uid://bmjopgnn3oedf" path="res://assets/images/level-select/rolodex/Rolodex TopTab5.png" id="12_b0atm"]
+[ext_resource type="Texture2D" uid="uid://bgmkmqblqfc44" path="res://assets/images/level-select/rolodex/Rolodex DownTab5.png" id="13_lfagc"]
+[ext_resource type="Texture2D" uid="uid://bvoklux4g4ihn" path="res://assets/images/level-select/rolodex/Rolodex DownTab10.png" id="14_7x8ck"]
+[ext_resource type="Texture2D" uid="uid://decxr8twnrnq" path="res://assets/images/level-select/rolodex/Rolodex DownTab15.png" id="15_1k5y7"]
+[ext_resource type="Texture2D" uid="uid://c15ucnv5o2ff5" path="res://assets/images/level-select/rolodex/Rolodex DownTab20.png" id="16_u43jt"]
+[ext_resource type="Texture2D" uid="uid://cg1o8e3n1ak65" path="res://assets/images/level-select/rolodex/Rolodex DownTab25.png" id="17_cyqw2"]
+[ext_resource type="Texture2D" uid="uid://216ct7y380yf" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsUp.png" id="18_eiyd0"]
+[ext_resource type="Texture2D" uid="uid://cwkljq4c1l75v" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsDown.png" id="19_sgavn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kchi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fmtu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_mvx2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jkks6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_65ohy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1vdr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mbkth")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ix21"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t38ms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2er5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8f6f3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yqgv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1ml0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35o6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7to2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmwgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pt0dm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_552vg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx5mx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24omt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x66uk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fo3s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8bp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgymg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tf12u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8k201"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pep4q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fj0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amitt"]
+
+[node name="rolodex" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_v1luo")
+metadata/_edit_group_ = true
+
+[node name="rolodex_anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0kchi")
+metadata/_edit_lock_ = true
+
+[node name="top_buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="30_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = -332.0
+offset_right = 157.0
+offset_bottom = -289.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ix21")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t38ms")
+icon = ExtResource("7_f07q7")
+flat = true
+
+[node name="25_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = -336.0
+offset_right = 99.0
+offset_bottom = -293.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2er5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8f6f3")
+icon = ExtResource("8_3crg0")
+flat = true
+
+[node name="20_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -339.0
+offset_right = 49.0
+offset_bottom = -296.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yqgv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k1ml0")
+icon = ExtResource("9_gnvwo")
+flat = true
+
+[node name="15_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = -339.0
+offset_right = 4.0
+offset_bottom = -296.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_35o6a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7to2s")
+icon = ExtResource("10_sj666")
+flat = true
+
+[node name="10_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = -98.0
+offset_top = -336.0
+offset_right = -41.0
+offset_bottom = -293.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_kmwgh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pt0dm")
+icon = ExtResource("11_g43bt")
+flat = true
+
+[node name="5_top" type="Button" parent="top_buttons"]
+layout_mode = 0
+offset_left = -155.0
+offset_top = -333.0
+offset_right = -90.0
+offset_bottom = -290.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_552vg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kx5mx")
+icon = ExtResource("12_b0atm")
+flat = true
+
+[node name="bot_buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="5_bot" type="Button" parent="bot_buttons"]
+visible = false
+layout_mode = 0
+offset_left = -315.0
+offset_top = 132.0
+offset_right = -201.0
+offset_bottom = 196.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_24omt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x66uk")
+icon = ExtResource("13_lfagc")
+flat = true
+
+[node name="10_bot" type="Button" parent="bot_buttons"]
+visible = false
+layout_mode = 0
+offset_left = -238.0
+offset_top = 160.0
+offset_right = -125.0
+offset_bottom = 222.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_4fo3s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d8bp3")
+icon = ExtResource("14_7x8ck")
+flat = true
+
+[node name="15_bot" type="Button" parent="bot_buttons"]
+visible = false
+layout_mode = 0
+offset_left = -153.0
+offset_top = 175.0
+offset_right = -33.0
+offset_bottom = 232.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_xgymg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tf12u")
+icon = ExtResource("15_1k5y7")
+flat = true
+
+[node name="20_bot" type="Button" parent="bot_buttons"]
+visible = false
+layout_mode = 0
+offset_left = -65.0
+offset_top = 176.0
+offset_right = 61.0
+offset_bottom = 225.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_8k201")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pep4q")
+icon = ExtResource("16_u43jt")
+flat = true
+
+[node name="25_bot" type="Button" parent="bot_buttons"]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 152.0
+offset_right = 162.0
+offset_bottom = 208.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fj0q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amitt")
+icon = ExtResource("17_cyqw2")
+flat = true
+
+[node name="RolodexFullTabsUp" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.447059)
+texture = ExtResource("18_eiyd0")
+metadata/_edit_lock_ = true
+
+[node name="RolodexFullTabsDown" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.490196)
+texture = ExtResource("19_sgavn")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="top_buttons/30_top" to="." method="_on_30_top_pressed"]
+[connection signal="pressed" from="top_buttons/25_top" to="." method="_on_25_top_pressed"]
+[connection signal="pressed" from="top_buttons/20_top" to="." method="_on_20_top_pressed"]
+[connection signal="pressed" from="top_buttons/15_top" to="." method="_on_15_top_pressed"]
+[connection signal="pressed" from="top_buttons/10_top" to="." method="_on_10_top_pressed"]
+[connection signal="pressed" from="top_buttons/5_top" to="." method="_on_5_top_pressed"]
+[connection signal="pressed" from="bot_buttons/5_bot" to="." method="_on_5_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/10_bot" to="." method="_on_10_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/15_bot" to="." method="_on_15_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/20_bot" to="." method="_on_20_bot_pressed"]
+[connection signal="pressed" from="bot_buttons/25_bot" to="." method="_on_25_bot_pressed"]
