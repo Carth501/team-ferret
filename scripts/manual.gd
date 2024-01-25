@@ -22,8 +22,6 @@ func _ready():
 	
 
 func toggle_manual_popup():
-	#popup.visible = !popup.visible
-	print("toggle_manual_popup")
 	manual_book.visible = !manual_book.visible
 	if(manual_book.visible):
 		manual_open.emit()
@@ -50,14 +48,12 @@ func build_index(error_list):
 		count += 1
 	var i = 0
 	for page_string in pages_index:
-		print(str("page_string ", page_string))
 		var new_page = {
 			"index": true,
 			"body": page_string,
 			"page_number": i
 		}
 		pages.append(new_page)
-		print(str("pages ", pages))
 		i += 1
 
 func build_error_list(error_list, control_list):
