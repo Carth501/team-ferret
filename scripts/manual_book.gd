@@ -9,6 +9,7 @@ extends Node2D
 signal next_page
 signal prev_page
 signal to_index
+signal to_page(number: int)
 
 var drag_offset: Vector2
 var initial_position: Vector2
@@ -42,3 +43,8 @@ func next_button():
 	
 func index_shortcut():
 	to_index.emit()
+
+func parse_hyperlink(meta: Variant):
+	var parsedResult = JSON.parse_string(meta)
+	if(parsedResult.has("page")):
+		to_page.emit(parsedResult.page)

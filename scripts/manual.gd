@@ -6,7 +6,7 @@ extends Control
 var pages: Array = []
 var current_page_index = 0
 var index_page_size := 15.0
-
+ 
 var l_header
 var l_body
 var r_header
@@ -20,7 +20,6 @@ func _ready():
 	
 
 func toggle_manual_popup():
-	#popup.visible = !popup.visible
 	manual_book.visible = !manual_book.visible
 	write_pages()
 
@@ -45,14 +44,12 @@ func build_index(error_list):
 		count += 1
 	var i = 0
 	for page_string in pages_index:
-		print(str("page_string ", page_string))
 		var new_page = {
 			"index": true,
 			"body": page_string,
 			"page_number": i
 		}
 		pages.append(new_page)
-		print(str("pages ", pages))
 		i += 1
 
 func build_error_list(error_list, control_list):
@@ -103,6 +100,8 @@ func write_pages():
 				open_index_page(r_body, current_page_index + 1)
 			else:
 				open_content_page(r_header, r_body, current_page_index + 1)
+		else:
+			r_body.text = ""
 			
 func check_index(page) -> bool:
 	return pages[page].has("index") && pages[page].index
@@ -121,9 +120,9 @@ func open_content_page(header: Label, body: RichTextLabel, page_index: int):
 
 func clear_pages():
 	l_header.text = ""
-	l_body.clear()
+	l_body.text = ""
 	r_header.text = ""
-	r_body.clear()
+	r_body.text = ""
 
 func prev_page():
 	if current_page_index > 1:
@@ -138,16 +137,12 @@ func next_page():
 		current_page_index += 2
 		write_pages()
 
-func parse_hyperlink(meta: Variant):
-	var parsedResult = JSON.parse_string(meta)
-	if(parsedResult.has("page")):
-		jump_to_page(parsedResult.page)
-
 func jump_to_page(index: int):
 	if(index % 2 == 1):
 		index -= 1
-	current_page_index = index
-	write_pages()
+	if(current_page_index != index):
+		current_page_index = index
+		write_pages()
 
 func jump_to_index():
 	jump_to_page(0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://8agpxf2qcmt7"]
+[gd_scene load_steps=4 format=3 uid="uid://byo2ynlmm7spw"]
 
 [ext_resource type="Texture2D" uid="uid://dhkuhvre6w542" path="res://assets/images/Manual_PopUp_Draft_1.png" id="1_34q65"]
 [ext_resource type="Script" path="res://scripts/manual_book.gd" id="1_g60n5"]
@@ -47,7 +47,7 @@ clip_text = true
 [node name="left_text" type="RichTextLabel" parent="TextureRect/MarginContainer/HBoxContainer/left_page"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 theme = ExtResource("2_8r16f")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
@@ -77,7 +77,7 @@ clip_text = true
 [node name="right_text" type="RichTextLabel" parent="TextureRect/MarginContainer/HBoxContainer/right_page"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 theme = ExtResource("2_8r16f")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
@@ -112,6 +112,8 @@ text = "Index"
 [connection signal="gui_input" from="TextureRect/MarginContainer" to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="TextureRect/MarginContainer" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect/MarginContainer" to="." method="_on_mouse_exited"]
+[connection signal="meta_clicked" from="TextureRect/MarginContainer/HBoxContainer/left_page/left_text" to="." method="parse_hyperlink"]
+[connection signal="meta_clicked" from="TextureRect/MarginContainer/HBoxContainer/right_page/right_text" to="." method="parse_hyperlink"]
 [connection signal="pressed" from="prev_button" to="." method="prev_button"]
 [connection signal="pressed" from="next_button" to="." method="next_button"]
 [connection signal="pressed" from="jump_to_index" to="." method="index_shortcut"]
