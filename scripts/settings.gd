@@ -7,8 +7,12 @@ class_name settings extends Control
 @export var master_volume: Slider
 @export var music_volume: Slider
 @export var effects_volume: Slider
+@export var tog_fullscreen: CheckBox
+
 var config_path := "user://settings.cfg"
 var sound := "Sound"
+var graphic := "Graphics"
+
 
 func _ready():
 	var err = config.load(config_path)
@@ -24,6 +28,7 @@ func save_config():
 		config.set_value(sound, "master_volume", master_volume.value)
 		config.set_value(sound, "music_volume", music_volume.value)
 		config.set_value(sound, "effects_volume", effects_volume.value)
+		#config.set_value(graphic,"window_setting",)
 		config.save(config_path)
 		apply_volumes()
 
@@ -42,3 +47,10 @@ func process_slider(slider: Slider, bus_id: int):
 		AudioServer.set_bus_volume_db(bus_id, db)
 	else:
 		set_mute_bus(bus_id, true)
+
+func _on_toggle_fullscreen(toggled_on):
+	if(toggled_on):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280,720))

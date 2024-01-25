@@ -88,9 +88,11 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_ootdy")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_3rbuy")
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_6sdeo")
 tab_alignment = 1
+current_tab = 1
 script = ExtResource("2_ccuh6")
 
 [node name="     Sound     " type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 
@@ -209,7 +211,6 @@ theme_override_constants/outline_size = 5
 text = "100%"
 
 [node name="    Graphics    " type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 
@@ -236,6 +237,18 @@ theme = ExtResource("1_x8e27")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Graphic Options"
+
+[node name="View Settings" type="Control" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="toggle_fullscreen" type="CheckButton" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer/View Settings"]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Fullscreen"
 
 [node name="    Controls    " type="TabBar" parent="TabContainer"]
 visible = false
@@ -310,4 +323,5 @@ text = "Save and Apply"
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Master Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Master Volume" method="update_label"]
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Music Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Music Volume" method="update_label"]
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Effects Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Effects Volume" method="update_label"]
+[connection signal="toggled" from="TabContainer/    Graphics    /MarginContainer/VBoxContainer/View Settings/toggle_fullscreen" to="." method="_on_toggle_fullscreen"]
 [connection signal="pressed" from="save and apply button" to="." method="save_config"]
