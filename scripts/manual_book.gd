@@ -15,6 +15,7 @@ var drag_offset: Vector2
 var initial_position: Vector2
 var mouse_over: bool = false
 var holding: bool = false
+var in_window: bool = true
 
 func _on_gui_input(event):
 	if(event is InputEventMouseButton):
@@ -25,9 +26,15 @@ func _on_gui_input(event):
 		else:
 			holding = false
 	elif(event is InputEventMouseMotion):
-		if(holding):
+		if(holding && in_window):
 			var delta_position = get_viewport().get_mouse_position() - drag_offset
 			position = initial_position + delta_position 
+
+func _notification(what):
+	if what == NOTIFICATION_WM_MOUSE_ENTER:
+		in_window = true
+	elif what == NOTIFICATION_WM_MOUSE_EXIT:
+		in_window = false
 
 func _on_mouse_entered():
 	mouse_over = true
