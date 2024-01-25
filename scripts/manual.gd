@@ -1,6 +1,8 @@
 class_name manual
 extends Control
 
+signal manual_open
+
 @onready var manual_book = $manual_book as Node2D
 
 var pages: Array = []
@@ -21,7 +23,10 @@ func _ready():
 
 func toggle_manual_popup():
 	#popup.visible = !popup.visible
+	print("toggle_manual_popup")
 	manual_book.visible = !manual_book.visible
+	if(manual_book.visible):
+		manual_open.emit()
 	write_pages()
 
 func write_manual(error_list, control_list):

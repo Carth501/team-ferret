@@ -4,12 +4,13 @@
 		"name": "Orientation",
 		"id": "L_RING-1",
 		"hidden": false,
-		"music": "lvl_2"
+		"music": "lvl_2",
+		"tutorial": true
 	  },
 	  "gameplay": {
-		"starting_cpc": 100,
-		"goal_cpc": 500,
-		"shift_duration": 450,
+		"starting_cpc": 0,
+		"goal_cpc": 0,
+		"shift_duration": 45,
 		"errors": {
 		  "scheduled": [
 			{
