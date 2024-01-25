@@ -47,3 +47,4 @@ visible = false
 [connection signal="next_page" from="manual_book" to="." method="next_page"]
 [connection signal="prev_page" from="manual_book" to="." method="prev_page"]
 [connection signal="to_index" from="manual_book" to="." method="jump_to_index"]
+[connection signal="to_page" from="manual_book" to="." method="jump_to_page"]

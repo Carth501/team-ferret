@@ -1,6 +1,8 @@
+
 [gd_scene load_steps=3 format=3 uid="uid://uphr5mmbg4ts"]
 
 [ext_resource type="Texture2D" uid="uid://ddsfh72ec28ml" path="res://assets/images/options/Shareholders Options SelectionPen.png" id="1_ibygx"]
+
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_mjtn5"]
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("circle")]
