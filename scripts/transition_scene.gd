@@ -1,3 +1,4 @@
+class_name transition_screen
 extends CanvasLayer
 
 signal transitioned
