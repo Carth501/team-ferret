@@ -191,8 +191,9 @@ size_flags_vertical = 8
 [node name="play" type="Button" parent="MenuContainer/Button Control"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-offset_right = 47.0
-offset_bottom = 31.0
+offset_top = 42.0
+offset_right = 141.0
+offset_bottom = 73.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_awlsb")
@@ -206,6 +207,7 @@ flat = true
 script = ExtResource("4_yxiqb")
 
 [node name="load" type="Button" parent="MenuContainer/Button Control"]
+visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 offset_top = 41.0

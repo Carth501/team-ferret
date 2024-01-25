@@ -400,6 +400,7 @@ theme_override_font_sizes/font_size = 32
 text = "END SHIFT"
 
 [node name="complete level" type="Button" parent="pause curtain"]
+visible = false
 layout_mode = 0
 offset_left = 502.0
 offset_top = 420.0

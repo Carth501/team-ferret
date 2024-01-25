@@ -6,7 +6,13 @@ extends Control
 @onready var bot_buttons = $bot_buttons.get_children()
 @onready var data := data_libraries_single
 @onready var save_handler := save_handler_single
-@export var check_marks: Array[Control]
+@onready var check_marks := [
+	$level_links/Control/CheckMark,
+	$level_links/Control2/CheckMark,
+	$level_links/Control3/CheckMark,
+	$level_links/Control4/CheckMark,
+	$level_links/Control5/CheckMark,
+] 
 @onready var level_buttons := [
 	$level_links/Control/Button,
 	$level_links/Control2/Button,

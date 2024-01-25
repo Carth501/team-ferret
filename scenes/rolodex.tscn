@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dyogoxmvnw65"]
+[gd_scene load_steps=46 format=3 uid="uid://21wbe505uadg"]
 
 [ext_resource type="Texture2D" uid="uid://b2o20qx3y31bg" path="res://assets/images/level-select/rolodex/Rolodex10Tab.png" id="1_mvx2n"]
 [ext_resource type="Script" path="res://scripts/rolodex.gd" id="1_v1luo"]
@@ -93,13 +93,12 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amitt"]
 
-[node name="rolodex" type="Control" node_paths=PackedStringArray("check_marks")]
+[node name="rolodex" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_v1luo")
-check_marks = [NodePath("level_links/Control/CheckMark"), NodePath("level_links/Control2/CheckMark"), NodePath("level_links/Control3/CheckMark"), NodePath("level_links/Control4/CheckMark"), NodePath("level_links/Control5/CheckMark")]
 metadata/_edit_group_ = true
 
 [node name="rolodex_anim" type="AnimatedSprite2D" parent="."]
