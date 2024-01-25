@@ -23,6 +23,7 @@ func hide_stuff():
 	cubicle_instance.level_clock_handler.visible = false
 	cubicle_instance.simulation_screen.visible = false
 	cubicle_instance.pager_ref.visible = false
+	cubicle_instance.pause_button.visible = false
 
 func step1():
 	textbox.text = "Welcome! Onboarding should take one minute. Click the manual."
