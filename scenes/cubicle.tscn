@@ -147,6 +147,36 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_uvf7p")
 
+[node name="No_Signal" type="Control" parent="Cubicle/Background"]
+anchors_preset = 0
+offset_left = 625.0
+offset_top = 152.0
+offset_right = 665.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="Cubicle/Background/No_Signal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 44.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Cubicle/Background/No_Signal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_right = 82.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "NO SIGNAL"
+
 [node name="GameScreen" type="TextureRect" parent="Cubicle/Background"]
 layout_mode = 0
 offset_left = 286.0
@@ -155,41 +185,43 @@ offset_right = 994.0
 offset_bottom = 325.0
 texture = ExtResource("3_7kfsr")
 
-[node name="PlayerIcon" type="TextureRect" parent="Cubicle/Background"]
+[node name="PlayerIcon" type="TextureRect" parent="Cubicle/Background/GameScreen"]
 layout_mode = 0
-offset_left = 289.0
-offset_top = 261.0
-offset_right = 413.0
-offset_bottom = 325.0
+offset_left = 3.0
+offset_top = 225.0
+offset_right = 127.0
+offset_bottom = 289.0
 texture = ExtResource("4_kv2wk")
 
-[node name="gun" type="AnimatedSprite2D" parent="Cubicle/Background"]
-position = Vector2(758, 261)
+[node name="gun" type="AnimatedSprite2D" parent="Cubicle/Background/GameScreen"]
+position = Vector2(472, 225)
 sprite_frames = SubResource("SpriteFrames_bn0dg")
 animation = &"fire"
 script = SubResource("GDScript_gndtr")
 
-[node name="Console" type="TextureRect" parent="Cubicle/Background"]
+[node name="Console" type="TextureRect" parent="Cubicle/Background/GameScreen"]
 layout_mode = 0
-offset_left = 732.0
-offset_top = 42.0
-offset_right = 995.0
-offset_bottom = 184.0
+offset_left = 446.0
+offset_top = 6.0
+offset_right = 709.0
+offset_bottom = 148.0
 texture = ExtResource("5_un2pp")
 
-[node name="CpcMonitor" parent="Cubicle/Background/Console" instance=ExtResource("6_18xk0")]
+[node name="CpcMonitor" parent="Cubicle/Background/GameScreen/Console" instance=ExtResource("6_18xk0")]
 layout_mode = 1
 offset_left = 14.0
 offset_top = 30.0
 offset_right = -228.0
 offset_bottom = -112.0
 
-[node name="Screen_Shaders" type="Control" parent="Cubicle/Background"]
+[node name="Screen_Shaders" type="Control" parent="Cubicle/Background/GameScreen"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -286.0
+offset_top = -36.0
+offset_right = -246.0
+offset_bottom = 4.0
 
-[node name="grain_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+[node name="grain_shader" type="ColorRect" parent="Cubicle/Background/GameScreen/Screen_Shaders"]
 material = SubResource("ShaderMaterial_451s0")
 layout_mode = 0
 offset_left = 280.0
@@ -198,7 +230,7 @@ offset_right = 1000.0
 offset_bottom = 331.0
 color = Color(1, 1, 1, 0)
 
-[node name="lens_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+[node name="lens_shader" type="ColorRect" parent="Cubicle/Background/GameScreen/Screen_Shaders"]
 material = SubResource("ShaderMaterial_ft71o")
 layout_mode = 0
 offset_left = 280.0
@@ -207,7 +239,7 @@ offset_right = 1000.0
 offset_bottom = 331.0
 color = Color(1, 1, 1, 0)
 
-[node name="tv_shader" type="ColorRect" parent="Cubicle/Background/Screen_Shaders"]
+[node name="tv_shader" type="ColorRect" parent="Cubicle/Background/GameScreen/Screen_Shaders"]
 material = SubResource("ShaderMaterial_tc2xr")
 layout_mode = 0
 offset_left = 280.0
@@ -294,7 +326,7 @@ cubicle_instance = NodePath("..")
 probability = 0.2
 
 [node name="CpcCalculator" parent="." node_paths=PackedStringArray("display") instance=ExtResource("7_dldy6")]
-display = NodePath("../Cubicle/Background/Console/CpcMonitor")
+display = NodePath("../Cubicle/Background/GameScreen/Console/CpcMonitor")
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
 offset_left = 18.0

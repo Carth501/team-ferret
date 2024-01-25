@@ -23,6 +23,8 @@ signal modules_ready()
 @onready var cpc_calc := $CpcCalculator
 @onready var error_arrived := $"Sound Effects/Error Arrived"
 @onready var error_resolved := $"Sound Effects/Error Resolved"
+@onready var simulation_screen := $Cubicle/Background/GameScreen
+@onready var pager_ref := $pager
 var current_level_id: String
 var data: data_libraries_single
 var loader: level_loader
@@ -66,6 +68,7 @@ func load_level(level_id: String = "test"):
 	set_initial_module_settings()
 	populate_error_factory()
 	configure_level_settings()
+	tutorial_init()
 	
 func get_level():
 	var level_list = data.level_data
@@ -185,7 +188,8 @@ func next_error_report():
 	error_arrived.play()
 
 func error_report(_error: Variant):
-	error_arrived.play()
+	if(error_arrived.is_inside_tree()):
+		error_arrived.play()
 
 func announce_error_resolved(error_id):
 	diagetic_error_resolved.emit(error_id)
@@ -209,15 +213,21 @@ func toggle_pause():
 	paused = !paused
 	pause_curtain.visible = paused
 	if(paused):
-		game_timer.stop()
-		for timer in error_timers_list:
-			if(timer != null):
-				timer.paused = true
+		stop_timers()
 	else:
-		game_timer.start()
-		for timer in error_timers_list:
-			if(timer != null):
-				timer.paused = false
+		start_timers()
+
+func stop_timers():
+	game_timer.stop()
+	for timer in error_timers_list:
+		if(timer != null):
+			timer.paused = true
+
+func start_timers():
+	game_timer.start()
+	for timer in error_timers_list:
+		if(timer != null):
+			timer.paused = false
 
 func end_level():
 	var save_handler = get_node("/root/save_handler_single")
@@ -273,3 +283,10 @@ func on_exit_options_menu() -> void:
 	#pause_curtain.visible = true
 	options_menu.visible = false
 
+func tutorial_init():
+	if(current_level.metadata.has("tutorial") && current_level.metadata.tutorial):
+		var tutorial_scene = load("res://scenes/tutorial.tscn")
+		var node_tutorial = tutorial_scene.instantiate()
+		node_tutorial.name = "tutorial"
+		add_child(node_tutorial)
+		node_tutorial.set_cubicle(self)
