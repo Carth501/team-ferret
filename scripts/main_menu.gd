@@ -6,6 +6,7 @@ extends Node
 @onready var options_menu = $options_menu as OptionsMenu
 @onready var menu_container = $MenuContainer as MarginContainer
 @onready var credits_panel = $Credits as credits
+@onready var load_management := $"Load Manager"
 
 var save_data: Array[Variant]
 
@@ -61,3 +62,9 @@ func get_latest_save() -> Variant:
 func toggle_credits():
 	menu_container.visible = !menu_container.visible
 	credits_panel.visible = !credits_panel.visible
+
+func toggle_load_manager():
+	menu_container.visible = !menu_container.visible
+	load_management.visible = !load_management.visible
+	if(load_management.visible):
+		load_management.build()

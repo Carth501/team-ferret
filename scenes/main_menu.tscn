@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://jnq42xdbfulu"]
+[gd_scene load_steps=43 format=3 uid="uid://jnq42xdbfulu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3t2ir"]
 [ext_resource type="PackedScene" uid="uid://c6l8ayc6kej8h" path="res://scenes/logo.tscn" id="1_f7edf"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b7hkaynupl514" path="res://assets/images/menu/buttons/Quit.png" id="14_lls55"]
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="17_trxdg"]
 [ext_resource type="PackedScene" uid="uid://8deiq5qjtha" path="res://scenes/credits.tscn" id="19_cn5hu"]
+[ext_resource type="Script" path="res://scripts/load_manager.gd" id="20_xyo2a"]
 
 [sub_resource type="Gradient" id="Gradient_gj2xc"]
 colors = PackedColorArray(0.737255, 0.960784, 0.862745, 1, 0.396078, 0.776471, 0.631373, 1)
@@ -296,9 +297,60 @@ script = ExtResource("8_1m8uy")
 [node name="Credits" parent="." instance=ExtResource("19_cn5hu")]
 visible = false
 
+[node name="Load Manager" type="Panel" parent="."]
+visible = false
+offset_left = 146.0
+offset_top = 74.0
+offset_right = 978.0
+offset_bottom = 660.0
+script = ExtResource("20_xyo2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Load Manager"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 403.0
+offset_bottom = 56.0
+theme_override_constants/separation = 13
+
+[node name="Create New Save" type="Button" parent="Load Manager/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_01cxx")
+text = "Create New Save"
+
+[node name="Load Save" type="Button" parent="Load Manager/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_01cxx")
+text = "Load Save"
+
+[node name="Delete Save" type="Button" parent="Load Manager/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_01cxx")
+text = "Delete Save"
+
+[node name="Button" type="Button" parent="Load Manager/HBoxContainer"]
+layout_mode = 2
+text = "Done"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Load Manager"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -516.0
+offset_right = 816.0
+offset_bottom = -16.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Load Manager/ScrollContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="MenuContainer/Button Control/play" to="." method="load_latest"]
+[connection signal="pressed" from="MenuContainer/Button Control/load" to="." method="toggle_load_manager"]
 [connection signal="pressed" from="MenuContainer/Button Control/credits" to="." method="toggle_credits"]
 [connection signal="pressed" from="MenuContainer/Button Control/quit" to="MenuContainer/Button Control/quit/quitter" method="endgame"]
 [connection signal="exit_options_menu" from="options_menu" to="." method="_on_options_menu_exit_options_menu"]
 [connection signal="tree_exiting" from="AudioStreamPlayer" to="AudioStreamPlayer" method="record_exit_time"]
 [connection signal="close" from="Credits" to="." method="toggle_credits"]
+[connection signal="pressed" from="Load Manager/HBoxContainer/Button" to="." method="toggle_load_manager"]
