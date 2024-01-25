@@ -24,6 +24,7 @@ signal modules_ready()
 @onready var error_arrived := $"Sound Effects/Error Arrived"
 @onready var error_resolved := $"Sound Effects/Error Resolved"
 @onready var simulation_screen := $Cubicle/Background/GameScreen
+@onready var simulation_shaders := $Cubicle/Background/GameScreen/Screen_Shaders
 @onready var pager_ref := $pager
 var current_level_id: String
 var data: data_libraries_single
@@ -214,8 +215,12 @@ func toggle_pause():
 	pause_curtain.visible = paused
 	if(paused):
 		stop_timers()
+		simulation_screen.speed_scale = 0
+		simulation_shaders.visible = false
 	else:
 		start_timers()
+		simulation_screen.speed_scale = 1
+		simulation_shaders.visible = true
 
 func stop_timers():
 	game_timer.stop()
@@ -241,7 +246,7 @@ func create_danger_timer(duration: float):
 	var danger_timer = Timer.new()
 	danger_timer.name = "Danger Timer"
 	add_child(danger_timer)
-	danger_timer.wait_time = maxi(duration * 0.9 - 10.0, 10)
+	danger_timer.wait_time = max(duration * 0.9 - 10, 10)
 	danger_timer.one_shot = true
 	danger_timer.start()
 	danger_timer.timeout.connect(start_danger_music)
