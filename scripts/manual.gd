@@ -146,8 +146,9 @@ func parse_hyperlink(meta: Variant):
 func jump_to_page(index: int):
 	if(index % 2 == 1):
 		index -= 1
-	current_page_index = index
-	write_pages()
+	if(current_page_index != index):
+		current_page_index = index
+		write_pages()
 
 func jump_to_index():
 	jump_to_page(0)
