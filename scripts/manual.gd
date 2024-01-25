@@ -150,5 +150,4 @@ func jump_to_page(index: int):
 	write_pages()
 
 func jump_to_index():
-	if(current_page_index>0):
-		jump_to_page(0)
+	jump_to_page(0)
