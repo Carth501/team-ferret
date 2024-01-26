@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyogoxmvnw65" path="res://scenes/rolodex.tscn" id="3_veqqd"]
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="4_lc7sr"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="5_txwpc"]
-[ext_resource type="PackedScene" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
+[ext_resource type="PackedScene" uid="uid://c7152nentjj7u" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
 
 [node name="GameMenu" type="Node"]
 script = ExtResource("1_4esr6")

@@ -10,23 +10,27 @@ class_name settings extends Control
 @export var music_volume: Slider
 @export var effects_volume: Slider
 
-
 var config_path := "user://settings.cfg"
 var sound := "Sound"
 var graphic := "Graphics"
 var fullscreen:bool
 
+const DEFAULT_MASTER_VOLUME = 1.0
+const DEFAULT_MUSIC_VOLUME = 1.0
+const DEFAULT_EFFECTS_VOLUME = 1.0
+const DEFAULT_FULLSCREEN = false
 
 func _ready():
 	var err = config.load(config_path)
 	if(err != OK):
 		fullscreen = false
 		save_config()
+		config.has_v
 	else:
-		master_volume.value = config.get_value(sound, "master_volume")
-		music_volume.value = config.get_value(sound, "music_volume")
-		effects_volume.value = config.get_value(sound, "effects_volume")
-		fullscreen = config.get_value(graphic,"fullscreen")
+		master_volume.value = config.get_value(sound, "master_volume", DEFAULT_MASTER_VOLUME)
+		music_volume.value = config.get_value(sound, "music_volume", DEFAULT_MUSIC_VOLUME)
+		effects_volume.value = config.get_value(sound, "effects_volume", DEFAULT_EFFECTS_VOLUME)
+		fullscreen = config.get_value(graphic,"fullscreen", DEFAULT_FULLSCREEN)
 		apply_volumes()
 		apply_graphics()
 
