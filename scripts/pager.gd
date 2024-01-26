@@ -15,13 +15,14 @@ func _ready():
 
 func add_error(new_error):
 	error_hexes.append(new_error.hex)
-	set_display(error_hexes.size() - 1)
+	if(error_hexes.size() == 1):
+		set_display(error_hexes.size() - 1)
 
 func set_display(value: int):
 	if(check_display_conditions(value)):
 		var error = error_hexes[value]
 		error_code_display.text = error
-		
+
 func check_display_conditions(value: int) -> bool:
 	if(error_hexes.size() <= 0):
 		return false

@@ -26,7 +26,7 @@ func _ready():
 		master_volume.value = config.get_value(sound, "master_volume")
 		music_volume.value = config.get_value(sound, "music_volume")
 		effects_volume.value = config.get_value(sound, "effects_volume")
-		fullscreen = config.get_value(graphic,"fullscreen")
+		fullscreen = config.get_value(graphic, "fullscreen")
 		apply_volumes()
 		apply_graphics()
 
