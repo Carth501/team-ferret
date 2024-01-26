@@ -4,6 +4,10 @@ extends Control
 signal manual_open
 
 @onready var manual_book = $manual_book as Node2D
+@onready var open_player = $openPlayer as AudioStreamPlayer
+@onready var close_player = $closePlayer as AudioStreamPlayer
+@onready var flick_player = $flickPlayer as AudioStreamPlayer
+@onready var turn_player = $turnPlayer as AudioStreamPlayer
 
 var pages: Array = []
 var current_page_index = 0
@@ -24,8 +28,11 @@ func _ready():
 func toggle_manual_popup():
 	manual_book.visible = !manual_book.visible
 	if(manual_book.visible):
+		open_player.play()
 		manual_open.emit()
 		manual_book.position = Vector2(0, 0)
+	else:
+		close_player.play()
 	write_pages()
 
 func write_manual(error_list, control_list):
@@ -132,20 +139,26 @@ func clear_pages():
 func prev_page():
 	if current_page_index > 1:
 		current_page_index -= 2
+		turn_player.play()
 		write_pages()
 	else:
 		current_page_index = 0
-	
 
 func next_page():
 	if pages.size() > current_page_index + 1:
 		current_page_index += 2
+		turn_player.play()
 		write_pages()
 
 func jump_to_page(index: int):
 	if(index % 2 == 1):
 		index -= 1
+		flick_player.play()
 	if(current_page_index != index):
+		if(current_page_index - 2 == index or current_page_index + 2 == index):
+			turn_player.play()
+		else:
+			flick_player.play()
 		current_page_index = index
 		write_pages()
 

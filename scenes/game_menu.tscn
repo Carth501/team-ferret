@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://21wbe505uadg" path="res://scenes/rolodex.tscn" id="3_veqqd"]
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="4_lc7sr"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="5_txwpc"]
-[ext_resource type="PackedScene" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
+[ext_resource type="PackedScene" uid="uid://c7152nentjj7u" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
 
 [node name="GameMenu" type="Node"]
 script = ExtResource("1_4esr6")
@@ -19,17 +19,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_u8dpi")
 
-[node name="vending_machine" parent="." instance=ExtResource("6_o8brn")]
-offset_left = 165.0
-offset_top = 9.0
-offset_right = 205.0
-offset_bottom = 49.0
-
 [node name="rolodex" parent="." instance=ExtResource("3_veqqd")]
 offset_left = 962.0
 offset_top = 380.0
 offset_right = 1002.0
 offset_bottom = 420.0
+
+[node name="vending_machine" parent="." instance=ExtResource("6_o8brn")]
+offset_left = 165.0
+offset_top = 9.0
+offset_right = 205.0
+offset_bottom = 49.0
 
 [node name="Continue" type="Button" parent="."]
 offset_left = 669.0

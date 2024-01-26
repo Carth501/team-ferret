@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtyv8dggwfwl"]
+[gd_scene load_steps=13 format=3 uid="uid://dtyv8dggwfwl"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_u3mp4"]
 [ext_resource type="Texture2D" uid="uid://bef45dhaqpaha" path="res://assets/images/cubicle/Shareholders Manual Shelf.png" id="2_d8a8w"]
+[ext_resource type="AudioStream" uid="uid://fie6qtru5mrn" path="res://assets/audio/effects/Manual/Book opening .wav" id="4_6h2w0"]
+[ext_resource type="AudioStream" uid="uid://b3umg5uvk1ecy" path="res://assets/audio/effects/Manual/Turned Page.wav" id="4_akn1d"]
 [ext_resource type="PackedScene" uid="uid://byo2ynlmm7spw" path="res://scenes/manual_book.tscn" id="5_8tfrf"]
+[ext_resource type="AudioStream" uid="uid://bdtramkkhchia" path="res://assets/audio/effects/Manual/Turn Page Flick.wav" id="5_bu7ci"]
+[ext_resource type="AudioStream" uid="uid://bs102l0iil4ob" path="res://assets/audio/effects/Manual/Close book Thud.wav" id="5_ptkdu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiu62"]
 
@@ -41,6 +45,18 @@ flat = true
 [node name="manual_book" parent="." instance=ExtResource("5_8tfrf")]
 visible = false
 top_level = true
+
+[node name="turnPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_akn1d")
+
+[node name="flickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bu7ci")
+
+[node name="openPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6h2w0")
+
+[node name="closePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ptkdu")
 
 [connection signal="pressed" from="toggle button" to="." method="toggle_manual_popup"]
 [connection signal="next_page" from="manual_book" to="." method="next_page"]
