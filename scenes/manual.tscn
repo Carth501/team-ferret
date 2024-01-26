@@ -57,6 +57,7 @@ stream = ExtResource("4_6h2w0")
 
 [node name="closePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ptkdu")
+
 [node name="Window" type="Window" parent="."]
 visible = false
 
