@@ -317,4 +317,3 @@ func upgrade_init():
 		var upgrades = active_save.upgrades
 		level_clock_handler.visible = upgrades.has("digital_clock") && upgrades.digital_clock
 		pager_ref.toggle_extra_button(upgrades.has("pager_buttons") && upgrades.pager_buttons)
-		manual_instance.set_windowed_mode(upgrades.has("manual_window") && upgrades.manual_window)
