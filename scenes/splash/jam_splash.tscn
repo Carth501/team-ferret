@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://e16viw6go1bw"]
+[gd_scene load_steps=6 format=3 uid="uid://c1wpi5omlp25w"]
 
-[ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_dxamp"]
-[ext_resource type="Texture2D" uid="uid://cd08uun0vxu6j" path="res://assets/images/Think_Cover_ImgL.png" id="2_fgyk5"]
-[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="3_qc2ry"]
+[ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_hu1ow"]
+[ext_resource type="Texture2D" uid="uid://cd08uun0vxu6j" path="res://assets/images/Think_Cover_ImgL.png" id="1_k3cwp"]
+[ext_resource type="Texture2D" uid="uid://c6c2vnvw73pqu" path="res://assets/images/game_jam_splash.png" id="2_cmc7o"]
+[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="2_cu2vp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ih7gj"]
-shader = ExtResource("3_qc2ry")
+shader = ExtResource("2_cu2vp")
 shader_parameter/vertJerkOpt = 0.2
 shader_parameter/vertMovementOpt = 0.0
 shader_parameter/bottomStaticOpt = 0.0
@@ -14,25 +15,26 @@ shader_parameter/scalinesOpt = 0.8
 shader_parameter/rgbOffsetOpt = 0.2
 shader_parameter/horzFuzzOpt = 0.15
 
-[node name="tots_splash" type="Control"]
+[node name="jam_splash" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dxamp")
+script = ExtResource("1_hu1ow")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -201.0
-offset_bottom = 99.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fgyk5")
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("2_cmc7o")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 visible = false
@@ -45,4 +47,4 @@ offset_top = -201.0
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fgyk5")
+texture = ExtResource("1_k3cwp")
