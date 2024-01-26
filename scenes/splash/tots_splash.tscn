@@ -1,48 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://e16viw6go1bw"]
+[gd_scene load_steps=3 format=3 uid="uid://e16viw6go1bw"]
 
 [ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_dxamp"]
-[ext_resource type="Texture2D" uid="uid://cd08uun0vxu6j" path="res://assets/images/Think_Cover_ImgL.png" id="2_fgyk5"]
-[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="3_qc2ry"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih7gj"]
-shader = ExtResource("3_qc2ry")
-shader_parameter/vertJerkOpt = 0.2
-shader_parameter/vertMovementOpt = 0.0
-shader_parameter/bottomStaticOpt = 0.0
-shader_parameter/bottomStaticStrenth = 0.7
-shader_parameter/scalinesOpt = 0.8
-shader_parameter/rgbOffsetOpt = 0.2
-shader_parameter/horzFuzzOpt = 0.15
+[ext_resource type="Texture2D" uid="uid://cirj3levqf5pq" path="res://assets/images/FourGoblinsInATrenchCoat.png" id="2_k0ynt"]
 
 [node name="tots_splash" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_dxamp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -201.0
-offset_bottom = 99.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 1750.0
+offset_bottom = 1750.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fgyk5")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_ih7gj")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -201.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fgyk5")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_k0ynt")
