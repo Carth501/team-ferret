@@ -126,17 +126,17 @@
 	},
 	{
 	  "metadata": {
-		"name": "Patchwork Pandemonium",
+		"name": "SO CLOSE",
 		"id": "L_RING-5",
 		"hidden": false,
 		"music": "lvl_6"
 	  },
 	  "gameplay": {
-		"starting_cpc": 55,
+		"starting_cpc": 1200,
 		"goal_cpc": 1500,
-		"shift_duration": 400,
+		"shift_duration": 114,
 		"failure_threshold_percent": 0.3,
-		"error_freq": 0.5,
+		"error_freq": 0.3,
 		"errors": {
 		  "scheduled": [
 			{
