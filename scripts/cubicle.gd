@@ -79,6 +79,7 @@ func load_level(level_id: String = "test"):
 	populate_error_factory()
 	configure_level_settings()
 	tutorial_init()
+	upgrade_init()
 	
 func get_level():
 	var level_list = data.level_data
@@ -309,4 +310,11 @@ func tutorial_init():
 		add_child(node_tutorial)
 		
 		node_tutorial.set_cubicle(self)
-		
+
+func upgrade_init():
+	if(!current_level.metadata.has("tutorial") || !current_level.metadata.tutorial):
+		var active_save = save_handler_single.active_save
+		var upgrades = active_save.upgrades
+		level_clock_handler.visible = upgrades.has("digital_clock") && upgrades.digital_clock
+		pager_ref.toggle_extra_button(upgrades.has("pager_buttons") && upgrades.pager_buttons)
+		manual_instance.set_windowed_mode(upgrades.has("manual_window") && upgrades.manual_window)

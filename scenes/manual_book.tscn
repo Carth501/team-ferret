@@ -8,6 +8,7 @@
 z_index = 1
 scale = Vector2(1.44, 1.44)
 script = ExtResource("1_g60n5")
+book_margin = 50.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
