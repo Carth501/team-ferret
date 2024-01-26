@@ -134,6 +134,8 @@ func create_module_id_list():
 func create_module_objects():
 	for module_id in module_id_list:
 		var module_definition = dereference_module_id(module_id)
+		if(module_id == "C_NERF_MECH"):
+			print(str("create_module_objects C_NERF_MECH ", module_definition))
 		var new_module
 		match module_definition.type:
 			"button":
@@ -290,4 +292,6 @@ func tutorial_init():
 		var node_tutorial = tutorial_scene.instantiate()
 		node_tutorial.name = "tutorial"
 		add_child(node_tutorial)
+		
 		node_tutorial.set_cubicle(self)
+		

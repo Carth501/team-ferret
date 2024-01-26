@@ -19,20 +19,20 @@ func set_up_continue_button():
 
 func set_up_textbox():
 	textbox.mouse_filter = 1
-	textbox.size = Vector2(240, 400)
+	textbox.size = Vector2(240, 300)
 	add_child(textbox)
 	textbox.label_settings = LabelSettings.new()
 	textbox.label_settings.font_color = Color.DARK_RED
 	textbox.position = Vector2(20, 40)
 	textbox.layout_direction = Control.LAYOUT_DIRECTION_RTL
 	textbox.autowrap_mode = TextServer.AUTOWRAP_WORD
+	textbox.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func hide_stuff():
 	cubicle_instance.stop_timers()
 	cubicle_instance.level_clock_handler.visible = false
 	cubicle_instance.simulation_screen.visible = false
 	cubicle_instance.pager_ref.visible = false
-	cubicle_instance.pause_button.visible = false
 
 func step1():
 	textbox.text = "Welcome! Onboarding should take one minute. Click the manual."
