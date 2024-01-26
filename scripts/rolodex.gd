@@ -76,7 +76,7 @@ func flip_page(page):
 	write_level_links()
 
 func write_level_links():
-	var complete_level_list:Array = save_handler.active_save.complete_levels
+	var complete_level_list: Array = save_handler.active_save.complete_levels
 	var start: int = current_page - 5
 	if(start > level_data.size()):
 		hide_all()

@@ -31,6 +31,7 @@ func _ready():
 	var err = config.load(config_path)
 	if(err != OK):
 		fullscreen = false
+		resolution = DEFAULT_RESOLUTION
 		save_config()
 		# config.has_v -- Not sure what this line is for Carth, editor says its a standalone expressions with no effect.
 	else:

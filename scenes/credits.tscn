@@ -151,7 +151,7 @@ offset_right = 130.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme = ExtResource("1_onpxx")
-text = "Caleb Kopitzke - Designer"
+text = "Caleb Kopitzke - Developer"
 horizontal_alignment = 1
 
 [node name="Contact" type="Label" parent="Panel/ScrollContainer/Control/Team/Team Member2"]
@@ -241,6 +241,7 @@ offset_right = 71.5
 offset_bottom = 51.0
 grow_horizontal = 2
 theme = ExtResource("1_onpxx")
+text = "Blazn - Discord"
 horizontal_alignment = 1
 
 [node name="Music" type="Control" parent="Panel/ScrollContainer/Control"]
