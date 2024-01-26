@@ -6,7 +6,6 @@ class_name cubicle extends Node
 
 signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
-signal module_triggered(module_id: String)
 signal modules_ready()
 
 @export var control_panel: Control
@@ -38,6 +37,14 @@ var error_timers_list := []
 var failure_threshold_percent: float
 var paused := false
 var met_target := false
+var module_triggers := 0
+var results_struct := {
+	"met_target": false,
+	"errors_cleared": 0,
+	"module_miss_count": 0,
+	"modules_per_minute": 0,
+	"repeat_attempt": false
+}
 
 func _ready():
 	handle_connecting_signals()
@@ -60,6 +67,7 @@ func _ready():
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
 	get_level()
+	detect_repeat_attempt()
 	get_error_schedule(current_level)
 	get_error_catalogue(current_level)
 	create_module_id_list()
@@ -78,6 +86,10 @@ func get_level():
 		if (metadata.id == current_level_id):
 			current_level = level 
 			return
+
+func detect_repeat_attempt():
+	var complete_levels = save_handler_single.active_save.complete_levels
+	results_struct.repeat_attempt = complete_levels.has(current_level_id)
 
 func configure_level_settings():
 	if(current_level.gameplay.has("starting_cpc")):
@@ -166,6 +178,7 @@ func configure_module(new_module: abstract_module, params):
 	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
 	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
+	new_module.trigger.connect(count_module_triggers)
 
 func dereference_module_id(id: String):
 	for module_def in data.control_data:
@@ -193,6 +206,7 @@ func error_report(_error: Variant):
 		error_arrived.play()
 
 func announce_error_resolved(error_id):
+	results_struct.errors_cleared += 1
 	diagetic_error_resolved.emit(error_id)
 	error_resolved.play()
 
@@ -256,13 +270,15 @@ func start_danger_music():
 
 func met_target_cpc():
 	met_target = true
+	save_handler_single.level_complete(current_level.metadata.id)
 
 func end_of_shift():
 	toggle_pause()
 	resume_button.visible = false
-	if(!met_target):
-		failure()
-		return
+	results_struct.met_target = met_target
+	var level_duration_minutes = (current_level.gameplay.shift_duration / 60)
+	results_struct.modules_per_minute = module_triggers / level_duration_minutes
+	results_single.results_struct = results_struct
 	save_handler_single.level_complete(current_level_id)
 	var tree = get_tree()
 	tree.change_scene_to_file("res://scenes/end_day.tscn")
@@ -283,6 +299,9 @@ func on_options_pressed():
 
 func on_exit_options_menu() -> void:
 	options_menu.visible = false
+
+func count_module_triggers(_payload):
+	module_triggers += 1
 
 func tutorial_init():
 	if(current_level.metadata.has("tutorial") && current_level.metadata.tutorial):
