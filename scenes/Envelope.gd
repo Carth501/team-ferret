@@ -9,7 +9,6 @@ func _process(delta):
 	position += motion * delta
 
 func _ready():
-	print("ready")
 	var timer = Timer.new()
 	timer.wait_time = 1
 	timer.timeout.connect(open_envelope)

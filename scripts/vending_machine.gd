@@ -44,13 +44,9 @@ func _on_keypad_pressed():
 		update_money()
 		keypad.disabled = true
 		save_handler_single.buy_upgrade(current_upgrade.upgrade_id, current_upgrade.cost)
-	elif(purchased):
-		print("Upgrade already purchased")
-	else:
-		print("Not enough money")
+		current_upgrade.set_purchased(true)
 	
 	if(current_upgrade is Upgrade):
-		print("Calling upgrade purchased signal")
 		current_upgrade.emit_signal("upgrade_purchased")
 
 func set_upgrades():

@@ -20,10 +20,8 @@ func _ready() -> void:
 
 func _on_upgrade_pressed():
 	display_upgrade_details.emit(description, cost, purchased, self)
-	print(str("_on_upgrade_pressed", description, " ", cost))
 
 func _on_UpgradePurchased():
-	print("upgrade_purchased signal received")
 	purchased = true
 
 func set_purchased(bought: bool):
