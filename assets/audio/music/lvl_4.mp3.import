@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/lvl_4.mp3-fbf72b35fc810b20009de84e21aa1a73.mp
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
