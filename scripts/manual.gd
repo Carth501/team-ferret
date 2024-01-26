@@ -43,7 +43,7 @@ func build_index(error_list):
 			count = 0
 			index_page += 1
 			pages_index.append("")
-		var page_link = 1 + index_length + count + index_page * index_page_size
+		var page_link = index_length + count + index_page * index_page_size
 		var index_entry := str("[url={\"page\":", page_link, "}]", error.hex, "\t ", error.name,"[/url]")
 		pages_index[index_page] += index_entry + "\n"
 		count += 1
