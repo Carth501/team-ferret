@@ -1,18 +1,72 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7152nentjj7u"]
+[gd_scene load_steps=36 format=3 uid="uid://c7152nentjj7u"]
 
+[ext_resource type="Script" path="res://scripts/vending_machine.gd" id="1_1lpds"]
 [ext_resource type="Texture2D" uid="uid://b1v23arwgma3v" path="res://assets/images/level-select/vending/Vending_Machine.png" id="1_gs2eo"]
 [ext_resource type="Texture2D" uid="uid://bcse7bbx6t3xc" path="res://assets/images/level-select/vending/Vending_Machine_Keypad.png" id="2_orixr"]
 [ext_resource type="Texture2D" uid="uid://c8tf2iyqyrkuh" path="res://assets/images/level-select/vending/Vending_Machine_Glass.png" id="3_8j0ed"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_bgkg3"]
 [ext_resource type="Texture2D" uid="uid://dxh4or2oa838" path="res://assets/images/level-select/vending/CrunchTime.png" id="3_hdany"]
 [ext_resource type="Texture2D" uid="uid://c0fndp37ifhf1" path="res://assets/images/level-select/vending/GummiButtons.png" id="4_5danh"]
 [ext_resource type="Texture2D" uid="uid://brgj3xeegvkja" path="res://assets/images/level-select/vending/PaynesPuffPastry.png" id="5_ymggr"]
+[ext_resource type="Script" path="res://scripts/upgrade.gd" id="6_8wgux"]
 [ext_resource type="Texture2D" uid="uid://c4uiua0ot7ncj" path="res://assets/images/level-select/vending/MarksBlackLicorice.png" id="6_62wf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adqgt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sl4ed"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgspj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2awfb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fr3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8o57"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snjnt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imnwu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5kgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_248mo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxc0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2lb8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0txla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd7l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8kw3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4vys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqij0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sfrj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7e3kp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv7fr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rwcq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7lrcq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kviy6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2tju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6tdej"]
 
 [node name="vending_machine" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_1lpds")
 
 [node name="body" type="TextureRect" parent="."]
 layout_mode = 0
@@ -20,42 +74,111 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_gs2eo")
 
-[node name="keypad" type="TextureRect" parent="."]
+[node name="keypad_old" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 311.0
-offset_top = 144.0
-offset_right = 401.0
-offset_bottom = 350.0
+offset_left = 308.0
+offset_top = 140.0
+offset_right = 398.0
+offset_bottom = 346.0
 texture = ExtResource("2_orixr")
+
+[node name="keypad" type="Button" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 139.0
+offset_right = 406.0
+offset_bottom = 353.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_adqgt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sl4ed")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xgspj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2awfb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8fr3p")
+icon = ExtResource("2_orixr")
+
+[node name="cost_disp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 171.0
+offset_right = 392.0
+offset_bottom = 196.0
+theme = ExtResource("3_bgkg3")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "$0.00"
+horizontal_alignment = 2
 
 [node name="upgrades" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="digital_clock" type="Sprite2D" parent="upgrades"]
-position = Vector2(97.9999, 117)
+[node name="digital_clock" type="Button" parent="upgrades"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 50.0
+offset_right = 422.0
+offset_bottom = 418.0
 rotation = 0.204204
-scale = Vector2(0.311111, 0.311111)
-texture = ExtResource("3_hdany")
+scale = Vector2(0.311, 0.311)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f8o57")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_snjnt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_imnwu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v5kgs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_248mo")
+icon = ExtResource("3_hdany")
+script = ExtResource("6_8wgux")
+cost = 1.53
 
-[node name="pager_buttons" type="Sprite2D" parent="upgrades"]
-position = Vector2(215, 118)
+[node name="pager_buttons" type="Button" parent="upgrades"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 49.0
+offset_right = 506.0
+offset_bottom = 417.0
 rotation = -0.0523599
-scale = Vector2(0.398611, 0.398611)
-texture = ExtResource("4_5danh")
+scale = Vector2(0.399, 0.399)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mxc0e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s2lb8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0txla")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kd7l3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v8kw3")
+icon = ExtResource("4_5danh")
+script = ExtResource("6_8wgux")
+cost = 2.25
 
-[node name="manual_window" type="Sprite2D" parent="upgrades"]
-position = Vector2(102, 364)
+[node name="manual_window" type="Button" parent="upgrades"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 304.0
+offset_right = 396.0
+offset_bottom = 672.0
 rotation = -0.102974
-scale = Vector2(0.366667, 0.366667)
-texture = ExtResource("5_ymggr")
+scale = Vector2(0.367, 0.367)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r4vys")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cqij0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5sfrj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7e3kp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iv7fr")
+icon = ExtResource("5_ymggr")
+script = ExtResource("6_8wgux")
+cost = 5.31
 
-[node name="bookmarks" type="Sprite2D" parent="upgrades"]
-position = Vector2(222, 244)
+[node name="bookmarks" type="Button" parent="upgrades"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 203.0
+offset_right = 494.0
+offset_bottom = 571.0
 rotation = -0.357792
-scale = Vector2(0.377778, 0.377778)
-texture = ExtResource("6_62wf7")
+scale = Vector2(0.378, 0.378)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rwcq6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7lrcq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kviy6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t2tju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6tdej")
+icon = ExtResource("6_62wf7")
+script = ExtResource("6_8wgux")
+cost = 0.98
 
 [node name="glass" type="TextureRect" parent="."]
 layout_mode = 0
@@ -63,5 +186,20 @@ offset_left = 35.0
 offset_top = 35.0
 offset_right = 280.0
 offset_bottom = 493.0
+mouse_filter = 2
 texture = ExtResource("3_8j0ed")
 metadata/_edit_lock_ = true
+
+[node name="upgrade_desc" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 7.0
+offset_right = 825.0
+offset_bottom = 693.0
+bbcode_enabled = true
+
+[connection signal="pressed" from="keypad" to="." method="_on_keypad_pressed"]
+[connection signal="pressed" from="upgrades/digital_clock" to="upgrades/digital_clock" method="_on_upgrade_pressed"]
+[connection signal="pressed" from="upgrades/pager_buttons" to="upgrades/pager_buttons" method="_on_upgrade_pressed"]
+[connection signal="pressed" from="upgrades/manual_window" to="upgrades/manual_window" method="_on_upgrade_pressed"]
+[connection signal="pressed" from="upgrades/bookmarks" to="upgrades/bookmarks" method="_on_upgrade_pressed"]
