@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://21wbe505uadg"]
+[gd_scene load_steps=47 format=3 uid="uid://21wbe505uadg"]
 
 [ext_resource type="Texture2D" uid="uid://b2o20qx3y31bg" path="res://assets/images/level-select/rolodex/Rolodex10Tab.png" id="1_mvx2n"]
 [ext_resource type="Script" path="res://scripts/rolodex.gd" id="1_v1luo"]
@@ -20,8 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cg1o8e3n1ak65" path="res://assets/images/level-select/rolodex/Rolodex DownTab25.png" id="17_cyqw2"]
 [ext_resource type="Texture2D" uid="uid://216ct7y380yf" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsUp.png" id="18_eiyd0"]
 [ext_resource type="Texture2D" uid="uid://cwkljq4c1l75v" path="res://assets/images/level-select/rolodex/Rolodex_Full_TabsDown.png" id="19_sgavn"]
-[ext_resource type="PackedScene" path="res://scenes/check_mark.tscn" id="21_h7vr5"]
+[ext_resource type="PackedScene" uid="uid://dq18bfanpu1iy" path="res://scenes/check_mark.tscn" id="21_h7vr5"]
 [ext_resource type="Script" path="res://scripts/generic_button.gd" id="22_jqmit"]
+[ext_resource type="AudioStream" uid="uid://bdtramkkhchia" path="res://assets/audio/effects/Manual/Turn Page Flick.wav" id="23_7pn7g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0kchi"]
 animations = [{
@@ -349,6 +350,9 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("22_jqmit")
+
+[node name="turnPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_7pn7g")
 
 [connection signal="pressed" from="top_buttons/30_top" to="." method="_on_30_top_pressed"]
 [connection signal="pressed" from="top_buttons/25_top" to="." method="_on_25_top_pressed"]

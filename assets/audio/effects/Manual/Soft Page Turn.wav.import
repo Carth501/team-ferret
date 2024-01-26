@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bra8vhdkmwwal"
+path="res://.godot/imported/Soft Page Turn.wav-8c0aa46238bf356140f7aa989b380d46.sample"
+
+[deps]
+
+source_file="res://assets/audio/effects/Manual/Soft Page Turn.wav"
+dest_files=["res://.godot/imported/Soft Page Turn.wav-8c0aa46238bf356140f7aa989b380d46.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

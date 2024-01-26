@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://e16viw6go1bw"]
 
 [ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_dxamp"]
-[ext_resource type="Texture2D" uid="uid://cirj3levqf5pq" path="res://assets/images/FourGoblinsInATrenchCoat.png" id="2_k0ynt"]
+[ext_resource type="Texture2D" path="res://assets/images/FourGoblinsInATrenchCoat.png" id="2_k0ynt"]
 
 [node name="tots_splash" type="Control"]
 layout_mode = 3

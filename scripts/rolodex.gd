@@ -1,6 +1,7 @@
 class_name rolodex
 extends Control
 
+@onready var turn_player = $turnPlayer as AudioStreamPlayer
 @onready var rolodex_anim = $rolodex_anim as AnimatedSprite2D
 @onready var top_buttons = $top_buttons.get_children()
 @onready var bot_buttons = $bot_buttons.get_children()
@@ -50,7 +51,9 @@ func connect_buttons():
 func rolodex_setup(page) -> void:
 	if(current_page == page):
 		return
-	flip_page(page)
+	else:
+		turn_player.play()
+		flip_page(page)
 
 func flip_page(page):
 	if(page < 5 or page > 30 or page % 5 != 0):
@@ -73,7 +76,7 @@ func flip_page(page):
 	write_level_links()
 
 func write_level_links():
-	var complete_level_list: Array = save_handler.active_save.complete_levels
+	var complete_level_list:Array = save_handler.active_save.complete_levels
 	var start: int = current_page - 5
 	if(start > level_data.size()):
 		hide_all()

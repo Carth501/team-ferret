@@ -19,8 +19,7 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 	resolved_error.connect(cubicle_instance.announce_error_resolved)
 	for module in pattern:
 		var module_instance = cubicle_instance.module_obj_dic[module.id]
-		if(!module_instance.trigger.connections.has(pattern_step)):
-			module_instance.trigger.connect(pattern_step)
+		module_instance.trigger.connect(pattern_step)
 		module_instances[module.id] = module_instance
 	check_next_step()
 
