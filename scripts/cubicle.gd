@@ -38,6 +38,7 @@ var failure_threshold_percent: float
 var paused := false
 var met_target := false
 var module_triggers := 0
+var repeat_attempt := false
 var results_struct := {
 	"met_target": false,
 	"errors_cleared": 0,
@@ -89,7 +90,7 @@ func get_level():
 
 func detect_repeat_attempt():
 	var complete_levels = save_handler_single.active_save.complete_levels
-	results_struct.repeat_attempt = complete_levels.has(current_level_id)
+	repeat_attempt = complete_levels.has(current_level_id)
 
 func configure_level_settings():
 	if(current_level.gameplay.has("starting_cpc")):
@@ -276,18 +277,15 @@ func end_of_shift():
 	toggle_pause()
 	resume_button.visible = false
 	results_struct.met_target = met_target
+	results_struct.repeat_attempt = repeat_attempt
 	var level_duration_minutes = (current_level.gameplay.shift_duration / 60)
 	results_struct.modules_per_minute = module_triggers / level_duration_minutes
 	results_single.results_struct = results_struct
-	save_handler_single.level_complete(current_level_id)
 	var tree = get_tree()
 	tree.change_scene_to_file("res://scenes/end_day.tscn")
 
 func failure():
-	toggle_pause()
-	resume_button.visible = false
-	var tree = get_tree()
-	tree.change_scene_to_file("res://scenes/end_day.tscn")
+	end_of_shift()
 
 func handle_connecting_signals() -> void:
 	open_options.button_down.connect(on_options_pressed)
