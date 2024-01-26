@@ -11,7 +11,7 @@
 		"starting_cpc": 0,
 		"goal_cpc": 0,
 		"shift_duration": 45,
-		"error_freq": 0.1,
+		"error_freq": 0.05,
 		"errors": {
 		  "scheduled": [
 			{
@@ -45,9 +45,9 @@
 	  },
 	  "gameplay": {
 		"starting_cpc": 10,
-		"goal_cpc": 750,
-		"shift_duration": 45,
-		"error_freq": 0.1,
+		"goal_cpc": 500,
+		"shift_duration": 60,
+		"error_freq": 0.07,
 		"errors": {
 		  "scheduled": [
 			{

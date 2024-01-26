@@ -99,7 +99,7 @@
 		"label": "Nerf Best Mechanic",
 		"id": "C_NERF_MECH",
 		"type": "switch",
-		"offset": [2,2]
+		"offset": [3,2]
 	},
 	{
 		"label": "Fight for the users",

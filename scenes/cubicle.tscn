@@ -744,6 +744,7 @@ probability = 0.2
 display = NodePath("../Cubicle/Background/GameScreen/Console/CpcMonitor")
 
 [node name="manual" parent="." instance=ExtResource("5_neuwc")]
+top_level = true
 offset_left = 18.0
 offset_top = 230.0
 offset_right = -1177.0
@@ -862,6 +863,7 @@ bus = &"Effects"
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
 [connection signal="below_threshold" from="CpcCalculator" to="." method="failure"]
+[connection signal="reached_goal" from="CpcCalculator" to="." method="met_target_cpc"]
 [connection signal="update_cpc" from="CpcCalculator" to="ErrorFactory" method="set_cpc"]
 [connection signal="pressed" from="pause curtain/open_options" to="." method="on_options_pressed"]
 [connection signal="pressed" from="pause curtain/end shift" to="." method="end_level"]

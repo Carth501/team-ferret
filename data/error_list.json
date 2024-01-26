@@ -18,7 +18,7 @@
 	  "pattern": [
 		{
 		  "id": "C_RELOAD_CHAR_MODELS"
-		}
+		},
 	  ],
 	  "hex": "0FCB"
 	},
@@ -52,6 +52,10 @@
 	  "pattern": [
 		{
 		  "id": "C_ENGORGE_BALLAST"
+		},
+		{
+		  "id": "C_NERF_MECH",
+		  "value": false
 		}
 	  ],
 	  "hex": "DACF"
@@ -61,11 +65,23 @@
 	  "id": "E_ZOMBIE_PROC",
 	  "pattern": [
 		{
-		  "id": "C_LOC_HACKER"
-		},
-		{
 		  "id": "C_MUSIC",
 		  "value": true
+		},
+		{
+		  "id": "C_CHARGE_FLUX",
+		  "value": true
+		},
+		{
+		  "id": "C_CHARGE_FLUX",
+		  "value": false
+		},
+		{
+		  "id": "C_CHARGE_FLUX",
+		  "value": true
+		},
+		{
+		  "id": "C_LOC_HACKER"
 		}
 	  ],
 	  "hex": "3F89"
@@ -251,6 +267,13 @@
 		{
 		  "id": "C_SEED_GOT",
 		  "value": false
+		},
+		{
+		  "id": "C_GEN_ASCII"
+		},
+		{
+		  "id": "C_SEED_GOT",
+		  "value": true
 		}
 	  ],
 	  "hex": "93EB"
@@ -287,17 +310,16 @@
 	  "id": "E_CRIT_FAIL",
 	  "pattern": [
 		{
+		  "id": "C_SFX",
+		  "value": false
+		},
+		{
 		  "id": "C_SAFE_MODE",
 		  "value": true
 		},
 		{
-		  "id": "C_ENGORGE_BALLAST"
-		},
-		{
-		  "id": "C_CHECK_CHAR_POS"
-		},
-		{
-		  "id": "C_RELOAD_MODELS"
+		  "id": "C_MUSIC",
+		  "value": false
 		},
 		{
 		  "id": "C_RELOAD_CHAR_MODELS"
@@ -310,14 +332,6 @@
 		  "value": true
 		},
 		{
-		  "id": "C_MUSIC",
-		  "value": false
-		},
-		{
-		  "id": "C_SFX",
-		  "value": false
-		},
-		{
 		  "id": "C_DANCING",
 		  "value": false
 		},
@@ -325,21 +339,27 @@
 		  "id": "C_GEN_ASCII"
 		},
 		{
-		  "id": "C_TORRENT_GOT"
-		},
-		{
 		  "id": "C_SEED_GOT",
 		  "value": false
+		},
+		{
+		  "id": "C_CHECK_CHAR_POS"
+		},
+		{
+		  "id": "C_BAN_TROLLS"
 		},
 		{
 		  "id": "C_CHARGE_FLUX",
 		  "value": true
 		},
 		{
-		  "id": "C_BAN_TROLLS"
+		  "id": "C_RELOAD_MODELS"
 		},
 		{
 		  "id": "C_LOC_HACKER"
+		},
+		{
+		  "id": "C_ENGORGE_BALLAST"
 		},
 		{
 		  "id": "C_NERF_MECH",
