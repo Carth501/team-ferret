@@ -36,7 +36,6 @@ func toggle_manual_popup():
 	if(manual_book.visible):
 		open_player.play()
 		manual_open.emit()
-		manual_book.position = Vector2(0, 0)
 	else:
 		close_player.play()
 	write_pages()
