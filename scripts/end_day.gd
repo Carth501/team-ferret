@@ -33,13 +33,13 @@ func _ready():
 			net_value.text = "$0"
 		else:
 			repetition_comp_ded.visible = false
-			net_value.text = "$40"
+			net_value.text = "$10"
 	if(results.has("errors_cleared")):
 		results_stats = "Errors Cleared: " + str(results.errors_cleared) + "\n"
 	if(results.has("module_miss_count")):
 		results_stats += "Mistakes: " + str(results.module_miss_count) + "\n"
 	if(results.has("modules_per_minute")):
-		results_stats += "Control Activations: " + str(results.modules_per_minute) + "\n"
+		results_stats += "Activations per minute: " + "%2d" % results.modules_per_minute + "\n"
 	stats_label.text = results_stats
 
 func return_to_menu():
