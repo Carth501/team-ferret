@@ -235,12 +235,10 @@ func start_timers():
 			timer.paused = false
 
 func end_level():
-	var save_handler = get_node("/root/save_handler_single")
-	save_handler.shift_to_game_menu()
+	save_handler_single.shift_to_game_menu()
 
 func complete_level():
-	var save_handler = get_node("/root/save_handler_single")
-	save_handler.level_complete(current_level.metadata.id)
+	save_handler_single.level_complete(current_level.metadata.id)
 
 func create_danger_timer(duration: float):
 	var danger_timer = Timer.new()
@@ -280,12 +278,10 @@ func handle_connecting_signals() -> void:
 	options_menu.exit_options_menu.connect(on_exit_options_menu)
 
 func on_options_pressed():
-	#pause_curtain.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true
 
 func on_exit_options_menu() -> void:
-	#pause_curtain.visible = true
 	options_menu.visible = false
 
 func tutorial_init():
