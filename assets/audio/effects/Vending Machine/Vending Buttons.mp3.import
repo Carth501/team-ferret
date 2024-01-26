@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnadiojnpdwes"
+path="res://.godot/imported/Vending Buttons.mp3-0bbad58b4232cdd5afc5b3afd17bf631.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/effects/Vending Machine/Vending Buttons.mp3"
+dest_files=["res://.godot/imported/Vending Buttons.mp3-0bbad58b4232cdd5afc5b3afd17bf631.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
