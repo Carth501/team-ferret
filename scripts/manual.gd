@@ -27,6 +27,7 @@ func _ready():
 
 func set_windowed_mode(setting: bool):
 	if(setting):
+		remove_child(manual_book)
 		window.add_child(manual_book)
 	else:
 		window.visible = false
