@@ -42,13 +42,14 @@ func write_save(data: Variant):
 	var stringified_data = JSON.stringify(data)
 	save_game.store_line(stringified_data)
 
-
 func create_new_save() -> Variant:
 	var date_string = Time.get_date_string_from_system(true)
 	var data = {
 		"name": str(date_string),
 		"datetime": str(Time.get_datetime_string_from_system(true)),
-		"complete_levels": []
+		"complete_levels": [],
+		"upgrades": {},
+		"money": 0
 	}
 	write_save(data)
 	return data
@@ -87,6 +88,7 @@ func level_complete(level_id: String):
 		active_save["complete_levels"] = []
 	var complete_levels: Array = active_save["complete_levels"]
 	if(!complete_levels.has(level_id)):
+		active_save.money += 10.0
 		complete_levels.append(level_id)
 		write_save(active_save)
 
@@ -100,3 +102,9 @@ func go_to_main_menu():
 	
 func change_to(path: String):
 	get_tree().change_scene_to_file(path)
+
+func buy_upgrade(upgrade_id: String, cost: float):
+	if(!active_save.upgrades.has(upgrade_id)):
+		active_save.money -= cost
+		active_save.upgrades[upgrade_id] = true
+		write_save(active_save)

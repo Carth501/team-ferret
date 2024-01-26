@@ -309,4 +309,3 @@ func tutorial_init():
 		add_child(node_tutorial)
 		
 		node_tutorial.set_cubicle(self)
-		

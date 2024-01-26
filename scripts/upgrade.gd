@@ -8,10 +8,11 @@ extends Button
 @export_multiline var description := "Enter some details"
 @export var cost := 1.00
 @export var upgrade_id := "Unique Identifier"
+@export var check_mark: Node
 
 var callable = Callable(self, "_on_UpgradePurchased")
 
-signal display_upgrade_details(description, cost, purchased, node)
+signal display_upgrade_details(cost, id)
 signal upgrade_purchased
 
 func _ready() -> void:
@@ -24,3 +25,7 @@ func _on_upgrade_pressed():
 func _on_UpgradePurchased():
 	print("upgrade_purchased signal received")
 	purchased = true
+
+func set_purchased(bought: bool):
+	check_mark.visible = bought
+	purchased = bought
