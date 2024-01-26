@@ -59,6 +59,8 @@ func roll_new_error():
 	var roll = rng.randf()
 	var probability_offset = log(concurrent_player_count) / 100
 	var adjusted_probability = probability + probability_offset
+	if(active_error_count == 0):
+		adjusted_probability += 0.5
 	while(roll < adjusted_probability):
 		generate_new_error(roll * (1 / adjusted_probability))
 		roll += 1
