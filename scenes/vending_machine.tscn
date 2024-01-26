@@ -183,6 +183,7 @@ offset_bottom = 103.733
 scale = Vector2(2, 2)
 
 [node name="manual_window" type="Button" parent="upgrades" node_paths=PackedStringArray("check_mark")]
+visible = false
 layout_mode = 0
 offset_left = 28.0
 offset_top = 304.0

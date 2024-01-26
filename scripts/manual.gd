@@ -8,7 +8,6 @@ signal manual_open
 @onready var close_player = $closePlayer as AudioStreamPlayer
 @onready var flick_player = $flickPlayer as AudioStreamPlayer
 @onready var turn_player = $turnPlayer as AudioStreamPlayer
-@onready var window = $Window
 
 var pages: Array = []
 var current_page_index = 0
@@ -24,13 +23,6 @@ func _ready():
 	l_body = manual_book.left_text
 	r_header = manual_book.right_header
 	r_body = manual_book.right_text
-
-func set_windowed_mode(setting: bool):
-	if(setting):
-		remove_child(manual_book)
-		window.add_child(manual_book)
-	else:
-		window.visible = false
 
 func toggle_manual_popup():
 	manual_book.visible = !manual_book.visible
