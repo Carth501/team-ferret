@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk0l5dvhqejmo"]
+
+[ext_resource type="Script" path="res://scripts/splash_screen_manager.gd" id="1_xabeh"]
+[ext_resource type="PackedScene" uid="uid://jnq42xdbfulu" path="res://scenes/main_menu.tscn" id="2_2dw7k"]
+[ext_resource type="PackedScene" uid="uid://c1wpi5omlp25w" path="res://scenes/splash/jam_splash.tscn" id="3_srsvc"]
+[ext_resource type="PackedScene" uid="uid://e16viw6go1bw" path="res://scenes/splash/tots_splash.tscn" id="4_8bbly"]
+[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="5_v7a1v"]
+[ext_resource type="Texture2D" uid="uid://cd08uun0vxu6j" path="res://assets/images/Think_Cover_ImgL.png" id="6_bdjjy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsqm2"]
+shader = ExtResource("5_v7a1v")
+shader_parameter/vertJerkOpt = 0.2
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/scalinesOpt = 0.8
+shader_parameter/rgbOffsetOpt = 0.2
+shader_parameter/horzFuzzOpt = 0.15
+
+[node name="SplashScreenManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xabeh")
+_move_to = ExtResource("2_2dw7k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Splash" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="jam_splash" parent="Splash" instance=ExtResource("3_srsvc")]
+layout_mode = 2
+
+[node name="tots_splash" parent="Splash" instance=ExtResource("4_8bbly")]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_jsqm2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -201.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_bdjjy")
