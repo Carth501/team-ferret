@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6e5suixwg182"]
+
+[ext_resource type="Script" path="res://scripts/UpgradePopup.gd" id="1_o7nw0"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_8v7sr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ekx3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="UpgradePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o7nw0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ekx3")
+
+[node name="description_label" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 184.0
+offset_bottom = 249.0
+theme = ExtResource("2_8v7sr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Example upgrade text that needs to be filled out."
+
+[node name="close_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 229.0
+offset_right = 153.0
+offset_bottom = 260.0
+theme = ExtResource("2_8v7sr")
+text = "Close"
+
+[connection signal="pressed" from="close_button" to="." method="_on_close_button"]

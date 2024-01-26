@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c7152nentjj7u"]
+[gd_scene load_steps=36 format=3 uid="uid://c7152nentjj7u"]
 
 [ext_resource type="Script" path="res://scripts/vending_machine.gd" id="1_1lpds"]
 [ext_resource type="Texture2D" uid="uid://b1v23arwgma3v" path="res://assets/images/level-select/vending/Vending_Machine.png" id="1_gs2eo"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://brgj3xeegvkja" path="res://assets/images/level-select/vending/PaynesPuffPastry.png" id="5_ymggr"]
 [ext_resource type="Script" path="res://scripts/upgrade.gd" id="6_8wgux"]
 [ext_resource type="Texture2D" uid="uid://c4uiua0ot7ncj" path="res://assets/images/level-select/vending/MarksBlackLicorice.png" id="6_62wf7"]
-[ext_resource type="PackedScene" uid="uid://b6e5suixwg182" path="res://scenes/upgrade_popup.tscn" id="11_24fd0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adqgt"]
 
@@ -139,8 +138,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_v5kgs")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_248mo")
 icon = ExtResource("3_hdany")
 script = ExtResource("6_8wgux")
-description = "[b]Crunch Time[/b]
-Grants access to the digital clock."
+description = "[b]Digital Clock[/b]"
 cost = 1.53
 
 [node name="pager_buttons" type="Button" parent="upgrades"]
@@ -158,8 +156,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_kd7l3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v8kw3")
 icon = ExtResource("4_5danh")
 script = ExtResource("6_8wgux")
-description = "[b]Gummi Buttons[/b]
-Add a previous button to the pager so you can."
+description = "Pager buttons"
 cost = 2.25
 
 [node name="manual_window" type="Button" parent="upgrades"]
@@ -177,8 +174,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_7e3kp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iv7fr")
 icon = ExtResource("5_ymggr")
 script = ExtResource("6_8wgux")
-description = "[b]Payne's Puff Pastries[/b]
-Put the manual into its own window so its not in your way. Probably doesn't work well with full screen."
+description = "Manual seperate window"
 cost = 5.31
 
 [node name="bookmarks" type="Button" parent="upgrades"]
@@ -196,8 +192,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_t2tju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6tdej")
 icon = ExtResource("6_62wf7")
 script = ExtResource("6_8wgux")
-description = "[b]Mark's Black Licorice[/b]
-Add some bookmarks to your manual for fast navigation."
+description = "Manual bookmarks"
 cost = 0.98
 
 [node name="glass" type="TextureRect" parent="."]
@@ -210,12 +205,13 @@ mouse_filter = 2
 texture = ExtResource("3_8j0ed")
 metadata/_edit_lock_ = true
 
-[node name="UpgradePopup" parent="." instance=ExtResource("11_24fd0")]
-visible = false
-offset_left = 318.0
-offset_top = 361.0
-offset_right = 358.0
-offset_bottom = 401.0
+[node name="upgrade_desc" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 7.0
+offset_right = 825.0
+offset_bottom = 693.0
+bbcode_enabled = true
 
 [connection signal="pressed" from="keypad" to="." method="_on_keypad_pressed"]
 [connection signal="pressed" from="upgrades/digital_clock" to="upgrades/digital_clock" method="_on_upgrade_pressed"]

@@ -25,7 +25,7 @@ func _ready():
 	if(err != OK):
 		fullscreen = false
 		save_config()
-		config.has_v
+		# config.has_v -- Not sure what this line is for Carth, editor says its a standalone expressions with no effect.
 	else:
 		master_volume.value = config.get_value(sound, "master_volume", DEFAULT_MASTER_VOLUME)
 		music_volume.value = config.get_value(sound, "music_volume", DEFAULT_MUSIC_VOLUME)

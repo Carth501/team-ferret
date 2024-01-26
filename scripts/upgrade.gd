@@ -1,20 +1,26 @@
-class_name upgrade
+class_name Upgrade
 extends Button
 
 @onready var upgrade = self as Button
+@onready var purchased := false
 
 @export_category("Upgrade")
 @export_multiline var description := "Enter some details"
 @export var cost := 1.00
 @export var upgrade_id := "Unique Identifier"
 
-var but_callable = Callable(self, "_on_upgrade_pressed")
+var callable = Callable(self, "_on_UpgradePurchased")
 
-signal display_upgrade_details(description, cost)
+signal display_upgrade_details(description, cost, purchased, node)
+signal upgrade_purchased
 
-func _ready():
-	self.connect("pressed", but_callable)
+func _ready() -> void:
+	self.connect("upgrade_purchased", callable)
 
 func _on_upgrade_pressed():
-	display_upgrade_details.emit(description, cost)
+	display_upgrade_details.emit(description, cost, purchased, self)
 	print(str("_on_upgrade_pressed", description, " ", cost))
+
+func _on_UpgradePurchased():
+	print("upgrade_purchased signal received")
+	purchased = true
