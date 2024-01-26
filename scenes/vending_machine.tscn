@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/upgrade.gd" id="6_8wgux"]
 [ext_resource type="Texture2D" uid="uid://c4uiua0ot7ncj" path="res://assets/images/level-select/vending/MarksBlackLicorice.png" id="6_62wf7"]
 [ext_resource type="PackedScene" path="res://scenes/check_mark.tscn" id="7_a0c0u"]
-[ext_resource type="PackedScene" path="res://scenes/upgrade_popup.tscn" id="11_24fd0"]
+[ext_resource type="PackedScene" uid="uid://bot7mxlyitnqo" path="res://scenes/upgrade_popup.tscn" id="11_24fd0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adqgt"]
 
@@ -212,6 +212,7 @@ rotation = 0.127409
 scale = Vector2(2, 2)
 
 [node name="bookmarks" type="Button" parent="upgrades" node_paths=PackedStringArray("check_mark")]
+visible = false
 layout_mode = 0
 offset_left = 126.0
 offset_top = 203.0

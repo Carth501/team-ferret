@@ -3,6 +3,7 @@ extends Control
 
 @onready var prev_spr = $PrevSpr as AnimatedSprite2D
 @onready var next_spr = $NextSpr as AnimatedSprite2D
+@onready var prev_btn = $"Prev Button"
 
 @export var error_code_display: Label
 var error_hexes: Array[String] = []
@@ -69,3 +70,7 @@ func get_error_index(error_id) -> int:
 			return index
 		index += 1
 	return -1
+
+func toggle_extra_button(on: bool):
+	prev_btn.visible = on
+	prev_spr.visible = on
