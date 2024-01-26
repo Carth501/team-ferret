@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://da2nmyxvcffnd"]
+[gd_scene load_steps=16 format=3 uid="uid://da2nmyxvcffnd"]
 
 [ext_resource type="Script" path="res://scripts/settings.gd" id="1_jbdlt"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="1_x8e27"]
@@ -19,6 +19,7 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6y0x"]
 texture = ExtResource("4_sdkrx")
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ootdy"]
 texture = ExtResource("5_lfpd3")
@@ -26,6 +27,10 @@ modulate_color = Color(0.713726, 0.713726, 0.713726, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rbuy"]
 texture = ExtResource("6_4nptm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hnlsh"]
+texture = ExtResource("6_4nptm")
+modulate_color = Color(0.490196, 0.490196, 0.490196, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6sdeo"]
 
@@ -86,13 +91,12 @@ theme = ExtResource("1_x8e27")
 theme_override_styles/tab_selected = SubResource("StyleBoxTexture_y6y0x")
 theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_ootdy")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_3rbuy")
+theme_override_styles/tab_disabled = SubResource("StyleBoxTexture_hnlsh")
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_6sdeo")
 tab_alignment = 1
-current_tab = 1
 script = ExtResource("2_ccuh6")
 
 [node name="     Sound     " type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 
@@ -211,6 +215,7 @@ theme_override_constants/outline_size = 5
 text = "100%"
 
 [node name="    Graphics    " type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_x8e27")
 
@@ -238,10 +243,38 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Graphic Options"
 
-[node name="View Settings" type="Control" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer"]
+[node name="Resolution" type="Control" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="toggle_fullscreen" type="CheckButton" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer/View Settings"]
+[node name="OptionButton" type="OptionButton" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = -5.0
+offset_right = 240.0
+offset_bottom = 26.0
+theme = ExtResource("1_x8e27")
+item_count = 3
+selected = 0
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "2560x1440"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_x8e27")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Resolution"
+
+[node name="Fullscreen" type="Control" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="toggle_fullscreen" type="CheckButton" parent="TabContainer/    Graphics    /MarginContainer/VBoxContainer/Fullscreen"]
 layout_mode = 0
 offset_right = 44.0
 offset_bottom = 24.0
@@ -323,5 +356,6 @@ text = "Save and Apply"
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Master Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Master Volume" method="update_label"]
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Music Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Music Volume" method="update_label"]
 [connection signal="value_changed" from="TabContainer/     Sound     /MarginContainer/VBoxContainer/Effects Volume/HSlider" to="TabContainer/     Sound     /MarginContainer/VBoxContainer/Effects Volume" method="update_label"]
-[connection signal="toggled" from="TabContainer/    Graphics    /MarginContainer/VBoxContainer/View Settings/toggle_fullscreen" to="." method="_on_toggle_fullscreen"]
+[connection signal="item_selected" from="TabContainer/    Graphics    /MarginContainer/VBoxContainer/Resolution/OptionButton" to="." method="_on_option_set_resolution"]
+[connection signal="toggled" from="TabContainer/    Graphics    /MarginContainer/VBoxContainer/Fullscreen/toggle_fullscreen" to="." method="_on_toggle_fullscreen"]
 [connection signal="pressed" from="save and apply button" to="." method="save_config"]
