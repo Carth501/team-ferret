@@ -14,7 +14,7 @@ extends Control
 @export_category("Upgrades")
 var _money := 10.00
 var purchased_upgrades: Dictionary
-
+var plays = 0
 var current_upgrade: Upgrade
 
 func _ready():
@@ -40,20 +40,21 @@ func _on_DisplayUpgradeDetails(description, cost, purchased: bool, node):
 	keypad.disabled = purchased
 
 func _on_keypad_pressed():
-	var cost: float = keypad.get_meta("cost")
-	var purchased: bool = keypad.get_meta("purchased")
-	if(!purchased && _money >= cost):
-		play_purchased()
-		_money -= cost
-		update_money()
-		keypad.disabled = true
-		save_handler_single.buy_upgrade(current_upgrade.upgrade_id, current_upgrade.cost)
-		current_upgrade.set_purchased(true)
-	else:
-		keypad_beep.play()
+	if(current_upgrade != null):
+		var cost: float = keypad.get_meta("cost")
+		var purchased: bool = keypad.get_meta("purchased")
+		if(!purchased && _money >= cost):
+			play_purchased()
+			_money -= cost
+			update_money()
+			keypad.disabled = true
+			save_handler_single.buy_upgrade(current_upgrade.upgrade_id, current_upgrade.cost)
+			current_upgrade.set_purchased(true)
+		else:
+			keypad_beep.play()
 
-	if(current_upgrade is Upgrade):
-		current_upgrade.emit_signal("upgrade_purchased")
+		if(current_upgrade is Upgrade):
+			current_upgrade.emit_signal("upgrade_purchased")
 
 func set_upgrades():
 	purchased_upgrades = save_handler_single.active_save.upgrades
@@ -65,23 +66,24 @@ func play_purchased() -> void:
 	coin_insert.play()
 
 func _on_keypad_beep_finished():
-	var plays = 0
-	if(plays != 2):
+	#var timer = Timer.new()
+	#timer.wait_time = 1
+	if(plays <= 2):
+		print(str("Keypad plays: ", plays))
 		plays += 1
+		#timer.timeout.connect(keypad_beep.play)
+		#timer.one_shot = true
+		#timer.start()
 		keypad_beep.play()
 	else:
 		vend_w_return.play()
+		plays = 0
 
 func _on_keypad_mech_beep_finished():
 	pass # Replace with function body.
 
 func _on_coin_insert_finished():
-	var plays = 0
-	if(plays != 3):
-		plays += 1
-		coin_insert.play()
-	else:
-		keypad_beep.play()
+	keypad_beep.play()
 
 func _on_vend_w_return_finished():
 	pass # Replace with function body.
