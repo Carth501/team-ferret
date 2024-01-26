@@ -18,7 +18,6 @@ func _ready():
 		await save_handler.ready
 	save_data = save_handler.save_data
 	if(save_data.size() == 0):
-		play_button.text = "NEW GAME"
 		play_button.pressed.disconnect(load_latest)
 		play_button.pressed.connect(create_new_game)
 

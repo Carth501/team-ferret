@@ -12,6 +12,7 @@ shader = ExtResource("2_bkl8p")
 shader_parameter/lod = 1.71
 
 [node name="options_menu" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

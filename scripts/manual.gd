@@ -25,6 +25,7 @@ func toggle_manual_popup():
 	manual_book.visible = !manual_book.visible
 	if(manual_book.visible):
 		manual_open.emit()
+		manual_book.position = Vector2(0, 0)
 	write_pages()
 
 func write_manual(error_list, control_list):
