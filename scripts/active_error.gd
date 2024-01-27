@@ -55,4 +55,4 @@ func process_next_step() -> bool:
 		return true
 	if(next_step.has("value") && module_setting.has("value")):
 		return next_step.value == module_setting.value
-	return true
+	return false

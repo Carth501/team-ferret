@@ -107,7 +107,7 @@
 	  "gameplay": {
 		"starting_cpc": 40,
 		"goal_cpc": 1200,
-		"shift_duration": 40,
+		"shift_duration": 400,
 		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
@@ -209,7 +209,7 @@
 	  "gameplay": {
 		"starting_cpc": 95,
 		"goal_cpc": 2150,
-		"shift_duration": 35,
+		"shift_duration": 350,
 		"failure_threshold_percent": 0.40,
 		"error_freq": 0.18,
 		"errors": {
@@ -242,7 +242,7 @@
 	  "gameplay": {
 		"starting_cpc": 115,
 		"goal_cpc": 2500,
-		"shift_duration": 35,
+		"shift_duration": 351,
 		"failure_threshold_percent": 0.45,
 		"error_freq": 0.2,
 		"errors": {
