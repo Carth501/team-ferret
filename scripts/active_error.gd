@@ -33,6 +33,7 @@ func pattern_step(payload):
 			increment_step()
 	else:
 		step_index = 0
+		check_next_step()
 
 func check_next_step():
 	var next_step = pattern[step_index]
