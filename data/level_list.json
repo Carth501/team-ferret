@@ -58,7 +58,8 @@
 		  "random": [
 			"E_COLL_DET_ERR",
 			"E_VERTEX_BUFF_OVF",
-			"E_INF_LOOP"
+			"E_INF_LOOP",
+			"E_UNLOADED_CHAR_MESH"
 		  ]
 		}
 	  }
@@ -85,7 +86,10 @@
 		  "random": [
 			"E_INF_LOOP",
 			"E_RASTER_ERR",
-			"E_BUFF_OVF"
+			"E_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_SHADER_COMP_ERR",
+			"E_NET_TIMEOUT"
 		  ]
 		},
 		"init_values": {
@@ -116,7 +120,9 @@
 			"E_COLL_DET_ERR",
 			"E_PHYSICS_FAIL",
 			"E_SND_PLAY_ISSUE",
-			"E_OUT_OF_BOUNDS"
+			"E_OUT_OF_BOUNDS",
+			"E_ANIM_RIG_ERR",
+			"E_PATH_LOOP"
 		  ]
 		},
 		"init_values": {
@@ -145,6 +151,12 @@
 			}
 		  ],
 		  "random": [
+			"E_COLL_DET_ERR",
+			"E_PHYSICS_FAIL",
+			"E_SND_PLAY_ISSUE",
+			"E_OUT_OF_BOUNDS",
+			"E_ANIM_RIG_ERR",
+			"E_PATH_LOOP",
 			"E_ZOMBIE_PROC"
 		  ]
 		},
@@ -162,7 +174,7 @@
 	  "gameplay": {
 		"starting_cpc": 70,
 		"goal_cpc": 1800,
-		"shift_duration": 40,
+		"shift_duration": 420,
 		"failure_threshold_percent": 0.35,
 		"error_freq": 0.1,
 		"errors": {
@@ -173,10 +185,14 @@
 			}
 		  ],
 		  "random": [
+			"E_SND_PLAY_ISSUE",
+			"E_OUT_OF_BOUNDS",
+			"E_ANIM_RIG_ERR",
 			"E_VERTEX_BUFF_OVF",
 			"E_COLL_DET_ERR",
 			"E_MISS_ASSET",
-			"E_ANIM_RIG_ERR"
+			"E_ZOMBIE_PROC",
+			"E_RASTER_ERR"
 		  ]
 		},
 		"init_values": {
@@ -205,6 +221,8 @@
 		  ],
 		  "random": [
 			"E_ANIM_RIG_ERR",
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
 			"E_RASTER_ERR",
 			"E_AI_PATH_ERR",
 			"E_RES_MISMATCH"
@@ -235,6 +253,10 @@
 			}
 		  ],
 		  "random": [
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
 			"E_PATH_LOOP",
 			"E_RES_MISMATCH",
 			"E_SYNC_ERR",
@@ -255,9 +277,9 @@
 	  "gameplay": {
 		"starting_cpc": 135,
 		"goal_cpc": 3210,
-		"shift_duration": 35,
-		"failure_threshold_percent": 0.50,
-		"error_freq": 0.25,
+		"shift_duration": 350,
+		"failure_threshold_percent": 0,
+		"error_freq": 0.06,
 		"errors": {
 		  "scheduled": [
 			{
@@ -266,7 +288,22 @@
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_SYNC_ERR",
+			"E_ANIM_RIG_ERR"
 		  ]
 		},
 		"init_values": {
@@ -285,16 +322,23 @@
 		"goal_cpc": 3800,
 		"shift_duration": 30,
 		"failure_threshold_percent": 0.55,
-		"error_freq": 0.25,
+		"error_freq": 0.04,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
-			  "time": 2.5
+			  "id": "E_RASTER_ERR",
+			  "time": 20
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_VERTEX_BUFF_OVF",
+			"E_MISS_ASSET"
 		  ]
 		},
 		"init_values": {
@@ -317,12 +361,20 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_SHADER_COMP_ERR",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_BUFF_OVF",
+			"E_VERTEX_BUFF_OVF",
+			"E_NULL_POINTER"
 		  ]
 		},
 		"init_values": {
@@ -345,12 +397,18 @@
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_FRAG_FAULT",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_COLL_DET_ERR",
+			"E_PHYSICS_FAIL"
 		  ]
 		},
 		"init_values": {
