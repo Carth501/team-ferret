@@ -142,7 +142,7 @@
 		"goal_cpc": 1500,
 		"shift_duration": 114,
 		"failure_threshold_percent": 0.3,
-		"error_freq": 0.3,
+		"error_freq": 0.2,
 		"errors": {
 		  "scheduled": [
 			{
@@ -211,7 +211,7 @@
 		"goal_cpc": 2150,
 		"shift_duration": 35,
 		"failure_threshold_percent": 0.40,
-		"error_freq": 0.2,
+		"error_freq": 0.18,
 		"errors": {
 		  "scheduled": [
 			{
@@ -244,7 +244,7 @@
 		"goal_cpc": 2500,
 		"shift_duration": 35,
 		"failure_threshold_percent": 0.45,
-		"error_freq": 0.25,
+		"error_freq": 0.2,
 		"errors": {
 		  "scheduled": [
 			{
@@ -320,7 +320,7 @@
 	  "gameplay": {
 		"starting_cpc": 155,
 		"goal_cpc": 3800,
-		"shift_duration": 30,
+		"shift_duration": 300,
 		"failure_threshold_percent": 0.55,
 		"error_freq": 0.04,
 		"errors": {
@@ -355,7 +355,7 @@
 	  "gameplay": {
 		"starting_cpc": 175,
 		"goal_cpc": 4500,
-		"shift_duration": 30,
+		"shift_duration": 244,
 		"failure_threshold_percent": 0.60,
 		"error_freq": 0.15,
 		"errors": {
@@ -391,9 +391,9 @@
 	  "gameplay": {
 		"starting_cpc": 195,
 		"goal_cpc": 5800,
-		"shift_duration": 30,
+		"shift_duration": 520,
 		"failure_threshold_percent": 0.65,
-		"error_freq": 0.25,
+		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
 			{
@@ -425,18 +425,24 @@
 	  "gameplay": {
 		"starting_cpc": 215,
 		"goal_cpc": 6800,
-		"shift_duration": 25,
+		"shift_duration": 250,
 		"failure_threshold_percent": 0.70,
-		"error_freq": 0.2,
+		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_VERTEX_BUFF_OVF",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_RASTER_ERR",
+			"E_OUT_OF_BOUNDS",
+			"E_AI_PATH_ERR",
+			"E_MISS_ASSET",
+			"E_FRAG_FAULT",
+			"E_VERTEX_BUFF_OVF",
+			"E_INF_LOOP"
 		  ]
 		},
 		"init_values": {
@@ -446,25 +452,35 @@
 	},
 	{
 	  "metadata": {
-		"name": "Memory Leak Mayham",
+		"name": "Shadow Glitch Rises",
 		"id": "L_RING-14",
 		"hidden": false
 	  },
 	  "gameplay": {
 		"starting_cpc": 245,
 		"goal_cpc": 8000,
-		"shift_duration": 25,
+		"shift_duration": 422,
 		"failure_threshold_percent": 0.75,
-		"error_freq": 0.2,
+		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
-			  "time": 2.5
+			  "id": "E_RES_MISMATCH",
+			  "time": 90
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_RASTER_ERR",
+			"E_ANIM_RIG_ERR",
+			"E_RES_MISMATCH"
 		  ]
 		},
 		"init_values": {
@@ -474,24 +490,45 @@
 	},
 	{
 	  "metadata": {
-		"name": "Feature Creep Fiasco",
+		"name": "20 Minute Fixes",
 		"id": "L_RING-15",
 		"hidden": false
 	  },
 	  "gameplay": {
 		"starting_cpc": 275,
 		"goal_cpc": 9500,
-		"shift_duration": 25,
+		"shift_duration": 60,
 		"failure_threshold_percent": 0.80,
+		"error_freq": 0.12,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_TEX_LOAD_FAIL",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_INF_LOOP",
+			"E_ZOMBIE_PROC",
+			"E_RASTER_ERR",
+			"E_VERTEX_BUFF_OVF",
+			"E_TEX_LOAD_FAIL",
+			"E_SHADOW_GLITCH",
+			"E_FRAG_FAULT",
+			"E_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_SHADER_COMP_ERR",
+			"E_RES_MISMATCH",
+			"E_SYNC_ERR",
+			"E_PHYSICS_FAIL",
+			"E_ANIM_RIG_ERR"
 		  ]
 		},
 		"init_values": {
@@ -501,24 +538,25 @@
 	},
 	{
 	  "metadata": {
-		"name": "Server Siege",
+		"name": "One Error to Rule",
 		"id": "L_RING-16",
 		"hidden": false
 	  },
 	  "gameplay": {
 		"starting_cpc": 305,
 		"goal_cpc": 12000,
-		"shift_duration": 15,
-		"failure_threshold_percent": 0.85,
+		"shift_duration": 150,
+		"failure_threshold_percent": 0.3,
+		"error_freq": 0.8,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_SND_PLAY_ISSUE",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_SND_PLAY_ISSUE"
 		  ]
 		},
 		"init_values": {
@@ -535,17 +573,23 @@
 	  "gameplay": {
 		"starting_cpc": 345,
 		"goal_cpc": 12500,
-		"shift_duration": 15,
-		"failure_threshold_percent": 0.85,
+		"shift_duration": 165,
+		"failure_threshold_percent": 0.5,
+		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
-			  "time": 2.5
+			  "id": "E_SHADER_COMP_ERR",
+			  "time": 20.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_SHADER_COMP_ERR",
+			"E_SHADOW_GLITCH",
+			"E_SHADOW_GLITCH",
+			"E_RASTER_ERR",
+			"E_UNLOADED_CHAR_MESH",
+			"E_FRAG_FAULT",
 		  ]
 		},
 		"init_values": {
@@ -562,17 +606,24 @@
 	  "gameplay": {
 		"starting_cpc": 385,
 		"goal_cpc": 13000,
-		"shift_duration": 15,
+		"shift_duration": 315,
 		"failure_threshold_percent": 0.55,
+		"error_freq": 0.14,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_SHADER_COMP_ERR",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_SHADER_COMP_ERR",
+			"E_RES_MISMATCH",
+			"E_UNLOADED_CHAR_MESH",
+			"E_RASTER_ERR",
+			"E_TEX_LOAD_FAIL",
+			"E_MISS_ASSET",
+			"E_INF_LOOP"
 		  ]
 		},
 		"init_values": {
@@ -582,24 +633,34 @@
 	},
 	{
 	  "metadata": {
-		"name": "Null Pointer Party",
+		"name": "Small Beggings",
 		"id": "L_RING-19",
 		"hidden": false
 	  },
 	  "gameplay": {
-		"starting_cpc": 415,
+		"starting_cpc": 15,
 		"goal_cpc": 14000,
-		"shift_duration": 10,
+		"shift_duration": 429,
 		"failure_threshold_percent": 0.75,
+		"error_freq": 0.14,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
-			  "time": 2.5
+			  "id": "E_SHADOW_GLITCH",
+			  "time": 200.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_SHADOW_GLITCH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_NET_TIMEOUT",
+			"E_UNLOADED_CHAR_MESH",
+			"E_NULL_POINTER",
+			"E_ZOMBIE_PROC",
+			"E_RASTER_ERR",
+			"E_FRAG_FAULT"
 		  ]
 		},
 		"init_values": {
@@ -616,17 +677,65 @@
 	  "gameplay": {
 		"starting_cpc": 600,
 		"goal_cpc": 15000,
-		"shift_duration": 10,
+		"shift_duration": 1000,
 		"failure_threshold_percent": 0.60,
+		"error_freq": 0.14,
 		"errors": {
 		  "scheduled": [
 			{
-			  "id": "E_CRIT_FAIL",
+			  "id": "E_MISS_ASSET",
 			  "time": 2.5
 			}
 		  ],
 		  "random": [
-			"E_CRIT_FAIL"
+			"E_PHYSICS_FAIL",
+			"E_ANIM_RIG_ERR",
+			"E_AI_PATH_ERR",
+			"E_SHADER_COMP_ERR",
+			"E_SYNC_ERR",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_UNLOADED_MESH",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_PHYSICS_FAIL",
+			"E_ANIM_RIG_ERR",
+			"E_AI_PATH_ERR",
+			"E_SHADER_COMP_ERR",
+			"E_SYNC_ERR",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET"
 		  ]
 		},
 		"init_values": {
@@ -649,8 +758,32 @@
 			}
 		  ],
 		  "random": [
-			"E_OUT_OF_BOUNDS",
-			"E_UNLOADED_MESH"
+			"E_UNLOADED_MESH",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET",
+			"E_UNLOADED_CHAR_MESH",
+			"E_TOP_HEAVY_DATASTORE",
+			"E_NULL_POINTER",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_RES_MISMATCH",
+			"E_VERTEX_BUFF_OVF",
+			"E_COLL_DET_ERR",
+			"E_RASTER_ERR",
+			"E_AI_PATH_ERR",
+			"E_PATH_LOOP",
+			"E_PHYSICS_FAIL",
+			"E_ANIM_RIG_ERR",
+			"E_AI_PATH_ERR",
+			"E_SHADER_COMP_ERR",
+			"E_SYNC_ERR",
+			"E_UNLOADED_CHAR_MESH",
+			"E_COLL_DET_ERR",
+			"E_PATH_LOOP",
+			"E_MISS_ASSET"
 		  ]
 		},
 		"init_values": {
