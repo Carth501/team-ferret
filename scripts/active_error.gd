@@ -33,12 +33,10 @@ func pattern_step(payload):
 			increment_step()
 	else:
 		step_index = 0
+		check_next_step()
 
 func check_next_step():
-	var next_step = pattern[step_index]
-	var next_module = module_instances[next_step.id]
-	var module_setting = next_module.get_current_values()
-	if(next_step.has("value") && next_step.value == module_setting.value):
+	if(process_next_step()):
 		increment_step()
 
 func increment_step():
@@ -48,3 +46,13 @@ func increment_step():
 		queue_free()
 	else:
 		check_next_step()
+
+func process_next_step() -> bool:
+	var next_step = pattern[step_index]
+	var next_module = module_instances[next_step.id]
+	var module_setting = next_module.get_current_values()
+	if(next_step == null):
+		return true
+	if(next_step.has("value") && module_setting.has("value")):
+		return next_step.value == module_setting.value
+	return false

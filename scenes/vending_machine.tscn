@@ -1,17 +1,21 @@
-[gd_scene load_steps=38 format=3 uid="uid://mog3boxkqvc4"]
+[gd_scene load_steps=42 format=3 uid="uid://dkkx2t5in0lxp"]
 
 [ext_resource type="Script" path="res://scripts/vending_machine.gd" id="1_1lpds"]
 [ext_resource type="Texture2D" uid="uid://b1v23arwgma3v" path="res://assets/images/level-select/vending/Vending_Machine.png" id="1_gs2eo"]
+[ext_resource type="AudioStream" uid="uid://bnadiojnpdwes" path="res://assets/audio/effects/Vending Machine/Vending Buttons.mp3" id="2_6246b"]
 [ext_resource type="Texture2D" uid="uid://bcse7bbx6t3xc" path="res://assets/images/level-select/vending/Vending_Machine_Keypad.png" id="2_orixr"]
 [ext_resource type="Texture2D" uid="uid://c8tf2iyqyrkuh" path="res://assets/images/level-select/vending/Vending_Machine_Glass.png" id="3_8j0ed"]
 [ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="3_bgkg3"]
 [ext_resource type="Texture2D" uid="uid://dxh4or2oa838" path="res://assets/images/level-select/vending/CrunchTime.png" id="3_hdany"]
+[ext_resource type="AudioStream" uid="uid://ey6a5juwftbp" path="res://assets/audio/effects/Vending Machine/Vending Mechanical Button.wav" id="3_hyrcg"]
 [ext_resource type="Texture2D" uid="uid://c0fndp37ifhf1" path="res://assets/images/level-select/vending/GummiButtons.png" id="4_5danh"]
+[ext_resource type="AudioStream" uid="uid://cpngkq1sw1w38" path="res://assets/audio/effects/Vending Machine/Vending coin.wav" id="4_tcbxg"]
+[ext_resource type="AudioStream" uid="uid://b466qqhh14v4i" path="res://assets/audio/effects/Vending Machine/Vending Dispensing w return.wav" id="5_ex3tn"]
 [ext_resource type="Texture2D" uid="uid://brgj3xeegvkja" path="res://assets/images/level-select/vending/PaynesPuffPastry.png" id="5_ymggr"]
 [ext_resource type="Script" path="res://scripts/upgrade.gd" id="6_8wgux"]
 [ext_resource type="Texture2D" uid="uid://c4uiua0ot7ncj" path="res://assets/images/level-select/vending/MarksBlackLicorice.png" id="6_62wf7"]
-[ext_resource type="PackedScene" path="res://scenes/check_mark.tscn" id="7_a0c0u"]
-[ext_resource type="PackedScene" uid="uid://bot7mxlyitnqo" path="res://scenes/upgrade_popup.tscn" id="11_24fd0"]
+[ext_resource type="PackedScene" uid="uid://dq18bfanpu1iy" path="res://scenes/check_mark.tscn" id="7_a0c0u"]
+[ext_resource type="PackedScene" uid="uid://b6e5suixwg182" path="res://scenes/upgrade_popup.tscn" id="11_24fd0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adqgt"]
 
@@ -69,6 +73,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_1lpds")
+
+[node name="sfx" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="keypad_beep" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("2_6246b")
+
+[node name="keypad_mech_beep" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_hyrcg")
+
+[node name="coin_insert" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_tcbxg")
+max_polyphony = 2
+
+[node name="vend_wReturn" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_ex3tn")
 
 [node name="body" type="TextureRect" parent="."]
 layout_mode = 0
@@ -259,6 +281,10 @@ offset_top = 361.0
 offset_right = 358.0
 offset_bottom = 401.0
 
+[connection signal="finished" from="sfx/keypad_beep" to="." method="_on_keypad_beep_finished"]
+[connection signal="finished" from="sfx/keypad_mech_beep" to="." method="_on_keypad_mech_beep_finished"]
+[connection signal="finished" from="sfx/coin_insert" to="." method="_on_coin_insert_finished"]
+[connection signal="finished" from="sfx/vend_wReturn" to="." method="_on_vend_w_return_finished"]
 [connection signal="pressed" from="keypad" to="." method="_on_keypad_pressed"]
 [connection signal="pressed" from="upgrades/digital_clock" to="upgrades/digital_clock" method="_on_upgrade_pressed"]
 [connection signal="pressed" from="upgrades/pager_buttons" to="upgrades/pager_buttons" method="_on_upgrade_pressed"]
