@@ -44,6 +44,8 @@ func build_index(error_list):
 	var index_page := 0
 	pages_index.append("")
 	for error in error_list:
+		if(error.id == "DONT_USE"):
+			continue
 		if(count >= index_page_size):
 			count = 0
 			index_page += 1
