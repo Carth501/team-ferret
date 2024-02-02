@@ -24,6 +24,9 @@ func load_json_file(filePath: String):
 	else:
 		push_error("control library does not exist")
 
+func get_error_data_copy() -> Array[Variant]:
+	return error_data.duplicate(true)
+
 func dereference_error_id(id: String):
 	for error_def in error_data.duplicate(true):
 		if(error_def.id == id):

@@ -25,6 +25,7 @@ signal modules_ready()
 @onready var simulation_screen := $Cubicle/Background/GameScreen
 @onready var simulation_shaders := $Cubicle/Background/GameScreen/Screen_Shaders
 @onready var pager_ref := $pager
+@onready var complete_level_cheat := $"pause curtain/complete level"
 var current_level_id: String
 var data: data_libraries_single
 var loader: level_loader
@@ -64,6 +65,10 @@ func _ready():
 		push_error("resume_button not hooked up")
 	else:
 		resume_button.internal_button.pressed.connect(toggle_pause)
+	if(OS.is_debug_build()):
+		complete_level_cheat.visible = true
+	else:
+		complete_level_cheat.queue_free()
 
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
@@ -112,6 +117,7 @@ func configure_level_settings():
 		level_music.play()
 	if(current_level.gameplay.has("error_freq")):
 		error_factory_controller.set_error_freq(current_level.gameplay.error_freq)
+	
 
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
@@ -213,7 +219,7 @@ func announce_error_resolved(error_id):
 	error_resolved.play()
 
 func setup_manual():
-	manual_instance.write_manual(data.error_data, data.control_data)
+	manual_instance.write_manual(data.get_error_data_copy(), data.control_data)
 
 func set_initial_module_settings():
 	if(current_level.has("init_values")):

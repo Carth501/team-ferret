@@ -74,7 +74,7 @@
 	  "gameplay": {
 		"starting_cpc": 25,
 		"goal_cpc": 900,
-		"shift_duration": 45,
+		"shift_duration": 300,
 		"error_freq": 0.1,
 		"errors": {
 		  "scheduled": [
@@ -710,7 +710,7 @@
 			"E_RES_MISMATCH",
 			"E_VERTEX_BUFF_OVF",
 			"E_COLL_DET_ERR",
-			"E_UNLOADED_MESH",
+			"E_UNLOADED_CHAR_MESH",
 			"E_UNLOADED_CHAR_MESH",
 			"E_COLL_DET_ERR",
 			"E_PATH_LOOP",
@@ -758,7 +758,8 @@
 			}
 		  ],
 		  "random": [
-			"E_UNLOADED_MESH",
+			"E_OUT_OF_BOUNDS",
+			"E_UNLOADED_CHAR_MESH",
 			"E_UNLOADED_CHAR_MESH",
 			"E_COLL_DET_ERR",
 			"E_PATH_LOOP",
