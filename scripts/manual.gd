@@ -3,7 +3,7 @@ extends Control
 
 signal manual_open
 
-@onready var manual_book = $manual_book as Node2D
+@onready var manual_book := $manual_book
 @onready var open_player = $openPlayer as AudioStreamPlayer
 @onready var close_player = $closePlayer as AudioStreamPlayer
 @onready var flick_player = $flickPlayer as AudioStreamPlayer
