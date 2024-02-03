@@ -164,3 +164,11 @@ func jump_to_page(index: int):
 
 func jump_to_index():
 	jump_to_page(0)
+
+func find_page_index_by_hex(hex: String) -> int:
+	var index := 0
+	for page in pages:
+		if(!page.index && page.error_hex == hex):
+			return index
+		index += 1
+	return -1
