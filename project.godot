@@ -41,6 +41,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Think of the Shareholders!"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
