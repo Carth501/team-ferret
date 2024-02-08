@@ -1,7 +1,7 @@
 class_name error_factory extends Node
 
 signal update_active_error_count(int)
-signal new_active_error(Variant)
+signal new_active_error(active_error)
 
 @export var cubicle_instance: cubicle
 var active_error_count = 0
@@ -24,6 +24,7 @@ func create_error_node(error):
 	add_child(new_error)
 	new_error.set_id(error.id)
 	new_error.set_pattern(error.pattern)
+	new_error.set_hex(error.hex)
 	active_error_count += 1
 	update_active_error_count.emit(active_error_count)
 	
@@ -31,7 +32,7 @@ func create_error_node(error):
 	# the resolution process. If an error already has the steps
 	# met, then it needs to process this after new_active_error
 	# has emitted and resolved_error has been connected.
-	new_active_error.emit(error)
+	new_active_error.emit(new_error)
 	new_error.resolved_error.connect(decrement_error_count)
 	active_error_instances.append(new_error)
 	if(ready_to_connect):
