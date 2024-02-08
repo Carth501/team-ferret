@@ -81,6 +81,11 @@ func build_error_list(error_list, control_list):
 			var step_definition = dereference_module_id(control_list, step.id)
 			var line_text = str("\n", step_number, ". ", step_definition.label)
 			if(step.has("value")):
+				if(step_definition.type == "button"):
+					push_error(
+						str("button requiring value. Please correct step ", 
+							step_number, " of ", error.name
+						))
 				if(step_definition.label != "Fight for the users"):
 					sw_text = "On" if step.value else "Off"
 				var txt_color = "[color=darkgreen]" if step.value else "[color=darkred]"
