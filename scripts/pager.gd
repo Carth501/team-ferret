@@ -6,22 +6,30 @@ extends Control
 @onready var prev_btn = $"Prev Button"
 
 @export var error_code_display: Label
+@export var step_lights_display: error_step_lights
 var active_errors: Array[active_error] = []
-var current_display: int = 0
+var current_display := 0
 @onready var data: data_libraries_single = get_node("/root/data_libraries_single")
 
 func _ready():
 	error_code_display.text = ""
+	step_lights_display.unset()
 
 func add_error(new_error: active_error):
 	active_errors.append(new_error)
 	if(active_errors.size() == 1):
-		set_display(active_errors.size() - 1)
+		current_display = 0
+		set_display()
 
-func set_display(value: int):
-	if(check_display_conditions(value)):
-		var error = active_errors[value]
-		error_code_display.text = error.hex
+func set_display():
+	if(check_display_conditions(current_display)):
+		if(active_errors[current_display] != null):
+			var error = active_errors[current_display]
+			error_code_display.text = error.hex
+			step_lights_display.set_error(error)
+			watch_error()
+		else:
+			next_error_code()
 
 func check_display_conditions(value: int) -> bool:
 	if(active_errors.size() <= 0):
@@ -30,45 +38,37 @@ func check_display_conditions(value: int) -> bool:
 		push_error("pager index exceeds errors array limit")
 		return false
 	if(!value >= 0):
-		push_error("pager index is below 0")
+		push_error(str("pager index is below 0: ", value))
 		return false
 	return true
 
 func next_error_code():
+	unwatch_error()
 	if(active_errors.size() > 0):
 		current_display += 1
 		current_display %= active_errors.size()
-	set_display(current_display)
+	set_display()
 	next_spr.play("click")
 
 func prev_error_code():
+	unwatch_error()
 	if(active_errors.size() > 0):
 		current_display -= 1
 		if(current_display < 0):
 			current_display += active_errors.size()
-	set_display(current_display)
+	set_display()
 	prev_spr.play("click")
-
-func remove_error(old_error_id: String):
-	var old_error_hex: String = data.dereference_error_id(old_error_id).hex
-	var index = get_error_index(old_error_hex)
-	if(index == -1):
-		push_error(str("expected error with hex ", old_error_hex, " but none were found.",
-		"\nCurrent array: ", active_errors))
-	active_errors.remove_at(index)
-	if(active_errors.size() == 0):
-		error_code_display.text = ""
-	else:
-		set_display(current_display % active_errors.size())
-
-func get_error_index(error_id: String) -> int:
-	var index := 0
-	for error in active_errors:
-		if(error.id == error_id):
-			return index
-		index += 1
-	return -1
 
 func toggle_extra_button(on: bool):
 	prev_btn.visible = on
 	prev_spr.visible = on
+
+func unwatch_error():
+	var error = active_errors[current_display]
+	if(error != null):
+		error.tree_exiting.disconnect(next_error_code)
+
+func watch_error():
+	var error = active_errors[current_display]
+	if(error != null):
+		error.tree_exiting.connect(next_error_code)

@@ -39,6 +39,7 @@ func pattern_step(payload):
 	else:
 		step_index = 0
 		check_next_step()
+	step.emit(step_index)
 
 func check_next_step():
 	if(process_next_step()):

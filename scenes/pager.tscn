@@ -25,7 +25,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="pager" type="Control" node_paths=PackedStringArray("error_code_display")]
+[node name="pager" type="Control" node_paths=PackedStringArray("error_code_display", "step_lights_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k0vfd")
 error_code_display = NodePath("Label")
+step_lights_display = NodePath("Error_Step_Lights")
 metadata/_edit_group_ = true
 
 [node name="PagerBody" type="Sprite2D" parent="."]
@@ -99,54 +100,54 @@ offset_top = 16.0
 offset_right = -24.0
 offset_bottom = 24.0
 
-[node name="Light2" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light2" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = -22.0
 offset_top = 16.0
 offset_right = -14.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light3" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light3" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = -12.0
 offset_top = 16.0
 offset_right = -4.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light4" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light4" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = -2.0
 offset_top = 16.0
 offset_right = 6.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light5" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light5" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light6" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light6" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 16.0
 offset_right = 26.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light7" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light7" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 16.0
 offset_right = 36.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
-[node name="Light8" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+[node name="Light8" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
 offset_left = 38.0
 offset_top = 16.0
 offset_right = 46.0
 offset_bottom = 24.0
-on_light = NodePath("../Light/On")
 
 [connection signal="pressed" from="Next Button" to="." method="next_error_code"]
 [connection signal="pressed" from="Prev Button" to="." method="prev_error_code"]

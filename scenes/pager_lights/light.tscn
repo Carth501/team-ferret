@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/pager_lights/light.gd" id="1_ike5y"]
 
-[node name="Light" type="ColorRect" node_paths=PackedStringArray("on_light")]
+[node name="Light" type="ColorRect"]
 offset_left = -41.0
 offset_top = 17.0
 offset_right = -33.0
 offset_bottom = 25.0
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 script = ExtResource("1_ike5y")
-on_light = NodePath("On")
 
 [node name="On" type="ColorRect" parent="."]
 visible = false
