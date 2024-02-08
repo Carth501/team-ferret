@@ -67,6 +67,7 @@ volume_db = -6.0
 bus = &"Effects"
 
 [connection signal="pressed" from="toggle button" to="." method="toggle_manual_popup"]
+[connection signal="close" from="manual_book" to="." method="toggle_manual_popup"]
 [connection signal="next_page" from="manual_book" to="." method="next_page"]
 [connection signal="prev_page" from="manual_book" to="." method="prev_page"]
 [connection signal="to_index" from="manual_book" to="." method="jump_to_index"]
