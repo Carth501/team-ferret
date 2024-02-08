@@ -91,10 +91,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_r6hn8")
-lights = [NodePath("Light"), NodePath("Light2"), NodePath("Light3"), NodePath("Light4"), NodePath("Light5"), NodePath("Light6"), NodePath("Light7"), NodePath("Light8"), NodePath("Light9"), NodePath("Light10")]
+lights = [NodePath("Light1"), NodePath("Light2"), NodePath("Light3"), NodePath("Light4"), NodePath("Light5"), NodePath("Light6"), NodePath("Light7"), NodePath("Light8"), NodePath("Light9"), NodePath("Light10")]
 
-[node name="Light" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+[node name="Light1" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
+offset_left = -41.0
 offset_top = 14.0
 offset_right = -32.0
 offset_bottom = 23.0
