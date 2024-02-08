@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b48h4qtw2aqmn"]
+
+[ext_resource type="Script" path="res://scenes/pager_lights/light.gd" id="1_ike5y"]
+
+[node name="Light" type="ColorRect" node_paths=PackedStringArray("on_light")]
+offset_left = -41.0
+offset_top = 17.0
+offset_right = -33.0
+offset_bottom = 25.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+script = ExtResource("1_ike5y")
+on_light = NodePath("On")
+
+[node name="On" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0, 1, 0, 1)

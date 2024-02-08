@@ -209,7 +209,7 @@ func next_error_report():
 	diagetic_error_report.emit(new_error)
 	error_arrived.play()
 
-func error_report(_error: Variant):
+func error_report(_error: active_error):
 	if(error_arrived.is_inside_tree()):
 		error_arrived.play()
 

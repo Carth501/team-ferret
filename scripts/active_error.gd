@@ -1,8 +1,10 @@
 class_name active_error extends Node
 
 signal resolved_error(id: String)
+signal step(number: int)
 
 var id: String
+var hex: String
 var pattern: Array
 var step_index: int
 var module_instances: Dictionary = {}
@@ -13,6 +15,9 @@ func set_id(new_id: String):
 
 func set_pattern(new_pattern: Array):
 	pattern = new_pattern
+
+func set_hex(new_hex: String):
+	hex = new_hex
 
 func connect_to_cubicle(cubicle_instance: cubicle):
 	cubicle_reference = cubicle_instance

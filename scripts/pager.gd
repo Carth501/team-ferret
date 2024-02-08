@@ -6,28 +6,27 @@ extends Control
 @onready var prev_btn = $"Prev Button"
 
 @export var error_code_display: Label
-var error_hexes: Array[String] = []
+var active_errors: Array[active_error] = []
 var current_display: int = 0
 @onready var data: data_libraries_single = get_node("/root/data_libraries_single")
-var debug_history : Array[String] = []
 
 func _ready():
 	error_code_display.text = ""
 
-func add_error(new_error):
-	error_hexes.append(new_error.hex)
-	if(error_hexes.size() == 1):
-		set_display(error_hexes.size() - 1)
+func add_error(new_error: active_error):
+	active_errors.append(new_error)
+	if(active_errors.size() == 1):
+		set_display(active_errors.size() - 1)
 
 func set_display(value: int):
 	if(check_display_conditions(value)):
-		var error = error_hexes[value]
-		error_code_display.text = error
+		var error = active_errors[value]
+		error_code_display.text = error.hex
 
 func check_display_conditions(value: int) -> bool:
-	if(error_hexes.size() <= 0):
+	if(active_errors.size() <= 0):
 		return false
-	if(!value < error_hexes.size()):
+	if(!value < active_errors.size()):
 		push_error("pager index exceeds errors array limit")
 		return false
 	if(!value >= 0):
@@ -36,17 +35,17 @@ func check_display_conditions(value: int) -> bool:
 	return true
 
 func next_error_code():
-	if(error_hexes.size() > 0):
+	if(active_errors.size() > 0):
 		current_display += 1
-		current_display %= error_hexes.size()
+		current_display %= active_errors.size()
 	set_display(current_display)
 	next_spr.play("click")
 
 func prev_error_code():
-	if(error_hexes.size() > 0):
+	if(active_errors.size() > 0):
 		current_display -= 1
 		if(current_display < 0):
-			current_display += error_hexes.size()
+			current_display += active_errors.size()
 	set_display(current_display)
 	prev_spr.play("click")
 
@@ -55,18 +54,17 @@ func remove_error(old_error_id: String):
 	var index = get_error_index(old_error_hex)
 	if(index == -1):
 		push_error(str("expected error with hex ", old_error_hex, " but none were found.",
-		"\nCurrent array: ", error_hexes, "\nHistory array: ", debug_history))
-	error_hexes.remove_at(index)
-	debug_history.append(old_error_hex + " " + str(index))
-	if(error_hexes.size() == 0):
+		"\nCurrent array: ", active_errors))
+	active_errors.remove_at(index)
+	if(active_errors.size() == 0):
 		error_code_display.text = ""
 	else:
-		set_display(current_display % error_hexes.size())
+		set_display(current_display % active_errors.size())
 
-func get_error_index(error_id) -> int:
+func get_error_index(error_id: String) -> int:
 	var index := 0
-	for error in error_hexes:
-		if(error == error_id):
+	for error in active_errors:
+		if(error.id == error_id):
 			return index
 		index += 1
 	return -1

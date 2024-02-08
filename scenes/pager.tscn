@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bldt2tc567tql"]
+[gd_scene load_steps=9 format=3 uid="uid://bldt2tc567tql"]
 
 [ext_resource type="Script" path="res://scripts/pager.gd" id="1_k0vfd"]
 [ext_resource type="Texture2D" uid="uid://cqdt2ulb433ug" path="res://assets/images/cubicle/Shareholders_Pager.png" id="2_3mrmw"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_eombr"]
 [ext_resource type="Texture2D" uid="uid://bpus3pyu0vl3x" path="res://assets/images/cubicle/Shareholders_Pager_Button_Up.png" id="4_3g8dx"]
 [ext_resource type="Texture2D" uid="uid://gsrj8faj45wo" path="res://assets/images/cubicle/Shareholders_Pager_Button_Down.png" id="5_hua2o"]
+[ext_resource type="Script" path="res://scripts/Error_Step_Lights.gd" id="6_r6hn8"]
+[ext_resource type="PackedScene" uid="uid://b48h4qtw2aqmn" path="res://scenes/pager_lights/light.tscn" id="7_s0kla"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a7q7a"]
 animations = [{
@@ -82,6 +84,69 @@ animation = &"click"
 position = Vector2(26, -15)
 sprite_frames = SubResource("SpriteFrames_a7q7a")
 animation = &"click"
+
+[node name="Error_Step_Lights" type="Control" parent="." node_paths=PackedStringArray("lights")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_r6hn8")
+lights = [NodePath("Light"), NodePath("Light2"), NodePath("Light3"), NodePath("Light4"), NodePath("Light5"), NodePath("Light6"), NodePath("Light7"), NodePath("Light8")]
+
+[node name="Light" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 24.0
+
+[node name="Light2" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = -22.0
+offset_top = 16.0
+offset_right = -14.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light3" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = -12.0
+offset_top = 16.0
+offset_right = -4.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light4" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = -2.0
+offset_top = 16.0
+offset_right = 6.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light5" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light6" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 26.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light7" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = 28.0
+offset_top = 16.0
+offset_right = 36.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
+
+[node name="Light8" parent="Error_Step_Lights" node_paths=PackedStringArray("on_light") instance=ExtResource("7_s0kla")]
+offset_left = 38.0
+offset_top = 16.0
+offset_right = 46.0
+offset_bottom = 24.0
+on_light = NodePath("../Light/On")
 
 [connection signal="pressed" from="Next Button" to="." method="next_error_code"]
 [connection signal="pressed" from="Prev Button" to="." method="prev_error_code"]
