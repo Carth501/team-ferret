@@ -730,10 +730,10 @@ text = "[center]Pause[center]"
 [node name="Timer Corral" type="Node" parent="."]
 
 [node name="pager" parent="." instance=ExtResource("3_fcxxh")]
-offset_left = 140.0
-offset_top = 189.0
-offset_right = -1140.0
-offset_bottom = -531.0
+offset_left = 138.0
+offset_top = 178.0
+offset_right = -1142.0
+offset_bottom = -542.0
 
 [node name="ErrorFactory" type="Node" parent="." node_paths=PackedStringArray("cubicle_instance")]
 script = ExtResource("4_cxbfh")
@@ -858,8 +858,8 @@ bus = &"Effects"
 [connection signal="modules_ready" from="." to="ErrorFactory" method="cubicle_ready"]
 [connection signal="times_up" from="level clock" to="." method="end_of_shift"]
 [connection signal="timeout" from="Timer" to="level clock" method="tick"]
-[connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
 [connection signal="timeout" from="Timer" to="CpcCalculator" method="send_updates"]
+[connection signal="timeout" from="Timer" to="CpcCalculator" method="calculate"]
 [connection signal="new_active_error" from="ErrorFactory" to="." method="error_report"]
 [connection signal="new_active_error" from="ErrorFactory" to="pager" method="add_error"]
 [connection signal="update_active_error_count" from="ErrorFactory" to="CpcCalculator" method="update_error_count"]
