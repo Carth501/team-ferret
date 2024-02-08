@@ -13,6 +13,7 @@ signal next_page
 signal prev_page
 signal to_index
 signal to_page(number: int)
+signal close
 
 func prev_button():
 	emit_signal("prev_page")
@@ -27,3 +28,6 @@ func parse_hyperlink(meta: Variant):
 	var parsedResult = JSON.parse_string(meta)
 	if(parsedResult.has("page")):
 		to_page.emit(parsedResult.page)
+
+func close_manual():
+	close.emit()

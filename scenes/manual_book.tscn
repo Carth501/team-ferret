@@ -134,6 +134,14 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "DRAG"
 
+[node name="close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 490.833
+offset_top = 5.83333
+offset_right = 522.833
+offset_bottom = 37.8333
+text = "X"
+
 [connection signal="gui_input" from="TextureRect/MarginContainer" to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="TextureRect/MarginContainer" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect/MarginContainer" to="." method="_on_mouse_exited"]
@@ -144,3 +152,4 @@ text = "DRAG"
 [connection signal="pressed" from="jump_to_index" to="." method="index_shortcut"]
 [connection signal="mouse_entered" from="ColorRect" to="ColorRect" method="_mouse_enter"]
 [connection signal="mouse_exited" from="ColorRect" to="ColorRect" method="_mouse_exit"]
+[connection signal="pressed" from="close" to="." method="close_manual"]
