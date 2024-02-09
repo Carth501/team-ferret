@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://d32ginpnucq0p"]
+[gd_scene load_steps=23 format=3 uid="uid://d32ginpnucq0p"]
 
 [ext_resource type="Script" path="res://scripts/modules/switch_module.gd" id="1_ow6tp"]
 [ext_resource type="Texture2D" uid="uid://bg5fduqv5cocr" path="res://assets/images/modules/switch_off.png" id="2_sijb4"]
 [ext_resource type="PackedScene" uid="uid://4xcahh3vvuf3" path="res://scenes/click_player.tscn" id="3_bf5yy"]
 [ext_resource type="Texture2D" uid="uid://lje1luxvupfb" path="res://assets/images/modules/switch_on.png" id="3_h6ukm"]
+[ext_resource type="PackedScene" uid="uid://dt345r1kj5v0n" path="res://scenes/modules/warning_popup.tscn" id="5_8pt57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aka08"]
 bg_color = Color(1, 1, 1, 1)
@@ -44,7 +45,7 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xb6e"]
 
-[node name="switch" type="Control" node_paths=PackedStringArray("button_obj", "label_obj")]
+[node name="switch" type="Control" node_paths=PackedStringArray("button_obj", "label_obj", "warning", "hover_area")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +57,8 @@ grow_vertical = 2
 script = ExtResource("1_ow6tp")
 button_obj = NodePath("CheckButton")
 label_obj = NodePath("RichTextLabel")
+warning = NodePath("Warning popup")
+hover_area = NodePath("CheckButton")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.231373, 0.231373, 0.231373, 1)
@@ -115,7 +118,7 @@ offset_left = 2.0
 offset_top = 32.0
 offset_right = 62.0
 offset_bottom = 63.0
-mouse_filter = 2
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 10
 
 [node name="CheckButton" type="CheckButton" parent="."]
@@ -132,6 +135,9 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_goysx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0xb6e")
 
 [node name="click_player" parent="CheckButton" instance=ExtResource("3_bf5yy")]
+
+[node name="Warning popup" parent="." instance=ExtResource("5_8pt57")]
+offset_bottom = 6.0
 
 [connection signal="pressed" from="switch_off" to="." method="_on_switch_off_pressed"]
 [connection signal="pressed" from="switch_on" to="." method="_on_switch_on_pressed"]

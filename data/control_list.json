@@ -3,31 +3,36 @@
 		"label": "Engorge Ballast",
 		"id": "C_ENGORGE_BALLAST",
 		"type": "switch",
-		"offset": [0, 0]
+		"offset": [0, 0],
+		"warning_text": "5 people will leave every second while this is on."
 	},
 	{
 		"label": "Check Character Positions",
 		"id": "C_CHECK_CHAR_POS",
 		"type": "button",
-		"offset": [1, 0]
+		"offset": [1, 0],
+		"warning_text": "This will be disabled for 13 seconds each time it is pressed."
 	},
 	{
 		"label": "Reload Models",
 		"id": "C_RELOAD_MODELS",
 		"type": "button",
-		"offset": [2, 0]
+		"offset": [2, 0],
+		"warning_text": "The monitor will be reset."
 	},
 	{
 		"label": "Reload Character Models",
 		"id": "C_RELOAD_CHAR_MODELS",
 		"type": "button",
-		"offset": [3, 0]
+		"offset": [3, 0],
+		"warning_text": "An estimated 3% of players will leave each time this is triggered."
 	},
 	{
 		"label": "Download RAM",
 		"id": "C_DOWNLOAD_RAM",
 		"type": "button",
-		"offset": [4, 0]
+		"offset": [4, 0],
+		"warning_text": "This causes E_FRAG_FAULT."
 	},
 	{
 		"label": "Safe Mode",

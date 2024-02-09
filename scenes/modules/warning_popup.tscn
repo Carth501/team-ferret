@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt345r1kj5v0n"]
+
+[ext_resource type="Script" path="res://scripts/modules/Warning popup.gd" id="1_x52je"]
+[ext_resource type="Theme" uid="uid://c0tgdmxgi26hi" path="res://assets/themes/tots_theme.tres" id="2_jxr6m"]
+
+[node name="Warning popup" type="Control" node_paths=PackedStringArray("warning_panel", "textbox")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_x52je")
+warning_panel = NodePath("Warning panel")
+textbox = NodePath("Warning panel/RichTextLabel")
+
+[node name="Warning panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -83.0
+offset_top = -141.0
+offset_right = 147.0
+mouse_filter = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Warning panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_jxr6m")
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
