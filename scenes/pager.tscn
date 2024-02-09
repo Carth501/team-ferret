@@ -88,79 +88,80 @@ animation = &"click"
 
 [node name="Error_Step_Lights" type="Control" parent="." node_paths=PackedStringArray("lights")]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -53.0
+offset_right = 71.0
 offset_bottom = 40.0
 script = ExtResource("6_r6hn8")
 lights = [NodePath("Light1"), NodePath("Light2"), NodePath("Light3"), NodePath("Light4"), NodePath("Light5"), NodePath("Light6"), NodePath("Light7"), NodePath("Light8"), NodePath("Light9"), NodePath("Light10")]
 
 [node name="Light1" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = -41.0
+offset_left = 12.0
 offset_top = 14.0
-offset_right = -32.0
+offset_right = 21.0
 offset_bottom = 23.0
 
 [node name="Light2" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = -31.0
+offset_left = 22.0
 offset_top = 14.0
-offset_right = -22.0
+offset_right = 31.0
 offset_bottom = 23.0
 
 [node name="Light3" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = -21.0
+offset_left = 32.0
 offset_top = 14.0
-offset_right = -12.0
+offset_right = 41.0
 offset_bottom = 23.0
 
 [node name="Light4" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = -11.0
+offset_left = 42.0
 offset_top = 14.0
-offset_right = -2.0
+offset_right = 51.0
 offset_bottom = 23.0
 
 [node name="Light5" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = -1.0
+offset_left = 52.0
 offset_top = 14.0
-offset_right = 8.0
+offset_right = 61.0
 offset_bottom = 23.0
 
 [node name="Light6" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 62.0
 offset_top = 14.0
-offset_right = 18.0
+offset_right = 71.0
 offset_bottom = 23.0
 
 [node name="Light7" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = 19.0
+offset_left = 72.0
 offset_top = 14.0
-offset_right = 28.0
+offset_right = 81.0
 offset_bottom = 23.0
 
 [node name="Light8" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = 29.0
+offset_left = 82.0
 offset_top = 14.0
-offset_right = 38.0
+offset_right = 91.0
 offset_bottom = 23.0
 
 [node name="Light9" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = 39.0
+offset_left = 92.0
 offset_top = 14.0
-offset_right = 48.0
+offset_right = 101.0
 offset_bottom = 23.0
 
 [node name="Light10" parent="Error_Step_Lights" instance=ExtResource("7_s0kla")]
 layout_mode = 0
-offset_left = 49.0
+offset_left = 102.0
 offset_top = 14.0
-offset_right = 58.0
+offset_right = 111.0
 offset_bottom = 23.0
 
 [connection signal="pressed" from="Next Button" to="." method="next_error_code"]
