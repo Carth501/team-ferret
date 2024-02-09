@@ -11,9 +11,10 @@ var high_score = 0
 var threshold: float
 var error_count = 0
 var par = 5
+var cpc_cont_const := 0
 
 func calculate():
-	cpc = floori((cpc + 1) * calc_coefficient())
+	cpc = floori((cpc + 1) * calc_coefficient()) + cpc_cont_const
 	if(cpc > high_score):
 		high_score = cpc
 	if(threshold && cpc < high_score * threshold):

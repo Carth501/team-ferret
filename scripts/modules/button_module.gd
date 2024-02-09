@@ -11,8 +11,7 @@ func set_label(label: String):
 	rtl_object.append_text(label)
 
 func button_pressed():
-	var payload = {"id"= id}
-	trigger.emit(payload)
+	trigger.emit(control_def)
 	play_animation()
 
 func play_animation() -> void:

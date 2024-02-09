@@ -26,6 +26,7 @@ signal modules_ready()
 @onready var simulation_shaders := $Cubicle/Background/GameScreen/Screen_Shaders
 @onready var pager_ref := $pager
 @onready var complete_level_cheat := $"pause curtain/complete level"
+@onready var side_effects := side_effect_manager.new()
 var current_level_id: String
 var data: data_libraries_single
 var loader: level_loader
@@ -69,6 +70,9 @@ func _ready():
 		complete_level_cheat.visible = true
 	else:
 		complete_level_cheat.queue_free()
+	add_child(side_effects)
+	side_effects.set_cpc_calc(cpc_calc)
+	side_effects.set_sim_screen(simulation_screen)
 
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
@@ -187,6 +191,7 @@ func configure_module(new_module: abstract_module, params):
 	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
 	new_module.trigger.connect(count_module_triggers)
+	side_effects.register_side_effects(new_module)
 
 func dereference_module_id(id: String):
 	for module_def in data.control_data:
