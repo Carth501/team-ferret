@@ -69,7 +69,6 @@ func _on_keypad_beep_finished():
 	#var timer = Timer.new()
 	#timer.wait_time = 1
 	if(plays <= 2):
-		print(str("Keypad plays: ", plays))
 		plays += 1
 		#timer.timeout.connect(keypad_beep.play)
 		#timer.one_shot = true

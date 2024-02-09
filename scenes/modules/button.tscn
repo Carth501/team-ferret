@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnf6vxxb7xsr3"]
+[gd_scene load_steps=13 format=3 uid="uid://bnf6vxxb7xsr3"]
 
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_6gy08"]
 [ext_resource type="Texture2D" uid="uid://dq86iwrmkc0io" path="res://assets/images/modules/button_up.png" id="2_6q3bl"]
 [ext_resource type="Texture2D" uid="uid://bv8m88nlesnui" path="res://assets/images/modules/button_pushed.png" id="3_xf508"]
+[ext_resource type="PackedScene" uid="uid://dt345r1kj5v0n" path="res://scenes/modules/warning_popup.tscn" id="5_x54ve"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndp7v"]
 bg_color = Color(1, 1, 1, 1)
@@ -39,7 +40,7 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gktn1"]
 
-[node name="button" type="Control" node_paths=PackedStringArray("rtl_object", "internal_button")]
+[node name="button" type="Control" node_paths=PackedStringArray("rtl_object", "internal_button", "warning", "hover_area")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +52,8 @@ grow_vertical = 2
 script = ExtResource("1_2qjgx")
 rtl_object = NodePath("Button/RichTextLabel")
 internal_button = NodePath("Button")
+warning = NodePath("Warning popup")
+hover_area = NodePath("Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -99,5 +102,8 @@ scroll_active = false
 
 [node name="click_player" type="Node" parent="Button"]
 script = ExtResource("2_6gy08")
+
+[node name="Warning popup" parent="." instance=ExtResource("5_x54ve")]
+visible = false
 
 [connection signal="pressed" from="Button" to="." method="button_pressed"]

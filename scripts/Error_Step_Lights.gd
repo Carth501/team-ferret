@@ -4,7 +4,6 @@ class_name error_step_lights extends Control
 var error : active_error
 
 func set_count(number : int):
-	print(str("number of lights: ", number))
 	number %= lights.size()
 	var i := 0
 	for light in lights:
