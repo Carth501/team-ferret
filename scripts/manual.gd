@@ -23,6 +23,9 @@ func _ready():
 	l_body = manual_book.left_text
 	r_header = manual_book.right_header
 	r_body = manual_book.right_text
+	var error_data = data_libraries_single.get_error_data_copy()
+	var control_data = data_libraries_single.control_data
+	write_manual(error_data, control_data)
 
 func toggle_manual_popup():
 	manual_book.visible = !manual_book.visible
