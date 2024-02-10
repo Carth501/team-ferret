@@ -15,6 +15,8 @@ func register_side_effects(module : abstract_module):
 		var effects = control_def.side_effects
 		if(effects.has("cont_flat_cpc_penalty")):
 			module.trigger.connect(cont_flat_cpc_penalty)
+		if(effects.has("disabled")):
+			module.trigger_with_ref.connect(disabled_effect)
 
 func cont_flat_cpc_penalty(payload : Variant):
 	if(!payload.has("side_effects")):
@@ -25,3 +27,11 @@ func cont_flat_cpc_penalty(payload : Variant):
 		cpc_calc.cpc_cont_const -= payload.side_effects.cont_flat_cpc_penalty.magnitude
 	else:
 		cpc_calc.cpc_cont_const += payload.side_effects.cont_flat_cpc_penalty.magnitude
+
+func disabled_effect(ref : abstract_module):
+	if(!ref.control_def.has("side_effects")):
+		push_error("trying to trigger side effects when there are none.")
+	var side_effects = ref.control_def.side_effects
+	if(!side_effects.has("disabled")):
+		push_error("trying to trigger the wrong side effect, or something like that.")
+	ref.disable_for(side_effects.disabled.duration)

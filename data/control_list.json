@@ -17,7 +17,12 @@
 		"id": "C_CHECK_CHAR_POS",
 		"type": "button",
 		"offset": [1, 0],
-		"warning_text": "This will be disabled for 13 seconds each time it is pressed."
+		"warning_text": "This will be disabled for 13 seconds each time it is pressed.",
+		"side_effects": {
+				"disabled": {
+						"duration": 13.0
+					}
+			}
 	},
 	{
 		"label": "Reload Models",

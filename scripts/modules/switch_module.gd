@@ -14,6 +14,7 @@ func button_pressed():
 	var payload = control_def
 	payload["value"] = state
 	trigger.emit(payload)
+	trigger_with_ref.emit(self)
 	toggle_switch(state)
 
 func get_current_values():
