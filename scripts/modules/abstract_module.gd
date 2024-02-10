@@ -15,6 +15,7 @@ func set_control_def(new_control : Variant):
 	control_def = new_control
 	id = new_control.id
 	if(new_control.has("warning_text")):
+		print(str("warning_text detected for ", name))
 		warning.set_text(new_control.warning_text)
 		hover_area.mouse_entered.connect(warning.show_panel)
 		hover_area.mouse_exited.connect(warning.hide_panel)

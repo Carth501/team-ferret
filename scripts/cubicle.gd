@@ -205,7 +205,7 @@ func create_error_timers():
 		timer_corral.add_child(timer)
 		timer.wait_time = error.time
 		timer.one_shot = true
-		timer.start()
+		timer.autostart = true
 		error_timers_list.append(timer)
 		timer.timeout.connect(next_error_report)
 

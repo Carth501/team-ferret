@@ -17,6 +17,10 @@ func register_side_effects(module : abstract_module):
 			module.trigger.connect(cont_flat_cpc_penalty)
 		if(effects.has("disabled")):
 			module.trigger_with_ref.connect(disabled_effect)
+		if(effects.has("monitor_reset")):
+			module.trigger.connect(monitor_reset)
+		if(effects.has("percent_cpc_penalty")):
+			module.trigger.connect(percent_cpc_penalty)
 
 func cont_flat_cpc_penalty(payload : Variant):
 	if(!payload.has("side_effects")):
@@ -35,3 +39,18 @@ func disabled_effect(ref : abstract_module):
 	if(!side_effects.has("disabled")):
 		push_error("trying to trigger the wrong side effect, or something like that.")
 	ref.disable_for(side_effects.disabled.duration)
+
+func monitor_reset(payload : Variant):
+	simulation_screen.visible = false
+	var timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = true
+	timer.wait_time = payload.side_effects.monitor_reset.duration
+	timer.timeout.connect(monitor_restore)
+	timer.start()
+
+func monitor_restore():
+	simulation_screen.visible = true
+
+func percent_cpc_penalty(payload : Variant):
+	cpc_calc.cpc -= cpc_calc.cpc * payload.side_effects.percent_cpc_penalty.magnitude

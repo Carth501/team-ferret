@@ -104,6 +104,5 @@ scroll_active = false
 script = ExtResource("2_6gy08")
 
 [node name="Warning popup" parent="." instance=ExtResource("5_x54ve")]
-visible = false
 
 [connection signal="pressed" from="Button" to="." method="button_pressed"]
