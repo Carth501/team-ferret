@@ -77,7 +77,7 @@ func load_level(level_id: String = "test"):
 	detect_repeat_attempt()
 	get_error_schedule(current_level)
 	get_error_catalogue(current_level)
-	create_module_id_list()
+	module_id_list = create_module_id_list()
 	create_module_objects()
 	create_error_timers()
 	set_initial_module_settings()
@@ -112,7 +112,8 @@ func configure_level_settings():
 		if(value >= 0):
 			cpc_calc.set_threshold(value)
 	if(current_level.metadata.has("music")):
-		var song = load("res://assets/audio/music/" + current_level.metadata.music + ".mp3")
+		var track = "res://assets/audio/music/" + current_level.metadata.music + ".mp3"
+		var song = load(track)
 		level_music.stream = song
 		level_music.play()
 	if(current_level.gameplay.has("error_freq")):
@@ -149,7 +150,7 @@ func create_module_id_list():
 		for step in error.pattern:
 			if !list.has(step.id):
 				list.append(step.id)
-	module_id_list = list
+	return list
 
 func create_module_objects():
 	for module_id in module_id_list:
@@ -208,7 +209,7 @@ func configure_module(new_module: abstract_module, params):
 func dereference_module_id(id: String):
 	for module_def in data_libraries_single.control_data:
 		if(module_def.id == id):
-			return module_def
+			return module_def.duplicate(true)
 	push_error(str("did not find error def for id ", id))
 
 func create_error_timers():
