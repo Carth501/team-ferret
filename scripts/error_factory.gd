@@ -77,4 +77,4 @@ func set_error_freq(value: float):
 	probability = value
 
 func create_error_by_id(id : String):
-	create_error_node(data_libraries_single.dereference_error_id(id))
+	create_error_node(dereferencer_single.error_by_id(id))

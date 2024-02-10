@@ -123,7 +123,7 @@ func configure_level_settings():
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
-		var error_item = data_libraries_single.dereference_error_id(error.id)
+		var error_item = dereferencer_single.error_by_id(error.id)
 		if(error.has("time")):
 			error_item["time"] = error.time
 			error_schedule.append(error_item)
@@ -135,9 +135,7 @@ func get_error_catalogue(level):
 		push_warning("level has no errors list, was this intentional?")
 	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
-		var dereferenced = data_libraries_single.dereference_error_id(error)
-		if(dereferenced == null):
-			push_error(str("dereference_error_id did not find ", error))
+		var dereferenced = dereferencer_single.error_by_id(error)
 		error_catalogue.append(dereferenced)
 
 func create_module_id_list():
@@ -158,7 +156,7 @@ func create_module_objects():
 	modules_ready.emit()
 
 func create_module_with_id(id : String):
-	var module_definition = dereference_module_id(id)
+	var module_definition = dereferencer_single.module_by_id(id)
 	var new_module
 	match module_definition.type:
 		"button":
@@ -175,7 +173,7 @@ func check_for_error_side_effects(def : Variant):
 		if(def.side_effects.has("cause_errors")):
 			for new_error_id in def.side_effects.cause_errors:
 				if(!is_error_in_level(new_error_id)):
-					var new_error = data_libraries_single.dereference_error_id(new_error_id)
+					var new_error = dereferencer_single.error_by_id(new_error_id)
 					error_catalogue.append(new_error)
 					for step in new_error.pattern:
 						if !module_id_list.has(step.id):
@@ -205,12 +203,6 @@ func configure_module(new_module: abstract_module, params):
 	module_obj_dic[params.id] = new_module
 	new_module.trigger.connect(count_module_triggers)
 	side_effects.register_side_effects(new_module)
-
-func dereference_module_id(id: String):
-	for module_def in data_libraries_single.control_data:
-		if(module_def.id == id):
-			return module_def.duplicate(true)
-	push_error(str("did not find error def for id ", id))
 
 func create_error_timers():
 	for error in error_schedule:
