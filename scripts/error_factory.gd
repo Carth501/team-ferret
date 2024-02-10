@@ -75,3 +75,6 @@ func generate_new_error(error_roll: float):
 
 func set_error_freq(value: float):
 	probability = value
+
+func create_error_by_id(id : String):
+	create_error_node(data_libraries_single.dereference_error_id(id))

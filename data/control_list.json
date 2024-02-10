@@ -53,7 +53,13 @@
 		"id": "C_DOWNLOAD_RAM",
 		"type": "button",
 		"offset": [4, 0],
-		"warning_text": "This causes E_FRAG_FAULT."
+		"warning_text": "This causes E_FRAG_FAULT.",
+		"side_effects": {
+				"cause_errors": [
+						"E_FRAG_FAULT"
+					]
+					
+			}
 	},
 	{
 		"label": "Safe Mode",

@@ -73,6 +73,7 @@ func _ready():
 	add_child(side_effects)
 	side_effects.set_cpc_calc(cpc_calc)
 	side_effects.set_sim_screen(simulation_screen)
+	side_effects.set_error_factory(error_factory_controller)
 
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
@@ -157,17 +158,36 @@ func create_module_id_list():
 
 func create_module_objects():
 	for module_id in module_id_list:
-		var module_definition = dereference_module_id(module_id)
-		var new_module
-		match module_definition.type:
-			"button":
-				new_module = create_button()
-			"switch":
-				new_module = create_switch()
-			_:
-				push_error(str(module_definition.type, " not found. Check spelling."))
-		configure_module(new_module, module_definition)
+		create_module_with_id(module_id)
 	modules_ready.emit()
+
+func create_module_with_id(id : String):
+	var module_definition = dereference_module_id(id)
+	var new_module
+	match module_definition.type:
+		"button":
+			new_module = create_button()
+		"switch":
+			new_module = create_switch()
+		_:
+			push_error(str(module_definition.type, " not found. Check spelling."))
+	configure_module(new_module, module_definition)
+	check_for_error_side_effects(module_definition)
+
+func check_for_error_side_effects(def : Variant):
+	if(def.has("side_effects")):
+		if(def.side_effects.has("cause_errors")):
+			print("Detected control with error side effects")
+			for new_error_id in def.side_effects.cause_errors:
+				if(!is_error_in_level(new_error_id)):
+					print(str(new_error_id, " is novel error"))
+					var new_error = data_libraries_single.dereference_error_id(new_error_id)
+					error_catalogue.append(new_error)
+					for step in new_error.pattern:
+						if !module_id_list.has(step.id):
+							print(str(step.id, " is novel module"))
+							module_id_list.append(step.id)
+							create_module_with_id(step.id)
 
 func create_button() -> abstract_module:
 	var button_scene = load("res://scenes/modules/button.tscn")
@@ -328,3 +348,12 @@ func upgrade_init():
 		var upgrades = active_save.upgrades
 		level_clock_handler.visible = upgrades.has("digital_clock") && upgrades.digital_clock
 		pager_ref.toggle_extra_button(upgrades.has("pager_buttons") && upgrades.pager_buttons)
+
+func is_error_in_level(id : String) -> bool:
+	for error in error_schedule:
+		if(error.id == id):
+			return true
+	for error in error_catalogue:
+		if(error.id == id):
+			return true
+	return false
