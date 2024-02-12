@@ -65,7 +65,14 @@
 		"label": "Safe Mode",
 		"id": "C_SAFE_MODE",
 		"type": "switch",
-		"offset": [5, 0]
+		"offset": [5, 0],
+		"latches": {
+			"to_be_set": {
+				"restricted_value": false,
+				"module_id": "C_LIFEGUARD",
+				"required_value": false
+			} 
+		}
 	},
 	{
 		"label": "Lifeguard On Duty",
