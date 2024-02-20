@@ -11,9 +11,11 @@ func get_module_obj(id: String) -> abstract_module:
 func clear():
 	module_obj_dic.clear()
 
-func create_module_with_id(id : String) -> abstract_module:
+func create_module_with_id(id : String) -> Array[abstract_module]:
+	print(str("id ", id))
 	if(module_obj_dic.has(id)):
-		return null
+		print(str("module_obj_dic already has ", id))
+		return []
 	var module_definition = dereferencer_single.module_by_id(id)
 	var new_module
 	match module_definition.type:
@@ -24,16 +26,21 @@ func create_module_with_id(id : String) -> abstract_module:
 		_:
 			push_error(str(module_definition.type, " not found. Check spelling."))
 	configure_module(new_module, module_definition)
-	check_for_error_side_effects(module_definition)
-	return new_module
+	var new_modules : Array[abstract_module] = [new_module]
+	new_modules.append_array(check_for_error_side_effects(module_definition))
+	return new_modules
 
-func check_for_error_side_effects(def : Variant):
+func check_for_error_side_effects(def : Variant) -> Array[abstract_module]:
 	if(def.has("side_effects")):
 		if(def.side_effects.has("cause_errors")):
 			for new_error_id in def.side_effects.cause_errors:
 				var new_error = dereferencer_single.error_by_id(new_error_id)
+				var modules_list : Array[abstract_module] = []
 				for step in new_error.pattern:
-					create_module_with_id(step.id)
+					modules_list.append_array(create_module_with_id(step.id))
+				print(str("Side effect error steps ", modules_list))
+				return modules_list
+	return []
 
 func create_button() -> abstract_module:
 	var button_scene = load("res://scenes/modules/button.tscn")

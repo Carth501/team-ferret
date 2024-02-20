@@ -42,6 +42,24 @@ func config_latches():
 	if(control_def == null):
 		push_error("attempting to configure latches, but control def has not been set.")
 	if(control_def.has("latches")):
-		var latches = control_def.latches
-		for latch in latches:
-			var dependency = module_manager_single.module
+		var latches_def = control_def.latches
+		if(latches_def.has("disabled_if")):
+			print("discovered a disabled_if latch")
+			for condition in latches_def.disabled_if:
+				var condition_id = condition.module_id
+				var dependency = module_manager_single.get_module_obj(condition_id)
+				if(dependency != null):
+					var new_latch = {
+						"type": "disabled_if",
+						"module": dependency,
+						"value": condition.value
+					}
+					latches.append(new_latch)
+
+func check_latches_unlocked() -> bool:
+	for latch in latches:
+		if(latch.type == "disable_if"):
+			var current_values = latch.to_be_set.module.get_current_values()
+			if(current_values.value != latch.value):
+				return false
+	return true

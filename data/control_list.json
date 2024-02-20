@@ -58,7 +58,6 @@
 				"cause_errors": [
 						"E_FRAG_FAULT"
 					]
-					
 			}
 	},
 	{
@@ -67,11 +66,12 @@
 		"type": "switch",
 		"offset": [5, 0],
 		"latches": {
-			"to_be_set": {
-				"restricted_value": false,
-				"module_id": "C_LIFEGUARD",
-				"required_value": false
-			} 
+			"disabled_if": [
+				{
+					"module_id": "C_LIFEGUARD",
+					"value": false
+				}
+				]
 		}
 	},
 	{

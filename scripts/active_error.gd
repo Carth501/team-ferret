@@ -1,6 +1,7 @@
 class_name active_error extends Node
 
 signal resolved_error(id: String)
+signal resolved_error_with_ref(ref: active_error)
 signal step(number: int)
 
 var id: String
@@ -51,6 +52,7 @@ func increment_step():
 	step_index += 1
 	if(step_index >= pattern.size()):
 		resolved_error.emit(id)
+		resolved_error_with_ref.emit(self)
 		queue_free()
 	else:
 		check_next_step()

@@ -149,16 +149,17 @@ func create_module_id_list() -> Array[String]:
 
 func create_module_objects(module_list: Array[String]):
 	for module_id in module_list:
-		var new_module = module_manager_single.create_module_with_id(module_id)
-		control_panel.add_child(new_module)
-		new_module.trigger.connect(count_module_triggers)
-		modules_ready.connect(new_module.config_latches)
-		side_effects.register_side_effects(new_module)
-		var spacing = 10
-		var offset = new_module.control_def.offset
-		var x_pos = offset[0] * 64 + offset[0] * spacing
-		var y_pos = offset[1] * 64 + offset[1] * spacing
-		new_module.position = Vector2(x_pos, y_pos)
+		var new_module_list = module_manager_single.create_module_with_id(module_id)
+		for new_module in new_module_list:
+			control_panel.add_child(new_module)
+			new_module.trigger.connect(count_module_triggers)
+			modules_ready.connect(new_module.config_latches)
+			side_effects.register_side_effects(new_module)
+			var spacing = 10
+			var offset = new_module.control_def.offset
+			var x_pos = offset[0] * 64 + offset[0] * spacing
+			var y_pos = offset[1] * 64 + offset[1] * spacing
+			new_module.position = Vector2(x_pos, y_pos)
 	modules_ready.emit()
 
 func create_error_timers():
