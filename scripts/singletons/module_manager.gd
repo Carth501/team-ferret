@@ -12,9 +12,7 @@ func clear():
 	module_obj_dic.clear()
 
 func create_module_with_id(id : String) -> Array[abstract_module]:
-	print(str("id ", id))
 	if(module_obj_dic.has(id)):
-		print(str("module_obj_dic already has ", id))
 		return []
 	var module_definition = dereferencer_single.module_by_id(id)
 	var new_module
@@ -38,7 +36,6 @@ func check_for_error_side_effects(def : Variant) -> Array[abstract_module]:
 				var modules_list : Array[abstract_module] = []
 				for step in new_error.pattern:
 					modules_list.append_array(create_module_with_id(step.id))
-				print(str("Side effect error steps ", modules_list))
 				return modules_list
 	return []
 

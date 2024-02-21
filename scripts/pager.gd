@@ -16,12 +16,11 @@ func _ready():
 	step_lights_display.unset()
 
 func add_error(new_error: active_error):
-	print(str("add_error ", add_error))
 	active_errors.append(new_error)
+	new_error.resolved_error_with_ref.connect(remove_error_by_ref)
 	if(active_errors.size() == 1):
 		current_display = 0
 		set_display()
-		new_error.resolved_error_with_ref.connect(remove_error_by_ref)
 
 func set_display():
 	if(check_display_conditions(current_display)):
@@ -48,31 +47,34 @@ func check_display_conditions(value: int) -> bool:
 	return true
 
 func next_error_code():
+	increment_display()
+	next_spr.play("click")
+
+func increment_display():
 	if(active_errors.size() > 0):
 		current_display += 1
 		current_display %= active_errors.size()
 	set_display()
-	next_spr.play("click")
 
 func prev_error_code():
+	decrement_display()
+	prev_spr.play("click")
+
+func decrement_display():
 	if(active_errors.size() > 0):
 		current_display -= 1
 		if(current_display < 0):
 			current_display += active_errors.size()
 	set_display()
-	prev_spr.play("click")
 
 func toggle_extra_button(on: bool):
 	prev_btn.visible = on
 	prev_spr.visible = on
 
 func remove_error_by_ref(error : active_error):
-	print(str("remove_error_by_ref ", error))
 	var index = active_errors.find(error)
 	if(index == -1):
 		push_error(str("didn't find a reference to ", error.id))
 	active_errors.remove_at(index)
-	if(index == current_display):
-		next_error_code()
-	elif(index < current_display):
-		current_display -= 1
+	if(index <= current_display):
+		decrement_display()

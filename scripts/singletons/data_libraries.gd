@@ -8,7 +8,6 @@ var level_data : Array
 @export var level_definition_json = "res://data/level_list.json"
 
 func _ready():
-	print("data_libraries ready")
 	control_data = load_json_file(control_definition_json)
 	error_data = load_json_file(error_definition_json)
 	level_data = load_json_file(level_definition_json)

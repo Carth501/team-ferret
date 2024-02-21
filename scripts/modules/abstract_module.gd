@@ -44,7 +44,6 @@ func config_latches():
 	if(control_def.has("latches")):
 		var latches_def = control_def.latches
 		if(latches_def.has("disabled_if")):
-			print("discovered a disabled_if latch")
 			for condition in latches_def.disabled_if:
 				var condition_id = condition.module_id
 				var dependency = module_manager_single.get_module_obj(condition_id)
