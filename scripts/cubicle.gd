@@ -3,7 +3,6 @@ class_name cubicle extends Node
 @onready var options_menu = $options_menu as Control
 @onready var open_options = $"pause curtain/open_options" as Button
 
-
 signal diagetic_error_report(new_error)
 signal diagetic_error_resolved(error_id)
 signal modules_ready()
@@ -31,8 +30,6 @@ var current_level_id: String
 var current_level
 var error_schedule := []
 var error_catalogue := []
-var module_id_list
-var module_obj_dic: Dictionary = {}
 var error_timers_list := []
 var failure_threshold_percent: float
 var paused := false
@@ -72,13 +69,14 @@ func _ready():
 	side_effects.set_error_factory(error_factory_controller)
 
 func load_level(level_id: String = "test"):
+	module_manager_single.clear()
 	current_level_id = level_id
 	get_level()
 	detect_repeat_attempt()
 	get_error_schedule(current_level)
 	get_error_catalogue(current_level)
-	module_id_list = create_module_id_list()
-	create_module_objects()
+	var module_list : Array[String] = create_module_id_list()
+	create_module_objects(module_list)
 	create_error_timers()
 	set_initial_module_settings()
 	populate_error_factory()
@@ -118,7 +116,6 @@ func configure_level_settings():
 		level_music.play()
 	if(current_level.gameplay.has("error_freq")):
 		error_factory_controller.set_error_freq(current_level.gameplay.error_freq)
-	
 
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
@@ -138,8 +135,8 @@ func get_error_catalogue(level):
 		var dereferenced = dereferencer_single.error_by_id(error)
 		error_catalogue.append(dereferenced)
 
-func create_module_id_list():
-	var list = []
+func create_module_id_list() -> Array[String]:
+	var list : Array[String] = []
 	for error in error_schedule:
 		for step in error.pattern:
 			if !list.has(step.id):
@@ -150,59 +147,20 @@ func create_module_id_list():
 				list.append(step.id)
 	return list
 
-func create_module_objects():
-	for module_id in module_id_list:
-		create_module_with_id(module_id)
+func create_module_objects(module_list: Array[String]):
+	for module_id in module_list:
+		var new_module_list = module_manager_single.create_module_with_id(module_id)
+		for new_module in new_module_list:
+			control_panel.add_child(new_module)
+			new_module.trigger.connect(count_module_triggers)
+			modules_ready.connect(new_module.config_latches)
+			side_effects.register_side_effects(new_module)
+			var spacing = 10
+			var offset = new_module.control_def.offset
+			var x_pos = offset[0] * 64 + offset[0] * spacing
+			var y_pos = offset[1] * 64 + offset[1] * spacing
+			new_module.position = Vector2(x_pos, y_pos)
 	modules_ready.emit()
-
-func create_module_with_id(id : String):
-	var module_definition = dereferencer_single.module_by_id(id)
-	var new_module
-	match module_definition.type:
-		"button":
-			new_module = create_button()
-		"switch":
-			new_module = create_switch()
-		_:
-			push_error(str(module_definition.type, " not found. Check spelling."))
-	configure_module(new_module, module_definition)
-	check_for_error_side_effects(module_definition)
-
-func check_for_error_side_effects(def : Variant):
-	if(def.has("side_effects")):
-		if(def.side_effects.has("cause_errors")):
-			for new_error_id in def.side_effects.cause_errors:
-				if(!is_error_in_level(new_error_id)):
-					var new_error = dereferencer_single.error_by_id(new_error_id)
-					error_catalogue.append(new_error)
-					for step in new_error.pattern:
-						if !module_id_list.has(step.id):
-							module_id_list.append(step.id)
-							create_module_with_id(step.id)
-
-func create_button() -> abstract_module:
-	var button_scene = load("res://scenes/modules/button.tscn")
-	return button_scene.instantiate() as button_module
-
-func create_switch() -> abstract_module:
-	var switch_scene = load("res://scenes/modules/switch.tscn")
-	return switch_scene.instantiate() as switch_module
-
-func configure_module(new_module: abstract_module, params):
-	var spacing = 10
-	var x_pos = params.offset[0] * 64 + params.offset[0] * spacing
-	var y_pos = params.offset[1] * 64 + params.offset[1] * spacing
-	if(new_module == null):
-		push_error("switch instance does not have the script attached")
-	new_module.name = params.id
-	new_module.set_control_def(params)
-	new_module.set_label(str("[center]", params.label, "[/center]"))
-	control_panel.add_child(new_module)
-	new_module.set_anchors_preset(Control.PRESET_CENTER, false)
-	new_module.position = Vector2(x_pos, y_pos)
-	module_obj_dic[params.id] = new_module
-	new_module.trigger.connect(count_module_triggers)
-	side_effects.register_side_effects(new_module)
 
 func create_error_timers():
 	for error in error_schedule:
@@ -231,10 +189,11 @@ func announce_error_resolved(error_id):
 func set_initial_module_settings():
 	if(current_level.has("init_values")):
 		for key in current_level.init_values:
-			if(!module_obj_dic.has(key)):
+			var module = module_manager_single.module_obj_dic[key]
+			if(module == null):
 				push_error(str("current_level.init_values has key ", key, 
-				" not found in module_obj_dic"))
-			module_obj_dic[key].set_value(current_level.init_values[key])
+				" not found in module_manager_single.module_obj_dic"))
+			module.set_value(current_level.init_values[key])
 
 func populate_error_factory():
 	error_factory_controller.set_error_list(error_catalogue)
@@ -321,7 +280,6 @@ func tutorial_init():
 		var node_tutorial = tutorial_scene.instantiate()
 		node_tutorial.name = "tutorial"
 		add_child(node_tutorial)
-		
 		node_tutorial.set_cubicle(self)
 
 func upgrade_init():

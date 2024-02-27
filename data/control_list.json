@@ -58,14 +58,21 @@
 				"cause_errors": [
 						"E_FRAG_FAULT"
 					]
-					
 			}
 	},
 	{
 		"label": "Safe Mode",
 		"id": "C_SAFE_MODE",
 		"type": "switch",
-		"offset": [5, 0]
+		"offset": [5, 0],
+		"latches": {
+			"disabled_if": [
+				{
+					"module_id": "C_LIFEGUARD",
+					"value": false
+				}
+				]
+		}
 	},
 	{
 		"label": "Lifeguard On Duty",

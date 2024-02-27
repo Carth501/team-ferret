@@ -11,9 +11,11 @@ func set_label(label: String):
 	rtl_object.append_text(label)
 
 func button_pressed():
-	trigger.emit(control_def)
-	trigger_with_ref.emit(self)
-	play_animation()
+	if(check_latches_unlocked()):
+		trigger.emit(control_def)
+		trigger_with_ref.emit(self)
+		play_animation()
+		click.play()
 
 func play_animation() -> void:
 	anim_button.play("click")

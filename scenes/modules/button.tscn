@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnf6vxxb7xsr3"]
+[gd_scene load_steps=12 format=3 uid="uid://bnf6vxxb7xsr3"]
 
 [ext_resource type="Script" path="res://scripts/modules/button_module.gd" id="1_2qjgx"]
-[ext_resource type="Script" path="res://scripts/click_player.gd" id="2_6gy08"]
 [ext_resource type="Texture2D" uid="uid://dq86iwrmkc0io" path="res://assets/images/modules/button_up.png" id="2_6q3bl"]
 [ext_resource type="Texture2D" uid="uid://bv8m88nlesnui" path="res://assets/images/modules/button_pushed.png" id="3_xf508"]
 [ext_resource type="PackedScene" uid="uid://dt345r1kj5v0n" path="res://scenes/modules/warning_popup.tscn" id="5_x54ve"]
@@ -99,9 +98,6 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 scroll_active = false
-
-[node name="click_player" type="Node" parent="Button"]
-script = ExtResource("2_6gy08")
 
 [node name="Warning popup" parent="." instance=ExtResource("5_x54ve")]
 

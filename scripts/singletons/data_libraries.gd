@@ -1,8 +1,8 @@
 class_name data_libraries extends Node
 
-var control_data
-var error_data
-var level_data
+var control_data : Array
+var error_data : Array
+var level_data : Array
 @export var control_definition_json = "res://data/control_list.json"
 @export var error_definition_json = "res://data/error_list.json"
 @export var level_definition_json = "res://data/level_list.json"

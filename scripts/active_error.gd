@@ -1,6 +1,7 @@
 class_name active_error extends Node
 
 signal resolved_error(id: String)
+signal resolved_error_with_ref(ref: active_error)
 signal step(number: int)
 
 var id: String
@@ -23,7 +24,9 @@ func connect_to_cubicle(cubicle_instance: cubicle):
 	cubicle_reference = cubicle_instance
 	resolved_error.connect(cubicle_instance.announce_error_resolved)
 	for module in pattern:
-		var module_instance = cubicle_instance.module_obj_dic[module.id]
+		var module_instance = module_manager_single.get_module_obj(module.id)
+		if(module_instance == null):
+			push_error(str("module manager should have module ", module.id))
 		if(!module_instance.trigger.is_connected(pattern_step)):
 			module_instance.trigger.connect(pattern_step)
 		module_instances[module.id] = module_instance
@@ -49,6 +52,7 @@ func increment_step():
 	step_index += 1
 	if(step_index >= pattern.size()):
 		resolved_error.emit(id)
+		resolved_error_with_ref.emit(self)
 		queue_free()
 	else:
 		check_next_step()
