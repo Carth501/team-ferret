@@ -11,8 +11,10 @@ func set_label(label: String):
 
 func button_pressed():
 	var state = button_obj.button_pressed
-	var payload = {"id"= id, "value"=state}
+	var payload = control_def
+	payload["value"] = state
 	trigger.emit(payload)
+	trigger_with_ref.emit(self)
 	toggle_switch(state)
 
 func get_current_values():

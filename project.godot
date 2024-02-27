@@ -28,6 +28,7 @@ click="*res://scenes/singletons/audio_stream_players/click.tscn"
 audio_continuity_single="*res://scripts/singletons/audio_continuity.gd"
 transition_screen_single="*res://scenes/transition_screen.tscn"
 results_single="*res://scripts/singletons/results.gd"
+dereferencer_single="*res://scripts/singletons/dereferencer.gd"
 
 [display]
 

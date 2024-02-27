@@ -23,6 +23,8 @@ func _ready():
 	l_body = manual_book.left_text
 	r_header = manual_book.right_header
 	r_body = manual_book.right_text
+	var error_data = data_libraries_single.get_error_data_copy()
+	write_manual(error_data)
 
 func toggle_manual_popup():
 	manual_book.visible = !manual_book.visible
@@ -33,9 +35,9 @@ func toggle_manual_popup():
 		close_player.play()
 	write_pages()
 
-func write_manual(error_list, control_list):
+func write_manual(error_list):
 	build_index(error_list)
-	build_error_list(error_list, control_list)
+	build_error_list(error_list)
 
 func build_index(error_list):
 	var pages_index: Array[String] = []
@@ -64,7 +66,7 @@ func build_index(error_list):
 		pages.append(new_page)
 		i += 1
 
-func build_error_list(error_list, control_list):
+func build_error_list(error_list):
 	var page_number = pages.size() + 1
 	var sw_text
 	for error in error_list:
@@ -78,7 +80,7 @@ func build_error_list(error_list, control_list):
 		
 		var step_number = 1
 		for step in error.pattern:
-			var step_definition = dereference_module_id(control_list, step.id)
+			var step_definition = dereferencer_single.module_by_id(step.id)
 			var line_text = str("\n", step_number, ". ", step_definition.label)
 			if(step.has("value")):
 				if(step_definition.type == "button"):
@@ -98,12 +100,6 @@ func build_error_list(error_list, control_list):
 		page_number += 1
 		
 	return pages
-
-func dereference_module_id(control_list, id: String):
-	for module_def in control_list:
-		if(module_def.id == id):
-			return module_def
-	push_error(str("Manual did not find error def for id ", id))
 
 func write_pages():
 	clear_pages()

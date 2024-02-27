@@ -4,35 +4,62 @@
 		"id": "C_ENGORGE_BALLAST",
 		"type": "switch",
 		"offset": [0, 0],
-		"warning_text": "5 people will leave every second while this is on."
+		"warning_text": "5 people will leave every second while this is on.",
+		"side_effects": {
+				"cont_flat_cpc_penalty": {
+						"value": true,
+						"magnitude": 5
+					}
+			}
 	},
 	{
 		"label": "Check Character Positions",
 		"id": "C_CHECK_CHAR_POS",
 		"type": "button",
 		"offset": [1, 0],
-		"warning_text": "This will be disabled for 13 seconds each time it is pressed."
+		"warning_text": "This will be disabled for 13 seconds.",
+		"side_effects": {
+				"disabled": {
+						"duration": 13.0
+					}
+			}
 	},
 	{
 		"label": "Reload Models",
 		"id": "C_RELOAD_MODELS",
 		"type": "button",
 		"offset": [2, 0],
-		"warning_text": "The monitor will be reset."
+		"warning_text": "The monitor will be reset.",
+		"side_effects": {
+				"monitor_reset": {
+						"duration": 4.0
+					}
+			}
 	},
 	{
 		"label": "Reload Character Models",
 		"id": "C_RELOAD_CHAR_MODELS",
 		"type": "button",
 		"offset": [3, 0],
-		"warning_text": "An estimated 3% of players will leave each time this is triggered."
+		"warning_text": "An estimated 3% of players will leave each time this is triggered.",
+		"side_effects": {
+				"percent_cpc_penalty": {
+						"magnitude": 0.03
+					}
+			}
 	},
 	{
 		"label": "Download RAM",
 		"id": "C_DOWNLOAD_RAM",
 		"type": "button",
 		"offset": [4, 0],
-		"warning_text": "This causes E_FRAG_FAULT."
+		"warning_text": "This causes E_FRAG_FAULT.",
+		"side_effects": {
+				"cause_errors": [
+						"E_FRAG_FAULT"
+					]
+					
+			}
 	},
 	{
 		"label": "Safe Mode",

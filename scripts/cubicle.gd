@@ -26,9 +26,8 @@ signal modules_ready()
 @onready var simulation_shaders := $Cubicle/Background/GameScreen/Screen_Shaders
 @onready var pager_ref := $pager
 @onready var complete_level_cheat := $"pause curtain/complete level"
+@onready var side_effects := side_effect_manager.new()
 var current_level_id: String
-var data: data_libraries_single
-var loader: level_loader
 var current_level
 var error_schedule := []
 var error_catalogue := []
@@ -50,13 +49,11 @@ var results_struct := {
 
 func _ready():
 	handle_connecting_signals()
-	data = get_node("/root/data_libraries_single")
-	if(!data.ready):
-		await data.ready
-	loader = get_node("/root/level_loader_single")
-	if(!loader.ready):
-		await loader.ready
-	loader.cubicle_ready(self)
+	if(!data_libraries_single.ready):
+		await data_libraries_single.ready
+	if(!level_loader_single.ready):
+		await level_loader_single.ready
+	level_loader_single.cubicle_ready(self)
 	if(pause_button == null):
 		push_error("pause_button not hooked up")
 	else:
@@ -69,6 +66,10 @@ func _ready():
 		complete_level_cheat.visible = true
 	else:
 		complete_level_cheat.queue_free()
+	add_child(side_effects)
+	side_effects.set_cpc_calc(cpc_calc)
+	side_effects.set_sim_screen(simulation_screen)
+	side_effects.set_error_factory(error_factory_controller)
 
 func load_level(level_id: String = "test"):
 	current_level_id = level_id
@@ -76,10 +77,9 @@ func load_level(level_id: String = "test"):
 	detect_repeat_attempt()
 	get_error_schedule(current_level)
 	get_error_catalogue(current_level)
-	create_module_id_list()
+	module_id_list = create_module_id_list()
 	create_module_objects()
 	create_error_timers()
-	setup_manual()
 	set_initial_module_settings()
 	populate_error_factory()
 	configure_level_settings()
@@ -87,7 +87,7 @@ func load_level(level_id: String = "test"):
 	upgrade_init()
 	
 func get_level():
-	var level_list = data.level_data
+	var level_list = data_libraries_single.level_data
 	for level in level_list:
 		var metadata = level.metadata
 		if (metadata.id == current_level_id):
@@ -112,7 +112,8 @@ func configure_level_settings():
 		if(value >= 0):
 			cpc_calc.set_threshold(value)
 	if(current_level.metadata.has("music")):
-		var song = load("res://assets/audio/music/" + current_level.metadata.music + ".mp3")
+		var track = "res://assets/audio/music/" + current_level.metadata.music + ".mp3"
+		var song = load(track)
 		level_music.stream = song
 		level_music.play()
 	if(current_level.gameplay.has("error_freq")):
@@ -122,7 +123,7 @@ func configure_level_settings():
 func get_error_schedule(level):
 	var error_id_schedule = level.gameplay.errors.scheduled
 	for error in error_id_schedule:
-		var error_item = data.dereference_error_id(error.id)
+		var error_item = dereferencer_single.error_by_id(error.id)
 		if(error.has("time")):
 			error_item["time"] = error.time
 			error_schedule.append(error_item)
@@ -134,9 +135,7 @@ func get_error_catalogue(level):
 		push_warning("level has no errors list, was this intentional?")
 	var error_id_list = level.gameplay.errors.random
 	for error in error_id_list:
-		var dereferenced = data.dereference_error_id(error)
-		if(dereferenced == null):
-			push_error(str("dereference_error_id did not find ", error))
+		var dereferenced = dereferencer_single.error_by_id(error)
 		error_catalogue.append(dereferenced)
 
 func create_module_id_list():
@@ -149,21 +148,37 @@ func create_module_id_list():
 		for step in error.pattern:
 			if !list.has(step.id):
 				list.append(step.id)
-	module_id_list = list
+	return list
 
 func create_module_objects():
 	for module_id in module_id_list:
-		var module_definition = dereference_module_id(module_id)
-		var new_module
-		match module_definition.type:
-			"button":
-				new_module = create_button()
-			"switch":
-				new_module = create_switch()
-			_:
-				push_error(str(module_definition.type, " not found. Check spelling."))
-		configure_module(new_module, module_definition)
+		create_module_with_id(module_id)
 	modules_ready.emit()
+
+func create_module_with_id(id : String):
+	var module_definition = dereferencer_single.module_by_id(id)
+	var new_module
+	match module_definition.type:
+		"button":
+			new_module = create_button()
+		"switch":
+			new_module = create_switch()
+		_:
+			push_error(str(module_definition.type, " not found. Check spelling."))
+	configure_module(new_module, module_definition)
+	check_for_error_side_effects(module_definition)
+
+func check_for_error_side_effects(def : Variant):
+	if(def.has("side_effects")):
+		if(def.side_effects.has("cause_errors")):
+			for new_error_id in def.side_effects.cause_errors:
+				if(!is_error_in_level(new_error_id)):
+					var new_error = dereferencer_single.error_by_id(new_error_id)
+					error_catalogue.append(new_error)
+					for step in new_error.pattern:
+						if !module_id_list.has(step.id):
+							module_id_list.append(step.id)
+							create_module_with_id(step.id)
 
 func create_button() -> abstract_module:
 	var button_scene = load("res://scenes/modules/button.tscn")
@@ -187,12 +202,7 @@ func configure_module(new_module: abstract_module, params):
 	new_module.position = Vector2(x_pos, y_pos)
 	module_obj_dic[params.id] = new_module
 	new_module.trigger.connect(count_module_triggers)
-
-func dereference_module_id(id: String):
-	for module_def in data.control_data:
-		if(module_def.id == id):
-			return module_def
-	push_error(str("did not find error def for id ", id))
+	side_effects.register_side_effects(new_module)
 
 func create_error_timers():
 	for error in error_schedule:
@@ -200,7 +210,7 @@ func create_error_timers():
 		timer_corral.add_child(timer)
 		timer.wait_time = error.time
 		timer.one_shot = true
-		timer.start()
+		timer.autostart = true
 		error_timers_list.append(timer)
 		timer.timeout.connect(next_error_report)
 
@@ -217,9 +227,6 @@ func announce_error_resolved(error_id):
 	results_struct.errors_cleared += 1
 	diagetic_error_resolved.emit(error_id)
 	error_resolved.play()
-
-func setup_manual():
-	manual_instance.write_manual(data.get_error_data_copy(), data.control_data)
 
 func set_initial_module_settings():
 	if(current_level.has("init_values")):
@@ -323,3 +330,12 @@ func upgrade_init():
 		var upgrades = active_save.upgrades
 		level_clock_handler.visible = upgrades.has("digital_clock") && upgrades.digital_clock
 		pager_ref.toggle_extra_button(upgrades.has("pager_buttons") && upgrades.pager_buttons)
+
+func is_error_in_level(id : String) -> bool:
+	for error in error_schedule:
+		if(error.id == id):
+			return true
+	for error in error_catalogue:
+		if(error.id == id):
+			return true
+	return false
