@@ -10,7 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 532.0
 offset_bottom = 358.0
-scale = Vector2(1.2, 1.2)
+mouse_filter = 2
 script = ExtResource("1_g60n5")
 book_margin = 50.0
 
@@ -131,7 +131,11 @@ text = "X"
 [connection signal="mouse_entered" from="TextureRect/MarginContainer" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect/MarginContainer" to="." method="_on_mouse_exited"]
 [connection signal="meta_clicked" from="TextureRect/MarginContainer/HBoxContainer/left_page/left_text" to="." method="parse_hyperlink"]
+[connection signal="meta_hover_ended" from="TextureRect/MarginContainer/HBoxContainer/left_page/left_text" to="." method="meta_entered"]
+[connection signal="meta_hover_started" from="TextureRect/MarginContainer/HBoxContainer/left_page/left_text" to="." method="meta_exited"]
 [connection signal="meta_clicked" from="TextureRect/MarginContainer/HBoxContainer/right_page/right_text" to="." method="parse_hyperlink"]
+[connection signal="meta_hover_ended" from="TextureRect/MarginContainer/HBoxContainer/right_page/right_text" to="." method="meta_entered"]
+[connection signal="meta_hover_started" from="TextureRect/MarginContainer/HBoxContainer/right_page/right_text" to="." method="meta_exited"]
 [connection signal="pressed" from="prev_button" to="." method="prev_button"]
 [connection signal="pressed" from="next_button" to="." method="next_button"]
 [connection signal="pressed" from="jump_to_index" to="." method="index_shortcut"]

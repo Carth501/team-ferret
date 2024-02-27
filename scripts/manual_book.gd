@@ -19,6 +19,7 @@ var initial_position: Vector2
 var mouse_over: bool = false
 var holding: bool = false
 var in_window: bool = true
+var over_meta := 0
 
 func prev_button():
 	emit_signal("prev_page")
@@ -38,13 +39,11 @@ func close_manual():
 	close.emit()
 
 func _on_gui_input(event):
-	if(event is InputEventMouseButton):
-		if(event.is_pressed() && mouse_over):
+	if Input.is_action_just_pressed("click"):
+		if(mouse_over && over_meta == 0):
 			drag_offset = get_viewport().get_mouse_position()
 			initial_position = position
 			holding = true
-		else:
-			holding = false
 	elif(event is InputEventMouseMotion):
 		if(holding && in_window):
 			var delta_position = get_viewport().get_mouse_position() - drag_offset
@@ -57,6 +56,8 @@ func _on_gui_input(event):
 			new_position.x = clamp(new_position.x, 0, max_x)
 			new_position.y = clamp(new_position.y, 0, max_y)
 			position = new_position
+	if Input.is_action_just_released("click"):
+		holding = false
 
 
 func _notification(what):
@@ -70,3 +71,9 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	mouse_over = false
+
+func meta_entered(_meta):
+	over_meta += 1
+
+func meta_exited(_meta):
+	over_meta -= 1
