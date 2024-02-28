@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3adj3oedwpob"]
+[gd_scene load_steps=8 format=3 uid="uid://b3adj3oedwpob"]
 
 [ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_4esr6"]
 [ext_resource type="Script" path="res://scripts/click_player.gd" id="2_jgx4p"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://t5mmhj1jlbxn" path="res://assets/audio/music/title_screen.mp3" id="4_lc7sr"]
 [ext_resource type="Script" path="res://scripts/audio_interface.gd" id="5_txwpc"]
 [ext_resource type="PackedScene" uid="uid://dkkx2t5in0lxp" path="res://scenes/vending_machine.tscn" id="6_o8brn"]
-[ext_resource type="PackedScene" uid="uid://dtyv8dggwfwl" path="res://scenes/manual.tscn" id="8_ds13a"]
 
 [node name="GameMenu" type="Node"]
 script = ExtResource("1_4esr6")
@@ -55,12 +54,6 @@ offset_top = 43.0
 offset_right = 135.0
 offset_bottom = 74.0
 text = "To Title Menu"
-
-[node name="manual" parent="." instance=ExtResource("8_ds13a")]
-offset_left = 648.0
-offset_top = 144.0
-offset_right = -551.0
-offset_bottom = -539.0
 
 [connection signal="pressed" from="Continue" to="." method="load_continue"]
 [connection signal="tree_exiting" from="AudioStreamPlayer" to="AudioStreamPlayer" method="record_exit_time"]
