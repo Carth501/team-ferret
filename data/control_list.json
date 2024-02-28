@@ -4,11 +4,11 @@
 		"id": "C_ENGORGE_BALLAST",
 		"type": "switch",
 		"offset": [0, 0],
-		"warning_text": "5 people will leave every second while this is on.",
+		"warning_text": "2 people will leave every second while this is on.",
 		"side_effects": {
 				"cont_flat_cpc_penalty": {
 						"value": true,
-						"magnitude": 5
+						"magnitude": 2
 					}
 			}
 	},

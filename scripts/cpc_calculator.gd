@@ -15,6 +15,7 @@ var cpc_cont_const := 0
 
 func calculate():
 	cpc = floori((cpc + 1) * calc_coefficient()) + cpc_cont_const
+	cpc = maxi(cpc, 0)
 	if(cpc > high_score):
 		high_score = cpc
 	if(threshold && cpc < high_score * threshold):
