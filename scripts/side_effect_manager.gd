@@ -35,6 +35,7 @@ func cont_flat_cpc_penalty(payload : Variant):
 		push_error("trying to trigger the wrong side effect, or something like that.")
 	if(!payload.has("value") || payload.value == payload.side_effects.cont_flat_cpc_penalty.value):
 		cpc_calc.cpc_cont_const -= payload.side_effects.cont_flat_cpc_penalty.magnitude
+		cpc_calc.cpc_cont_const = maxi(cpc_calc.cpc_cont_const, 0)
 	else:
 		cpc_calc.cpc_cont_const += payload.side_effects.cont_flat_cpc_penalty.magnitude
 
