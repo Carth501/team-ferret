@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6uy57die1o1u"]
+
+[ext_resource type="Script" path="res://scripts/alert_popup.gd" id="1_hck60"]
+[ext_resource type="Texture2D" uid="uid://b7rpj2tcdg0c4" path="res://assets/images/cubicle/alert/01_AlertNotification_0009.png" id="2_jyj6n"]
+[ext_resource type="Texture2D" uid="uid://bk5psjuyg7su7" path="res://assets/images/cubicle/alert/01_AlertNotification_0010.png" id="3_0ytp6"]
+[ext_resource type="Texture2D" uid="uid://d1q1gw21acxwd" path="res://assets/images/cubicle/alert/01_AlertNotification_0011.png" id="4_qyjrf"]
+[ext_resource type="Texture2D" uid="uid://dwr82y6gta7yp" path="res://assets/images/cubicle/alert/01_AlertNotification_0001.png" id="5_jka35"]
+[ext_resource type="Texture2D" uid="uid://cxtg1fl7mibqm" path="res://assets/images/cubicle/alert/01_AlertNotification_0002.png" id="6_pjtut"]
+[ext_resource type="Texture2D" uid="uid://bn53hpmru08o1" path="res://assets/images/cubicle/alert/01_AlertNotification_0003.png" id="7_301l1"]
+[ext_resource type="Texture2D" uid="uid://b3fb1cjm5xr43" path="res://assets/images/cubicle/alert/01_AlertNotification_0004.png" id="8_5bnad"]
+[ext_resource type="Texture2D" uid="uid://b8gebvsmqr75u" path="res://assets/images/cubicle/alert/01_AlertNotification_0005.png" id="9_pobmp"]
+[ext_resource type="Texture2D" uid="uid://cjpfuspb4fdp" path="res://assets/images/cubicle/alert/01_AlertNotification_0006.png" id="10_v85sg"]
+[ext_resource type="Texture2D" uid="uid://bs1f1djo6fu8g" path="res://assets/images/cubicle/alert/01_AlertNotification_0007.png" id="11_wyc8y"]
+[ext_resource type="Texture2D" uid="uid://nj6ey6s30g7t" path="res://assets/images/cubicle/alert/01_AlertNotification_0008.png" id="12_4r385"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atvsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jyj6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0ytp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qyjrf")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jka35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pjtut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_301l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5bnad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pobmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v85sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wyc8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4r385")
+}],
+"loop": false,
+"name": &"open",
+"speed": 20.0
+}]
+
+[node name="AlertPopup" type="Control" node_paths=PackedStringArray("sprite")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hck60")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.1165, 0.113)
+sprite_frames = SubResource("SpriteFrames_atvsa")
+animation = &"loop"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="open_complete"]
