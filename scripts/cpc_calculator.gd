@@ -12,6 +12,7 @@ var threshold: float
 var error_count = 0
 var par = 5
 var cpc_cont_const := 0
+var danger := false
 
 func calculate():
 	cpc = floori((cpc + 1) * calc_coefficient()) + cpc_cont_const
@@ -39,6 +40,12 @@ func set_cpc(value: int):
 func update_error_count(new_value: int):
 	error_count = new_value
 	display.set_error_count(new_value)
+	if(threshold && !danger && cpc < high_score * threshold * 1.2):
+		danger = true
+		display.in_danger()
+	elif(threshold && danger && cpc > high_score * threshold * 1.2):
+		danger = false
+		display.out_of_danger()
 
 func set_target(value: int):
 	target = value
