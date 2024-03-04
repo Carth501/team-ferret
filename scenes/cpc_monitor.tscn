@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlg0hvp5kloyl"]
+[gd_scene load_steps=3 format=3 uid="uid://dlg0hvp5kloyl"]
 
 [ext_resource type="Script" path="res://scripts/cpc_monitor.gd" id="1_1et8n"]
+[ext_resource type="PackedScene" uid="uid://b6uy57die1o1u" path="res://scenes/alert_popup.tscn" id="2_h2cwm"]
 
-[node name="cpc monitor" type="Control" node_paths=PackedStringArray("concurrent_player_display", "cpc_target", "active_errors")]
+[node name="cpc monitor" type="Control" node_paths=PackedStringArray("concurrent_player_display", "cpc_target", "active_errors", "alert")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,11 +16,13 @@ script = ExtResource("1_1et8n")
 concurrent_player_display = NodePath("CPC Display/CPC number")
 cpc_target = NodePath("Target CPC/Target CPC Number")
 active_errors = NodePath("Active Error count/Error Count")
+alert = NodePath("AlertPopup")
 
 [node name="CPC Display" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 8.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 48.0
 
 [node name="CPC Label" type="Label" parent="CPC Display"]
 layout_mode = 0
@@ -40,8 +43,9 @@ vertical_alignment = 1
 [node name="Target CPC" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 8.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 48.0
 
 [node name="Target CPC Label" type="Label" parent="Target CPC"]
 layout_mode = 0
@@ -65,9 +69,9 @@ vertical_alignment = 1
 
 [node name="Active Error count" type="Control" parent="."]
 anchors_preset = 0
-offset_top = 48.0
+offset_top = 56.0
 offset_right = 40.0
-offset_bottom = 88.0
+offset_bottom = 96.0
 
 [node name="active error label" type="Label" parent="Active Error count"]
 layout_mode = 0
@@ -86,3 +90,10 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "0"
 vertical_alignment = 1
+
+[node name="AlertPopup" parent="." instance=ExtResource("2_h2cwm")]
+layout_mode = 1
+offset_left = 205.0
+offset_top = -15.0
+offset_right = 205.0
+offset_bottom = -15.0

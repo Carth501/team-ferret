@@ -40,10 +40,10 @@ func set_cpc(value: int):
 func update_error_count(new_value: int):
 	error_count = new_value
 	display.set_error_count(new_value)
-	if(threshold && !danger && cpc < high_score * threshold * 1.2):
+	if(threshold && !danger && cpc < high_score * threshold * 1.3):
 		danger = true
 		display.in_danger()
-	elif(threshold && danger && cpc > high_score * threshold * 1.2):
+	elif(threshold && danger && cpc > high_score * threshold * 1.3):
 		danger = false
 		display.out_of_danger()
 
