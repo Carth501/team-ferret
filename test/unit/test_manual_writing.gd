@@ -6,7 +6,7 @@ var _manual : manual
 func before_all():
 	_manual = manual_packed.instantiate()
 	add_child(_manual)
-	_manual.write_manual(data_libraries_single.error_data, data_libraries_single.control_data)
+	_manual.write_manual(data_libraries_single.error_data)
 
 func after_all():
 	_manual.queue_free()
