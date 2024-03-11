@@ -42,7 +42,7 @@ func step1():
 
 func step2():
 	cubicle_instance.manual_instance.manual_open.disconnect(step2)
-	textbox.text = "This manual has everything you need to know. Tab through for a moment. Familiarize yourself. Move it around."
+	textbox.text = "This manual has everything you need to know. Move it where you need it, then tab through for a moment. Familiarize yourself."
 	circle.visible = false
 	continue_button.visible = true
 	continue_button.pressed.connect(step3)
