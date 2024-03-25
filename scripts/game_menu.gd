@@ -1,7 +1,8 @@
 class_name game_menu extends Node
 
-@export var level_select_panel: Panel
 var active_save_file: Variant
+@export var vending_control : Control
+@export var rolodex_control : Control
 
 func _ready():
 	request_save()
@@ -22,12 +23,21 @@ func load_continue():
 		await loader.ready
 	loader.load_continue()
 
-func toggle_level_selection():
-	level_select_panel.visible = !level_select_panel.visible
-
 func jump_to_title():
 	var save_handler = get_node("/root/save_handler_single")
 	save_handler.shift_to_title()
 
 func select_level(id: String):
 	level_loader_single.load_level(id)
+
+func open_vending():
+	vending_control.visible = true
+
+func close_vending():
+	vending_control.visible = false
+	
+func open_rolodex():
+	rolodex_control.visible = true
+
+func close_rolodex():
+	rolodex_control.visible = false
