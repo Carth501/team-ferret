@@ -32,12 +32,14 @@ func select_level(id: String):
 
 func open_vending():
 	vending_control.visible = true
+	rolodex_control.visible = false
 
 func close_vending():
 	vending_control.visible = false
 	
 func open_rolodex():
 	rolodex_control.visible = true
+	vending_control.visible = false
 
 func close_rolodex():
 	rolodex_control.visible = false
